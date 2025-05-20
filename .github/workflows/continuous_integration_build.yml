@@ -10,4 +10,4 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - name: continuous_integration_build_make
-        run: make
+        run: make all
