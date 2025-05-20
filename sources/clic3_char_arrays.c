@@ -69,3 +69,52 @@ int clic3_char_arrays_within(
   
   return -1;
 }
+
+unsigned char clic3_char_array_to_float(
+  char* char_array,
+  float* pointer_float
+) {
+  float float_return = 0.0f;
+
+  unsigned short int index_char_array = 0;
+  char char_current = char_array[index_char_array];
+  unsigned short int decimal = 0;
+
+  while (char_current != '\0') {
+    if (char_current == '.') {
+      if (decimal > 0) {
+        return 1;
+      }
+
+      decimal = 10;
+    } else if (char_current < '0' || char_current > '9') {
+      return 1;
+    } else if (decimal > 0) {
+      float_return = (
+        float_return + (
+          (float)(char_current - '0') / (float)decimal
+        )
+      );
+      
+      decimal = (
+        decimal * 10
+      );
+    } else {
+      float_return = (
+        (float_return * 10)
+        + (char_current - '0')
+      );
+    }
+
+    index_char_array = (
+      index_char_array + 1
+    );
+
+    char_current = char_array[index_char_array];
+  }
+
+  *pointer_float = float_return;
+  
+  return 0;
+}
+

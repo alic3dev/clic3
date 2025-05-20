@@ -4,4 +4,6 @@
 unsigned char clic3_char_arrays_equal(char*, char*);
 int clic3_char_arrays_within(char*, int, ...);
 
+unsigned char clic3_char_array_to_float(char*, float*);
+
 #endif
