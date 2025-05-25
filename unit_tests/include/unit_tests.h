@@ -3,7 +3,7 @@
 
 #include "unit_test_suite.h"
 
-#define length_unit_test_suites 1
+#define length_unit_test_suites 2
 
 typedef struct unit_test_suite* (*get_unit_test_suite)();
 

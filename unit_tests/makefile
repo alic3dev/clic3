@@ -19,6 +19,11 @@ c_flags=-O3 -I${directory_include} -I${directory_clic3_include}
 
 ${name}: ${file_binary}
 
+rebuild: clean_binary ${file_binary}
+
+test: ${file_binary}
+	./${file_binary}
+
 ${file_binary}: ${files_objects} ${directory_binary}
 	${cc} ${c_flags} ${files_objects} ${file_object_clic3} -o ${file_binary}
 
@@ -31,7 +36,9 @@ ${directory_binary}:
 ${directory_objects}:
 	mkdir -p ${directory_objects}
 
-clean:
-	-rm -r ${directory_binary} 2> /dev/null
+clean: clean_binary
 	-rm -r ${directory_objects} 2> /dev/null
+
+clean_binary:
+	-rm -r ${directory_binary} 2> /dev/null
 

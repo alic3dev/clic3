@@ -15,7 +15,7 @@ unsigned char unit_test_clic3_char_arrays_char_arrays_equal_test_equal() {
     "abc123"
   );
 
-  return equal == 0;
+  return equal == 1;
 }
 
 unsigned char unit_test_clic3_char_arrays_char_arrays_equal_test_not_equal() {
@@ -24,7 +24,7 @@ unsigned char unit_test_clic3_char_arrays_char_arrays_equal_test_not_equal() {
     "dozark"
   );
 
-  return equal != 0;
+  return equal == 0;
 }
 
 unsigned char unit_test_clic3_char_arrays_char_array_to_float_test() {
@@ -40,23 +40,20 @@ unsigned char unit_test_clic3_char_arrays_char_array_to_float_test() {
     return 1;
   }
 
-  return status_test;
+  return status_test == 0;
 }
 
 struct unit_test unit_test_clic3_char_arrays_char_arrays_equal_equal = {
-  length_name: 29,
-  name: "clic3_char_arrays_equal:equal",
+  name: "clic3_char_arrays_char_arrays_equal:equal",
   test: unit_test_clic3_char_arrays_char_arrays_equal_test_equal
 };
 
 struct unit_test unit_test_clic3_char_arrays_char_arrays_equal_not_equal = {
-  length_name: 33,
   name: "clic3_char_arrays_equal:not_equal",
   test: unit_test_clic3_char_arrays_char_arrays_equal_test_not_equal
 };
 
 struct unit_test unit_test_clic3_char_arrays_char_array_to_float = {
-  length_name: 26,
   name: "clic3_char_array_to_float",
   test: unit_test_clic3_char_arrays_char_array_to_float_test
 };

@@ -3,20 +3,20 @@
 #include <stdio.h>
 
 #include "unit_tests.clic3_char_arrays.h"
-
-#define length_unit_test_suites 1
+#include "unit_tests.clic3_sort.h"
 
 const get_unit_test_suite get_unit_test_suites[
   length_unit_test_suites
 ] = {
-  get_unit_test_suite_clic3_char_arrays 
+  get_unit_test_suite_clic3_char_arrays,
+  get_unit_test_suite_clic3_sort
 };
 
 int main() {
   unsigned char code_exit = 0;
 
   printf(
-    "unit_tests->{clic3}\n-------------------\n\n"
+    "unit_tests->{clic3}\n-------------------\n"
   );
 
   for (
@@ -29,13 +29,13 @@ int main() {
     ]();
 
     printf(
-      "%s\n",
+      "\n%s\n",
       unit_test_suite->name
     );
 
     for (
       unsigned short int index_unit_test_suite_name = 0;
-      index_unit_test_suite_name < unit_test_suite->length_name;
+      index_unit_test_suite_name < unit_test_suite->length_name - 1;
       ++index_unit_test_suite_name
     ) {
       printf("-");
@@ -62,11 +62,11 @@ int main() {
 
       printf(
         "[%s]\n",
-        status_test == 0 ? "PASS" : "FAIL"
+        status_test == 1 ? "PASS" : "FAIL"
       );
 
-      if (status_test != 0) {
-        code_exit = status_test;
+      if (status_test != 1) {
+        code_exit = status_test == 0 ? 1 : status_test;
       }
     }
 
