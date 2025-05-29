@@ -21,4 +21,3 @@ clic3_sort_definition_macro_unnamed(int)
 clic3_sort_definition_macro(unsigned long int, unsigned_long_int)
 
 #endif
-

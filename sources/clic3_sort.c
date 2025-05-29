@@ -1,4 +1,4 @@
-#include "clic3_sort.h"
+#include <clic3_sort.h>
 
 #define clic3_sort_macro_function(type, name_type, comparator)\
   void clic3_sort_ ## name_type(\
@@ -40,4 +40,3 @@ clic3_sort_macro_unnamed(double)
 clic3_sort_macro_unnamed(float)
 clic3_sort_macro_unnamed(int)
 clic3_sort_macro(unsigned long int, unsigned_long_int)
-

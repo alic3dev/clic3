@@ -1,9 +1,9 @@
-#include "unit_tests.h"
+#include <unit_tests.h>
 
 #include <stdio.h>
 
-#include "unit_tests.clic3_char_arrays.h"
-#include "unit_tests.clic3_sort.h"
+#include <unit_tests.clic3_char_arrays.h>
+#include <unit_tests.clic3_sort.h>
 
 const get_unit_test_suite get_unit_test_suites[
   length_unit_test_suites
@@ -75,4 +75,3 @@ int main() {
 
   return code_exit;
 }
-

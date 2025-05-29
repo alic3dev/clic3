@@ -1,7 +1,7 @@
 #ifndef __unit_test_suite_h
 #define __unit_test_suite_h
 
-#include "unit_test.h"
+#include <unit_test.h>
 
 struct unit_test_suite {
   unsigned short int length_name;
@@ -13,4 +13,3 @@ struct unit_test_suite {
 void unit_test_suite_destroy(struct unit_test_suite*);
 
 #endif
-

@@ -1,13 +1,13 @@
-#include "unit_tests.clic3_char_arrays.h"
+#include <unit_tests.clic3_char_arrays.h>
 
 #include <stdlib.h>
 #include <stdio.h>
 #include <string.h>
 
-#include "clic3_char_arrays.h"
+#include <clic3_char_arrays.h>
 
-#include "unit_test.h"
-#include "unit_test_suite.h"
+#include <unit_test.h>
+#include <unit_test_suite.h>
 
 unsigned char unit_test_clic3_char_arrays_char_arrays_equal_test_equal() {
   unsigned char equal = clic3_char_arrays_equal(
@@ -50,7 +50,7 @@ unsigned char unit_test_clic3_char_arrays_char_array_length_test() {
 }
 
 struct unit_test unit_test_clic3_char_arrays_char_arrays_equal_equal = {
-  name: "clic3_char_arrays_char_arrays_equal:equal",
+  name: "clic3_char_arrays_equal:equal",
   test: unit_test_clic3_char_arrays_char_arrays_equal_test_equal
 };
 
@@ -109,4 +109,3 @@ struct unit_test_suite* get_unit_test_suite_clic3_char_arrays() {
 
   return unit_test_suite_clic3_char_arrays;
 }
-
