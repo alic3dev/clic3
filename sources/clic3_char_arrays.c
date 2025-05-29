@@ -1,5 +1,6 @@
 #include "clic3_char_arrays.h"
 
+#include <limits.h>
 #include <stdarg.h> // TODO: Remove external dependencies: implement internal macros or other functionality
 
 unsigned char clic3_char_arrays_equal(
@@ -118,3 +119,12 @@ unsigned char clic3_char_array_to_float(
   return 0;
 }
 
+unsigned int clic3_char_array_length(
+  char* char_array
+) {
+  unsigned int length_char_array = 0;
+
+  while(char_array[length_char_array] != '\0' && ++length_char_array < UINT_MAX){}
+
+  return length_char_array;
+}

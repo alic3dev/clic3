@@ -43,6 +43,12 @@ unsigned char unit_test_clic3_char_arrays_char_array_to_float_test() {
   return status_test == 0;
 }
 
+unsigned char unit_test_clic3_char_arrays_char_array_length_test() {
+  return clic3_char_array_length(
+    "alic3"
+  ) == 5;
+}
+
 struct unit_test unit_test_clic3_char_arrays_char_arrays_equal_equal = {
   name: "clic3_char_arrays_char_arrays_equal:equal",
   test: unit_test_clic3_char_arrays_char_arrays_equal_test_equal
@@ -56,6 +62,11 @@ struct unit_test unit_test_clic3_char_arrays_char_arrays_equal_not_equal = {
 struct unit_test unit_test_clic3_char_arrays_char_array_to_float = {
   name: "clic3_char_array_to_float",
   test: unit_test_clic3_char_arrays_char_array_to_float_test
+};
+
+struct unit_test unit_test_clic3_char_arrays_char_array_length = {
+  name: "clic3_char_array_length",
+  test: unit_test_clic3_char_arrays_char_array_length_test
 };
 
 struct unit_test_suite* get_unit_test_suite_clic3_char_arrays() {
@@ -75,7 +86,7 @@ struct unit_test_suite* get_unit_test_suite_clic3_char_arrays() {
     unit_test_suite_clic3_char_arrays->length_name
   );
 
-  unit_test_suite_clic3_char_arrays->length_unit_tests = 3;
+  unit_test_suite_clic3_char_arrays->length_unit_tests = 4;
   unit_test_suite_clic3_char_arrays->unit_tests = malloc(
     sizeof(struct unit_test*) * unit_test_suite_clic3_char_arrays->length_unit_tests
   );
@@ -90,6 +101,10 @@ struct unit_test_suite* get_unit_test_suite_clic3_char_arrays() {
 
   unit_test_suite_clic3_char_arrays->unit_tests[2] = (
     &unit_test_clic3_char_arrays_char_arrays_equal_not_equal
+  );
+
+  unit_test_suite_clic3_char_arrays->unit_tests[3] = (
+    &unit_test_clic3_char_arrays_char_array_length
   );
 
   return unit_test_suite_clic3_char_arrays;
