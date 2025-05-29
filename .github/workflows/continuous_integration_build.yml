@@ -9,5 +9,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - name: continuous_integration_build_make
-        run: make all
+      - name: continuous_integration_build_make_library
+        run: make library/clic3.o
+      - name: continuous_integration_build_make_unit_tests
+        run: make unit_tests
+      - name: continuous_integration_build_make_run_unit_tests
+        run: make run_unit_tests
