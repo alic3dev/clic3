@@ -50,7 +50,7 @@ unsigned char unit_test_clic3_char_arrays_char_array_length_test() {
 }
 
 struct unit_test unit_test_clic3_char_arrays_char_arrays_equal_equal = {
-  name: "clic3_char_arrays_char_arrays_equal:equal",
+  name: "clic3_char_arrays_equal:equal",
   test: unit_test_clic3_char_arrays_char_arrays_equal_test_equal
 };
 
