@@ -1,5 +1,5 @@
-#ifndef __CLIC3_CHAR_VALUES_H
-#define __CLIC3_CHAR_VALUES_H
+#ifndef __clic3_char_values_h
+#define __clic3_char_values_h
 
 /********************************************************\
  * values_of_characters: converted from `char` to `int` *
