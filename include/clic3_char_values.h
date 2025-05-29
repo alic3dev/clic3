@@ -1,114 +1,111 @@
 #ifndef __CLIC3_CHAR_VALUES_H
 #define __CLIC3_CHAR_VALUES_H
 
-/***********************************************************************\
- * values_of_characters: converted from `char` to `int` representation *
-/***********************************************************************/
+/********************************************************\
+ * values_of_characters: converted from `char` to `int` *
+/********************************************************/
 
-#define CLIC3_CHAR_VALUE_ENTER 10 // 13?
-
-#define CLIC3_CHAR_VALUE_CTRL 27
-
-#define CLIC3_CHAR_VALUE_SPACE 32
-#define CLIC3_CHAR_VALUE_EXCLAMATION_MARK 33
-#define CLIC3_CHAR_VALUE_DOUBLE_QUOTE 34
-#define CLIC3_CHAR_VALUE_NUMBER_SIGN 35
-#define CLIC3_CHAR_VALUE_DOLLAR_SIGN 34
-#define CLIC3_CHAR_VALUE_PERCENT 37
-#define CLIC3_CHAR_VALUE_AMPERSAND 38
-#define CLIC3_CHAR_VALUE_SINGLE_QUOTE 39
-#define CLIC3_CHAR_VALUE_PARENTHESIS_OPENING 40
-#define CLIC3_CHAR_VALUE_PARENTHESIS_CLOSING 41
-#define CLIC3_CHAR_VALUE_ASTERISK 42
-#define CLIC3_CHAR_VALUE_PLUS 43
-#define CLIC3_CHAR_VALUE_COMMA 44
-#define CLIC3_CHAR_VALUE_HYPHEN 45
-#define CLIC3_CHAR_VALUE_PERIOD 46
-#define CLIC3_CHAR_VALUE_FORWARD_SLASH 47
-#define CLIC3_CHAR_VALUE_0 48
-#define CLIC3_CHAR_VALUE_1 49
-#define CLIC3_CHAR_VALUE_2 50
-#define CLIC3_CHAR_VALUE_3 51
-#define CLIC3_CHAR_VALUE_4 52
-#define CLIC3_CHAR_VALUE_5 53
-#define CLIC3_CHAR_VALUE_6 54
-#define CLIC3_CHAR_VALUE_7 55
-#define CLIC3_CHAR_VALUE_8 56
-#define CLIC3_CHAR_VALUE_9 57
-#define CLIC3_CHAR_VALUE_COLON 58
-#define CLIC3_CHAR_VALUE_SEMI_COLON 59
-#define CLIC3_CHAR_VALUE_ANGLE_BRACKET_OPENING 60
-#define CLIC3_CHAR_VALUE_EQUALS 61
-#define CLIC3_CHAR_VALUE_ANGLE_BRACKET_CLOSING 62
-#define CLIC3_CHAR_VALUE_QUESTION_MARK 63
-#define CLIC3_CHAR_VALUE_AT 64
-#define CLIC3_CHAR_VALUE_A 65
-#define CLIC3_CHAR_VALUE_B 66
-#define CLIC3_CHAR_VALUE_C 67
-#define CLIC3_CHAR_VALUE_D 68
-#define CLIC3_CHAR_VALUE_E 69
-#define CLIC3_CHAR_VALUE_F 70
-#define CLIC3_CHAR_VALUE_G 71
-#define CLIC3_CHAR_VALUE_H 72
-#define CLIC3_CHAR_VALUE_I 73
-#define CLIC3_CHAR_VALUE_J 74
-#define CLIC3_CHAR_VALUE_K 75
-#define CLIC3_CHAR_VALUE_L 76
-#define CLIC3_CHAR_VALUE_M 77
-#define CLIC3_CHAR_VALUE_N 78
-#define CLIC3_CHAR_VALUE_O 79
-#define CLIC3_CHAR_VALUE_P 80
-#define CLIC3_CHAR_VALUE_Q 81
-#define CLIC3_CHAR_VALUE_R 82
-#define CLIC3_CHAR_VALUE_S 83
-#define CLIC3_CHAR_VALUE_T 84
-#define CLIC3_CHAR_VALUE_U 85
-#define CLIC3_CHAR_VALUE_V 86
-#define CLIC3_CHAR_VALUE_W 87
-#define CLIC3_CHAR_VALUE_X 88
-#define CLIC3_CHAR_VALUE_Y 89
-#define CLIC3_CHAR_VALUE_Z 90
-#define CLIC3_CHAR_VALUE_SQUARE_BRACKET_OPENING 91
-#define CLIC3_CHAR_VALUE_BACK_SLASH 92
-#define CLIC3_CHAR_VALUE_SQUARE_BRACKET_CLOSING 93
-#define CLIC3_CHAR_VALUE_CARET 94
-#define CLIC3_CHAR_VALUE_UNDERSCORE 95
-#define CLIC3_CHAR_VALUE_BACKTICK 96
-#define CLIC3_CHAR_VALUE_a 97
-#define CLIC3_CHAR_VALUE_b 98
-#define CLIC3_CHAR_VALUE_c 99
-#define CLIC3_CHAR_VALUE_d 100
-#define CLIC3_CHAR_VALUE_e 101
-#define CLIC3_CHAR_VALUE_f 102
-#define CLIC3_CHAR_VALUE_g 103
-#define CLIC3_CHAR_VALUE_h 104
-#define CLIC3_CHAR_VALUE_i 105
-#define CLIC3_CHAR_VALUE_j 106
-#define CLIC3_CHAR_VALUE_k 107
-#define CLIC3_CHAR_VALUE_l 108
-#define CLIC3_CHAR_VALUE_m 109
-#define CLIC3_CHAR_VALUE_n 110
-#define CLIC3_CHAR_VALUE_o 111
-#define CLIC3_CHAR_VALUE_p 112
-#define CLIC3_CHAR_VALUE_q 113
-#define CLIC3_CHAR_VALUE_r 114
-#define CLIC3_CHAR_VALUE_s 115
-#define CLIC3_CHAR_VALUE_t 116
-#define CLIC3_CHAR_VALUE_u 117
-#define CLIC3_CHAR_VALUE_v 118
-#define CLIC3_CHAR_VALUE_w 119
-#define CLIC3_CHAR_VALUE_x 120
-#define CLIC3_CHAR_VALUE_y 121
-#define CLIC3_CHAR_VALUE_z 122
-#define CLIC3_CHAR_VALUE_CURLY_BRACKET_OPENING 123
-#define CLIC3_CHAR_VALUE_VERTICAL_BAR 124
-#define CLIC3_CHAR_VALUE_CURLY_BRACKET_CLOSING 125
-#define CLIC3_CHAR_VALUE_TILDE 126
+#define clic3_char_value_enter 10 // 13?
+#define clic3_char_value_ctrl 27
+#define clic3_char_value_space 32
+#define clic3_char_value_exclamation_mark 33
+#define clic3_char_value_double_quote 34
+#define clic3_char_value_number_sign 35
+#define clic3_char_value_dollar_sign 34
+#define clic3_char_value_percent 37
+#define clic3_char_value_ampersand 38
+#define clic3_char_value_single_quote 39
+#define clic3_char_value_parenthesis_opening 40
+#define clic3_char_value_parenthesis_closing 41
+#define clic3_char_value_asterisk 42
+#define clic3_char_value_plus 43
+#define clic3_char_value_comma 44
+#define clic3_char_value_hyphen 45
+#define clic3_char_value_period 46
+#define clic3_char_value_forward_slash 47
+#define clic3_char_value_0 48
+#define clic3_char_value_1 49
+#define clic3_char_value_2 50
+#define clic3_char_value_3 51
+#define clic3_char_value_4 52
+#define clic3_char_value_5 53
+#define clic3_char_value_6 54
+#define clic3_char_value_7 55
+#define clic3_char_value_8 56
+#define clic3_char_value_9 57
+#define clic3_char_value_colon 58
+#define clic3_char_value_semi_colon 59
+#define clic3_char_value_angle_bracket_opening 60
+#define clic3_char_value_equals 61
+#define clic3_char_value_angle_bracket_closing 62
+#define clic3_char_value_question_mark 63
+#define clic3_char_value_at 64
+// clic3_char_value_arrow_*: requires `ctrl` + `[` + `char`
+#define clic3_char_value_arrow_up 65
+#define clic3_char_value_arrow_down 66
+#define clic3_char_value_arrow_right 67
+#define clic3_char_value_arrow_left 68
+#define clic3_char_value_a 65
+#define clic3_char_value_b 66
+#define clic3_char_value_c 67
+#define clic3_char_value_d 68
+#define clic3_char_value_e 69
+#define clic3_char_value_f 70
+#define clic3_char_value_g 71
+#define clic3_char_value_h 72
+#define clic3_char_value_i 73
+#define clic3_char_value_j 74
+#define clic3_char_value_k 75
+#define clic3_char_value_l 76
+#define clic3_char_value_m 77
+#define clic3_char_value_n 78
+#define clic3_char_value_o 79
+#define clic3_char_value_p 80
+#define clic3_char_value_q 81
+#define clic3_char_value_r 82
+#define clic3_char_value_s 83
+#define clic3_char_value_t 84
+#define clic3_char_value_u 85
+#define clic3_char_value_v 86
+#define clic3_char_value_w 87
+#define clic3_char_value_x 88
+#define clic3_char_value_y 89
+#define clic3_char_value_z 90
+#define clic3_char_value_square_bracket_opening 91
+#define clic3_char_value_back_slash 92
+#define clic3_char_value_square_bracket_closing 93
+#define clic3_char_value_caret 94
+#define clic3_char_value_underscore 95
+#define clic3_char_value_backtick 96
+#define clic3_char_value_a 97
+#define clic3_char_value_b 98
+#define clic3_char_value_c 99
+#define clic3_char_value_d 100
+#define clic3_char_value_e 101
+#define clic3_char_value_f 102
+#define clic3_char_value_g 103
+#define clic3_char_value_h 104
+#define clic3_char_value_i 105
+#define clic3_char_value_j 106
+#define clic3_char_value_k 107
+#define clic3_char_value_l 108
+#define clic3_char_value_m 109
+#define clic3_char_value_n 110
+#define clic3_char_value_o 111
+#define clic3_char_value_p 112
+#define clic3_char_value_q 113
+#define clic3_char_value_r 114
+#define clic3_char_value_s 115
+#define clic3_char_value_t 116
+#define clic3_char_value_u 117
+#define clic3_char_value_v 118
+#define clic3_char_value_w 119
+#define clic3_char_value_x 120
+#define clic3_char_value_y 121
+#define clic3_char_value_z 122
+#define clic3_char_value_curly_bracket_opening 123
+#define clic3_char_value_vertical_bar 124
+#define clic3_char_value_curly_bracket_closing 125
+#define clic3_char_value_tilde 126
 
 #endif
-
-// These require CTRL+[+CHAR (3 instead of 1)
-// #define CLIC3_CHAR_VALUE_ARROW_UP 65
-// #define CLIC3_CHAR_VALUE_ARROW_DOWN 66
-// #define CLIC3_CHAR_VALUE_ARROW_RIGHT 67
-// #define CLIC3_CHAR_VALUE_ARROW_LEFT 68
