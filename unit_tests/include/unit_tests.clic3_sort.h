@@ -1,8 +1,8 @@
 #ifndef __unit_tests_clic3_sort_h
 #define __unit_tests_clic3_sort_h
 
-#include "unit_test_suite.h"
-#include "unit_test.h"
+#include <unit_test_suite.h>
+#include <unit_test.h>
 
 unsigned char unit_test_clic3_sort_sort_char_test_sort();
 unsigned char unit_test_clic3_sort_sort_reverse_char_test_sort();

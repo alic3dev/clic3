@@ -1,13 +1,13 @@
-#include "unit_tests.clic3_sort.h"
+#include <unit_tests.clic3_sort.h>
 
 #include <stdlib.h>
 #include <stdio.h>
 #include <string.h>
 
-#include "clic3_sort.h"
+#include <clic3_sort.h>
 
-#include "unit_test.h"
-#include "unit_test_suite.h"
+#include <unit_test.h>
+#include <unit_test_suite.h>
 
 unsigned char unit_test_clic3_sort_sort_char_test_sort() {
   unsigned long int length_values = 10;

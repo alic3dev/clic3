@@ -1,4 +1,4 @@
-#include "clic3_char_arrays.h"
+#include <clic3_char_arrays.h>
 
 #include <limits.h>
 #include <stdarg.h> // TODO: Remove external dependencies: implement internal macros or other functionality
