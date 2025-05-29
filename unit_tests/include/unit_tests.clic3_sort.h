@@ -37,4 +37,3 @@ extern struct unit_test unit_test_clic3_sort_sort_reverse_unsigned_long_int;
 struct unit_test_suite* get_unit_test_suite_clic3_sort();
 
 #endif
-

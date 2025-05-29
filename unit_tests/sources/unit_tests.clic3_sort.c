@@ -563,4 +563,3 @@ struct unit_test_suite* get_unit_test_suite_clic3_sort() {
 
   return unit_test_suite_clic3_sort;
 }
-

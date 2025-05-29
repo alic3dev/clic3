@@ -14,4 +14,3 @@ extern const get_unit_test_suite* unit_test_suites[
 int main();
 
 #endif
-

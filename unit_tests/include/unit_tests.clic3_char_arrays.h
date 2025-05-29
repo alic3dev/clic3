@@ -17,4 +17,3 @@ extern struct unit_test unit_test_clic3_char_arrays_char_array_length;
 struct unit_test_suite* get_unit_test_suite_clic3_char_arrays();
 
 #endif
-

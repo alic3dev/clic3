@@ -13,4 +13,3 @@ struct unit_test_suite {
 void unit_test_suite_destroy(struct unit_test_suite*);
 
 #endif
-

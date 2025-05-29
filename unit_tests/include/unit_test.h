@@ -9,4 +9,3 @@ struct unit_test {
 };
 
 #endif
-

@@ -109,4 +109,3 @@ struct unit_test_suite* get_unit_test_suite_clic3_char_arrays() {
 
   return unit_test_suite_clic3_char_arrays;
 }
-

@@ -40,4 +40,3 @@ clic3_sort_macro_unnamed(double)
 clic3_sort_macro_unnamed(float)
 clic3_sort_macro_unnamed(int)
 clic3_sort_macro(unsigned long int, unsigned_long_int)
-
