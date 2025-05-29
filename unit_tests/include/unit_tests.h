@@ -1,7 +1,7 @@
 #ifndef __unit_tests_h
 #define __unit_tests_h
 
-#include "unit_test_suite.h"
+#include <unit_test_suite.h>
 
 #define length_unit_test_suites 2
 

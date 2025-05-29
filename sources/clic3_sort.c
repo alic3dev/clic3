@@ -1,4 +1,4 @@
-#include "clic3_sort.h"
+#include <clic3_sort.h>
 
 #define clic3_sort_macro_function(type, name_type, comparator)\
   void clic3_sort_ ## name_type(\

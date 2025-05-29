@@ -1,8 +1,8 @@
 #ifndef __unit_tests_clic3_char_arrays_h
 #define __unit_tests_clic3_char_arrays_h
 
-#include "unit_test_suite.h"
-#include "unit_test.h"
+#include <unit_test_suite.h>
+#include <unit_test.h>
 
 unsigned char unit_test_clic3_char_arrays_char_arrays_equal_test_equal();
 unsigned char unit_test_clic3_char_arrays_char_arrays_equal_test_not_equal();
