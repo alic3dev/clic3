@@ -1,5 +1,5 @@
-#ifndef __UNIT_TEST_H
-#define __UNIT_TEST_H
+#ifndef __unit_test_h
+#define __unit_test_h
 
 typedef unsigned char (*unit_test_case)();
 
