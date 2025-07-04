@@ -1,9 +1,9 @@
 #ifndef __clic3_char_values_h
 #define __clic3_char_values_h
 
-/********************************************************\
+/********************************************************
  * values_of_characters: converted from `char` to `int` *
-/********************************************************/
+ ********************************************************/
 
 #define clic3_char_value_enter 10 // 13?
 #define clic3_char_value_ctrl 27
