@@ -1,7 +1,9 @@
 #include <clic3_char_arrays.h>
+#include <clic3_bytes.h>
 
 #include <limits.h>
-#include <stdarg.h> // TODO: Remove external dependencies: implement internal macros or other functionality
+#include <stdarg.h>
+#include <stdlib.h>
 
 unsigned char clic3_char_arrays_equal(
   char* char_array_first,
@@ -127,4 +129,45 @@ unsigned int clic3_char_array_length(
   while(char_array[length_char_array] != '\0' && ++length_char_array < UINT_MAX){}
 
   return length_char_array;
+}
+
+char* clic3_char_arrays_concatenate(
+  char* char_array_pre,
+  char* char_array_post
+) {
+  unsigned int length_char_array_pre = clic3_char_array_length(
+    char_array_pre
+  );
+
+  unsigned int length_char_array_post = clic3_char_array_length(
+    char_array_post
+  );
+
+  unsigned int length_char_array_destination = (
+    length_char_array_pre +
+    length_char_array_post
+  );
+
+  static char* char_array_destination;
+  char_array_destination = malloc(
+    sizeof(char) * length_char_array_destination + 1
+  );
+
+  clic3_bytes_copy(
+    char_array_destination,
+    char_array_pre,
+    length_char_array_pre
+  );
+
+  clic3_bytes_copy(
+    char_array_destination + length_char_array_pre,
+    char_array_post,
+    length_char_array_post
+  );
+
+  char_array_destination[
+    length_char_array_destination
+  ] = '\0';
+
+  return char_array_destination;
 }
