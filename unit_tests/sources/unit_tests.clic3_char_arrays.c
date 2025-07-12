@@ -49,6 +49,32 @@ unsigned char unit_test_clic3_char_arrays_char_array_length_test() {
   ) == 5;
 }
 
+unsigned char unit_test_clic3_char_arrays_char_arrays_concatenate_test() {
+  char* char_array_result = clic3_char_arrays_concatenate(
+    "abc",
+    "0123"
+  );
+
+  unsigned char status_test = 1;
+
+  if (
+    char_array_result[0] != 'a' ||
+    char_array_result[1] != 'b' ||
+    char_array_result[2] != 'c' ||
+    char_array_result[3] != '0' ||
+    char_array_result[4] != '1' || 
+    char_array_result[5] != '2' ||
+    char_array_result[6] != '3'  ||
+    char_array_result[7] != '\0'
+  ) {
+    status_test = 0;
+  }
+
+  free(char_array_result);
+
+  return status_test;
+}
+
 struct unit_test unit_test_clic3_char_arrays_char_arrays_equal_equal = {
   name: "clic3_char_arrays_equal:equal",
   test: unit_test_clic3_char_arrays_char_arrays_equal_test_equal
@@ -69,6 +95,11 @@ struct unit_test unit_test_clic3_char_arrays_char_array_length = {
   test: unit_test_clic3_char_arrays_char_array_length_test
 };
 
+struct unit_test unit_test_clic3_char_arrays_char_arrays_concatenate = {
+  name: "clic3_char_arrays_concatenate",
+  test: unit_test_clic3_char_arrays_char_arrays_concatenate_test
+};
+
 struct unit_test_suite* get_unit_test_suite_clic3_char_arrays() {
   struct unit_test_suite* unit_test_suite_clic3_char_arrays = malloc(
     sizeof(struct unit_test_suite)
@@ -86,7 +117,7 @@ struct unit_test_suite* get_unit_test_suite_clic3_char_arrays() {
     unit_test_suite_clic3_char_arrays->length_name
   );
 
-  unit_test_suite_clic3_char_arrays->length_unit_tests = 4;
+  unit_test_suite_clic3_char_arrays->length_unit_tests = 5;
   unit_test_suite_clic3_char_arrays->unit_tests = malloc(
     sizeof(struct unit_test*) * unit_test_suite_clic3_char_arrays->length_unit_tests
   );
@@ -105,6 +136,10 @@ struct unit_test_suite* get_unit_test_suite_clic3_char_arrays() {
 
   unit_test_suite_clic3_char_arrays->unit_tests[3] = (
     &unit_test_clic3_char_arrays_char_array_length
+  );
+
+  unit_test_suite_clic3_char_arrays->unit_tests[4] = (
+    &unit_test_clic3_char_arrays_char_arrays_concatenate
   );
 
   return unit_test_suite_clic3_char_arrays;

@@ -8,11 +8,13 @@ unsigned char unit_test_clic3_char_arrays_char_arrays_equal_test_equal();
 unsigned char unit_test_clic3_char_arrays_char_arrays_equal_test_not_equal();
 unsigned char unit_test_clic3_char_arrays_char_array_to_float_test();
 unsigned char unit_test_clic3_char_arrays_char_array_length_test();
+unsigned char unit_test_clic3_char_arrays_char_arrays_concatenate_test();
 
 extern struct unit_test unit_test_clic3_char_arrays_char_arrays_equal_equal;
 extern struct unit_test unit_test_clic3_char_arrays_char_arrays_equal_not_equal;
 extern struct unit_test unit_test_clic3_char_arrays_char_array_to_float;
 extern struct unit_test unit_test_clic3_char_arrays_char_array_length;
+extern struct unit_test unit_test_clic3_char_arrays_char_arrays_concatenate;
 
 struct unit_test_suite* get_unit_test_suite_clic3_char_arrays();
 
