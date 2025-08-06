@@ -1,6 +1,6 @@
 # clic3
 
-A standard library, by alic3 for alic3.
+c_standard_library
 
 ## copyright
 
