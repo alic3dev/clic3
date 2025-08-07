@@ -73,6 +73,82 @@ int clic3_char_arrays_within(
   return -1;
 }
 
+unsigned char clic3_char_array_to_int(
+  char* char_array,
+  int* pointer_int
+) {
+  int int_return = 0;
+
+  unsigned short int index_char_array = 0;
+  char char_current = char_array[index_char_array];
+  unsigned char is_negative = 0;
+
+  if (char_current == '-') {
+    is_negative = 1;
+    
+    index_char_array = (
+      index_char_array + 1
+    );
+    char_current = char_array[index_char_array];
+  }
+
+  while (char_current != '\0') {
+    if (char_current < '0' || char_current > '9') {
+      return 1; 
+    } else {
+      int_return = (
+        (int_return * 10)
+        + (char_current - '0')
+      );
+    }
+
+    index_char_array = (
+      index_char_array + 1
+    );
+
+    char_current = char_array[index_char_array];
+  }
+
+  *pointer_int = (
+    is_negative == 1
+    ? -int_return
+    : int_return
+  );
+  
+  return 0;
+}
+
+unsigned char clic3_char_array_to_unsigned_int(
+  char* char_array,
+  unsigned int* pointer_int
+) {
+  unsigned int int_return = 0;
+
+  unsigned short int index_char_array = 0;
+  char char_current = char_array[index_char_array];
+
+  while (char_current != '\0') {
+    if (char_current < '0' || char_current > '9') {
+      return 1; 
+    } else {
+      int_return = (
+        (int_return * 10)
+        + (char_current - '0')
+      );
+    }
+
+    index_char_array = (
+      index_char_array + 1
+    );
+
+    char_current = char_array[index_char_array];
+  }
+
+  *pointer_int = int_return;
+  
+  return 0;
+}
+
 unsigned char clic3_char_array_to_float(
   char* char_array,
   float* pointer_float
@@ -82,6 +158,17 @@ unsigned char clic3_char_array_to_float(
   unsigned short int index_char_array = 0;
   char char_current = char_array[index_char_array];
   unsigned short int decimal = 0;
+
+  unsigned char is_negative = 0;
+
+  if (char_current == '-') {
+    is_negative = 1;
+    
+    index_char_array = (
+      index_char_array + 1
+    );
+    char_current = char_array[index_char_array];
+  }
 
   while (char_current != '\0') {
     if (char_current == '.') {
@@ -116,7 +203,11 @@ unsigned char clic3_char_array_to_float(
     char_current = char_array[index_char_array];
   }
 
-  *pointer_float = float_return;
+  *pointer_float = (
+    is_negative == 1
+    ? -float_return
+    : float_return
+   );
   
   return 0;
 }
