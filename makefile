@@ -18,12 +18,16 @@ C_FLAGS=-O3 -I${DIRECTORY_INCLUDE}
 LD=ld
 LD_FLAGS=
 
+strip=strip
+strip_flags=-x
+
 ${NAME_LIBRARY}: ${FILE_LIBRARY}
 
 all: ${FILE_LIBRARY} ${DIRECTORY_UNIT_TESTS} rebuild_unit_tests run_unit_tests
 
 ${FILE_LIBRARY}: ${DIRECTORY_LIBRARY} ${FILES_OBJECTS}
 	${LD} ${LD_FLAGS} -r ${FILES_OBJECTS} -o $@
+	${strip} ${strip_flags} ${FILE_LIBRARY}
 
 ${DIRECTORY_OBJECTS}/%.o: ${DIRECTORY_SOURCES}/%.c ${DIRECTORY_OBJECTS}
 	${CC} ${C_FLAGS} -c $< -o $@
