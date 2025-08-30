@@ -1,62 +1,62 @@
-NAME_LIBRARY=clic3
+name=clic3
 
-DIRECTORY_INCLUDE=include
-DIRECTORY_LIBRARY=library
-DIRECTORY_OBJECTS=objects
-DIRECTORY_SOURCES=sources
-DIRECTORY_UNIT_TESTS=unit_tests
-DIRECTORY_output_UNIT_TESTS=${DIRECTORY_UNIT_TESTS}/output
+directory_include=include
+directory_library=library
+directory_objects=objects
+directory_sources=sources
+directory_unit_tests=unit_tests
+directory_output_unit_tests=${directory_unit_tests}/output
 
-FILE_LIBRARY=${DIRECTORY_LIBRARY}/${NAME_LIBRARY}.o
+file_library=${directory_library}/${name}.o
 
-FILES_SOURCES=${wildcard ${DIRECTORY_SOURCES}/*.c}
-FILES_OBJECTS=${patsubst ${DIRECTORY_SOURCES}/%.c,${DIRECTORY_OBJECTS}/%.o,${FILES_SOURCES}}
+files_sources=${wildcard ${directory_sources}/*.c}
+files_objects=${patsubst ${directory_sources}/%.c,${directory_objects}/%.o,${files_sources}}
 
-CC=gcc
-C_FLAGS=-O3 -I${DIRECTORY_INCLUDE}
+cc=gcc
+c_flags=-O3 -I${directory_include}
 
-LD=ld
-LD_FLAGS=
+ld=ld
+ld_flags=
 
 strip=strip
 strip_flags=-x
 
-${NAME_LIBRARY}: ${FILE_LIBRARY}
+${name}: ${file_library}
 
-all: ${FILE_LIBRARY} ${DIRECTORY_UNIT_TESTS} rebuild_unit_tests run_unit_tests
+all: ${file_library} ${directory_unit_tests} rebuild_unit_tests run_unit_tests
 
-${FILE_LIBRARY}: ${DIRECTORY_LIBRARY} ${FILES_OBJECTS}
-	${LD} ${LD_FLAGS} -r ${FILES_OBJECTS} -o $@
-	${strip} ${strip_flags} ${FILE_LIBRARY}
+${file_library}: ${directory_library} ${files_objects}
+	${ld} ${ld_flags} -r ${files_objects} -o $@
+	${strip} ${strip_flags} ${file_library}
 
-${DIRECTORY_OBJECTS}/%.o: ${DIRECTORY_SOURCES}/%.c ${DIRECTORY_OBJECTS}
-	${CC} ${C_FLAGS} -c $< -o $@
+${directory_objects}/%.o: ${directory_sources}/%.c ${directory_objects}
+	${cc} ${c_flags} -c $< -o $@
 
-${DIRECTORY_UNIT_TESTS}: ${FILE_LIBRARY} .FORCE
-	cd ${DIRECTORY_UNIT_TESTS} && make
+${directory_unit_tests}: ${file_library} .force
+	cd ${directory_unit_tests} && make
 
 rebuild_unit_tests: 
-	cd ${DIRECTORY_UNIT_TESTS} && make rebuild
+	cd ${directory_unit_tests} && make rebuild
 
-run_unit_tests: ${DIRECTORY_UNIT_TESTS}
-	cd ${DIRECTORY_UNIT_TESTS} && make test
+run_unit_tests: ${directory_unit_tests}
+	cd ${directory_unit_tests} && make test
 
-directories: ${DIRECTORY_LIBRARY} ${DIRECTORY_OBJECTS}
+directories: ${directory_library} ${directory_objects}
 
-${DIRECTORY_LIBRARY}:
-	mkdir -p ${DIRECTORY_LIBRARY}
+${directory_library}:
+	mkdir -p ${directory_library}
 
-${DIRECTORY_OBJECTS}:
-	mkdir -p ${DIRECTORY_OBJECTS}
+${directory_objects}:
+	mkdir -p ${directory_objects}
 
 clean:
-	-rm ${DIRECTORY_OBJECTS}/* 2> /dev/null
-	-rm ${FILE_LIBRARY} 2> /dev/null
+	-rm ${directory_objects}/* 2> /dev/null
+	-rm ${file_library} 2> /dev/null
 
 clean_unit_tests:
-	cd ${DIRECTORY_UNIT_TESTS} && make clean
+	cd ${directory_unit_tests} && make clean
 
 clean_all: clean clean_unit_tests
 
-.FORCE:
+.force:
 
