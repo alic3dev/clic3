@@ -160,6 +160,7 @@ unsigned char clic3_char_array_to_float(
   unsigned short int decimal = 0;
 
   unsigned char is_negative = 0;
+  unsigned char has_f = 0;
 
   if (char_current == '-') {
     is_negative = 1;
@@ -177,7 +178,17 @@ unsigned char clic3_char_array_to_float(
       }
 
       decimal = 10;
-    } else if (char_current < '0' || char_current > '9') {
+    } else if (
+      char_current == 'f' &&
+      decimal > 10 &&
+      has_f == 0
+    ) {
+      has_f = 1;
+    } else if (
+      char_current < '0' ||
+      char_current > '9' ||
+      has_f == 1
+    ) {
       return 1;
     } else if (decimal > 0) {
       float_return = (

@@ -67,12 +67,44 @@ unsigned char unit_test_clic3_char_arrays_char_array_to_float_test() {
     &value_float
   );
 
-
-  if (value_float != 3.3f) {
-    return 1;
+  if (
+    value_float != 3.3f ||
+    status_test != 0
+  ) {
+    return 0;
   }
 
-  return status_test == 0;
+  status_test = clic3_char_array_to_float(
+    "123.456f",
+    &value_float
+  );
+
+  if (
+    value_float != 123.456f ||
+    status_test != 0
+  ) {
+    return 0;
+  }
+
+  status_test = clic3_char_array_to_float(
+    "2.13f3",
+    &value_float
+  );
+
+  if (status_test == 0) {
+    return 0;
+  }
+
+  status_test = clic3_char_array_to_float(
+    "invalid_value",
+    &value_float
+  );
+
+  if (status_test == 0) {
+    return 0;
+  }
+
+  return 1;
 }
 
 unsigned char unit_test_clic3_char_arrays_char_array_length_test() {
