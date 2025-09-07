@@ -1,8 +1,6 @@
 #include <unit_tests.clic3_bytes.h>
 
 #include <stdlib.h>
-#include <stdio.h>
-#include <string.h>
 
 #include <clic3_bytes.h>
 
@@ -12,15 +10,23 @@
 unsigned char unit_test_clic3_bytes_bytes_copy_test_char() {
   unsigned int length_bytes = 10;
 
-  char* bytes_from = malloc(sizeof(char) * length_bytes);
-  char* bytes_to = malloc(sizeof(char) * length_bytes);
+  char* bytes_from = malloc(
+    sizeof(char) *
+    length_bytes
+  );
+  char* bytes_to = malloc(
+    sizeof(char) *
+    length_bytes
+  );
 
   for (
     unsigned int index_byte = 0;
     index_byte < length_bytes;
     ++index_byte
   ) {
-    bytes_from[index_byte] = 'a' + index_byte;
+    bytes_from[index_byte] = (
+      'a' + index_byte
+    );
   }
 
   clic3_bytes_copy(
@@ -53,8 +59,14 @@ unsigned char unit_test_clic3_bytes_bytes_copy_test_char() {
 unsigned char unit_test_clic3_bytes_bytes_copy_test_int() {
   unsigned int length_bytes = 10;
 
-  int* bytes_from = malloc(sizeof(int) * length_bytes);
-  int* bytes_to = malloc(sizeof(int) * length_bytes);
+  int* bytes_from = malloc(
+    sizeof(int) *
+    length_bytes
+  );
+  int* bytes_to = malloc(
+    sizeof(int) *
+    length_bytes
+  );
 
   for (
     unsigned int index_byte = 0;
@@ -145,10 +157,11 @@ struct unit_test_suite* get_unit_test_suite_clic3_bytes() {
   unit_test_suite_clic3_bytes->length_name = 12;
 
   unit_test_suite_clic3_bytes->name = malloc(
-    sizeof(char) * unit_test_suite_clic3_bytes->length_name
+    sizeof(char) *
+    unit_test_suite_clic3_bytes->length_name
   );
 
-  memcpy(
+  clic3_bytes_copy(
     unit_test_suite_clic3_bytes->name,
     "clic3_bytes\0",
     unit_test_suite_clic3_bytes->length_name
@@ -156,7 +169,8 @@ struct unit_test_suite* get_unit_test_suite_clic3_bytes() {
 
   unit_test_suite_clic3_bytes->length_unit_tests = 3;
   unit_test_suite_clic3_bytes->unit_tests = malloc(
-    sizeof(struct unit_test*) * unit_test_suite_clic3_bytes->length_unit_tests
+    sizeof(struct unit_test*) *
+    unit_test_suite_clic3_bytes->length_unit_tests
   );
 
   unit_test_suite_clic3_bytes->unit_tests[0] = (

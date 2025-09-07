@@ -54,20 +54,24 @@ int main() {
         index_unit_tests
       ];
 
-      printf(
-        "%s->{%s}:",
-        unit_test_suite->name,
-        unit_test->name
-      );
-
       const unsigned char status_test = unit_test->test();
 
-      printf(
-        "[%s]\n",
-        status_test == 1 ? "PASS" : "FAIL"
-      );
+      if (status_test == 1) {
+        printf(
+          "%s->{%s}:"
+          "[PASS]\n",
+          unit_test_suite->name,
+          unit_test->name
+        );
+      } else {
+        fprintf(
+          stderr,
+          "%s->{%s}:"
+          "[FAIL]\n",
+          unit_test_suite->name,
+          unit_test->name
+        );
 
-      if (status_test != 1) {
         code_exit = status_test == 0 ? 1 : status_test;
       }
     }

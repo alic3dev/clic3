@@ -1,9 +1,8 @@
 #include <unit_tests.clic3_sort.h>
 
 #include <stdlib.h>
-#include <stdio.h>
-#include <string.h>
 
+#include <clic3_bytes.h>
 #include <clic3_sort.h>
 
 #include <unit_test.h>
@@ -11,8 +10,10 @@
 
 unsigned char unit_test_clic3_sort_sort_char_test_sort() {
   unsigned long int length_values = 10;
+
   char* values = malloc(
-    sizeof(unsigned long int) * length_values
+    sizeof(unsigned long int) *
+    length_values
   );
 
   values[0] = 'h';
@@ -55,8 +56,10 @@ unsigned char unit_test_clic3_sort_sort_char_test_sort() {
 
 unsigned char unit_test_clic3_sort_sort_reverse_char_test_sort() {
   unsigned long int length_values = 10;
+
   char* values = malloc(
-    sizeof(unsigned long int) * length_values
+    sizeof(unsigned long int) *
+    length_values
   );
 
   values[0] = 'h';
@@ -99,8 +102,10 @@ unsigned char unit_test_clic3_sort_sort_reverse_char_test_sort() {
 
 unsigned char unit_test_clic3_sort_sort_double_test_sort() {
   unsigned long int length_values = 10;
+
   double* values = malloc(
-    sizeof(unsigned long int) * length_values
+    sizeof(unsigned long int) *
+    length_values
   );
 
   values[0] = 3.14;
@@ -143,8 +148,10 @@ unsigned char unit_test_clic3_sort_sort_double_test_sort() {
 
 unsigned char unit_test_clic3_sort_sort_reverse_double_test_sort() {
   unsigned long int length_values = 10;
+
   double* values = malloc(
-    sizeof(unsigned long int) * length_values
+    sizeof(unsigned long int) *
+    length_values
   );
 
   values[0] = 0.0001;
@@ -187,8 +194,10 @@ unsigned char unit_test_clic3_sort_sort_reverse_double_test_sort() {
 
 unsigned char unit_test_clic3_sort_sort_float_test_sort() {
   unsigned long int length_values = 10;
+
   float* values = malloc(
-    sizeof(unsigned long int) * length_values
+    sizeof(unsigned long int) *
+    length_values
   );
 
   values[0] = 3.01f;
@@ -231,8 +240,10 @@ unsigned char unit_test_clic3_sort_sort_float_test_sort() {
 
 unsigned char unit_test_clic3_sort_sort_reverse_float_test_sort() {
   unsigned long int length_values = 10;
+
   float* values = malloc(
-    sizeof(unsigned long int) * length_values
+    sizeof(unsigned long int) *
+    length_values
   );
 
   values[0] = 1.01f;
@@ -275,8 +286,10 @@ unsigned char unit_test_clic3_sort_sort_reverse_float_test_sort() {
 
 unsigned char unit_test_clic3_sort_sort_int_test_sort() {
   unsigned long int length_values = 10;
+
   int* values = malloc(
-    sizeof(unsigned long int) * length_values
+    sizeof(unsigned long int) *
+    length_values
   );
 
   values[0] = -25;
@@ -319,8 +332,10 @@ unsigned char unit_test_clic3_sort_sort_int_test_sort() {
 
 unsigned char unit_test_clic3_sort_sort_reverse_int_test_sort() {
   unsigned long int length_values = 10;
+
   int* values = malloc(
-    sizeof(unsigned long int) * length_values
+    sizeof(unsigned long int) *
+    length_values
   );
 
   values[0] = 892;
@@ -363,8 +378,10 @@ unsigned char unit_test_clic3_sort_sort_reverse_int_test_sort() {
 
 unsigned char unit_test_clic3_sort_sort_unsigned_long_int_test_sort() {
   unsigned long int length_values = 10;
+
   unsigned long int* values = malloc(
-    sizeof(unsigned long int) * length_values
+    sizeof(unsigned long int) *
+    length_values
   );
 
   values[0] = 3;
@@ -407,8 +424,10 @@ unsigned char unit_test_clic3_sort_sort_unsigned_long_int_test_sort() {
 
 unsigned char unit_test_clic3_sort_sort_reverse_unsigned_long_int_test_sort() {
   unsigned long int length_values = 10;
+
   unsigned long int* values = malloc(
-    sizeof(unsigned long int) * length_values
+    sizeof(unsigned long int) *
+    length_values
   );
 
   values[0] = 158239;
@@ -507,10 +526,11 @@ struct unit_test_suite* get_unit_test_suite_clic3_sort() {
   unit_test_suite_clic3_sort->length_name = 11;
 
   unit_test_suite_clic3_sort->name = malloc(
-    sizeof(char) * unit_test_suite_clic3_sort->length_name
+    sizeof(char) *
+    unit_test_suite_clic3_sort->length_name
   );
 
-  memcpy(
+  clic3_bytes_copy(
     unit_test_suite_clic3_sort->name,
     "clic3_sort\0",
     unit_test_suite_clic3_sort->length_name
@@ -518,7 +538,8 @@ struct unit_test_suite* get_unit_test_suite_clic3_sort() {
 
   unit_test_suite_clic3_sort->length_unit_tests = 10;
   unit_test_suite_clic3_sort->unit_tests = malloc(
-    sizeof(struct unit_test*) * unit_test_suite_clic3_sort->length_unit_tests
+    sizeof(struct unit_test*) *
+    unit_test_suite_clic3_sort->length_unit_tests
   );
 
   unit_test_suite_clic3_sort->unit_tests[0] = (
