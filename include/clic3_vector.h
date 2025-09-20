@@ -48,8 +48,24 @@
 #define clic3_vectors(type) \
   clic3_vectors_named(type, type)
 
+clic3_vectors(char)
 clic3_vectors_named(unsigned char, unsigned_char)
+
+clic3_vectors(int)
 clic3_vectors_named(unsigned int, unsigned_int)
+
+clic3_vectors_named(short int, short_int)
+clic3_vectors_named(unsigned short int, unsigned_short_int)
+
+clic3_vectors_named(long int, long_int)
+clic3_vectors_named(unsigned long int, unsigned_long_int)
+
+#ifndef __METAL_VERSION__
+clic3_vectors_named(long long int, long_long_int)
+clic3_vectors_named(unsigned long long int, unsigned_long_long_int)
+clic3_vectors(double)
+#endif
+
 clic3_vectors(float)
 
 #endif
