@@ -3,6 +3,7 @@
 #include <stdio.h>
 
 #include <unit_tests.clic3_bytes.h>
+#include <unit_tests.clic3_char.h>
 #include <unit_tests.clic3_char_arrays.h>
 #include <unit_tests.clic3_sort.h>
 
@@ -10,6 +11,7 @@ const get_unit_test_suite get_unit_test_suites[
   length_unit_test_suites
 ] = {
   get_unit_test_suite_clic3_bytes,
+  get_unit_test_suite_clic3_char,
   get_unit_test_suite_clic3_char_arrays,
   get_unit_test_suite_clic3_sort
 };
