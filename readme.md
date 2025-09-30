@@ -16,6 +16,7 @@ c_standard_library
 - - `clic3_char_array_to_int`
 - - `clic3_char_array_to_unsigned_int`
 - - `clic3_char_array_to_float`
+- - `clic3_char_array_from_float`
 - - `clic3_char_array_length`
 - - `clic3_char_arrays_concatenate`
 - `clic3_char_values`: values_of_characters : converted from `char` to `int`
