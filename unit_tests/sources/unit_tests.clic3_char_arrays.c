@@ -1,12 +1,12 @@
 #include <unit_tests.clic3_char_arrays.h>
 
-#include <stdlib.h>
-
 #include <clic3_bytes.h>
 #include <clic3_char_arrays.h>
 
 #include <unit_test.h>
 #include <unit_test_suite.h>
+
+#include <stdlib.h>
 
 unsigned char unit_test_clic3_char_arrays_char_arrays_equal_test_equal() {
   unsigned char equal = clic3_char_arrays_equal(
@@ -105,6 +105,88 @@ unsigned char unit_test_clic3_char_arrays_char_array_to_float_test() {
   return 1;
 }
 
+unsigned char unit_test_clic3_char_arrays_char_array_from_float_test() {
+  char* char_array = clic3_char_array_from_float(
+    1.9f
+  );
+
+  unsigned char status_test = 1;
+
+  if (
+    char_array[0] != '1' ||
+    char_array[1] != '.' ||
+    char_array[2] != '9' ||
+    char_array[3] != '\0'
+  ) {
+    status_test = 0;
+  }
+
+  free(char_array);
+
+  if (status_test != 1) {
+    return status_test;
+  }
+
+  char_array = clic3_char_array_from_float(
+    -1.9f
+  );
+
+  if (
+    char_array[0] != '-' ||
+    char_array[1] != '1' ||
+    char_array[2] != '.' ||
+    char_array[3] != '9' ||
+    char_array[4] != '\0'
+  ) {
+    status_test = 0;
+  }
+
+  free(char_array);
+
+  if (status_test != 1) {
+    return status_test;
+  }
+
+  char_array = clic3_char_array_from_float(
+    -12.5f
+  );
+
+  if (
+    char_array[0] != '-' ||
+    char_array[1] != '1' ||
+    char_array[2] != '2' ||
+    char_array[3] != '.' ||
+    char_array[4] != '5' ||
+    char_array[5] != '\0'
+  ) {
+    status_test = 0;
+  }
+
+  free(char_array);
+
+  if (status_test != 1) {
+    return status_test;
+  }
+
+  char_array = clic3_char_array_from_float(
+    12.5f
+  );
+
+  if (
+    char_array[0] != '1' ||
+    char_array[1] != '2' ||
+    char_array[2] != '.' ||
+    char_array[3] != '5' ||
+    char_array[4] != '\0'
+  ) {
+    status_test = 0;
+  }
+
+  free(char_array);
+
+  return status_test;
+}
+
 unsigned char unit_test_clic3_char_arrays_char_array_length_test() {
   return clic3_char_array_length(
     "alic3"
@@ -162,6 +244,11 @@ struct unit_test unit_test_clic3_char_arrays_char_array_to_float = {
   test: unit_test_clic3_char_arrays_char_array_to_float_test
 };
 
+struct unit_test unit_test_clic3_char_arrays_char_array_from_float = {
+  name: "clic3_char_array_from_float",
+  test: unit_test_clic3_char_arrays_char_array_from_float_test
+};
+
 struct unit_test unit_test_clic3_char_arrays_char_array_length = {
   name: "clic3_char_array_length",
   test: unit_test_clic3_char_arrays_char_array_length_test
@@ -190,7 +277,7 @@ struct unit_test_suite* get_unit_test_suite_clic3_char_arrays() {
     unit_test_suite_clic3_char_arrays->length_name
   );
 
-  unit_test_suite_clic3_char_arrays->length_unit_tests = 7;
+  unit_test_suite_clic3_char_arrays->length_unit_tests = 8;
   unit_test_suite_clic3_char_arrays->unit_tests = malloc(
     sizeof(struct unit_test*) *
     unit_test_suite_clic3_char_arrays->length_unit_tests
@@ -217,10 +304,14 @@ struct unit_test_suite* get_unit_test_suite_clic3_char_arrays() {
   );
 
   unit_test_suite_clic3_char_arrays->unit_tests[5] = (
-    &unit_test_clic3_char_arrays_char_array_length
+    &unit_test_clic3_char_arrays_char_array_from_float
   );
 
   unit_test_suite_clic3_char_arrays->unit_tests[6] = (
+    &unit_test_clic3_char_arrays_char_array_length
+  );
+
+  unit_test_suite_clic3_char_arrays->unit_tests[7] = (
     &unit_test_clic3_char_arrays_char_arrays_concatenate
   );
 
