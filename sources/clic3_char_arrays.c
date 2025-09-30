@@ -223,6 +223,130 @@ unsigned char clic3_char_array_to_float(
   return 0;
 }
 
+char* clic3_char_array_from_float(float value) {
+  unsigned char length_char_array = 1;
+
+  static char* char_array;
+  char_array = malloc(
+    sizeof(char) * 255
+  );
+
+  unsigned char negative_is = 0;
+
+  if (value < 0.0f) {
+    negative_is = 1;
+
+    value = -value;
+  }
+
+  float value_original = value;
+
+  while (
+    (unsigned int) value != 0
+  ) {
+    float value_next = value / 10.0f;
+
+    length_char_array = (
+      length_char_array + 1
+    );
+
+    char_array[length_char_array - 2] = (
+      '0' + (
+        (unsigned int) value -
+        ((unsigned int) value_next * 10)
+      )
+    );
+
+    value = value_next;
+  }
+
+  for (
+    unsigned char index_char = 0;
+    index_char < (length_char_array - 2) / 2 + (length_char_array % 2);
+    ++index_char
+  ) {
+    char char_placeholder = char_array[index_char];
+
+    char_array[
+      index_char
+    ] = char_array[
+      length_char_array -
+      index_char -
+      2
+    ];
+
+    char_array[
+      length_char_array -
+      index_char -
+      2
+    ] = char_placeholder;
+  }
+
+  if (negative_is) {
+    length_char_array = (
+      length_char_array + 1
+    );
+
+    for (
+      unsigned char index_char = length_char_array - 2;
+      index_char > 0;
+      --index_char
+    ) {
+      char_array[index_char] = char_array[index_char - 1];
+    }
+
+    char_array[0] = '-';
+  }
+
+  value = value_original - (unsigned int) value_original;
+
+  if (
+    value != 0.0f &&
+    length_char_array < 254
+  ) {
+    length_char_array = (
+      length_char_array + 1
+    );
+
+    char_array[
+      length_char_array - 2
+    ] = '.';
+
+    while (
+      value != 0.0f &&
+      length_char_array != 255
+    ) {
+      length_char_array = (
+        length_char_array + 1
+      );
+
+      value = value * 10.0f;
+
+      unsigned char value_integer = (unsigned char) value;
+
+      char_array[
+        length_char_array - 2
+      ] = (
+        '0' +
+        value_integer
+      );
+
+      value = value - value_integer;
+    }
+  }
+
+  char_array[
+    length_char_array - 1
+  ] = '\0';
+
+  char_array = realloc(
+    char_array,
+    sizeof(char) * length_char_array
+  );
+
+  return char_array;
+}
+
 unsigned int clic3_char_array_length(
   char* char_array
 ) {
