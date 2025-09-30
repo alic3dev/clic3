@@ -6,6 +6,10 @@ c_standard_library
 
 - `clic3_bytes`
 - - `clic3_bytes_copy`
+- `clic3_char`
+- - `clic3_char_from_char_code_char`
+- - `clic3_char_from_unsigned_char_code_char`
+- - `clic3_char_from_int_code_char`
 - `clic3_char_arrays`
 - - `clic3_char_arrays_equal`
 - - `clic3_char_arrays_within`
