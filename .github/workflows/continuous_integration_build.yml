@@ -8,6 +8,8 @@ jobs:
   continuous_integration_build:
     runs-on: ubuntu-latest
     steps:
+      - name: git_initialization
+        run: git config --global init.defaultBranch core
       - uses: actions/checkout@v4
       - name: continuous_integration_build_make_library
         run: make library/clic3.o
