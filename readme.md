@@ -20,6 +20,8 @@ c_standard_library
 - - `clic3_char_array_length`
 - - `clic3_char_arrays_concatenate`
 - `clic3_char_values`: values_of_characters : converted from `char` to `int`
+- `clic3_memory`:
+- - `clic3_memory_free`: frees memory if the address is not `(void*)0`
 - `clic3_sort`
 - - `clic3_sort_char`
 - - `clic3_sort_double`
