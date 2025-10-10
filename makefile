@@ -3,9 +3,6 @@ name=clic3
 directory_include=include
 directory_library=library
 directory_objects=objects
-directory_objects_dylib=${directory_objects}/dylib
-directory_objects_dynamic=${directory_objects}/dynamic
-directory_objects_static=${directory_objects}/static
 directory_sources=sources
 directory_unit_tests=unit_tests
 directory_output_unit_tests=${directory_unit_tests}/output
@@ -16,15 +13,10 @@ file_library_dynamic=${directory_library}/${name}.so
 file_library_static=${directory_library}/${name}.a
 
 files_sources=${wildcard ${directory_sources}/*.c}
-files_objects_dylib=${patsubst ${directory_sources}/%.c,${directory_objects_dylib}/%.dylib,${files_sources}}
-files_objects_dynamic=${patsubst ${directory_sources}/%.c,${directory_objects_dynamic}/%.so,${files_sources}}
-files_objects_static=${patsubst ${directory_sources}/%.c,${directory_objects_static}/%.o,${files_sources}}
+files_objects=${patsubst ${directory_sources}/%.c,${directory_objects}/%.o,${files_sources}}
 
 cc=gcc
 c_flags=-O3 -I${directory_include}
-c_flags_dylib=${c_flags} -dynamiclib
-c_flags_dynamic=${c_flags} -fPIC
-c_flags_static=${c_flags}
 
 ar=ar
 ar_flags=cqS
@@ -41,33 +33,25 @@ ${name}_static: ${file_library_static}
 
 all: ${name} rebuild_unit_tests run_unit_tests
 
-${file_library_dylib}: ${files_objects_dylib}
+${file_library_dylib}: ${files_objects}
 	mkdir -p ${directory_library}
-	${cc} -dynamiclib ${files_objects_dylib} -o ${file_library_dylib}
+	${cc} -dynamiclib ${files_objects} -o ${file_library_dylib}
 
-${file_library_dynamic}: ${files_objects_dynamic}
+${file_library_dynamic}: ${files_objects}
 	mkdir -p ${directory_library}
-	${cc} -shared ${files_objects_dynamic} -o ${file_library_dynamic}
+	${cc} -shared ${files_objects} -o ${file_library_dynamic}
 
-${file_library_object}: ${files_objects_static}
+${file_library_object}: ${files_objects}
 	mkdir -p ${directory_library}
-	${ld} ${ld_flags} -r ${files_objects_static} -o ${file_library_object}
+	${ld} ${ld_flags} -r ${files_objects} -o ${file_library_object}
 
-${file_library_static}: ${files_objects_static}
+${file_library_static}: ${files_objects}
 	mkdir -p ${directory_library}
-	${ar} ${ar_flags} ${file_library_static} ${files_objects_static}
+	${ar} ${ar_flags} ${file_library_static} ${files_objects}
 
-${directory_objects_dylib}/%.dylib: ${directory_sources}/%.c
-	mkdir -p ${directory_objects_dylib}
-	${cc} ${c_flags_dylib} -c $< -o $@
-
-${directory_objects_dynamic}/%.so: ${directory_sources}/%.c
-	mkdir -p ${directory_objects_dynamic}
-	${cc} ${c_flags_dynamic} -c $< -o $@
-
-${directory_objects_static}/%.o: ${directory_sources}/%.c
-	mkdir -p ${directory_objects_static}
-	${cc} ${c_flags_static} -c $< -o $@
+${directory_objects}/%.o: ${directory_sources}/%.c
+	mkdir -p ${directory_objects}
+	${cc} ${c_flags} -c $< -o $@
 
 unit_tests: ${file_library_object}
 	cd ${directory_unit_tests} && make
