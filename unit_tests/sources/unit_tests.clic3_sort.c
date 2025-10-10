@@ -469,53 +469,53 @@ unsigned char unit_test_clic3_sort_sort_reverse_unsigned_long_int_test_sort() {
 }
 
 struct unit_test unit_test_clic3_sort_sort_char = {
-  name: "clic3_sort_char:sort",
-  test: unit_test_clic3_sort_sort_char_test_sort
+  .name = "clic3_sort_char:sort",
+  .test = unit_test_clic3_sort_sort_char_test_sort
 };
 
 struct unit_test unit_test_clic3_sort_sort_reverse_char = {
-  name: "clic3_sort_reverse_char:sort",
-  test: unit_test_clic3_sort_sort_reverse_char_test_sort
+  .name = "clic3_sort_reverse_char:sort",
+  .test = unit_test_clic3_sort_sort_reverse_char_test_sort
 };
 
 struct unit_test unit_test_clic3_sort_sort_double = {
-  name: "clic3_sort_double:sort",
-  test: unit_test_clic3_sort_sort_double_test_sort
+  .name = "clic3_sort_double:sort",
+  .test = unit_test_clic3_sort_sort_double_test_sort
 };
 
 struct unit_test unit_test_clic3_sort_sort_reverse_double = {
-  name: "clic3_sort_reverse_double:sort",
-  test: unit_test_clic3_sort_sort_reverse_double_test_sort
+  .name = "clic3_sort_reverse_double:sort",
+  .test = unit_test_clic3_sort_sort_reverse_double_test_sort
 };
 
 struct unit_test unit_test_clic3_sort_sort_float = {
-  name: "clic3_sort_float:sort",
-  test: unit_test_clic3_sort_sort_float_test_sort
+  .name = "clic3_sort_float:sort",
+  .test = unit_test_clic3_sort_sort_float_test_sort
 };
 
 struct unit_test unit_test_clic3_sort_sort_reverse_float = {
-  name: "clic3_sort_reverse_float:sort",
-  test: unit_test_clic3_sort_sort_reverse_float_test_sort
+  .name = "clic3_sort_reverse_float:sort",
+  .test = unit_test_clic3_sort_sort_reverse_float_test_sort
 };
 
 struct unit_test unit_test_clic3_sort_sort_int = {
-  name: "clic3_sort_int:sort",
-  test: unit_test_clic3_sort_sort_int_test_sort
+  .name = "clic3_sort_int:sort",
+  .test = unit_test_clic3_sort_sort_int_test_sort
 };
 
 struct unit_test unit_test_clic3_sort_sort_reverse_int = {
-  name: "clic3_sort_reverse_int:sort",
-  test: unit_test_clic3_sort_sort_reverse_int_test_sort
+  .name = "clic3_sort_reverse_int:sort",
+  .test = unit_test_clic3_sort_sort_reverse_int_test_sort
 };
 
 struct unit_test unit_test_clic3_sort_sort_unsigned_long_int = {
-  name: "clic3_sort_unsigned_long_int:sort",
-  test: unit_test_clic3_sort_sort_unsigned_long_int_test_sort
+  .name = "clic3_sort_unsigned_long_int:sort",
+  .test = unit_test_clic3_sort_sort_unsigned_long_int_test_sort
 };
 
 struct unit_test unit_test_clic3_sort_sort_reverse_unsigned_long_int = {
-  name: "clic3_sort_reverse_unsigned_long_int:sort",
-  test: unit_test_clic3_sort_sort_reverse_unsigned_long_int_test_sort
+  .name = "clic3_sort_reverse_unsigned_long_int:sort",
+  .test = unit_test_clic3_sort_sort_reverse_unsigned_long_int_test_sort
 };
 
 struct unit_test_suite* get_unit_test_suite_clic3_sort() {

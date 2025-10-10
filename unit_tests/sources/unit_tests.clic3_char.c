@@ -63,18 +63,18 @@ extern struct unit_test unit_test_clic3_char_from_unsigned_char_code_char;
 extern struct unit_test unit_test_clic3_char_from_int_code_char;
 
 struct unit_test unit_test_clic3_char_from_char_code_char = {
-  name: "clic3_char_from_char_code_char",
-  test: unit_test_clic3_char_from_char_code_char_test
+  .name = "clic3_char_from_char_code_char",
+  .test = unit_test_clic3_char_from_char_code_char_test
 };
 
 struct unit_test unit_test_clic3_char_from_unsigned_char_code_char = {
-  name: "clic3_char_from_unsigned_char_code_char",
-  test: unit_test_clic3_char_from_unsigned_char_code_char_test
+  .name = "clic3_char_from_unsigned_char_code_char",
+  .test = unit_test_clic3_char_from_unsigned_char_code_char_test
 };
 
 struct unit_test unit_test_clic3_char_from_int_code_char = {
-  name: "clic3_char_from_int_code_char",
-  test: unit_test_clic3_char_from_int_code_char_test
+  .name = "clic3_char_from_int_code_char",
+  .test = unit_test_clic3_char_from_int_code_char_test
 };
 
 struct unit_test_suite* get_unit_test_suite_clic3_char() {
