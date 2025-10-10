@@ -22,4 +22,4 @@ jobs:
       - name: make:unit_tests
         run: make unit_tests
       - name: run:unit_tests
-        run: make run_unit_tests
+        run: make unit_tests_run
