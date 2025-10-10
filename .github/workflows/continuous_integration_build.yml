@@ -11,6 +11,8 @@ jobs:
       - name: git_initialization
         run: git config --global init.defaultBranch core
       - uses: actions/checkout@v4
+      - name: make:clic3_objects
+        run: make clic3_objects
       - name: make:clic3_dylib
         run: make clic3_dylib
       - name: make:clic3_dynamic

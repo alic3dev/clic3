@@ -26,6 +26,8 @@ ld_flags=-S -x
 
 ${name}: ${file_library_dylib} ${file_library_dynamic} ${file_library_object} ${file_library_static}
 
+${name}_objects: ${files_objects}
+
 ${name}_dylib: ${file_library_dylib}
 ${name}_dynamic: ${file_library_dynamic}
 ${name}_object: ${file_library_object}
