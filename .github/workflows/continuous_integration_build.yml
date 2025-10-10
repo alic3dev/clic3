@@ -6,14 +6,22 @@ on:
     branches: ["core"]
 jobs:
   continuous_integration_build:
-    runs-on: ubuntu-latest
+    runs-on: macos-latest
     steps:
       - name: git_initialization
         run: git config --global init.defaultBranch core
       - uses: actions/checkout@v4
-      - name: continuous_integration_build_make_library
-        run: make library/clic3.o
-      - name: continuous_integration_build_make_unit_tests
+      - name: make:clic3_objects
+        run: make clic3_objects
+      - name: make:clic3_dylib
+        run: make clic3_dylib
+      - name: make:clic3_dynamic
+        run: make clic3_dynamic
+      - name: make:clic3_object
+        run: make clic3_object
+      - name: make:clic3_static
+        run: make clic3_static
+      - name: make:unit_tests
         run: make unit_tests
-      - name: continuous_integration_build_make_run_unit_tests
-        run: make run_unit_tests
+      - name: run:unit_tests
+        run: make unit_tests_run
