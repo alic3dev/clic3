@@ -220,43 +220,43 @@ unsigned char unit_test_clic3_char_arrays_char_arrays_concatenate_test() {
 }
 
 struct unit_test unit_test_clic3_char_arrays_char_arrays_equal_equal = {
-  name: "clic3_char_arrays_equal:equal",
-  test: unit_test_clic3_char_arrays_char_arrays_equal_test_equal
+  .name = "clic3_char_arrays_equal:equal",
+  .test = unit_test_clic3_char_arrays_char_arrays_equal_test_equal
 };
 
 struct unit_test unit_test_clic3_char_arrays_char_arrays_equal_not_equal = {
-  name: "clic3_char_arrays_equal:not_equal",
-  test: unit_test_clic3_char_arrays_char_arrays_equal_test_not_equal
+  .name = "clic3_char_arrays_equal:not_equal",
+  .test = unit_test_clic3_char_arrays_char_arrays_equal_test_not_equal
 };
 
 struct unit_test unit_test_clic3_char_arrays_char_array_to_int = {
-  name: "clic3_char_array_to_int",
-  test: unit_test_clic3_char_arrays_char_array_to_int_test
+  .name = "clic3_char_array_to_int",
+  .test = unit_test_clic3_char_arrays_char_array_to_int_test
 };
 
 struct unit_test unit_test_clic3_char_arrays_char_array_to_unsigned_int = {
-  name: "clic3_char_array_to_unsigned_int",
-  test: unit_test_clic3_char_arrays_char_array_to_unsigned_int_test
+  .name = "clic3_char_array_to_unsigned_int",
+  .test = unit_test_clic3_char_arrays_char_array_to_unsigned_int_test
 };
 
 struct unit_test unit_test_clic3_char_arrays_char_array_to_float = {
-  name: "clic3_char_array_to_float",
-  test: unit_test_clic3_char_arrays_char_array_to_float_test
+  .name = "clic3_char_array_to_float",
+  .test = unit_test_clic3_char_arrays_char_array_to_float_test
 };
 
 struct unit_test unit_test_clic3_char_arrays_char_array_from_float = {
-  name: "clic3_char_array_from_float",
-  test: unit_test_clic3_char_arrays_char_array_from_float_test
+  .name = "clic3_char_array_from_float",
+  .test = unit_test_clic3_char_arrays_char_array_from_float_test
 };
 
 struct unit_test unit_test_clic3_char_arrays_char_array_length = {
-  name: "clic3_char_array_length",
-  test: unit_test_clic3_char_arrays_char_array_length_test
+  .name = "clic3_char_array_length",
+  .test = unit_test_clic3_char_arrays_char_array_length_test
 };
 
 struct unit_test unit_test_clic3_char_arrays_char_arrays_concatenate = {
-  name: "clic3_char_arrays_concatenate",
-  test: unit_test_clic3_char_arrays_char_arrays_concatenate_test
+  .name = "clic3_char_arrays_concatenate",
+  .test = unit_test_clic3_char_arrays_char_arrays_concatenate_test
 };
 
 struct unit_test_suite* get_unit_test_suite_clic3_char_arrays() {

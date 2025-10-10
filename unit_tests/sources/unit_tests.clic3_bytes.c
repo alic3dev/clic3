@@ -105,10 +105,10 @@ unsigned char unit_test_clic3_bytes_bytes_copy_test_int() {
 
 unsigned char unit_test_clic3_bytes_bytes_copy_test_struct() {
   struct structure_unit_test_clic3_bytes_bytes_copy bytes_from = {
-    char_value: 'a',
-    int_value: 104,
-    float_value: 3.12,
-    pointer: malloc(1)
+    .char_value = 'a',
+    .int_value = 104,
+    .float_value = 3.12,
+    .pointer = malloc(1)
   };
   struct structure_unit_test_clic3_bytes_bytes_copy bytes_to;
 
@@ -135,18 +135,18 @@ unsigned char unit_test_clic3_bytes_bytes_copy_test_struct() {
 }
 
 struct unit_test unit_test_clic3_bytes_bytes_copy_char = {
-  name: "clic3_bytes_copy:char",
-  test: unit_test_clic3_bytes_bytes_copy_test_char
+  .name = "clic3_bytes_copy:char",
+  .test = unit_test_clic3_bytes_bytes_copy_test_char
 };
 
 struct unit_test unit_test_clic3_bytes_bytes_copy_int = {
-  name: "clic3_bytes_copy:int",
-  test: unit_test_clic3_bytes_bytes_copy_test_int
+  .name = "clic3_bytes_copy:int",
+  .test = unit_test_clic3_bytes_bytes_copy_test_int
 };
 
 struct unit_test unit_test_clic3_bytes_bytes_copy_struct = {
-  name: "clic3_bytes_copy:struct",
-  test: unit_test_clic3_bytes_bytes_copy_test_struct
+  .name = "clic3_bytes_copy:struct",
+  .test = unit_test_clic3_bytes_bytes_copy_test_struct
 };
 
 struct unit_test_suite* get_unit_test_suite_clic3_bytes() {
