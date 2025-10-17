@@ -48,55 +48,30 @@ c_standard_library
 
 ## development
 
-### `make` commands
-
-#### build library
+### `make` targets
 
 ```zsh
+# build library
 make clic3
-```
-
-#### build unit tests
-
-```zsh
+# build unit tests
 make unit_tests
-```
-
-#### rebuild unit tests
-
-```zsh
-make rebuild_unit_tests
-```
-
-#### build library, build unit tests, and run unit tests
-
-```zsh
+# rebuild unit tests
+make unit_tests_rebuild
+# build library, build unit tests, and run unit tests
 make all
-```
-
-#### run unit tests
-
-```zsh
-make run_unit_tests
-```
-
-#### clean library
-
-```zsh
+# run unit tests
+make unit_tests_run
+# clean library
 make clean
-```
-
-#### clean unit tests
-
-```zsh
+# clean unit tests
 make clean_unit_tests
-```
-
-#### clean library and unit tests
-
-```zsh
+# clean library and unit tests
 make clean_all
 ```
+
+### `make` flags
+
+- `debug=1`:adds->{`debugging_symbols`}:disables->{`optimizations`};
 
 ## copyright|copyleft
 
