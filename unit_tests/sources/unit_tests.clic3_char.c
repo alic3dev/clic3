@@ -58,9 +58,46 @@ unsigned char unit_test_clic3_char_from_int_digit_test() {
   );
 }
 
-extern struct unit_test unit_test_clic3_char_from_char_digit;
-extern struct unit_test unit_test_clic3_char_from_unsigned_char_digit;
-extern struct unit_test unit_test_clic3_char_from_int_digit;
+unsigned char unit_test_clic3_char_is_digit_test() {
+  unsigned char status_static_tests = (
+    clic3_char_is_digit('a') == 0 &&
+    clic3_char_is_digit('0') == 1 &&
+    clic3_char_is_digit('1') == 1 &&
+    clic3_char_is_digit('2') == 1 &&
+    clic3_char_is_digit('3') == 1 &&
+    clic3_char_is_digit('4') == 1 &&
+    clic3_char_is_digit('5') == 1 &&
+    clic3_char_is_digit('6') == 1 &&
+    clic3_char_is_digit('7') == 1 &&
+    clic3_char_is_digit('8') == 1 &&
+    clic3_char_is_digit('9') == 1 &&
+    clic3_char_is_digit('z') == 0
+  );
+
+  if (
+    status_static_tests != 1
+  ) {
+    return status_static_tests;
+  }
+
+  for (
+    unsigned short int index_char = 0;
+    index_char < 0xff;
+    ++index_char
+  ) {
+    if (
+      clic3_char_is_digit(index_char) == (
+        index_char >= '0' && index_char <= '9'
+        ? 0
+        : 1
+      )
+    ) {
+      return 0;
+    }
+  }
+
+  return 1;
+}
 
 struct unit_test unit_test_clic3_char_from_char_digit = {
   .name = "clic3_char_from_char_digit",
@@ -75,6 +112,11 @@ struct unit_test unit_test_clic3_char_from_unsigned_char_digit = {
 struct unit_test unit_test_clic3_char_from_int_digit = {
   .name = "clic3_char_from_int_digit",
   .test = unit_test_clic3_char_from_int_digit_test
+};
+
+struct unit_test unit_test_clic3_char_is_digit = {
+  .name = "clic3_char_is_digit",
+  .test = unit_test_clic3_char_is_digit_test
 };
 
 struct unit_test_suite* get_unit_test_suite_clic3_char() {
@@ -95,7 +137,7 @@ struct unit_test_suite* get_unit_test_suite_clic3_char() {
     unit_test_suite_clic3_char->length_name
   );
 
-  unit_test_suite_clic3_char->length_unit_tests = 3;
+  unit_test_suite_clic3_char->length_unit_tests = 4;
   unit_test_suite_clic3_char->unit_tests = malloc(
     sizeof(struct unit_test*) *
     unit_test_suite_clic3_char->length_unit_tests
@@ -111,6 +153,10 @@ struct unit_test_suite* get_unit_test_suite_clic3_char() {
 
   unit_test_suite_clic3_char->unit_tests[2] = (
     &unit_test_clic3_char_from_int_digit
+  );
+
+  unit_test_suite_clic3_char->unit_tests[3] = (
+    &unit_test_clic3_char_is_digit
   );
 
   return unit_test_suite_clic3_char;
