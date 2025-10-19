@@ -177,6 +177,76 @@ unsigned char clic3_char_array_to_long_int(
   return 0;
 }
 
+unsigned char clic3_char_array_to_unsigned_int(
+  char* char_array,
+  unsigned int* pointer_unsigned_int
+) {
+  unsigned int unsigned_int_return = 0;
+
+  unsigned int index_char_array = 0;
+  char char_current = char_array[index_char_array];
+
+  while (char_current != '\0') {
+    if (
+      clic3_char_is_digit(char_current) == 1
+    ) {
+      unsigned_int_return = (
+        (unsigned_int_return * 10)
+        + (char_current - '0')
+      );
+    } else {
+      return 1;
+    }
+
+    index_char_array = (
+      index_char_array + 1
+    );
+
+    char_current = char_array[
+      index_char_array
+    ];
+  }
+
+  *pointer_unsigned_int = unsigned_int_return;
+  
+  return 0;
+}
+
+unsigned char clic3_char_array_to_unsigned_long_int(
+  char* char_array,
+  unsigned long int* pointer_unsigned_long_int
+) {
+  unsigned long int unsigned_long_int_return = 0;
+
+  unsigned int index_char_array = 0;
+  char char_current = char_array[index_char_array];
+
+  while (char_current != '\0') {
+    if (
+      clic3_char_is_digit(char_current) == 1
+    ) {
+      unsigned_long_int_return = (
+        (unsigned_long_int_return * 10)
+        + (char_current - '0')
+      );
+    } else {
+      return 1; 
+    }
+
+    index_char_array = (
+      index_char_array + 1
+    );
+
+    char_current = char_array[
+      index_char_array
+    ];
+  }
+
+  *pointer_unsigned_long_int = unsigned_long_int_return;
+  
+  return 0;
+}
+
 unsigned char clic3_char_array_to_float(
   char* char_array,
   float* pointer_float
