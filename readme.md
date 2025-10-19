@@ -14,7 +14,9 @@ c_standard_library
 - - `clic3_char_arrays_equal`
 - - `clic3_char_arrays_within`
 - - `clic3_char_array_to_int`
+- - `clic3_char_array_to_long_int`
 - - `clic3_char_array_to_unsigned_int`
+- - `clic3_char_array_to_unsigned_long_int`
 - - `clic3_char_array_to_float`
 - - `clic3_char_array_from_float`
 - - `clic3_char_array_length`
