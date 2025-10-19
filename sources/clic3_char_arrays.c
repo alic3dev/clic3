@@ -1,5 +1,7 @@
 #include <clic3_char_arrays.h>
+
 #include <clic3_bytes.h>
+#include <clic3_char.h>
 
 #include <limits.h>
 #include <stdarg.h>
@@ -79,7 +81,7 @@ unsigned char clic3_char_array_to_int(
 ) {
   int int_return = 0;
 
-  unsigned short int index_char_array = 0;
+  unsigned int index_char_array = 0;
   char char_current = char_array[index_char_array];
   unsigned char is_negative = 0;
 
@@ -89,24 +91,30 @@ unsigned char clic3_char_array_to_int(
     index_char_array = (
       index_char_array + 1
     );
-    char_current = char_array[index_char_array];
+    char_current = char_array[
+      index_char_array
+    ];
   }
 
   while (char_current != '\0') {
-    if (char_current < '0' || char_current > '9') {
-      return 1; 
-    } else {
+    if (
+      clic3_char_is_digit(char_current) == 1
+    ) {
       int_return = (
         (int_return * 10)
         + (char_current - '0')
       );
+    } else {
+      return 1;
     }
 
     index_char_array = (
       index_char_array + 1
     );
 
-    char_current = char_array[index_char_array];
+    char_current = char_array[
+      index_char_array
+    ];
   }
 
   *pointer_int = (
@@ -118,21 +126,35 @@ unsigned char clic3_char_array_to_int(
   return 0;
 }
 
-unsigned char clic3_char_array_to_unsigned_int(
+unsigned char clic3_char_array_to_long_int(
   char* char_array,
-  unsigned int* pointer_int
+  long int* pointer_int
 ) {
-  unsigned int int_return = 0;
+  long int long_int_return = 0;
 
-  unsigned short int index_char_array = 0;
+  unsigned int index_char_array = 0;
   char char_current = char_array[index_char_array];
+  unsigned char is_negative = 0;
+
+  if (char_current == '-') {
+    is_negative = 1;
+    
+    index_char_array = (
+      index_char_array + 1
+    );
+    char_current = char_array[
+      index_char_array
+    ];
+  }
 
   while (char_current != '\0') {
-    if (char_current < '0' || char_current > '9') {
+    if (
+      clic3_char_is_digit(char_current) == 1
+    ) {
       return 1; 
     } else {
-      int_return = (
-        (int_return * 10)
+      long_int_return = (
+        (long_int_return * 10)
         + (char_current - '0')
       );
     }
@@ -141,10 +163,16 @@ unsigned char clic3_char_array_to_unsigned_int(
       index_char_array + 1
     );
 
-    char_current = char_array[index_char_array];
+    char_current = char_array[
+      index_char_array
+    ];
   }
 
-  *pointer_int = int_return;
+  *pointer_int = (
+    is_negative == 1
+    ? -long_int_return
+    : long_int_return
+  );
   
   return 0;
 }
@@ -185,8 +213,7 @@ unsigned char clic3_char_array_to_float(
     ) {
       has_f = 1;
     } else if (
-      char_current < '0' ||
-      char_current > '9' ||
+      clic3_char_is_digit(char_current) != 1 ||
       has_f == 1
     ) {
       return 1;
