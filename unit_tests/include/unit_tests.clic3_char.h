@@ -8,6 +8,8 @@ unsigned char unit_test_clic3_char_from_char_digit_test();
 unsigned char unit_test_clic3_char_from_unsigned_char_digit_test();
 unsigned char unit_test_clic3_char_from_int_digit_test();
 
+unsigned char unit_test_clic3_char_is_digit_test();
+
 extern struct unit_test unit_test_clic3_char_from_char_digit;
 extern struct unit_test unit_test_clic3_char_from_unsigned_char_digit;
 extern struct unit_test unit_test_clic3_char_from_int_digit;
