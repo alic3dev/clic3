@@ -5,6 +5,12 @@
     type* to_sort,\
     unsigned long int length_to_sort\
   ) {\
+    if (\
+      length_to_sort == 0\
+    ) {\
+      return;\
+    }\
+    \
     type hold;\
     \
     for (\
