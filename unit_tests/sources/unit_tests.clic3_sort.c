@@ -12,7 +12,7 @@ unsigned char unit_test_clic3_sort_sort_char_test_sort() {
   unsigned long int length_values = 10;
 
   char* values = malloc(
-    sizeof(unsigned long int) *
+    sizeof(char) *
     length_values
   );
 
@@ -58,7 +58,7 @@ unsigned char unit_test_clic3_sort_sort_reverse_char_test_sort() {
   unsigned long int length_values = 10;
 
   char* values = malloc(
-    sizeof(unsigned long int) *
+    sizeof(char) *
     length_values
   );
 
@@ -104,7 +104,7 @@ unsigned char unit_test_clic3_sort_sort_double_test_sort() {
   unsigned long int length_values = 10;
 
   double* values = malloc(
-    sizeof(unsigned long int) *
+    sizeof(double) *
     length_values
   );
 
@@ -150,7 +150,7 @@ unsigned char unit_test_clic3_sort_sort_reverse_double_test_sort() {
   unsigned long int length_values = 10;
 
   double* values = malloc(
-    sizeof(unsigned long int) *
+    sizeof(double) *
     length_values
   );
 
@@ -196,7 +196,7 @@ unsigned char unit_test_clic3_sort_sort_float_test_sort() {
   unsigned long int length_values = 10;
 
   float* values = malloc(
-    sizeof(unsigned long int) *
+    sizeof(float) *
     length_values
   );
 
@@ -242,7 +242,7 @@ unsigned char unit_test_clic3_sort_sort_reverse_float_test_sort() {
   unsigned long int length_values = 10;
 
   float* values = malloc(
-    sizeof(unsigned long int) *
+    sizeof(float) *
     length_values
   );
 
@@ -288,7 +288,7 @@ unsigned char unit_test_clic3_sort_sort_int_test_sort() {
   unsigned long int length_values = 10;
 
   int* values = malloc(
-    sizeof(unsigned long int) *
+    sizeof(int) *
     length_values
   );
 
@@ -334,7 +334,7 @@ unsigned char unit_test_clic3_sort_sort_reverse_int_test_sort() {
   unsigned long int length_values = 10;
 
   int* values = malloc(
-    sizeof(unsigned long int) *
+    sizeof(int) *
     length_values
   );
 
