@@ -100,6 +100,98 @@ unsigned char unit_test_clic3_sort_sort_reverse_char_test_sort() {
   return status_test;
 }
 
+unsigned char unit_test_clic3_sort_sort_unsigned_char_test_sort() {
+  unsigned long int length_values = 10;
+
+  unsigned char* values = malloc(
+    sizeof(unsigned char) *
+    length_values
+  );
+
+  values[0] = 'w';
+  values[1] = 'h';
+  values[2] = 'o';
+  values[3] = ' ';
+  values[4] = 'a';
+  values[5] = 'r';
+  values[6] = 'e';
+  values[7] = ' ';
+  values[8] = 'U';
+  values[9] = '?';
+
+  clic3_sort_unsigned_char(
+    values,
+    length_values
+  );
+
+  unsigned char status_test = 0;
+
+  if (
+    values[0] == ' ' &&
+    values[1] == ' ' &&
+    values[2] == '?' &&
+    values[3] == 'U' &&
+    values[4] == 'a' &&
+    values[5] == 'e' &&
+    values[6] == 'h' &&
+    values[7] == 'o' &&
+    values[8] == 'r' &&
+    values[9] == 'w'
+  ) {
+    status_test = 1;
+  }
+
+  free(values);
+
+  return status_test;
+}
+
+unsigned char unit_test_clic3_sort_sort_reverse_unsigned_char_test_sort() {
+  unsigned long int length_values = 10;
+
+  unsigned char* values = malloc(
+    sizeof(unsigned char) *
+    length_values
+  );
+
+  values[0] = 'i';
+  values[1] = 't';
+  values[2] = 's';
+  values[3] = ' ';
+  values[4] = 'a';
+  values[5] = 'l';
+  values[6] = 'l';
+  values[7] = ' ';
+  values[8] = 'm';
+  values[9] = 'e';
+
+  clic3_sort_reverse_unsigned_char(
+    values,
+    length_values
+  );
+
+  unsigned char status_test = 0;
+
+  if (
+    values[0] == 't' &&
+    values[1] == 's' &&
+    values[2] == 'm' &&
+    values[3] == 'l' &&
+    values[4] == 'l' &&
+    values[5] == 'i' &&
+    values[6] == 'e' &&
+    values[7] == 'a' &&
+    values[8] == ' ' &&
+    values[9] == ' '
+  ) {
+    status_test = 1;
+  }
+
+  free(values);
+
+  return status_test;
+}
+
 unsigned char unit_test_clic3_sort_sort_double_test_sort() {
   unsigned long int length_values = 10;
 
@@ -376,6 +468,376 @@ unsigned char unit_test_clic3_sort_sort_reverse_int_test_sort() {
   return status_test;
 }
 
+
+unsigned char unit_test_clic3_sort_sort_unsigned_int_test_sort() {
+  unsigned long int length_values = 10;
+
+  unsigned int* values = malloc(
+    sizeof(unsigned int) *
+    length_values
+  );
+
+  values[0] = 25;
+  values[1] = 35;
+  values[2] = 252;
+  values[3] = 590;
+  values[4] = 251;
+  values[5] = 251;
+  values[6] = 253;
+  values[7] = 289;
+  values[8] = 890;
+  values[9] = 1849;
+
+  clic3_sort_unsigned_int(
+    values,
+    length_values
+  );
+
+  unsigned char status_test = 0;
+
+  if (
+    values[0] == 25 &&
+    values[1] == 35 &&
+    values[2] == 251 &&
+    values[3] == 251 &&
+    values[4] == 252 &&
+    values[5] == 253 &&
+    values[6] == 289 &&
+    values[7] == 590 &&
+    values[8] == 890 &&
+    values[9] == 1849
+  ) {
+    status_test = 1;
+  }
+
+  free(values);
+
+  return status_test;
+}
+
+unsigned char unit_test_clic3_sort_sort_reverse_unsigned_int_test_sort() {
+  unsigned long int length_values = 10;
+
+  unsigned int* values = malloc(
+    sizeof(unsigned int) *
+    length_values
+  );
+
+  values[0] = 892;
+  values[1] = 4839;
+  values[2] = 15;
+  values[3] = 389;
+  values[4] = 339;
+  values[5] = 9098;
+  values[6] = 159;
+  values[7] = 358;
+  values[8] = 281;
+  values[9] = 0;
+
+  clic3_sort_reverse_unsigned_int(
+    values,
+    length_values
+  );
+
+  unsigned char status_test = 0;
+
+  if (
+    values[0] == 9098 &&
+    values[1] == 4839 &&
+    values[2] == 892 &&
+    values[3] == 389 &&
+    values[4] == 358 &&
+    values[5] == 339 &&
+    values[6] == 281 &&
+    values[7] == 159 &&
+    values[8] == 15 &&
+    values[9] == 0
+  ) {
+    status_test = 1;
+  }
+
+  free(values);
+
+  return status_test;
+}
+
+unsigned char unit_test_clic3_sort_sort_short_int_test_sort() {
+  unsigned long int length_values = 10;
+
+  short int* values = malloc(
+    sizeof(short int) *
+    length_values
+  );
+
+  values[0] = -25;
+  values[1] = 35;
+  values[2] = -252;
+  values[3] = 590;
+  values[4] = -251;
+  values[5] = 251;
+  values[6] = 253;
+  values[7] = -289;
+  values[8] = 890;
+  values[9] = -1849;
+
+  clic3_sort_short_int(
+    values,
+    length_values
+  );
+
+  unsigned char status_test = 0;
+
+  if (
+    values[0] == -1849 &&
+    values[1] == -289 &&
+    values[2] == -252 &&
+    values[3] == -251 &&
+    values[4] == -25 &&
+    values[5] == 35 &&
+    values[6] == 251 &&
+    values[7] == 253 &&
+    values[8] == 590 &&
+    values[9] == 890
+  ) {
+    status_test = 1;
+  }
+
+  free(values);
+
+  return status_test;
+}
+
+unsigned char unit_test_clic3_sort_sort_reverse_short_int_test_sort() {
+  unsigned long int length_values = 10;
+
+  short int* values = malloc(
+    sizeof(short int) *
+    length_values
+  );
+
+  values[0] = 892;
+  values[1] = -4839;
+  values[2] = 15;
+  values[3] = -389;
+  values[4] = -339;
+  values[5] = 9098;
+  values[6] = 159;
+  values[7] = -358;
+  values[8] = -281;
+  values[9] = 0;
+
+  clic3_sort_reverse_short_int(
+    values,
+    length_values
+  );
+
+  unsigned char status_test = 0;
+
+  if (
+    values[0] == 9098 &&
+    values[1] == 892 &&
+    values[2] == 159 &&
+    values[3] == 15 &&
+    values[4] == 0 &&
+    values[5] == -281 &&
+    values[6] == -339 &&
+    values[7] == -358 &&
+    values[8] == -389 &&
+    values[9] == -4839
+  ) {
+    status_test = 1;
+  }
+
+  free(values);
+
+  return status_test;
+}
+
+
+unsigned char unit_test_clic3_sort_sort_unsigned_short_int_test_sort() {
+  unsigned long int length_values = 10;
+
+  unsigned short int* values = malloc(
+    sizeof(unsigned short int) *
+    length_values
+  );
+
+  values[0] = 25;
+  values[1] = 35;
+  values[2] = 252;
+  values[3] = 590;
+  values[4] = 251;
+  values[5] = 251;
+  values[6] = 253;
+  values[7] = 289;
+  values[8] = 890;
+  values[9] = 1849;
+
+  clic3_sort_unsigned_short_int(
+    values,
+    length_values
+  );
+
+  unsigned char status_test = 0;
+
+  if (
+    values[0] == 25 &&
+    values[1] == 35 &&
+    values[2] == 251 &&
+    values[3] == 251 &&
+    values[4] == 252 &&
+    values[5] == 253 &&
+    values[6] == 289 &&
+    values[7] == 590 &&
+    values[8] == 890 &&
+    values[9] == 1849
+  ) {
+    status_test = 1;
+  }
+
+  free(values);
+
+  return status_test;
+}
+
+unsigned char unit_test_clic3_sort_sort_reverse_unsigned_short_int_test_sort() {
+  unsigned long int length_values = 10;
+
+  unsigned short int* values = malloc(
+    sizeof(unsigned short int) *
+    length_values
+  );
+
+  values[0] = 892;
+  values[1] = 4839;
+  values[2] = 15;
+  values[3] = 389;
+  values[4] = 339;
+  values[5] = 9098;
+  values[6] = 159;
+  values[7] = 358;
+  values[8] = 281;
+  values[9] = 0;
+
+  clic3_sort_reverse_unsigned_short_int(
+    values,
+    length_values
+  );
+
+  unsigned char status_test = 0;
+
+  if (
+    values[0] == 9098 &&
+    values[1] == 4839 &&
+    values[2] == 892 &&
+    values[3] == 389 &&
+    values[4] == 358 &&
+    values[5] == 339 &&
+    values[6] == 281 &&
+    values[7] == 159 &&
+    values[8] == 15 &&
+    values[9] == 0
+  ) {
+    status_test = 1;
+  }
+
+  free(values);
+
+  return status_test;
+}
+
+unsigned char unit_test_clic3_sort_sort_long_int_test_sort() {
+  unsigned long int length_values = 10;
+
+  long int* values = malloc(
+    sizeof(long int) *
+    length_values
+  );
+
+  values[0] = 3;
+  values[1] = 4;
+  values[2] = 25;
+  values[3] = 1;
+  values[4] = 1;
+  values[5] = 252;
+  values[6] = 81928;
+  values[7] = 342;
+  values[8] = 52893;
+  values[9] = 5819;
+
+  clic3_sort_long_int(
+    values,
+    length_values
+  );
+
+  unsigned char status_test = 0;
+
+  if (
+    values[0] == 1 &&
+    values[1] == 1 &&
+    values[2] == 3 &&
+    values[3] == 4 &&
+    values[4] == 25 &&
+    values[5] == 252 &&
+    values[6] == 342 &&
+    values[7] == 5819 &&
+    values[8] == 52893 &&
+    values[9] == 81928
+  ) {
+    status_test = 1;
+  }
+
+  free(values);
+
+  return status_test;
+}
+
+unsigned char unit_test_clic3_sort_sort_reverse_long_int_test_sort() {
+  unsigned long int length_values = 10;
+
+  long int* values = malloc(
+    sizeof(long int) *
+    length_values
+  );
+
+  values[0] = 158239;
+  values[1] = 5;
+  values[2] = 3589;
+  values[3] = 285;
+  values[4] = 51;
+  values[5] = 25728;
+  values[6] = 657849;
+  values[7] = 9872;
+  values[8] = 54839;
+  values[9] = 258921;
+  
+  clic3_sort_reverse_long_int(
+    values,
+    length_values
+  );
+
+  unsigned char status_test = 0;
+
+  if (
+    values[0] == 657849 &&
+    values[1] == 258921 &&
+    values[2] == 158239 &&
+    values[3] == 54839 &&
+    values[4] == 25728 &&
+    values[5] == 9872 &&
+    values[6] == 3589 &&
+    values[7] == 285 &&
+    values[8] == 51 &&
+    values[9] == 5
+  ) {
+    status_test = 1;
+  }
+
+  free(values);
+
+  return status_test;
+}
+
 unsigned char unit_test_clic3_sort_sort_unsigned_long_int_test_sort() {
   unsigned long int length_values = 10;
 
@@ -478,6 +940,16 @@ struct unit_test unit_test_clic3_sort_sort_reverse_char = {
   .test = unit_test_clic3_sort_sort_reverse_char_test_sort
 };
 
+struct unit_test unit_test_clic3_sort_sort_unsigned_char = {
+  .name = "clic3_sort_unsigned_char:sort",
+  .test = unit_test_clic3_sort_sort_unsigned_char_test_sort
+};
+
+struct unit_test unit_test_clic3_sort_sort_reverse_unsigned_char = {
+  .name = "clic3_sort_reverse_unsigned_char:sort",
+  .test = unit_test_clic3_sort_sort_reverse_unsigned_char_test_sort
+};
+
 struct unit_test unit_test_clic3_sort_sort_double = {
   .name = "clic3_sort_double:sort",
   .test = unit_test_clic3_sort_sort_double_test_sort
@@ -508,6 +980,46 @@ struct unit_test unit_test_clic3_sort_sort_reverse_int = {
   .test = unit_test_clic3_sort_sort_reverse_int_test_sort
 };
 
+struct unit_test unit_test_clic3_sort_sort_unsigned_int = {
+  .name = "clic3_sort_unsigned_int:sort",
+  .test = unit_test_clic3_sort_sort_unsigned_int_test_sort
+};
+
+struct unit_test unit_test_clic3_sort_sort_reverse_unsigned_int = {
+  .name = "clic3_sort_reverse_unsigned_int:sort",
+  .test = unit_test_clic3_sort_sort_reverse_unsigned_int_test_sort
+};
+
+struct unit_test unit_test_clic3_sort_sort_short_int = {
+  .name = "clic3_sort_short_int:sort",
+  .test = unit_test_clic3_sort_sort_short_int_test_sort
+};
+
+struct unit_test unit_test_clic3_sort_sort_reverse_short_int = {
+  .name = "clic3_sort_reverse_short_int:sort",
+  .test = unit_test_clic3_sort_sort_reverse_short_int_test_sort
+};
+
+struct unit_test unit_test_clic3_sort_sort_unsigned_short_int = {
+  .name = "clic3_sort_unsigned_short_int:sort",
+  .test = unit_test_clic3_sort_sort_unsigned_short_int_test_sort
+};
+
+struct unit_test unit_test_clic3_sort_sort_reverse_unsigned_short_int = {
+  .name = "clic3_sort_reverse_unsigned_short_int:sort",
+  .test = unit_test_clic3_sort_sort_reverse_unsigned_short_int_test_sort
+};
+
+struct unit_test unit_test_clic3_sort_sort_long_int = {
+  .name = "clic3_sort_long_int:sort",
+  .test = unit_test_clic3_sort_sort_long_int_test_sort
+};
+
+struct unit_test unit_test_clic3_sort_sort_reverse_long_int = {
+  .name = "clic3_sort_reverse_long_int:sort",
+  .test = unit_test_clic3_sort_sort_reverse_long_int_test_sort
+};
+
 struct unit_test unit_test_clic3_sort_sort_unsigned_long_int = {
   .name = "clic3_sort_unsigned_long_int:sort",
   .test = unit_test_clic3_sort_sort_unsigned_long_int_test_sort
@@ -536,7 +1048,7 @@ struct unit_test_suite* get_unit_test_suite_clic3_sort() {
     unit_test_suite_clic3_sort->length_name
   );
 
-  unit_test_suite_clic3_sort->length_unit_tests = 10;
+  unit_test_suite_clic3_sort->length_unit_tests = 20;
   unit_test_suite_clic3_sort->unit_tests = malloc(
     sizeof(struct unit_test*) *
     unit_test_suite_clic3_sort->length_unit_tests
@@ -551,34 +1063,74 @@ struct unit_test_suite* get_unit_test_suite_clic3_sort() {
   );
 
   unit_test_suite_clic3_sort->unit_tests[2] = (
-    &unit_test_clic3_sort_sort_double
+    &unit_test_clic3_sort_sort_unsigned_char
   );
 
   unit_test_suite_clic3_sort->unit_tests[3] = (
-    &unit_test_clic3_sort_sort_reverse_double
+    &unit_test_clic3_sort_sort_reverse_unsigned_char
   );
 
   unit_test_suite_clic3_sort->unit_tests[4] = (
-    &unit_test_clic3_sort_sort_float
+    &unit_test_clic3_sort_sort_double
   );
 
   unit_test_suite_clic3_sort->unit_tests[5] = (
-    &unit_test_clic3_sort_sort_reverse_float
+    &unit_test_clic3_sort_sort_reverse_double
   );
 
   unit_test_suite_clic3_sort->unit_tests[6] = (
-    &unit_test_clic3_sort_sort_int
+    &unit_test_clic3_sort_sort_float
   );
 
   unit_test_suite_clic3_sort->unit_tests[7] = (
+    &unit_test_clic3_sort_sort_reverse_float
+  );
+
+  unit_test_suite_clic3_sort->unit_tests[8] = (
+    &unit_test_clic3_sort_sort_int
+  );
+
+  unit_test_suite_clic3_sort->unit_tests[9] = (
     &unit_test_clic3_sort_sort_reverse_int
   );
+
+  unit_test_suite_clic3_sort->unit_tests[10] = (
+    &unit_test_clic3_sort_sort_unsigned_int
+  );
+
+  unit_test_suite_clic3_sort->unit_tests[11] = (
+    &unit_test_clic3_sort_sort_reverse_unsigned_int
+  );
+
+  unit_test_suite_clic3_sort->unit_tests[12] = (
+    &unit_test_clic3_sort_sort_short_int
+  );
+
+  unit_test_suite_clic3_sort->unit_tests[13] = (
+    &unit_test_clic3_sort_sort_reverse_short_int
+  );
+
+  unit_test_suite_clic3_sort->unit_tests[14] = (
+    &unit_test_clic3_sort_sort_unsigned_short_int
+  );
+
+  unit_test_suite_clic3_sort->unit_tests[15] = (
+    &unit_test_clic3_sort_sort_reverse_unsigned_short_int
+  );
   
-  unit_test_suite_clic3_sort->unit_tests[8] = (
+  unit_test_suite_clic3_sort->unit_tests[16] = (
+    &unit_test_clic3_sort_sort_long_int
+  );
+  
+  unit_test_suite_clic3_sort->unit_tests[17] = (
+    &unit_test_clic3_sort_sort_reverse_long_int
+  );
+
+  unit_test_suite_clic3_sort->unit_tests[18] = (
     &unit_test_clic3_sort_sort_unsigned_long_int
   );
   
-  unit_test_suite_clic3_sort->unit_tests[9] = (
+  unit_test_suite_clic3_sort->unit_tests[19] = (
     &unit_test_clic3_sort_sort_reverse_unsigned_long_int
   );
 

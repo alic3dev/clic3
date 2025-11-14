@@ -42,7 +42,14 @@
   clic3_sort_macro(type, type)
 
 clic3_sort_macro_unnamed(char)
+clic3_sort_macro(unsigned char, unsigned_char)
+
 clic3_sort_macro_unnamed(double)
 clic3_sort_macro_unnamed(float)
+
 clic3_sort_macro_unnamed(int)
+clic3_sort_macro(unsigned int, unsigned_int)
+clic3_sort_macro(short int, short_int)
+clic3_sort_macro(unsigned short int, unsigned_short_int)
+clic3_sort_macro(long int, long_int)
 clic3_sort_macro(unsigned long int, unsigned_long_int)
