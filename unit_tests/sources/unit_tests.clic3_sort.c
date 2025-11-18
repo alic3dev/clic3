@@ -468,7 +468,6 @@ unsigned char unit_test_clic3_sort_sort_reverse_int_test_sort() {
   return status_test;
 }
 
-
 unsigned char unit_test_clic3_sort_sort_unsigned_int_test_sort() {
   unsigned long int length_values = 10;
 
@@ -653,7 +652,6 @@ unsigned char unit_test_clic3_sort_sort_reverse_short_int_test_sort() {
   return status_test;
 }
 
-
 unsigned char unit_test_clic3_sort_sort_unsigned_short_int_test_sort() {
   unsigned long int length_values = 10;
 
@@ -810,7 +808,7 @@ unsigned char unit_test_clic3_sort_sort_reverse_long_int_test_sort() {
   values[7] = 9872;
   values[8] = 54839;
   values[9] = 258921;
-  
+
   clic3_sort_reverse_long_int(
     values,
     length_values
@@ -902,7 +900,7 @@ unsigned char unit_test_clic3_sort_sort_reverse_unsigned_long_int_test_sort() {
   values[7] = 9872;
   values[8] = 54839;
   values[9] = 258921;
-  
+
   clic3_sort_reverse_unsigned_long_int(
     values,
     length_values
@@ -1117,11 +1115,11 @@ struct unit_test_suite* get_unit_test_suite_clic3_sort() {
   unit_test_suite_clic3_sort->unit_tests[15] = (
     &unit_test_clic3_sort_sort_reverse_unsigned_short_int
   );
-  
+
   unit_test_suite_clic3_sort->unit_tests[16] = (
     &unit_test_clic3_sort_sort_long_int
   );
-  
+
   unit_test_suite_clic3_sort->unit_tests[17] = (
     &unit_test_clic3_sort_sort_reverse_long_int
   );
@@ -1129,7 +1127,7 @@ struct unit_test_suite* get_unit_test_suite_clic3_sort() {
   unit_test_suite_clic3_sort->unit_tests[18] = (
     &unit_test_clic3_sort_sort_unsigned_long_int
   );
-  
+
   unit_test_suite_clic3_sort->unit_tests[19] = (
     &unit_test_clic3_sort_sort_reverse_unsigned_long_int
   );

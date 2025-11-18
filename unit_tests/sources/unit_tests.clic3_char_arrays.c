@@ -49,7 +49,6 @@ unsigned char unit_test_clic3_char_arrays_char_array_to_unsigned_int_test() {
     &value_int
   );
 
-
   if (value_int != 987) {
     return 0;
   }
@@ -206,7 +205,7 @@ unsigned char unit_test_clic3_char_arrays_char_arrays_concatenate_test() {
     char_array_result[1] != 'b' ||
     char_array_result[2] != 'c' ||
     char_array_result[3] != '0' ||
-    char_array_result[4] != '1' || 
+    char_array_result[4] != '1' ||
     char_array_result[5] != '2' ||
     char_array_result[6] != '3'  ||
     char_array_result[7] != '\0'
