@@ -12,7 +12,7 @@ unsigned char clic3_char_arrays_equal(
   char* char_array_second
 ) {
   unsigned int char_array_index = 0;
-  
+
   char char_first;
   char char_second;
 
@@ -71,7 +71,7 @@ int clic3_char_arrays_within(
   }
 
   va_end(arguments_pointer);
-  
+
   return -1;
 }
 
@@ -87,7 +87,7 @@ unsigned char clic3_char_array_to_int(
 
   if (char_current == '-') {
     is_negative = 1;
-    
+
     index_char_array = (
       index_char_array + 1
     );
@@ -122,7 +122,7 @@ unsigned char clic3_char_array_to_int(
     ? -int_return
     : int_return
   );
-  
+
   return 0;
 }
 
@@ -138,7 +138,7 @@ unsigned char clic3_char_array_to_long_int(
 
   if (char_current == '-') {
     is_negative = 1;
-    
+
     index_char_array = (
       index_char_array + 1
     );
@@ -151,7 +151,7 @@ unsigned char clic3_char_array_to_long_int(
     if (
       clic3_char_is_digit(char_current) == 1
     ) {
-      return 1; 
+      return 1;
     } else {
       long_int_return = (
         (long_int_return * 10)
@@ -173,7 +173,7 @@ unsigned char clic3_char_array_to_long_int(
     ? -long_int_return
     : long_int_return
   );
-  
+
   return 0;
 }
 
@@ -208,7 +208,7 @@ unsigned char clic3_char_array_to_unsigned_int(
   }
 
   *pointer_unsigned_int = unsigned_int_return;
-  
+
   return 0;
 }
 
@@ -230,7 +230,7 @@ unsigned char clic3_char_array_to_unsigned_long_int(
         + (char_current - '0')
       );
     } else {
-      return 1; 
+      return 1;
     }
 
     index_char_array = (
@@ -243,7 +243,7 @@ unsigned char clic3_char_array_to_unsigned_long_int(
   }
 
   *pointer_unsigned_long_int = unsigned_long_int_return;
-  
+
   return 0;
 }
 
@@ -262,7 +262,7 @@ unsigned char clic3_char_array_to_float(
 
   if (char_current == '-') {
     is_negative = 1;
-    
+
     index_char_array = (
       index_char_array + 1
     );
@@ -293,7 +293,7 @@ unsigned char clic3_char_array_to_float(
           (float)(char_current - '0') / (float)decimal
         )
       );
-      
+
       decimal = (
         decimal * 10
       );
@@ -316,7 +316,7 @@ unsigned char clic3_char_array_to_float(
     ? -float_return
     : float_return
    );
-  
+
   return 0;
 }
 
@@ -493,4 +493,138 @@ char* clic3_char_arrays_concatenate(
   ] = '\0';
 
   return char_array_destination;
+}
+
+
+char** clic3_char_array_split_on_char(
+  char* char_array,
+  char deliminator
+) {
+  static char** split_char_arrays;
+  
+  split_char_arrays = malloc(
+    sizeof(char*) *
+    1
+  );
+
+  split_char_arrays[0] = 0;
+
+  unsigned long int index_previous_split_char_buffer = 0;
+  unsigned long int index_char_array = 0;
+
+  while (
+    char_array[
+      index_char_array
+    ] != '\0'
+  ) {
+    if (
+      char_array[
+        index_char_array
+      ] == deliminator ||
+      char_array[
+        index_char_array +
+        1
+      ] == '\0'
+    ) {
+      split_char_arrays[0] = (
+        split_char_arrays[0] +
+        1
+      );
+
+      split_char_arrays = realloc(
+        split_char_arrays,
+        sizeof(char*) * (
+          (unsigned long int) (
+            split_char_arrays[0]
+          ) +
+          1
+        )
+      );
+
+      unsigned long int length_split_char_array = (
+        index_char_array -
+        index_previous_split_char_buffer + (
+          char_array[
+            index_char_array +
+            1
+          ] == '\0' &&
+          char_array[
+            index_char_array
+          ] != deliminator
+          ? 1
+          : 0
+        )
+      );
+
+      split_char_arrays[
+        (unsigned long int) split_char_arrays[0]
+      ] = malloc(
+        sizeof(char) *
+        length_split_char_array +
+        1
+      );
+
+      clic3_bytes_copy(
+        split_char_arrays[
+          (unsigned long int) split_char_arrays[0]
+        ], (
+          char_array +
+          index_previous_split_char_buffer
+        ),
+        length_split_char_array
+      );
+
+      split_char_arrays[
+        (unsigned long int) split_char_arrays[0]
+      ][
+        length_split_char_array
+      ] = '\0';
+
+      index_previous_split_char_buffer = (
+        index_char_array +
+        1
+      );
+    }
+
+    index_char_array = (
+      index_char_array +
+      1
+    );
+  }
+
+  if (
+    index_char_array > 0 &&
+    char_array[
+      index_char_array - 1
+    ] == deliminator
+  ) {
+    split_char_arrays[0] = (
+      split_char_arrays[0] +
+      1
+    );
+
+    split_char_arrays = realloc(
+      split_char_arrays,
+      sizeof(char*) * (
+        (unsigned long int) (
+          split_char_arrays[0]
+        ) +
+        1
+      )
+    );
+
+    split_char_arrays[
+      (unsigned long int) split_char_arrays[0]
+    ] = malloc(
+      sizeof(char)
+    );
+
+    split_char_arrays[
+      (unsigned long int) split_char_arrays[0]
+    ][0] = '\0';
+  }
+
+  return (
+    split_char_arrays
+  );
 }

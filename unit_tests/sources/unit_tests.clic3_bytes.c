@@ -117,7 +117,7 @@ unsigned char unit_test_clic3_bytes_bytes_copy_test_struct() {
     &bytes_from,
     sizeof(struct structure_unit_test_clic3_bytes_bytes_copy)
   );
-  
+
   unsigned char copied = 1;
 
   if (
