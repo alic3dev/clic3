@@ -10,6 +10,7 @@ c_standard_library
 - - `clic3_char_from_char_digit`
 - - `clic3_char_from_unsigned_char_digit`
 - - `clic3_char_from_int_digit`
+- - `clic3_char_is_digit`
 - `clic3_char_arrays`
 - - `clic3_char_arrays_equal`
 - - `clic3_char_arrays_within`
@@ -27,27 +28,45 @@ c_standard_library
 - - `clic3_memory_free`: frees memory if the address is not `(void*)0`
 - `clic3_sort`
 - - `clic3_sort_char`
+- - `clic3_sort_unsigned_char`
 - - `clic3_sort_double`
 - - `clic3_sort_float`
 - - `clic3_sort_int`
+- - `clic3_sort_unsigned_int`
+- - `clic3_sort_short_int`
+- - `clic3_sort_unsigned_short_int`
+- - `clic3_sort_long_int`
 - - `clic3_sort_unsigned_long_int`
-- `clic3_vector`
-- - `clic3_vector1_%type%`: `{ x: %type% }`
-- - - `clic3_vector1_unsigned_char`
-- - - `clic3_vector1_unsigned_int`
-- - - `clic3_vector1_float`
-- - `clic3_vector2_%type%`: `{ x: %type%, y: %type% }`
-- - - `clic3_vector2_unsigned_char`
-- - - `clic3_vector2_unsigned_int`
-- - - `clic3_vector2_float`
-- - `clic3_vector3_%type%`: `{ x: %type%, y: %type%, z: %type% }`
-- - - `clic3_vector3_unsigned_char`
-- - - `clic3_vector3_unsigned_int`
-- - - `clic3_vector3_float`
-- - `clic3_vector4_%type%`: `{ x: %type%, y: %type%, z: %type%, w: %type% }`
-- - - `clic3_vector4_unsigned_char`
-- - - `clic3_vector4_unsigned_int`
-- - - `clic3_vector4_float`
+- - `clic3_sort_reverse_char`
+- - `clic3_sort_reverse_unsigned_char`
+- - `clic3_sort_reverse_double`
+- - `clic3_sort_reverse_float`
+- - `clic3_sort_reverse_int`
+- - `clic3_sort_reverse_unsigned_int`
+- - `clic3_sort_reverse_short_int`
+- - `clic3_sort_reverse_unsigned_short_int`
+- - `clic3_sort_reverse_long_int`
+- - `clic3_sort_reverse_unsigned_long_int`
+- `clic3_vector`:
+- - `%type%`->`%type_name%`:
+- - - `char`: `char`
+- - - `unsigned char`:`unsigned_char`
+- - - `int`:`int`
+- - - `unsigned int`:`unsigned_int`
+- - - `short int`:`short_int`
+- - - `unsigned short int`:`unsigned_short_int`
+- - - `long int`:`long_int`
+- - - `unsigned long int`:`unsigned_long_int`
+- - - indef->{`__METAL_VERSION__`}: `long long int`:`long_long_int`
+- - - indef->{`__METAL_VERSION__`}: `unsigned long long int`:`unsigned_long_long_int`
+- - - indef->{`__METAL_VERSION__`}: `double`:`double`
+- - - `float`:`float`
+- - `struct`
+- - - `clic3_vector1_%type_name%`: `{ x: %type% }`
+- - - `clic3_vector2_%type_name%`: `{ x: %type%, y: %type% }`
+- - - `clic3_vector3_%type_name%`: `{ x: %type%, y: %type%, z: %type% }`
+- - - `clic3_vector4_%type_name%`: `{ x: %type%, y: %type%, z: %type%, w: %type% }`
+
 
 ## development
 
