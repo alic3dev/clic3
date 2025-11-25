@@ -22,17 +22,27 @@ directory_sources=sources
 directory_clic3_include=../include
 
 file_output=${directory_output}/${name}
-file_object_clic3=${directory_clic3_library}/${name_clic3}.o
 
 files_sources=${wildcard ${directory_sources}/*.c}
 files_objects=${patsubst ${directory_sources}/%.c,${directory_objects}/%.o,${files_sources}}
 
+ifndef target_device_version
+	target_device_version=26.1
+endif
+
+target_platform=arm64-apple-macos${target_device_version}
+
+directory_sdk=${shell xcrun --sdk macosx${target_device_version} --show-sdk-path}
+
 cc=gcc
-c_flags=-I${directory_include} -I${directory_clic3_include}
+c_flags_platform=-target ${target_platform} -isysroot ${directory_sdk}
+c_flags=-I${directory_include} -I${directory_clic3_include} ${c_flags_platform}
 
 ifeq (${debug}, 1)
+	file_object_clic3=${directory_clic3_library}/macos/debug/${name_clic3}.o
 	c_flags:=${c_flags} -O0 -g -v -da -Q
 else
+	file_object_clic3=${directory_clic3_library}/macos/release/${name_clic3}.o
 	c_flags:=${c_flags} -O3
 endif
 
