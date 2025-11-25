@@ -146,7 +146,7 @@ ${directory_objects}/%_ios.o: ${directory_sources}/%.c
 	mkdir -p ${directory_objects}
 	${cc} ${c_flags} -c $< -o $@
 
-unit_tests: ${file_library_object}
+unit_tests: ${file_library_object} .always
 	cd ${directory_unit_tests} && make
 
 unit_tests_rebuild:
@@ -167,3 +167,5 @@ clean_objects:
 
 clean_unit_tests:
 	cd ${directory_unit_tests} && make clean
+
+.always:
