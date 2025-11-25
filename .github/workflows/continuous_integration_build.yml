@@ -35,6 +35,6 @@ jobs:
       - name: make:clic3_ios_static
         run: make clic3_ios_static target_device_version=${{ env.target_device_version_ios }} target_device=iphone
       - name: make:unit_tests
-        run: make unit_tests
+        run: make unit_tests target_device_version=${{ env.target_device_version_macos }}
       - name: run:unit_tests
         run: make unit_tests_run
