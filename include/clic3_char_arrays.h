@@ -4,6 +4,9 @@
 unsigned char clic3_char_arrays_equal(char*, char*);
 int clic3_char_arrays_within(char*, int, ...);
 
+void clic3_char_array_to_lowercase(char*);
+void clic3_char_array_to_uppercase(char*);
+
 unsigned char clic3_char_array_to_int(char*, int*);
 unsigned char clic3_char_array_to_long_int(char*, long int*);
 unsigned char clic3_char_array_to_unsigned_int(char*, unsigned int*);

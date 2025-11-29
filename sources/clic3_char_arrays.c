@@ -75,6 +75,70 @@ int clic3_char_arrays_within(
   return -1;
 }
 
+void clic3_char_array_to_lowercase(
+  char* char_array
+) {
+  unsigned int index_character = 0;
+
+  while (
+    char_array[
+      index_character
+    ] != '\0'
+  ) {
+    if (
+      char_array[
+        index_character
+      ] >= 'A' &&
+      char_array[
+        index_character
+      ] <= 'Z'
+    ) {
+      char_array[
+        index_character
+      ] = char_array[
+        index_character
+      ] - 'A' + 'a';
+    }
+
+    index_character = (
+      index_character +
+      1
+    );
+  }
+}
+
+void clic3_char_array_to_uppercase(
+  char* char_array
+) {
+  unsigned int index_character = 0;
+
+  while (
+    char_array[
+      index_character
+    ] != '\0'
+  ) {
+    if (
+      char_array[
+        index_character
+      ] >= 'a' &&
+      char_array[
+        index_character
+      ] <= 'z'
+    ) {
+      char_array[
+        index_character
+      ] = char_array[
+        index_character
+      ] - 'a' + 'A';
+    }
+
+    index_character = (
+      index_character +
+      1
+    );
+  }
+}
+
 unsigned char clic3_char_array_to_int(
   char* char_array,
   int* pointer_int
@@ -449,7 +513,17 @@ unsigned int clic3_char_array_length(
 ) {
   unsigned int length_char_array = 0;
 
-  while(char_array[length_char_array] != '\0' && ++length_char_array < UINT_MAX){}
+  while(
+    char_array[
+      length_char_array
+    ] != '\0' &&
+    length_char_array < UINT_MAX
+  ){
+    length_char_array = (
+      length_char_array +
+      1
+    );
+  }
 
   return length_char_array;
 }
