@@ -74,7 +74,7 @@ target_platform=arm64-apple-ios${target_iphoneos_version}
 directory_sdk=${shell xcrun --sdk iphoneos${target_device_version} --show-sdk-path}
 endif
 
-cc=gcc
+cc=clang
 c_flags_platform=-target ${target_platform} -isysroot ${directory_sdk}
 c_flags=-I${directory_include} ${c_flags_platform}
 
