@@ -34,7 +34,7 @@ target_platform=arm64-apple-macos${target_device_version}
 
 directory_sdk=${shell xcrun --sdk macosx${target_device_version} --show-sdk-path}
 
-cc=gcc
+cc=clang
 c_flags_platform=-target ${target_platform} -isysroot ${directory_sdk}
 c_flags=-I${directory_include} -I${directory_clic3_include} ${c_flags_platform}
 
@@ -48,7 +48,8 @@ endif
 
 ${name}: ${file_output}
 
-rebuild: clean_output_file ${file_output}
+rebuild: clean
+	make
 
 test: ${file_output}
 	./${file_output}
