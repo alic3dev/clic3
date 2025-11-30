@@ -48,7 +48,8 @@ endif
 
 ${name}: ${file_output}
 
-rebuild: clean_output_file ${file_output}
+rebuild: clean
+	make
 
 test: ${file_output}
 	./${file_output}
