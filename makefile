@@ -147,13 +147,13 @@ ${directory_objects}/%_ios.o: ${directory_sources}/%.c
 	${cc} ${c_flags} -c $< -o $@
 
 unit_tests: ${file_library_object} .always
-	cd ${directory_unit_tests} && make
+	cd ${directory_unit_tests} && make target_device_version=${target_device_version}
 
 unit_tests_rebuild:
-	cd ${directory_unit_tests} && make rebuild
+	cd ${directory_unit_tests} && make rebuild target_device_version=${target_device_version}
 
 unit_tests_run:
-	cd ${directory_unit_tests} && make test
+	cd ${directory_unit_tests} && make test target_device_version=${target_device_version}
 
 clean_all: clean clean_unit_tests
 
@@ -166,6 +166,6 @@ clean_objects:
 	-rm -r ${directory_objects_base} 2> /dev/null
 
 clean_unit_tests:
-	cd ${directory_unit_tests} && make clean
+	cd ${directory_unit_tests} && make clean target_device_version=${target_device_version}
 
 .always:
