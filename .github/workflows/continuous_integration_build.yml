@@ -37,4 +37,4 @@ jobs:
       - name: make:unit_tests
         run: make unit_tests target_device_version=${{ env.target_device_version_macos }}
       - name: run:unit_tests
-        run: make unit_tests_run
+        run: make unit_tests_run target_device_version=${{ env.target_device_version_macos }}
