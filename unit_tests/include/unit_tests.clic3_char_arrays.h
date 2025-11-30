@@ -6,6 +6,7 @@
 
 unsigned char unit_test_clic3_char_arrays_char_arrays_equal_test_equal();
 unsigned char unit_test_clic3_char_arrays_char_arrays_equal_test_not_equal();
+unsigned char unit_test_clic3_char_arrays_within_test();
 unsigned char unit_test_clic3_char_arrays_char_array_to_lowercase_test();
 unsigned char unit_test_clic3_char_arrays_char_array_to_uppercase_test();
 unsigned char unit_test_clic3_char_arrays_char_array_to_int_test();
@@ -18,6 +19,7 @@ unsigned char unit_test_clic3_char_arrays_char_array_split_on_char_test();
 
 extern struct unit_test unit_test_clic3_char_arrays_char_arrays_equal_equal;
 extern struct unit_test unit_test_clic3_char_arrays_char_arrays_equal_not_equal;
+extern struct unit_test unit_test_clic3_char_arrays_within;
 extern struct unit_test unit_test_clic3_char_arrays_char_array_to_lowercase;
 extern struct unit_test unit_test_clic3_char_arrays_char_array_to_uppercase;
 extern struct unit_test unit_test_clic3_char_arrays_char_array_to_int;

@@ -26,6 +26,45 @@ unsigned char unit_test_clic3_char_arrays_char_arrays_equal_test_not_equal() {
   return equal == 0;
 }
 
+unsigned char unit_test_clic3_char_arrays_within_test() {
+  return (
+    clic3_char_arrays_within(
+      "sadiljfkajs",
+      6,
+      "like...",
+      "whaaaaaaat",
+      "oh",
+      "my",
+      "....",
+      "LOL"
+    ) == -1 &&
+    clic3_char_arrays_within(
+      "no way",
+      3,
+      "no way",
+      "hehe",
+      "nahhh"
+    ) == 0 && clic3_char_arrays_within(
+      "CAWWWWW",
+      7,
+      "ITS JUST CROWS",
+      "CAWWW",
+      "CAAAAAWWWWW",
+      "CAW",
+      "CAWWWWWWAWAAWWWWW",
+      "CAAWWWCAWWWCAWWWWW",
+      "CAWWWWW"
+    ) == 6
+    && clic3_char_arrays_within(
+      "I guess",
+      3,
+      "that",
+      "I guess",
+      "guess what"
+    ) == 1
+  );
+}
+
 unsigned char unit_test_clic3_char_arrays_char_array_to_lowercase_test() {
   char char_array[10] = {
     'a',
@@ -362,6 +401,11 @@ struct unit_test unit_test_clic3_char_arrays_char_arrays_equal_not_equal = {
   .test = unit_test_clic3_char_arrays_char_arrays_equal_test_not_equal
 };
 
+struct unit_test unit_test_clic3_char_arrays_within = {
+  .name = "clic3_char_arrays_within",
+  .test = unit_test_clic3_char_arrays_within_test
+};
+
 struct unit_test unit_test_clic3_char_arrays_char_array_to_lowercase = {
   .name = "clic3_char_array_to_lowercase",
   .test = unit_test_clic3_char_arrays_char_array_to_lowercase_test
@@ -425,7 +469,7 @@ struct unit_test_suite* get_unit_test_suite_clic3_char_arrays() {
     unit_test_suite_clic3_char_arrays->length_name
   );
 
-  unit_test_suite_clic3_char_arrays->length_unit_tests = 11;
+  unit_test_suite_clic3_char_arrays->length_unit_tests = 12;
   unit_test_suite_clic3_char_arrays->unit_tests = malloc(
     sizeof(struct unit_test*) *
     unit_test_suite_clic3_char_arrays->length_unit_tests
@@ -440,38 +484,42 @@ struct unit_test_suite* get_unit_test_suite_clic3_char_arrays() {
   );
 
   unit_test_suite_clic3_char_arrays->unit_tests[2] = (
-    &unit_test_clic3_char_arrays_char_array_to_lowercase
+    &unit_test_clic3_char_arrays_within
   );
 
   unit_test_suite_clic3_char_arrays->unit_tests[3] = (
-    &unit_test_clic3_char_arrays_char_array_to_uppercase
+    &unit_test_clic3_char_arrays_char_array_to_lowercase
   );
 
   unit_test_suite_clic3_char_arrays->unit_tests[4] = (
-    &unit_test_clic3_char_arrays_char_array_to_float
+    &unit_test_clic3_char_arrays_char_array_to_uppercase
   );
 
   unit_test_suite_clic3_char_arrays->unit_tests[5] = (
-    &unit_test_clic3_char_arrays_char_arrays_equal_equal
+    &unit_test_clic3_char_arrays_char_array_to_float
   );
 
   unit_test_suite_clic3_char_arrays->unit_tests[6] = (
-    &unit_test_clic3_char_arrays_char_arrays_equal_not_equal
+    &unit_test_clic3_char_arrays_char_arrays_equal_equal
   );
 
   unit_test_suite_clic3_char_arrays->unit_tests[7] = (
-    &unit_test_clic3_char_arrays_char_array_from_float
+    &unit_test_clic3_char_arrays_char_arrays_equal_not_equal
   );
 
   unit_test_suite_clic3_char_arrays->unit_tests[8] = (
-    &unit_test_clic3_char_arrays_char_array_length
+    &unit_test_clic3_char_arrays_char_array_from_float
   );
 
   unit_test_suite_clic3_char_arrays->unit_tests[9] = (
-    &unit_test_clic3_char_arrays_char_arrays_concatenate
+    &unit_test_clic3_char_arrays_char_array_length
   );
 
   unit_test_suite_clic3_char_arrays->unit_tests[10] = (
+    &unit_test_clic3_char_arrays_char_arrays_concatenate
+  );
+
+  unit_test_suite_clic3_char_arrays->unit_tests[11] = (
     &unit_test_clic3_char_arrays_char_array_split_on_char
   );
 
