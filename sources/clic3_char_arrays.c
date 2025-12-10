@@ -384,7 +384,98 @@ unsigned char clic3_char_array_to_float(
   return 0;
 }
 
-char* clic3_char_array_from_float(float value) {
+char* clic3_char_array_from_unsigned_long_int(
+  unsigned long int value
+) {
+  unsigned char length_char_array = 0;
+  unsigned char negative_is = (
+    value < 0
+  );
+
+  if (
+    negative_is
+  ) {
+    value = -value;
+  }
+
+  static char* char_array;
+  char_array = malloc(
+    sizeof(char) * 255
+  );
+
+  while (
+    value >= 10
+  ) {
+    unsigned long int value_next = (
+      value / 10
+    );
+
+    char_array[
+      length_char_array++
+    ] = (
+      '0' + (
+        value - (
+          value_next *
+          10
+        )
+      )
+    );
+
+    value = value_next;
+  }
+
+  char_array[
+    length_char_array++
+  ] = (
+    '0' +
+    value
+  );
+
+  for (
+    unsigned char index_char = 0;
+    index_char < (
+      length_char_array /
+      2 + (
+        length_char_array %
+        2
+      )
+    );
+    ++index_char
+  ) {
+    char char_placeholder = char_array[
+      index_char
+    ];
+
+    char_array[
+      index_char
+    ] = char_array[
+      length_char_array -
+      index_char - 1
+    ];
+
+    char_array[
+      length_char_array -
+      index_char - 1
+    ] = char_placeholder;
+  }
+
+  char_array[
+    length_char_array++
+  ] = '\0';
+
+  char_array = realloc(
+    char_array, (
+      sizeof(char) *
+      length_char_array
+    )
+  );
+
+  return char_array;
+}
+
+char* clic3_char_array_from_float(
+  float value
+) {
   unsigned char length_char_array = 1;
 
   static char* char_array;

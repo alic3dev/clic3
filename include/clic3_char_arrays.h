@@ -13,6 +13,9 @@ unsigned char clic3_char_array_to_unsigned_int(char*, unsigned int*);
 unsigned char clic3_char_array_to_unsigned_long_int(char*, unsigned long int*);
 unsigned char clic3_char_array_to_float(char*, float*);
 
+char* clic3_char_array_from_unsigned_long_int(
+  unsigned long int
+);
 char* clic3_char_array_from_float(float);
 
 unsigned int clic3_char_array_length(char*);
