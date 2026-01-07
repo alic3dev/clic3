@@ -276,6 +276,50 @@ unsigned char clic3_char_array_to_unsigned_int(
   return 0;
 }
 
+unsigned char clic3_char_array_to_unsigned_short_int(
+  char* char_array,
+  unsigned short int* pointer_unsigned_short_int
+) {
+  unsigned int unsigned_short_int_return = 0;
+
+  unsigned int index_char_array = 0;
+  
+  char char_current = (
+    char_array[
+      index_char_array
+    ]
+  );
+
+  while (char_current != '\0') {
+    if (
+      clic3_char_is_digit(
+        char_current
+      ) == 1
+    ) {
+      unsigned_short_int_return = (
+        (unsigned_short_int_return * 10)
+        + (char_current - '0')
+      );
+    } else {
+      return 1;
+    }
+
+    index_char_array = (
+      index_char_array + 1
+    );
+
+    char_current = char_array[
+      index_char_array
+    ];
+  }
+
+  *pointer_unsigned_short_int = (
+    unsigned_short_int_return
+  );
+
+  return 0;
+}
+
 unsigned char clic3_char_array_to_unsigned_long_int(
   char* char_array,
   unsigned long int* pointer_unsigned_long_int
