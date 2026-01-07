@@ -10,6 +10,7 @@ void clic3_char_array_to_uppercase(char*);
 unsigned char clic3_char_array_to_int(char*, int*);
 unsigned char clic3_char_array_to_long_int(char*, long int*);
 unsigned char clic3_char_array_to_unsigned_int(char*, unsigned int*);
+unsigned char clic3_char_array_to_unsigned_short_int(char*, unsigned short int*);
 unsigned char clic3_char_array_to_unsigned_long_int(char*, unsigned long int*);
 unsigned char clic3_char_array_to_float(char*, float*);
 
