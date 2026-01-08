@@ -7,6 +7,5 @@
 #include <clic3_char.h>
 #include <clic3_memory.h>
 #include <clic3_sort.h>
-#include <clic3_vector.h>
 
 #endif
