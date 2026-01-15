@@ -3,9 +3,11 @@
 #include <clic3_bytes.h>
 #include <clic3_char.h>
 
+
+#include <clic3_memory.h>
+
 #include <limits.h>
 #include <stdarg.h>
-#include <stdlib.h>
 
 unsigned char clic3_char_arrays_equal(
   char* char_array_first,
@@ -443,8 +445,11 @@ char* clic3_char_array_from_unsigned_long_int(
   }
 
   static char* char_array;
-  char_array = malloc(
-    sizeof(char) * 255
+  char_array = 0;
+
+  clic3_memory_allocate(
+    &char_array,
+    255
   );
 
   while (
@@ -507,11 +512,9 @@ char* clic3_char_array_from_unsigned_long_int(
     length_char_array++
   ] = '\0';
 
-  char_array = realloc(
-    char_array, (
-      sizeof(char) *
-      length_char_array
-    )
+  clic3_memory_allocate(
+    &char_array, 
+    length_char_array
   );
 
   return char_array;
@@ -523,13 +526,18 @@ char* clic3_char_array_from_float(
   unsigned char length_char_array = 1;
 
   static char* char_array;
-  char_array = malloc(
-    sizeof(char) * 255
+  char_array = 0;
+
+  clic3_memory_allocate(
+    &char_array,
+    255
   );
 
   unsigned char negative_is = 0;
 
-  if (value < 0.0f) {
+  if (
+    value < 0.0f
+  ) {
     negative_is = 1;
 
     value = -value;
@@ -635,9 +643,9 @@ char* clic3_char_array_from_float(
     length_char_array - 1
   ] = '\0';
 
-  char_array = realloc(
-    char_array,
-    sizeof(char) * length_char_array
+  clic3_memory_allocate(
+    &char_array,
+    length_char_array
   );
 
   return char_array;
@@ -681,8 +689,14 @@ char* clic3_char_arrays_concatenate(
   );
 
   static char* char_array_destination;
-  char_array_destination = malloc(
-    sizeof(char) * length_char_array_destination + 1
+  char_array_destination = 0;
+
+  clic3_memory_allocate(
+    &char_array_destination,
+    (
+      length_char_array_destination +
+      1
+    )
   );
 
   clic3_bytes_copy(
@@ -710,10 +724,13 @@ char** clic3_char_array_split_on_char(
   char deliminator
 ) {
   static char** split_char_arrays;
-  
-  split_char_arrays = malloc(
-    sizeof(char*) *
-    1
+  split_char_arrays = 0;
+
+  clic3_memory_allocate(
+    &split_char_arrays,
+    sizeof(
+      char*
+    )
   );
 
   split_char_arrays[0] = 0;
@@ -740,9 +757,12 @@ char** clic3_char_array_split_on_char(
         1
       );
 
-      split_char_arrays = realloc(
-        split_char_arrays,
-        sizeof(char*) * (
+      clic3_memory_allocate(
+        &split_char_arrays,
+        (
+          sizeof(
+            char*
+          ) *
           (unsigned long int) (
             split_char_arrays[0]
           ) +
@@ -765,12 +785,14 @@ char** clic3_char_array_split_on_char(
         )
       );
 
-      split_char_arrays[
-        (unsigned long int) split_char_arrays[0]
-      ] = malloc(
-        sizeof(char) *
-        length_split_char_array +
-        1
+      clic3_memory_allocate(
+        &split_char_arrays[
+          (unsigned long int) split_char_arrays[0]
+        ],
+        (
+          length_split_char_array +
+          1
+        )
       );
 
       clic3_bytes_copy(
@@ -812,9 +834,9 @@ char** clic3_char_array_split_on_char(
       1
     );
 
-    split_char_arrays = realloc(
-      split_char_arrays,
-      sizeof(char*) * (
+    clic3_memory_allocate(
+      &split_char_arrays,
+      (
         (unsigned long int) (
           split_char_arrays[0]
         ) +
@@ -822,10 +844,11 @@ char** clic3_char_array_split_on_char(
       )
     );
 
-    split_char_arrays[
-      (unsigned long int) split_char_arrays[0]
-    ] = malloc(
-      sizeof(char)
+    clic3_memory_allocate(
+      &split_char_arrays[
+        (unsigned long int) split_char_arrays[0]
+      ],
+      1
     );
 
     split_char_arrays[

@@ -2,11 +2,10 @@
 
 #include <clic3_bytes.h>
 #include <clic3_char_arrays.h>
+#include <clic3_memory.h>
 
 #include <unit_test.h>
 #include <unit_test_suite.h>
-
-#include <stdlib.h>
 
 unsigned char unit_test_clic3_char_arrays_char_arrays_equal_test_equal() {
   unsigned char equal = clic3_char_arrays_equal(
@@ -261,7 +260,9 @@ unsigned char unit_test_clic3_char_arrays_char_array_from_float_test() {
     status_test = 0;
   }
 
-  free(char_array);
+  clic3_memory_free(
+    char_array
+  );
 
   if (status_test != 1) {
     return status_test;
@@ -281,7 +282,9 @@ unsigned char unit_test_clic3_char_arrays_char_array_from_float_test() {
     status_test = 0;
   }
 
-  free(char_array);
+  clic3_memory_free(
+    char_array
+  );
 
   if (status_test != 1) {
     return status_test;
@@ -302,7 +305,9 @@ unsigned char unit_test_clic3_char_arrays_char_array_from_float_test() {
     status_test = 0;
   }
 
-  free(char_array);
+  clic3_memory_free(
+    char_array
+  );
 
   if (status_test != 1) {
     return status_test;
@@ -322,7 +327,9 @@ unsigned char unit_test_clic3_char_arrays_char_array_from_float_test() {
     status_test = 0;
   }
 
-  free(char_array);
+  clic3_memory_free(
+    char_array
+  );
 
   return status_test;
 }
@@ -354,7 +361,9 @@ unsigned char unit_test_clic3_char_arrays_char_arrays_concatenate_test() {
     status_test = 0;
   }
 
-  free(char_array_result);
+  clic3_memory_free(
+    char_array_result
+  );
 
   return status_test;
 }
@@ -417,12 +426,12 @@ unsigned char unit_test_clic3_char_arrays_char_array_split_on_char_test() {
     i <= (unsigned long int) splits[0];
     ++i
   ) {
-    free(
+    clic3_memory_free(
       splits[i]
     );
   }
 
-  free(
+  clic3_memory_free(
     splits
   );
 
@@ -500,14 +509,20 @@ struct unit_test unit_test_clic3_char_arrays_char_array_split_on_char = {
 };
 
 struct unit_test_suite* get_unit_test_suite_clic3_char_arrays() {
-  struct unit_test_suite* unit_test_suite_clic3_char_arrays = malloc(
-    sizeof(struct unit_test_suite)
+  struct unit_test_suite* unit_test_suite_clic3_char_arrays = 0;
+  
+  clic3_memory_allocate(
+    &unit_test_suite_clic3_char_arrays,
+    sizeof(
+      struct unit_test_suite
+    )
   );
 
+  unit_test_suite_clic3_char_arrays->name = 0;
   unit_test_suite_clic3_char_arrays->length_name = 18;
 
-  unit_test_suite_clic3_char_arrays->name = malloc(
-    sizeof(char) *
+  clic3_memory_allocate(
+    &unit_test_suite_clic3_char_arrays->name,
     unit_test_suite_clic3_char_arrays->length_name
   );
 
@@ -517,8 +532,11 @@ struct unit_test_suite* get_unit_test_suite_clic3_char_arrays() {
     unit_test_suite_clic3_char_arrays->length_name
   );
 
+  unit_test_suite_clic3_char_arrays->unit_tests = 0;
   unit_test_suite_clic3_char_arrays->length_unit_tests = 14;
-  unit_test_suite_clic3_char_arrays->unit_tests = malloc(
+  
+  clic3_memory_allocate(
+    &unit_test_suite_clic3_char_arrays->unit_tests,
     sizeof(struct unit_test*) *
     unit_test_suite_clic3_char_arrays->length_unit_tests
   );
@@ -579,5 +597,7 @@ struct unit_test_suite* get_unit_test_suite_clic3_char_arrays() {
     &unit_test_clic3_char_arrays_char_array_split_on_char
   );
 
-  return unit_test_suite_clic3_char_arrays;
+  return (
+    unit_test_suite_clic3_char_arrays
+  );
 }
