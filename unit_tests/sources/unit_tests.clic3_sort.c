@@ -1,8 +1,7 @@
 #include <unit_tests.clic3_sort.h>
 
-#include <stdlib.h>
-
 #include <clic3_bytes.h>
+#include <clic3_memory.h>
 #include <clic3_sort.h>
 
 #include <unit_test.h>
@@ -11,8 +10,10 @@
 unsigned char unit_test_clic3_sort_sort_char_test_sort() {
   unsigned long int length_values = 10;
 
-  char* values = malloc(
-    sizeof(char) *
+  char* values = 0;
+  
+  clic3_memory_allocate(
+    &values,
     length_values
   );
 
@@ -49,7 +50,9 @@ unsigned char unit_test_clic3_sort_sort_char_test_sort() {
     status_test = 1;
   }
 
-  free(values);
+  clic3_memory_free(
+    values
+  );
 
   return status_test;
 }
@@ -57,8 +60,10 @@ unsigned char unit_test_clic3_sort_sort_char_test_sort() {
 unsigned char unit_test_clic3_sort_sort_reverse_char_test_sort() {
   unsigned long int length_values = 10;
 
-  char* values = malloc(
-    sizeof(char) *
+  char* values = 0;
+
+  clic3_memory_allocate(
+    &values,
     length_values
   );
 
@@ -95,7 +100,9 @@ unsigned char unit_test_clic3_sort_sort_reverse_char_test_sort() {
     status_test = 1;
   }
 
-  free(values);
+  clic3_memory_free(
+    values
+  );
 
   return status_test;
 }
@@ -103,8 +110,10 @@ unsigned char unit_test_clic3_sort_sort_reverse_char_test_sort() {
 unsigned char unit_test_clic3_sort_sort_unsigned_char_test_sort() {
   unsigned long int length_values = 10;
 
-  unsigned char* values = malloc(
-    sizeof(unsigned char) *
+  unsigned char* values = 0;
+
+  clic3_memory_allocate(
+    &values,
     length_values
   );
 
@@ -141,7 +150,9 @@ unsigned char unit_test_clic3_sort_sort_unsigned_char_test_sort() {
     status_test = 1;
   }
 
-  free(values);
+  clic3_memory_free(
+    values
+  );
 
   return status_test;
 }
@@ -149,8 +160,10 @@ unsigned char unit_test_clic3_sort_sort_unsigned_char_test_sort() {
 unsigned char unit_test_clic3_sort_sort_reverse_unsigned_char_test_sort() {
   unsigned long int length_values = 10;
 
-  unsigned char* values = malloc(
-    sizeof(unsigned char) *
+  unsigned char* values = 0;
+
+  clic3_memory_allocate(
+    &values,
     length_values
   );
 
@@ -187,7 +200,9 @@ unsigned char unit_test_clic3_sort_sort_reverse_unsigned_char_test_sort() {
     status_test = 1;
   }
 
-  free(values);
+  clic3_memory_free(
+    values
+  );
 
   return status_test;
 }
@@ -195,9 +210,16 @@ unsigned char unit_test_clic3_sort_sort_reverse_unsigned_char_test_sort() {
 unsigned char unit_test_clic3_sort_sort_double_test_sort() {
   unsigned long int length_values = 10;
 
-  double* values = malloc(
-    sizeof(double) *
-    length_values
+  double* values = 0;
+  
+  clic3_memory_allocate(
+    &values,
+    (
+      sizeof(
+        double
+      ) *
+      length_values
+    )
   );
 
   values[0] = 3.14;
@@ -233,7 +255,9 @@ unsigned char unit_test_clic3_sort_sort_double_test_sort() {
     status_test = 1;
   }
 
-  free(values);
+  clic3_memory_free(
+    values
+  );
 
   return status_test;
 }
@@ -241,9 +265,16 @@ unsigned char unit_test_clic3_sort_sort_double_test_sort() {
 unsigned char unit_test_clic3_sort_sort_reverse_double_test_sort() {
   unsigned long int length_values = 10;
 
-  double* values = malloc(
-    sizeof(double) *
-    length_values
+  double* values = 0;
+  
+  clic3_memory_allocate(
+    &values,
+    (
+      sizeof(
+        double
+      ) *
+      length_values
+    )
   );
 
   values[0] = 0.0001;
@@ -279,7 +310,9 @@ unsigned char unit_test_clic3_sort_sort_reverse_double_test_sort() {
     status_test = 1;
   }
 
-  free(values);
+  clic3_memory_free(
+    values
+  );
 
   return status_test;
 }
@@ -287,9 +320,16 @@ unsigned char unit_test_clic3_sort_sort_reverse_double_test_sort() {
 unsigned char unit_test_clic3_sort_sort_float_test_sort() {
   unsigned long int length_values = 10;
 
-  float* values = malloc(
-    sizeof(float) *
-    length_values
+  float* values = 0;
+  
+  clic3_memory_allocate(
+    &values,
+    (
+      sizeof(
+        float
+      ) *
+      length_values
+    )
   );
 
   values[0] = 3.01f;
@@ -325,7 +365,9 @@ unsigned char unit_test_clic3_sort_sort_float_test_sort() {
     status_test = 1;
   }
 
-  free(values);
+  clic3_memory_free(
+    values
+  );
 
   return status_test;
 }
@@ -333,9 +375,16 @@ unsigned char unit_test_clic3_sort_sort_float_test_sort() {
 unsigned char unit_test_clic3_sort_sort_reverse_float_test_sort() {
   unsigned long int length_values = 10;
 
-  float* values = malloc(
-    sizeof(float) *
-    length_values
+  float* values = 0;
+  
+  clic3_memory_allocate(
+    &values,
+    (
+      sizeof(
+        float
+      ) *
+      length_values
+    )
   );
 
   values[0] = 1.01f;
@@ -371,7 +420,9 @@ unsigned char unit_test_clic3_sort_sort_reverse_float_test_sort() {
     status_test = 1;
   }
 
-  free(values);
+  clic3_memory_free(
+    values
+  );
 
   return status_test;
 }
@@ -379,9 +430,16 @@ unsigned char unit_test_clic3_sort_sort_reverse_float_test_sort() {
 unsigned char unit_test_clic3_sort_sort_int_test_sort() {
   unsigned long int length_values = 10;
 
-  int* values = malloc(
-    sizeof(int) *
-    length_values
+  int* values = 0;
+  
+  clic3_memory_allocate(
+    &values,
+    (
+      sizeof(
+        int
+      ) *
+      length_values
+    )
   );
 
   values[0] = -25;
@@ -417,7 +475,9 @@ unsigned char unit_test_clic3_sort_sort_int_test_sort() {
     status_test = 1;
   }
 
-  free(values);
+  clic3_memory_free(
+    values
+  );
 
   return status_test;
 }
@@ -425,9 +485,16 @@ unsigned char unit_test_clic3_sort_sort_int_test_sort() {
 unsigned char unit_test_clic3_sort_sort_reverse_int_test_sort() {
   unsigned long int length_values = 10;
 
-  int* values = malloc(
-    sizeof(int) *
-    length_values
+  int* values = 0;
+  
+  clic3_memory_allocate(
+    &values,
+    (
+      sizeof(
+        int
+      ) *
+      length_values
+    )
   );
 
   values[0] = 892;
@@ -463,7 +530,9 @@ unsigned char unit_test_clic3_sort_sort_reverse_int_test_sort() {
     status_test = 1;
   }
 
-  free(values);
+  clic3_memory_free(
+    values
+  );
 
   return status_test;
 }
@@ -471,9 +540,16 @@ unsigned char unit_test_clic3_sort_sort_reverse_int_test_sort() {
 unsigned char unit_test_clic3_sort_sort_unsigned_int_test_sort() {
   unsigned long int length_values = 10;
 
-  unsigned int* values = malloc(
-    sizeof(unsigned int) *
-    length_values
+  unsigned int* values = 0;
+  
+  clic3_memory_allocate(
+    &values,
+    (
+      sizeof(
+        unsigned int
+      ) *
+      length_values
+    )
   );
 
   values[0] = 25;
@@ -509,7 +585,9 @@ unsigned char unit_test_clic3_sort_sort_unsigned_int_test_sort() {
     status_test = 1;
   }
 
-  free(values);
+  clic3_memory_free(
+    values
+  );
 
   return status_test;
 }
@@ -517,9 +595,16 @@ unsigned char unit_test_clic3_sort_sort_unsigned_int_test_sort() {
 unsigned char unit_test_clic3_sort_sort_reverse_unsigned_int_test_sort() {
   unsigned long int length_values = 10;
 
-  unsigned int* values = malloc(
-    sizeof(unsigned int) *
-    length_values
+  unsigned int* values = 0;
+  
+  clic3_memory_allocate(
+    &values,
+    (
+      sizeof(
+        unsigned int
+      ) *
+      length_values
+    )
   );
 
   values[0] = 892;
@@ -555,7 +640,9 @@ unsigned char unit_test_clic3_sort_sort_reverse_unsigned_int_test_sort() {
     status_test = 1;
   }
 
-  free(values);
+  clic3_memory_free(
+    values
+  );
 
   return status_test;
 }
@@ -563,9 +650,16 @@ unsigned char unit_test_clic3_sort_sort_reverse_unsigned_int_test_sort() {
 unsigned char unit_test_clic3_sort_sort_short_int_test_sort() {
   unsigned long int length_values = 10;
 
-  short int* values = malloc(
-    sizeof(short int) *
-    length_values
+  short int* values = 0;
+  
+  clic3_memory_allocate(
+    &values,
+    (
+      sizeof(
+        short int
+      ) *
+      length_values
+    )
   );
 
   values[0] = -25;
@@ -601,7 +695,9 @@ unsigned char unit_test_clic3_sort_sort_short_int_test_sort() {
     status_test = 1;
   }
 
-  free(values);
+  clic3_memory_free(
+    values
+  );
 
   return status_test;
 }
@@ -609,9 +705,16 @@ unsigned char unit_test_clic3_sort_sort_short_int_test_sort() {
 unsigned char unit_test_clic3_sort_sort_reverse_short_int_test_sort() {
   unsigned long int length_values = 10;
 
-  short int* values = malloc(
-    sizeof(short int) *
-    length_values
+  short int* values = 0;
+  
+  clic3_memory_allocate(
+    &values,
+    (
+      sizeof(
+        short int
+      ) *
+      length_values
+    )
   );
 
   values[0] = 892;
@@ -647,7 +750,9 @@ unsigned char unit_test_clic3_sort_sort_reverse_short_int_test_sort() {
     status_test = 1;
   }
 
-  free(values);
+  clic3_memory_free(
+    values
+  );
 
   return status_test;
 }
@@ -655,9 +760,16 @@ unsigned char unit_test_clic3_sort_sort_reverse_short_int_test_sort() {
 unsigned char unit_test_clic3_sort_sort_unsigned_short_int_test_sort() {
   unsigned long int length_values = 10;
 
-  unsigned short int* values = malloc(
-    sizeof(unsigned short int) *
-    length_values
+  unsigned short int* values = 0;
+
+  clic3_memory_allocate(
+    &values,
+    (
+      sizeof(
+        unsigned short int
+      ) *
+      length_values
+    )
   );
 
   values[0] = 25;
@@ -693,7 +805,9 @@ unsigned char unit_test_clic3_sort_sort_unsigned_short_int_test_sort() {
     status_test = 1;
   }
 
-  free(values);
+  clic3_memory_free(
+    values
+  );
 
   return status_test;
 }
@@ -701,9 +815,16 @@ unsigned char unit_test_clic3_sort_sort_unsigned_short_int_test_sort() {
 unsigned char unit_test_clic3_sort_sort_reverse_unsigned_short_int_test_sort() {
   unsigned long int length_values = 10;
 
-  unsigned short int* values = malloc(
-    sizeof(unsigned short int) *
-    length_values
+  unsigned short int* values = 0;
+
+  clic3_memory_allocate(
+    &values,
+    (
+      sizeof(
+        unsigned short int
+      ) *
+      length_values
+    )
   );
 
   values[0] = 892;
@@ -739,7 +860,9 @@ unsigned char unit_test_clic3_sort_sort_reverse_unsigned_short_int_test_sort() {
     status_test = 1;
   }
 
-  free(values);
+  clic3_memory_free(
+    values
+  );
 
   return status_test;
 }
@@ -747,9 +870,16 @@ unsigned char unit_test_clic3_sort_sort_reverse_unsigned_short_int_test_sort() {
 unsigned char unit_test_clic3_sort_sort_long_int_test_sort() {
   unsigned long int length_values = 10;
 
-  long int* values = malloc(
-    sizeof(long int) *
-    length_values
+  long int* values = 0;
+
+  clic3_memory_allocate(
+    &values,
+    (
+      sizeof(
+        long int
+      ) *
+      length_values
+    )
   );
 
   values[0] = 3;
@@ -785,7 +915,9 @@ unsigned char unit_test_clic3_sort_sort_long_int_test_sort() {
     status_test = 1;
   }
 
-  free(values);
+  clic3_memory_free(
+    values
+  );
 
   return status_test;
 }
@@ -793,9 +925,16 @@ unsigned char unit_test_clic3_sort_sort_long_int_test_sort() {
 unsigned char unit_test_clic3_sort_sort_reverse_long_int_test_sort() {
   unsigned long int length_values = 10;
 
-  long int* values = malloc(
-    sizeof(long int) *
-    length_values
+  long int* values = 0;
+
+  clic3_memory_allocate(
+    &values,
+    (
+      sizeof(
+        long int
+      ) *
+      length_values
+    )
   );
 
   values[0] = 158239;
@@ -831,7 +970,9 @@ unsigned char unit_test_clic3_sort_sort_reverse_long_int_test_sort() {
     status_test = 1;
   }
 
-  free(values);
+  clic3_memory_free(
+    values
+  );
 
   return status_test;
 }
@@ -839,9 +980,16 @@ unsigned char unit_test_clic3_sort_sort_reverse_long_int_test_sort() {
 unsigned char unit_test_clic3_sort_sort_unsigned_long_int_test_sort() {
   unsigned long int length_values = 10;
 
-  unsigned long int* values = malloc(
-    sizeof(unsigned long int) *
-    length_values
+  unsigned long int* values = 0;
+  
+  clic3_memory_allocate(
+    &values,
+    (
+      sizeof(
+        unsigned long int
+      ) *
+      length_values
+    )
   );
 
   values[0] = 3;
@@ -877,7 +1025,9 @@ unsigned char unit_test_clic3_sort_sort_unsigned_long_int_test_sort() {
     status_test = 1;
   }
 
-  free(values);
+  clic3_memory_free(
+    values
+  );
 
   return status_test;
 }
@@ -885,9 +1035,16 @@ unsigned char unit_test_clic3_sort_sort_unsigned_long_int_test_sort() {
 unsigned char unit_test_clic3_sort_sort_reverse_unsigned_long_int_test_sort() {
   unsigned long int length_values = 10;
 
-  unsigned long int* values = malloc(
-    sizeof(unsigned long int) *
-    length_values
+  unsigned long int* values = 0;
+  
+  clic3_memory_allocate(
+    &values,
+    (
+      sizeof(
+        unsigned long int
+      ) *
+      length_values
+    )
   );
 
   values[0] = 158239;
@@ -923,7 +1080,9 @@ unsigned char unit_test_clic3_sort_sort_reverse_unsigned_long_int_test_sort() {
     status_test = 1;
   }
 
-  free(values);
+  clic3_memory_free(
+    values
+  );
 
   return status_test;
 }
@@ -1029,14 +1188,20 @@ struct unit_test unit_test_clic3_sort_sort_reverse_unsigned_long_int = {
 };
 
 struct unit_test_suite* get_unit_test_suite_clic3_sort() {
-  struct unit_test_suite* unit_test_suite_clic3_sort = malloc(
-    sizeof(struct unit_test_suite)
+  struct unit_test_suite* unit_test_suite_clic3_sort = 0;
+  
+  clic3_memory_allocate(
+    &unit_test_suite_clic3_sort,
+    sizeof(
+      struct unit_test_suite
+    )
   );
 
+  unit_test_suite_clic3_sort->name = 0;
   unit_test_suite_clic3_sort->length_name = 11;
 
-  unit_test_suite_clic3_sort->name = malloc(
-    sizeof(char) *
+  clic3_memory_allocate(
+    &unit_test_suite_clic3_sort->name,
     unit_test_suite_clic3_sort->length_name
   );
 
@@ -1046,10 +1211,17 @@ struct unit_test_suite* get_unit_test_suite_clic3_sort() {
     unit_test_suite_clic3_sort->length_name
   );
 
+  unit_test_suite_clic3_sort->unit_tests = 0;
   unit_test_suite_clic3_sort->length_unit_tests = 20;
-  unit_test_suite_clic3_sort->unit_tests = malloc(
-    sizeof(struct unit_test*) *
-    unit_test_suite_clic3_sort->length_unit_tests
+
+  clic3_memory_allocate(
+    &unit_test_suite_clic3_sort->unit_tests,
+    (
+      sizeof(
+        struct unit_test*
+      ) *
+      unit_test_suite_clic3_sort->length_unit_tests
+    )
   );
 
   unit_test_suite_clic3_sort->unit_tests[0] = (

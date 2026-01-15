@@ -1,8 +1,7 @@
 #include <unit_tests.clic3_bytes.h>
 
-#include <stdlib.h>
-
 #include <clic3_bytes.h>
+#include <clic3_memory.h>
 
 #include <unit_test.h>
 #include <unit_test_suite.h>
@@ -10,12 +9,16 @@
 unsigned char unit_test_clic3_bytes_bytes_copy_test_char() {
   unsigned int length_bytes = 10;
 
-  char* bytes_from = malloc(
-    sizeof(char) *
+  char* bytes_from = 0;
+  char* bytes_to = 0;
+  
+  clic3_memory_allocate(
+    &bytes_from,
     length_bytes
   );
-  char* bytes_to = malloc(
-    sizeof(char) *
+
+  clic3_memory_allocate(
+    &bytes_to,
     length_bytes
   );
 
@@ -24,15 +27,18 @@ unsigned char unit_test_clic3_bytes_bytes_copy_test_char() {
     index_byte < length_bytes;
     ++index_byte
   ) {
-    bytes_from[index_byte] = (
-      'a' + index_byte
+    bytes_from[
+      index_byte
+    ] = (
+      'a' +
+      index_byte
     );
   }
 
   clic3_bytes_copy(
     bytes_to,
     bytes_from,
-    sizeof(char) * length_bytes
+    length_bytes
   );
 
   unsigned char copied = 1;
@@ -43,15 +49,24 @@ unsigned char unit_test_clic3_bytes_bytes_copy_test_char() {
     ++index_byte
   ) {
     if (
-      bytes_from[index_byte] != bytes_to[index_byte]
+      bytes_from[
+        index_byte
+      ] != bytes_to[
+        index_byte
+      ]
     ) {
       copied = 0;
       break;
     }
   }
 
-  free(bytes_from);
-  free(bytes_to);
+  clic3_memory_free(
+    bytes_from
+  );
+
+  clic3_memory_free(
+    bytes_to
+  );
 
   return copied;
 }
@@ -59,13 +74,27 @@ unsigned char unit_test_clic3_bytes_bytes_copy_test_char() {
 unsigned char unit_test_clic3_bytes_bytes_copy_test_int() {
   unsigned int length_bytes = 10;
 
-  int* bytes_from = malloc(
-    sizeof(int) *
-    length_bytes
+  int* bytes_from = 0;
+  int* bytes_to = 0;
+
+  clic3_memory_allocate(
+    &bytes_from,
+    (
+      sizeof(
+        int
+      ) *
+      length_bytes
+    )
   );
-  int* bytes_to = malloc(
-    sizeof(int) *
-    length_bytes
+
+  clic3_memory_allocate(
+    &bytes_to,
+    (
+      sizeof(
+        int
+      ) *
+      length_bytes
+    )
   );
 
   for (
@@ -73,13 +102,20 @@ unsigned char unit_test_clic3_bytes_bytes_copy_test_int() {
     index_byte < length_bytes;
     ++index_byte
   ) {
-    bytes_from[index_byte] = index_byte;
+    bytes_from[
+      index_byte
+    ] = index_byte;
   }
 
   clic3_bytes_copy(
     bytes_to,
     bytes_from,
-    sizeof(int) * length_bytes
+    (
+      sizeof(
+        int
+      ) *
+      length_bytes
+    )
   );
 
   unsigned char copied = 1;
@@ -90,15 +126,24 @@ unsigned char unit_test_clic3_bytes_bytes_copy_test_int() {
     ++index_byte
   ) {
     if (
-      bytes_from[index_byte] != bytes_to[index_byte]
+      bytes_from[
+        index_byte
+      ] != bytes_to[
+        index_byte
+      ]
     ) {
       copied = 0;
       break;
     }
   }
 
-  free(bytes_from);
-  free(bytes_to);
+  clic3_memory_free(
+    bytes_from
+  );
+  
+  clic3_memory_free(
+    bytes_to
+  );
 
   return copied;
 }
@@ -108,14 +153,22 @@ unsigned char unit_test_clic3_bytes_bytes_copy_test_struct() {
     .char_value = 'a',
     .int_value = 104,
     .float_value = 3.12,
-    .pointer = malloc(1)
+    .pointer = 0
   };
+
+  clic3_memory_allocate(
+    &bytes_from.pointer,
+    1
+  );
+  
   struct structure_unit_test_clic3_bytes_bytes_copy bytes_to;
 
   clic3_bytes_copy(
     &bytes_to,
     &bytes_from,
-    sizeof(struct structure_unit_test_clic3_bytes_bytes_copy)
+    sizeof(
+      struct structure_unit_test_clic3_bytes_bytes_copy
+    )
   );
 
   unsigned char copied = 1;
@@ -129,7 +182,9 @@ unsigned char unit_test_clic3_bytes_bytes_copy_test_struct() {
     copied = 0;
   }
 
-  free(bytes_from.pointer);
+  clic3_memory_free(
+    bytes_from.pointer
+  );
 
   return copied;
 }
@@ -150,14 +205,20 @@ struct unit_test unit_test_clic3_bytes_bytes_copy_struct = {
 };
 
 struct unit_test_suite* get_unit_test_suite_clic3_bytes() {
-  struct unit_test_suite* unit_test_suite_clic3_bytes = malloc(
-    sizeof(struct unit_test_suite)
+  struct unit_test_suite* unit_test_suite_clic3_bytes = 0;
+  
+  clic3_memory_allocate(
+    &unit_test_suite_clic3_bytes,
+    sizeof(
+      struct unit_test_suite
+    )
   );
 
+  unit_test_suite_clic3_bytes->name = 0;
   unit_test_suite_clic3_bytes->length_name = 12;
 
-  unit_test_suite_clic3_bytes->name = malloc(
-    sizeof(char) *
+  clic3_memory_allocate(
+    &unit_test_suite_clic3_bytes->name,
     unit_test_suite_clic3_bytes->length_name
   );
 
@@ -167,10 +228,17 @@ struct unit_test_suite* get_unit_test_suite_clic3_bytes() {
     unit_test_suite_clic3_bytes->length_name
   );
 
+  unit_test_suite_clic3_bytes->unit_tests = 0;
   unit_test_suite_clic3_bytes->length_unit_tests = 3;
-  unit_test_suite_clic3_bytes->unit_tests = malloc(
-    sizeof(struct unit_test*) *
-    unit_test_suite_clic3_bytes->length_unit_tests
+
+  clic3_memory_allocate(
+    &unit_test_suite_clic3_bytes->unit_tests,
+    (
+      sizeof(
+        struct unit_test*
+      ) *
+      unit_test_suite_clic3_bytes->length_unit_tests
+    )
   );
 
   unit_test_suite_clic3_bytes->unit_tests[0] = (
@@ -185,5 +253,7 @@ struct unit_test_suite* get_unit_test_suite_clic3_bytes() {
     &unit_test_clic3_bytes_bytes_copy_struct
   );
 
-  return unit_test_suite_clic3_bytes;
+  return (
+    unit_test_suite_clic3_bytes
+  );
 }
