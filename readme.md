@@ -27,7 +27,11 @@ c_standard_library
 - - `clic3_char_array_split_on_char`
 - `clic3_char_values`: values_of_characters : converted from `char` to `int`
 - `clic3_memory`:
-- - `clic3_memory_free`: frees memory if the address is not `(void*)0`
+- - `clic3_memory_allocate`: allocates memory if the address is `0` or reallocates if the address is not `0`
+- - `clic3_memory_free`: frees memory if the address is not `0`
+- - `clic3_memory_allocate_raw`: always allocates memory
+- - `clic3_memory_free_raw`: always frees memory
+- - `clic3_memory_reallocate_raw`: always reallocates memory
 - `clic3_sort`
 - - `clic3_sort_char`
 - - `clic3_sort_unsigned_char`
