@@ -29,7 +29,8 @@ c_standard_library
 - `clic3_memory`:
 - - `clic3_memory_allocate`: allocates memory if the address is `0` or reallocates if the address is not `0`
 - - `clic3_memory_free`: frees memory if the address is not `0`
-- - `clic3_memory_allocate_raw`: always allocates memory
+- - `clic3_memory_allocate_raw`: always returns allocated memory
+- - `clic3_memory_allocate_unchecked`: always allocates memory
 - - `clic3_memory_free_raw`: always frees memory
 - - `clic3_memory_reallocate_raw`: always reallocates memory
 - `clic3_sort`

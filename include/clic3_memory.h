@@ -10,7 +10,11 @@ void clic3_memory_free(
   void*
 );
 
-void clic3_memory_allocate_raw(
+void* clic3_memory_allocate_raw(
+  unsigned int
+);
+
+void clic3_memory_allocate_unchecked(
   void*,
   unsigned int
 );

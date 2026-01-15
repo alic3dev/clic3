@@ -445,11 +445,11 @@ char* clic3_char_array_from_unsigned_long_int(
   }
 
   static char* char_array;
-  char_array = 0;
 
-  clic3_memory_allocate(
-    &char_array,
-    255
+  char_array = (
+    clic3_memory_allocate_raw(
+      255
+    )
   );
 
   while (
@@ -512,7 +512,7 @@ char* clic3_char_array_from_unsigned_long_int(
     length_char_array++
   ] = '\0';
 
-  clic3_memory_allocate(
+  clic3_memory_reallocate_raw(
     &char_array, 
     length_char_array
   );
@@ -526,11 +526,11 @@ char* clic3_char_array_from_float(
   unsigned char length_char_array = 1;
 
   static char* char_array;
-  char_array = 0;
-
-  clic3_memory_allocate(
-    &char_array,
-    255
+  
+  char_array = (
+    clic3_memory_allocate_raw(
+      255
+    )
   );
 
   unsigned char negative_is = 0;
@@ -643,7 +643,7 @@ char* clic3_char_array_from_float(
     length_char_array - 1
   ] = '\0';
 
-  clic3_memory_allocate(
+  clic3_memory_reallocate_raw(
     &char_array,
     length_char_array
   );
@@ -689,11 +689,9 @@ char* clic3_char_arrays_concatenate(
   );
 
   static char* char_array_destination;
-  char_array_destination = 0;
 
-  clic3_memory_allocate(
-    &char_array_destination,
-    (
+  char_array_destination = (
+    clic3_memory_allocate_raw(
       length_char_array_destination +
       1
     )
@@ -724,12 +722,10 @@ char** clic3_char_array_split_on_char(
   char deliminator
 ) {
   static char** split_char_arrays;
-  split_char_arrays = 0;
-
-  clic3_memory_allocate(
-    &split_char_arrays,
+  
+  split_char_arrays = clic3_memory_allocate_raw(
     sizeof(
-      char*
+      void*
     )
   );
 
@@ -757,16 +753,16 @@ char** clic3_char_array_split_on_char(
         1
       );
 
-      clic3_memory_allocate(
+      clic3_memory_reallocate_raw(
         &split_char_arrays,
         (
           sizeof(
-            char*
-          ) *
-          (unsigned long int) (
-            split_char_arrays[0]
-          ) +
-          1
+            void*
+          ) * (
+            (unsigned long int)
+            split_char_arrays[0] +
+            1
+          )
         )
       );
 
@@ -785,11 +781,11 @@ char** clic3_char_array_split_on_char(
         )
       );
 
-      clic3_memory_allocate(
-        &split_char_arrays[
-          (unsigned long int) split_char_arrays[0]
-        ],
-        (
+      split_char_arrays[
+        (unsigned long int)
+        split_char_arrays[0]
+      ] = (
+        clic3_memory_allocate_raw(
           length_split_char_array +
           1
         )
@@ -806,7 +802,8 @@ char** clic3_char_array_split_on_char(
       );
 
       split_char_arrays[
-        (unsigned long int) split_char_arrays[0]
+        (unsigned long int)
+        split_char_arrays[0]
       ][
         length_split_char_array
       ] = '\0';
@@ -834,25 +831,27 @@ char** clic3_char_array_split_on_char(
       1
     );
 
-    clic3_memory_allocate(
+    clic3_memory_reallocate_raw(
       &split_char_arrays,
       (
-        (unsigned long int) (
-          split_char_arrays[0]
-        ) +
+        (unsigned long int)
+        split_char_arrays[0] +
         1
       )
     );
 
-    clic3_memory_allocate(
-      &split_char_arrays[
-        (unsigned long int) split_char_arrays[0]
-      ],
-      1
+    split_char_arrays[
+      (unsigned long int)
+      split_char_arrays[0]
+    ] = (
+      clic3_memory_allocate_raw(
+        1
+      )
     );
 
     split_char_arrays[
-      (unsigned long int) split_char_arrays[0]
+      (unsigned long int)
+      split_char_arrays[0]
     ][0] = '\0';
   }
 

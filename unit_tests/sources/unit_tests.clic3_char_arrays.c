@@ -260,7 +260,7 @@ unsigned char unit_test_clic3_char_arrays_char_array_from_float_test() {
     status_test = 0;
   }
 
-  clic3_memory_free(
+  clic3_memory_free_raw(
     char_array
   );
 
@@ -268,8 +268,10 @@ unsigned char unit_test_clic3_char_arrays_char_array_from_float_test() {
     return status_test;
   }
 
-  char_array = clic3_char_array_from_float(
-    -1.9f
+  char_array = (
+    clic3_char_array_from_float(
+      -1.9f
+    )
   );
 
   if (
@@ -282,7 +284,7 @@ unsigned char unit_test_clic3_char_arrays_char_array_from_float_test() {
     status_test = 0;
   }
 
-  clic3_memory_free(
+  clic3_memory_free_raw(
     char_array
   );
 
@@ -290,8 +292,10 @@ unsigned char unit_test_clic3_char_arrays_char_array_from_float_test() {
     return status_test;
   }
 
-  char_array = clic3_char_array_from_float(
-    -12.5f
+  char_array = (
+    clic3_char_array_from_float(
+      -12.5f
+    )
   );
 
   if (
@@ -305,7 +309,7 @@ unsigned char unit_test_clic3_char_arrays_char_array_from_float_test() {
     status_test = 0;
   }
 
-  clic3_memory_free(
+  clic3_memory_free_raw(
     char_array
   );
 
@@ -313,8 +317,10 @@ unsigned char unit_test_clic3_char_arrays_char_array_from_float_test() {
     return status_test;
   }
 
-  char_array = clic3_char_array_from_float(
-    12.5f
+  char_array = (
+    clic3_char_array_from_float(
+      12.5f
+    )
   );
 
   if (
@@ -327,7 +333,7 @@ unsigned char unit_test_clic3_char_arrays_char_array_from_float_test() {
     status_test = 0;
   }
 
-  clic3_memory_free(
+  clic3_memory_free_raw(
     char_array
   );
 
@@ -361,7 +367,7 @@ unsigned char unit_test_clic3_char_arrays_char_arrays_concatenate_test() {
     status_test = 0;
   }
 
-  clic3_memory_free(
+  clic3_memory_free_raw(
     char_array_result
   );
 
@@ -426,12 +432,12 @@ unsigned char unit_test_clic3_char_arrays_char_array_split_on_char_test() {
     i <= (unsigned long int) splits[0];
     ++i
   ) {
-    clic3_memory_free(
+    clic3_memory_free_raw(
       splits[i]
     );
   }
 
-  clic3_memory_free(
+  clic3_memory_free_raw(
     splits
   );
 
@@ -509,21 +515,20 @@ struct unit_test unit_test_clic3_char_arrays_char_array_split_on_char = {
 };
 
 struct unit_test_suite* get_unit_test_suite_clic3_char_arrays() {
-  struct unit_test_suite* unit_test_suite_clic3_char_arrays = 0;
-  
-  clic3_memory_allocate(
-    &unit_test_suite_clic3_char_arrays,
-    sizeof(
-      struct unit_test_suite
+  struct unit_test_suite* unit_test_suite_clic3_char_arrays = (
+    clic3_memory_allocate_raw(
+      sizeof(
+        struct unit_test_suite
+      )
     )
   );
 
-  unit_test_suite_clic3_char_arrays->name = 0;
   unit_test_suite_clic3_char_arrays->length_name = 18;
 
-  clic3_memory_allocate(
-    &unit_test_suite_clic3_char_arrays->name,
-    unit_test_suite_clic3_char_arrays->length_name
+  unit_test_suite_clic3_char_arrays->name = (
+    clic3_memory_allocate_raw(
+      unit_test_suite_clic3_char_arrays->length_name
+    )
   );
 
   clic3_bytes_copy(
@@ -532,13 +537,15 @@ struct unit_test_suite* get_unit_test_suite_clic3_char_arrays() {
     unit_test_suite_clic3_char_arrays->length_name
   );
 
-  unit_test_suite_clic3_char_arrays->unit_tests = 0;
   unit_test_suite_clic3_char_arrays->length_unit_tests = 14;
   
-  clic3_memory_allocate(
-    &unit_test_suite_clic3_char_arrays->unit_tests,
-    sizeof(struct unit_test*) *
-    unit_test_suite_clic3_char_arrays->length_unit_tests
+  unit_test_suite_clic3_char_arrays->unit_tests = (
+    clic3_memory_allocate_raw(
+      sizeof(
+        struct unit_test*
+      ) *
+      unit_test_suite_clic3_char_arrays->length_unit_tests
+    )
   );
 
   unit_test_suite_clic3_char_arrays->unit_tests[0] = (

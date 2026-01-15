@@ -119,21 +119,20 @@ struct unit_test unit_test_clic3_char_is_digit = {
 };
 
 struct unit_test_suite* get_unit_test_suite_clic3_char() {
-  struct unit_test_suite* unit_test_suite_clic3_char = 0;
-  
-  clic3_memory_allocate(
-    &unit_test_suite_clic3_char,
-    sizeof(
-      struct unit_test_suite
+  struct unit_test_suite* unit_test_suite_clic3_char = (
+    clic3_memory_allocate_raw(
+      sizeof(
+        struct unit_test_suite
+      )
     )
   );
 
-  unit_test_suite_clic3_char->name = 0;
   unit_test_suite_clic3_char->length_name = 11;
 
-  clic3_memory_allocate(
-    &unit_test_suite_clic3_char->name,
-    unit_test_suite_clic3_char->length_name
+  unit_test_suite_clic3_char->name = (
+    clic3_memory_allocate_raw(
+      unit_test_suite_clic3_char->length_name
+    )
   );
 
   clic3_bytes_copy(
@@ -142,12 +141,10 @@ struct unit_test_suite* get_unit_test_suite_clic3_char() {
     unit_test_suite_clic3_char->length_name
   );
 
-  unit_test_suite_clic3_char->unit_tests = 0;
   unit_test_suite_clic3_char->length_unit_tests = 4;
 
-  clic3_memory_allocate(
-    &unit_test_suite_clic3_char->unit_tests,
-    (
+  unit_test_suite_clic3_char->unit_tests = (
+    clic3_memory_allocate_raw(
       sizeof(
         struct unit_test*
       ) *
