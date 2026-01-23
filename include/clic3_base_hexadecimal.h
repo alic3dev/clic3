@@ -1,0 +1,13 @@
+#ifndef __clic3_base_hexadecimal_h
+#define __clic3_base_hexadecimal_h
+
+#define clic3_base_hexdecimal_from_unsigned_char_value_maximum 0x100
+#define clic3_base_hexdecimal_from_unsigned_char_length_char_array 2
+
+extern const char clic3_base_hexadecimal_unsigned_char_mapping[
+  clic3_base_hexdecimal_from_unsigned_char_value_maximum
+][
+  clic3_base_hexdecimal_from_unsigned_char_length_char_array
+];
+
+#endif
