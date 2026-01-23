@@ -1,0 +1,27 @@
+#ifndef __unit_tests_clic3_string_h
+#define __unit_tests_clic3_string_h
+
+#include <unit_test_suite.h>
+#include <unit_test.h>
+
+unsigned char unit_test_clic3_string_initialize_test();
+unsigned char unit_test_clic3_string_initialize_length_test();
+unsigned char unit_test_clic3_string_initialize_null_terminated_length_test();
+unsigned char unit_test_clic3_string_initialize_length_termination_test();
+unsigned char unit_test_clic3_string_initialize_from_char_array_test();
+unsigned char unit_test_clic3_string_initialize_from_char_array_length_test();
+unsigned char unit_test_clic3_string_initialize_from_char_array_length_termination_test();
+unsigned char unit_test_clic3_string_destroy_test();
+
+extern struct unit_test unit_test_clic3_string_initialize;
+extern struct unit_test unit_test_clic3_string_initialize_length;
+extern struct unit_test unit_test_clic3_string_initialize_null_terminated_length;
+extern struct unit_test unit_test_clic3_string_initialize_length_termination;
+extern struct unit_test unit_test_clic3_string_initialize_from_char_array;
+extern struct unit_test unit_test_clic3_string_initialize_from_char_array_length;
+extern struct unit_test unit_test_clic3_string_initialize_from_char_array_length_termination;
+extern struct unit_test unit_test_clic3_string_destroy;
+
+struct unit_test_suite* get_unit_test_suite_clic3_string();
+
+#endif
