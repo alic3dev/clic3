@@ -64,6 +64,7 @@ c_standard_library
 - - `clic3_sort_reverse_unsigned_short_int`
 - - `clic3_sort_reverse_long_int`
 - - `clic3_sort_reverse_unsigned_long_int`
+- `clic3_string`:string structure functionality
 - `clic3_vector`:has_been_moved_to->{[`math_c`](https://github.com/alic3dev/math_c)}
 
 ## development
