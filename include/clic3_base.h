@@ -7,7 +7,6 @@
 #define clic3_base_char_array_mapping_length \
   (\
     clic3_numbers_definition_length +\
-    clic3_alphabet_english_definition_length +\
     clic3_alphabet_english_definition_length\
   )
 
