@@ -5,6 +5,12 @@
     type* to_sort,\
     unsigned long int length_to_sort\
   ) {\
+    if (\
+      length_to_sort == 0\
+    ) {\
+      return;\
+    }\
+    \
     type hold;\
     \
     for (\
@@ -36,7 +42,61 @@
   clic3_sort_macro(type, type)
 
 clic3_sort_macro_unnamed(char)
+clic3_sort_macro(unsigned char, unsigned_char)
+
 clic3_sort_macro_unnamed(double)
 clic3_sort_macro_unnamed(float)
+
 clic3_sort_macro_unnamed(int)
+clic3_sort_macro(unsigned int, unsigned_int)
+clic3_sort_macro(short int, short_int)
+clic3_sort_macro(unsigned short int, unsigned_short_int)
+clic3_sort_macro(long int, long_int)
 clic3_sort_macro(unsigned long int, unsigned_long_int)
+
+void clic3_sort_char_arrays(
+  char** to_sort,
+  unsigned long int length_to_sort
+) {
+  if (
+    length_to_sort == 0
+  ) {
+    return;
+  }
+  
+  void* hold;
+  
+  for (
+    unsigned long int index_to_sort = 0;
+    index_to_sort < length_to_sort - 1;
+    ++index_to_sort
+  ) {
+    for (
+      unsigned long int index_secondary_to_sort = index_to_sort + 1;
+      index_secondary_to_sort < length_to_sort;
+      ++index_secondary_to_sort
+    ) {
+      for (
+        unsigned int index_array = 0;
+        to_sort[index_to_sort][index_array] != '\0' &&
+        to_sort[index_secondary_to_sort][index_array] != '\0';
+        ++index_array
+      ) {
+        if (
+          to_sort[index_to_sort][index_array] >
+          to_sort[index_secondary_to_sort][index_array]
+        ) {
+          hold = to_sort[index_to_sort];
+          to_sort[index_to_sort] = to_sort[index_secondary_to_sort];
+          to_sort[index_secondary_to_sort] = hold;
+          break;
+        } else if (
+          to_sort[index_to_sort][index_array] !=
+          to_sort[index_secondary_to_sort][index_array] 
+        ) {
+          break;
+        }
+      }
+    }
+  }
+}

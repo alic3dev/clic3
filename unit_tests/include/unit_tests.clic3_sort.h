@@ -4,35 +4,29 @@
 #include <unit_test_suite.h>
 #include <unit_test.h>
 
-unsigned char unit_test_clic3_sort_sort_char_test_sort();
-unsigned char unit_test_clic3_sort_sort_reverse_char_test_sort();
+#define clic3_sort_test_definition_macro_statement(type, name_type)\
+  unsigned char unit_test_clic3_sort_sort_ ## name_type ## _test_sort();\
+  extern struct unit_test unit_test_clic3_sort_sort_ ## name_type;
 
-unsigned char unit_test_clic3_sort_sort_double_test_sort();
-unsigned char unit_test_clic3_sort_sort_reverse_double_test_sort();
+#define clic3_sort_test_definition_macro(type, name_type)\
+  clic3_sort_test_definition_macro_statement(type, name_type)\
+  clic3_sort_test_definition_macro_statement(type, reverse_ ## name_type)
 
-unsigned char unit_test_clic3_sort_sort_float_test_sort();
-unsigned char unit_test_clic3_sort_sort_reverse_float_test_sort();
+#define clic3_sort_test_definition_macro_unnamed(type)\
+  clic3_sort_test_definition_macro(type, type)
 
-unsigned char unit_test_clic3_sort_sort_int_test_sort();
-unsigned char unit_test_clic3_sort_sort_reverse_int_test_sort();
+clic3_sort_test_definition_macro_unnamed(char)
+clic3_sort_test_definition_macro(unsigned char, unsigned_char)
 
-unsigned char unit_test_clic3_sort_sort_unsigned_long_int_test_sort();
-unsigned char unit_test_clic3_sort_sort_reverse_unsigned_long_int_test_sort();
+clic3_sort_test_definition_macro_unnamed(double)
+clic3_sort_test_definition_macro_unnamed(float)
 
-extern struct unit_test unit_test_clic3_sort_sort_char;
-extern struct unit_test unit_test_clic3_sort_sort_reverse_char;
-
-extern struct unit_test unit_test_clic3_sort_sort_double;
-extern struct unit_test unit_test_clic3_sort_sort_reverse_double;
-
-extern struct unit_test unit_test_clic3_sort_sort_float;
-extern struct unit_test unit_test_clic3_sort_sort_reverse_float;
-
-extern struct unit_test unit_test_clic3_sort_sort_int;
-extern struct unit_test unit_test_clic3_sort_sort_reverse_int;
-
-extern struct unit_test unit_test_clic3_sort_sort_unsigned_long_int;
-extern struct unit_test unit_test_clic3_sort_sort_reverse_unsigned_long_int;
+clic3_sort_test_definition_macro_unnamed(int)
+clic3_sort_test_definition_macro(unsigned int, unsigned_int)
+clic3_sort_test_definition_macro(short int, short_int)
+clic3_sort_test_definition_macro(unsigned short int, unsigned_short_int)
+clic3_sort_test_definition_macro(long int, long_int)
+clic3_sort_test_definition_macro(unsigned long int, unsigned_long_int)
 
 struct unit_test_suite* get_unit_test_suite_clic3_sort();
 

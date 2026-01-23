@@ -3,16 +3,18 @@
 #include <clic3_bytes.h>
 #include <clic3_char.h>
 
+
+#include <clic3_memory.h>
+
 #include <limits.h>
 #include <stdarg.h>
-#include <stdlib.h>
 
 unsigned char clic3_char_arrays_equal(
   char* char_array_first,
   char* char_array_second
 ) {
   unsigned int char_array_index = 0;
-  
+
   char char_first;
   char char_second;
 
@@ -71,8 +73,72 @@ int clic3_char_arrays_within(
   }
 
   va_end(arguments_pointer);
-  
+
   return -1;
+}
+
+void clic3_char_array_to_lowercase(
+  char* char_array
+) {
+  unsigned int index_character = 0;
+
+  while (
+    char_array[
+      index_character
+    ] != '\0'
+  ) {
+    if (
+      char_array[
+        index_character
+      ] >= 'A' &&
+      char_array[
+        index_character
+      ] <= 'Z'
+    ) {
+      char_array[
+        index_character
+      ] = char_array[
+        index_character
+      ] - 'A' + 'a';
+    }
+
+    index_character = (
+      index_character +
+      1
+    );
+  }
+}
+
+void clic3_char_array_to_uppercase(
+  char* char_array
+) {
+  unsigned int index_character = 0;
+
+  while (
+    char_array[
+      index_character
+    ] != '\0'
+  ) {
+    if (
+      char_array[
+        index_character
+      ] >= 'a' &&
+      char_array[
+        index_character
+      ] <= 'z'
+    ) {
+      char_array[
+        index_character
+      ] = char_array[
+        index_character
+      ] - 'a' + 'A';
+    }
+
+    index_character = (
+      index_character +
+      1
+    );
+  }
 }
 
 unsigned char clic3_char_array_to_int(
@@ -87,7 +153,7 @@ unsigned char clic3_char_array_to_int(
 
   if (char_current == '-') {
     is_negative = 1;
-    
+
     index_char_array = (
       index_char_array + 1
     );
@@ -122,7 +188,7 @@ unsigned char clic3_char_array_to_int(
     ? -int_return
     : int_return
   );
-  
+
   return 0;
 }
 
@@ -138,7 +204,7 @@ unsigned char clic3_char_array_to_long_int(
 
   if (char_current == '-') {
     is_negative = 1;
-    
+
     index_char_array = (
       index_char_array + 1
     );
@@ -151,7 +217,7 @@ unsigned char clic3_char_array_to_long_int(
     if (
       clic3_char_is_digit(char_current) == 1
     ) {
-      return 1; 
+      return 1;
     } else {
       long_int_return = (
         (long_int_return * 10)
@@ -173,7 +239,7 @@ unsigned char clic3_char_array_to_long_int(
     ? -long_int_return
     : long_int_return
   );
-  
+
   return 0;
 }
 
@@ -208,7 +274,51 @@ unsigned char clic3_char_array_to_unsigned_int(
   }
 
   *pointer_unsigned_int = unsigned_int_return;
+
+  return 0;
+}
+
+unsigned char clic3_char_array_to_unsigned_short_int(
+  char* char_array,
+  unsigned short int* pointer_unsigned_short_int
+) {
+  unsigned int unsigned_short_int_return = 0;
+
+  unsigned int index_char_array = 0;
   
+  char char_current = (
+    char_array[
+      index_char_array
+    ]
+  );
+
+  while (char_current != '\0') {
+    if (
+      clic3_char_is_digit(
+        char_current
+      ) == 1
+    ) {
+      unsigned_short_int_return = (
+        (unsigned_short_int_return * 10)
+        + (char_current - '0')
+      );
+    } else {
+      return 1;
+    }
+
+    index_char_array = (
+      index_char_array + 1
+    );
+
+    char_current = char_array[
+      index_char_array
+    ];
+  }
+
+  *pointer_unsigned_short_int = (
+    unsigned_short_int_return
+  );
+
   return 0;
 }
 
@@ -230,7 +340,7 @@ unsigned char clic3_char_array_to_unsigned_long_int(
         + (char_current - '0')
       );
     } else {
-      return 1; 
+      return 1;
     }
 
     index_char_array = (
@@ -243,7 +353,7 @@ unsigned char clic3_char_array_to_unsigned_long_int(
   }
 
   *pointer_unsigned_long_int = unsigned_long_int_return;
-  
+
   return 0;
 }
 
@@ -262,7 +372,7 @@ unsigned char clic3_char_array_to_float(
 
   if (char_current == '-') {
     is_negative = 1;
-    
+
     index_char_array = (
       index_char_array + 1
     );
@@ -293,7 +403,7 @@ unsigned char clic3_char_array_to_float(
           (float)(char_current - '0') / (float)decimal
         )
       );
-      
+
       decimal = (
         decimal * 10
       );
@@ -316,21 +426,118 @@ unsigned char clic3_char_array_to_float(
     ? -float_return
     : float_return
    );
-  
+
   return 0;
 }
 
-char* clic3_char_array_from_float(float value) {
+char* clic3_char_array_from_unsigned_long_int(
+  unsigned long int value
+) {
+  unsigned char length_char_array = 0;
+  unsigned char negative_is = (
+    value < 0
+  );
+
+  if (
+    negative_is
+  ) {
+    value = -value;
+  }
+
+  static char* char_array;
+
+  char_array = (
+    clic3_memory_allocate_raw(
+      255
+    )
+  );
+
+  while (
+    value >= 10
+  ) {
+    unsigned long int value_next = (
+      value / 10
+    );
+
+    char_array[
+      length_char_array++
+    ] = (
+      '0' + (
+        value - (
+          value_next *
+          10
+        )
+      )
+    );
+
+    value = value_next;
+  }
+
+  char_array[
+    length_char_array++
+  ] = (
+    '0' +
+    value
+  );
+
+  for (
+    unsigned char index_char = 0;
+    index_char < (
+      length_char_array /
+      2 + (
+        length_char_array %
+        2
+      )
+    );
+    ++index_char
+  ) {
+    char char_placeholder = char_array[
+      index_char
+    ];
+
+    char_array[
+      index_char
+    ] = char_array[
+      length_char_array -
+      index_char - 1
+    ];
+
+    char_array[
+      length_char_array -
+      index_char - 1
+    ] = char_placeholder;
+  }
+
+  char_array[
+    length_char_array++
+  ] = '\0';
+
+  clic3_memory_reallocate_raw(
+    &char_array, 
+    length_char_array
+  );
+
+  return char_array;
+}
+
+char* clic3_char_array_from_float(
+  float value
+) {
   unsigned char length_char_array = 1;
 
   static char* char_array;
-  char_array = malloc(
-    sizeof(char) * 255
+  
+  char_array = (
+    clic3_memory_allocate_raw(
+      255
+    )
   );
 
   unsigned char negative_is = 0;
 
-  if (value < 0.0f) {
+  if (
+    value < 0.0f
+  ) {
     negative_is = 1;
 
     value = -value;
@@ -436,9 +643,9 @@ char* clic3_char_array_from_float(float value) {
     length_char_array - 1
   ] = '\0';
 
-  char_array = realloc(
-    char_array,
-    sizeof(char) * length_char_array
+  clic3_memory_reallocate_raw(
+    &char_array,
+    length_char_array
   );
 
   return char_array;
@@ -449,7 +656,17 @@ unsigned int clic3_char_array_length(
 ) {
   unsigned int length_char_array = 0;
 
-  while(char_array[length_char_array] != '\0' && ++length_char_array < UINT_MAX){}
+  while(
+    char_array[
+      length_char_array
+    ] != '\0' &&
+    length_char_array < UINT_MAX
+  ){
+    length_char_array = (
+      length_char_array +
+      1
+    );
+  }
 
   return length_char_array;
 }
@@ -472,8 +689,12 @@ char* clic3_char_arrays_concatenate(
   );
 
   static char* char_array_destination;
-  char_array_destination = malloc(
-    sizeof(char) * length_char_array_destination + 1
+
+  char_array_destination = (
+    clic3_memory_allocate_raw(
+      length_char_array_destination +
+      1
+    )
   );
 
   clic3_bytes_copy(
@@ -493,4 +714,148 @@ char* clic3_char_arrays_concatenate(
   ] = '\0';
 
   return char_array_destination;
+}
+
+
+char** clic3_char_array_split_on_char(
+  char* char_array,
+  char deliminator
+) {
+  static char** split_char_arrays;
+  
+  split_char_arrays = clic3_memory_allocate_raw(
+    sizeof(
+      void*
+    )
+  );
+
+  split_char_arrays[0] = 0;
+
+  unsigned long int index_previous_split_char_buffer = 0;
+  unsigned long int index_char_array = 0;
+
+  while (
+    char_array[
+      index_char_array
+    ] != '\0'
+  ) {
+    if (
+      char_array[
+        index_char_array
+      ] == deliminator ||
+      char_array[
+        index_char_array +
+        1
+      ] == '\0'
+    ) {
+      split_char_arrays[0] = (
+        split_char_arrays[0] +
+        1
+      );
+
+      clic3_memory_reallocate_raw(
+        &split_char_arrays,
+        (
+          sizeof(
+            void*
+          ) * (
+            (unsigned long int)
+            split_char_arrays[0] +
+            1
+          )
+        )
+      );
+
+      unsigned long int length_split_char_array = (
+        index_char_array -
+        index_previous_split_char_buffer + (
+          char_array[
+            index_char_array +
+            1
+          ] == '\0' &&
+          char_array[
+            index_char_array
+          ] != deliminator
+          ? 1
+          : 0
+        )
+      );
+
+      split_char_arrays[
+        (unsigned long int)
+        split_char_arrays[0]
+      ] = (
+        clic3_memory_allocate_raw(
+          length_split_char_array +
+          1
+        )
+      );
+
+      clic3_bytes_copy(
+        split_char_arrays[
+          (unsigned long int) split_char_arrays[0]
+        ], (
+          char_array +
+          index_previous_split_char_buffer
+        ),
+        length_split_char_array
+      );
+
+      split_char_arrays[
+        (unsigned long int)
+        split_char_arrays[0]
+      ][
+        length_split_char_array
+      ] = '\0';
+
+      index_previous_split_char_buffer = (
+        index_char_array +
+        1
+      );
+    }
+
+    index_char_array = (
+      index_char_array +
+      1
+    );
+  }
+
+  if (
+    index_char_array > 0 &&
+    char_array[
+      index_char_array - 1
+    ] == deliminator
+  ) {
+    split_char_arrays[0] = (
+      split_char_arrays[0] +
+      1
+    );
+
+    clic3_memory_reallocate_raw(
+      &split_char_arrays,
+      (
+        (unsigned long int)
+        split_char_arrays[0] +
+        1
+      )
+    );
+
+    split_char_arrays[
+      (unsigned long int)
+      split_char_arrays[0]
+    ] = (
+      clic3_memory_allocate_raw(
+        1
+      )
+    );
+
+    split_char_arrays[
+      (unsigned long int)
+      split_char_arrays[0]
+    ][0] = '\0';
+  }
+
+  return (
+    split_char_arrays
+  );
 }

@@ -1,9 +1,8 @@
 #include <unit_tests.clic3_char.h>
 
-#include <stdlib.h>
-
 #include <clic3_bytes.h>
 #include <clic3_char.h>
+#include <clic3_memory.h>
 
 #include <unit_test.h>
 #include <unit_test_suite.h>
@@ -120,15 +119,20 @@ struct unit_test unit_test_clic3_char_is_digit = {
 };
 
 struct unit_test_suite* get_unit_test_suite_clic3_char() {
-  struct unit_test_suite* unit_test_suite_clic3_char = malloc(
-    sizeof(struct unit_test_suite)
+  struct unit_test_suite* unit_test_suite_clic3_char = (
+    clic3_memory_allocate_raw(
+      sizeof(
+        struct unit_test_suite
+      )
+    )
   );
 
   unit_test_suite_clic3_char->length_name = 11;
 
-  unit_test_suite_clic3_char->name = malloc(
-    sizeof(char) *
-    unit_test_suite_clic3_char->length_name
+  unit_test_suite_clic3_char->name = (
+    clic3_memory_allocate_raw(
+      unit_test_suite_clic3_char->length_name
+    )
   );
 
   clic3_bytes_copy(
@@ -138,9 +142,14 @@ struct unit_test_suite* get_unit_test_suite_clic3_char() {
   );
 
   unit_test_suite_clic3_char->length_unit_tests = 4;
-  unit_test_suite_clic3_char->unit_tests = malloc(
-    sizeof(struct unit_test*) *
-    unit_test_suite_clic3_char->length_unit_tests
+
+  unit_test_suite_clic3_char->unit_tests = (
+    clic3_memory_allocate_raw(
+      sizeof(
+        struct unit_test*
+      ) *
+      unit_test_suite_clic3_char->length_unit_tests
+    )
   );
 
   unit_test_suite_clic3_char->unit_tests[0] = (
@@ -159,5 +168,7 @@ struct unit_test_suite* get_unit_test_suite_clic3_char() {
     &unit_test_clic3_char_is_digit
   );
 
-  return unit_test_suite_clic3_char;
+  return (
+    unit_test_suite_clic3_char
+  );
 }

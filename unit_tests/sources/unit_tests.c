@@ -74,11 +74,15 @@ int main() {
           unit_test->name
         );
 
-        code_exit = status_test == 0 ? 1 : status_test;
+        code_exit = !(
+          status_test == 0
+        );
       }
     }
 
-    unit_test_suite_destroy(unit_test_suite);
+    unit_test_suite_destroy(
+      unit_test_suite
+    );
   }
 
   return code_exit;
