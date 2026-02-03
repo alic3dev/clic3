@@ -1,5 +1,13 @@
 #include <clic3_colours.h>
 
+const char clic3_colours_foreground[
+  clic3_colours_length_colour +
+  1
+] = (
+  clic3_colours_definition_foreground
+  "\0"
+);
+
 const char clic3_colours_red[
   clic3_colours_length_colour +
   1
