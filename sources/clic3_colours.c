@@ -270,7 +270,6 @@ const char clic3_colours_bold_background[
   "\0"
 );
 
-
 const char clic3_colours_reset[
   clic3_colours_length_colour +
   1

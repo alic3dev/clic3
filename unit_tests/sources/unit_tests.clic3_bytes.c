@@ -134,7 +134,7 @@ unsigned char unit_test_clic3_bytes_bytes_copy_test_int() {
   clic3_memory_free_raw(
     bytes_from
   );
-  
+
   clic3_memory_free_raw(
     bytes_to
   );
@@ -153,7 +153,7 @@ unsigned char unit_test_clic3_bytes_bytes_copy_test_struct() {
       )
     )
   };
-  
+
   struct structure_unit_test_clic3_bytes_bytes_copy bytes_to;
 
   clic3_bytes_copy(

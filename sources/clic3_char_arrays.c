@@ -3,7 +3,6 @@
 #include <clic3_bytes.h>
 #include <clic3_char.h>
 
-
 #include <clic3_memory.h>
 
 #include <limits.h>
@@ -285,7 +284,7 @@ unsigned char clic3_char_array_to_unsigned_short_int(
   unsigned int unsigned_short_int_return = 0;
 
   unsigned int index_char_array = 0;
-  
+
   char char_current = (
     char_array[
       index_char_array
@@ -513,7 +512,7 @@ char* clic3_char_array_from_unsigned_long_int(
   ] = '\0';
 
   clic3_memory_reallocate_raw(
-    &char_array, 
+    &char_array,
     length_char_array
   );
 
@@ -526,7 +525,7 @@ char* clic3_char_array_from_float(
   unsigned char length_char_array = 1;
 
   static char* char_array;
-  
+
   char_array = (
     clic3_memory_allocate_raw(
       255
@@ -716,13 +715,12 @@ char* clic3_char_arrays_concatenate(
   return char_array_destination;
 }
 
-
 char** clic3_char_array_split_on_char(
   char* char_array,
   char deliminator
 ) {
   static char** split_char_arrays;
-  
+
   split_char_arrays = clic3_memory_allocate_raw(
     sizeof(
       void*

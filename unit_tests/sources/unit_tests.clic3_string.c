@@ -7,7 +7,6 @@
 #include <unit_test.h>
 #include <unit_test_suite.h>
 
-
 unsigned char unit_test_clic3_string_initialize_test() {
   struct clic3_string clic3_string;
 
@@ -109,7 +108,7 @@ unsigned char unit_test_clic3_string_initialize_length_termination_test() {
   unsigned char status_test = (
     clic3_string_unknown.length == length_clic3_string &&
     clic3_string_unknown.termination == clic3_string_termination_unknown &&
-    
+
     clic3_string_none.length == length_clic3_string &&
     clic3_string_none.termination == clic3_string_termination_none &&
 
