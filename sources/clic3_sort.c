@@ -63,9 +63,9 @@ void clic3_sort_char_arrays(
   ) {
     return;
   }
-  
+
   void* hold;
-  
+
   for (
     unsigned long int index_to_sort = 0;
     index_to_sort < length_to_sort - 1;
@@ -92,7 +92,7 @@ void clic3_sort_char_arrays(
           break;
         } else if (
           to_sort[index_to_sort][index_array] !=
-          to_sort[index_secondary_to_sort][index_array] 
+          to_sort[index_secondary_to_sort][index_array]
         ) {
           break;
         }

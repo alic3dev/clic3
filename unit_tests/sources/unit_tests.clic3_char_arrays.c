@@ -538,7 +538,7 @@ struct unit_test_suite* get_unit_test_suite_clic3_char_arrays() {
   );
 
   unit_test_suite_clic3_char_arrays->length_unit_tests = 14;
-  
+
   unit_test_suite_clic3_char_arrays->unit_tests = (
     clic3_memory_allocate_raw(
       sizeof(
