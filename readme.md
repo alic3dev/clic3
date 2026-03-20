@@ -10,7 +10,7 @@ c_standard_library
 - `clic3_base`: number bases
 - - `clic3_base_char_array_mapping`: base numerical symbol definitions
 - `clic3_base_hexadecimal`: hexadecimal number base
-- - `clic3_base_hexadecimal_unsigned_char_mapping`: quick mapping of values from 0x00 to 0xff to char arrays
+- - `clic3_base_hexadecimal_unsigned_char_mapping`: quick mapping of values from `0x00` to `0xff` to char arrays
 - `clic3_bytes`: functions dealing with raw bytes
 - - `clic3_bytes_copy`
 - `clic3_char`: char functions
@@ -28,6 +28,7 @@ c_standard_library
 - - `clic3_char_array_to_unsigned_int`
 - - `clic3_char_array_to_unsigned_long_int`
 - - `clic3_char_array_to_float`
+- - `clic3_char_array_from_unsigned_long_int`
 - - `clic3_char_array_from_float`
 - - `clic3_char_array_length`
 - - `clic3_char_arrays_concatenate`
@@ -44,6 +45,7 @@ c_standard_library
 - `clic3_numbers`: numbers
 - - `clic3_numbers_definition`: numbers as characters
 - `clic3_sort`: sorting functions
+- - `clic3_sort`
 - - `clic3_sort_char`
 - - `clic3_sort_unsigned_char`
 - - `clic3_sort_double`
@@ -65,6 +67,16 @@ c_standard_library
 - - `clic3_sort_reverse_long_int`
 - - `clic3_sort_reverse_unsigned_long_int`
 - `clic3_string`:string structure functionality
+- - `enum clic3_string_termination`: enumeration of string terminating types
+- - `struct clic3_string`: structure for strings containing a char array, length, and termination type
+- - `clic3_string_initialize`
+- - `clic3_string_initialize_length`
+- - `clic3_string_initialize_null_terminated_length`
+- - `clic3_string_initialize_length_termination`
+- - `clic3_string_initialize_from_char_array`
+- - `clic3_string_initialize_from_char_array_length`
+- - `clic3_string_initialize_from_char_array_length_termination`
+- - `clic3_string_destroy`
 - `clic3_vector`:has_been_moved_to->{[`math_c`](https://github.com/alic3dev/math_c)}
 
 ## development
@@ -93,6 +105,8 @@ make clean_all
 ### `make` flags
 
 - `debug=1`:adds->{`debugging_symbols`}:disables->{`optimizations`};
+- `target_device`:sets_the_target_device_platform->{values::[`mac`|`iphone`]}
+- `target_device_version`:sets_the_target_version.for->{`macos`|`ios`};
 
 ## copyright|copyleft
 
