@@ -4,6 +4,17 @@
 #include <unit_test_suite.h>
 #include <unit_test.h>
 
+char clic3_sort_function_structure_test(
+  void*,
+  void*
+);
+
+struct structure_clic3_sort_test {
+  unsigned char index_order;
+  unsigned long int value;
+  float value_secondary;
+};
+
 #define clic3_sort_test_definition_macro_statement(type, name_type)\
   unsigned char unit_test_clic3_sort_sort_ ## name_type ## _test_sort();\
   extern struct unit_test unit_test_clic3_sort_sort_ ## name_type;
@@ -14,6 +25,9 @@
 
 #define clic3_sort_test_definition_macro_unnamed(type)\
   clic3_sort_test_definition_macro(type, type)
+
+unsigned char unit_test_clic3_sort_sort_test_sort();
+extern struct unit_test unit_test_clic3_sort_sort;
 
 clic3_sort_test_definition_macro_unnamed(char)
 clic3_sort_test_definition_macro(unsigned char, unsigned_char)
