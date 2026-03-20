@@ -7,6 +7,120 @@
 #include <unit_test.h>
 #include <unit_test_suite.h>
 
+char clic3_sort_function_structure_test(
+  void* item_first,
+  void* item_secondary
+) {
+  struct structure_clic3_sort_test* structure_clic3_sort_test_first = (
+    item_first
+  );
+
+  struct structure_clic3_sort_test* structure_clic3_sort_test_secondary = (
+    item_secondary
+  );
+
+  return (
+    (
+      structure_clic3_sort_test_first->value +
+      structure_clic3_sort_test_first->value_secondary
+    ) >
+    (
+      structure_clic3_sort_test_secondary->value +
+      structure_clic3_sort_test_secondary->value_secondary
+    )
+  );
+}
+
+unsigned char unit_test_clic3_sort_sort_test_sort() {
+  struct structure_clic3_sort_test structures_clic3_sort_test[
+     0x04
+  ] = {
+    {
+      .index_order = (
+        0x03
+      ),
+      .value = (
+        0x54
+      ),
+      .value_secondary = (
+        85.4f
+      )
+    },
+    {
+      .index_order = (
+        0x00
+      ),
+      .value = (
+        0x01
+      ),
+      .value_secondary = (
+        0.894f
+      )
+    },
+    {
+      .index_order = (
+        0x02
+      ),
+      .value = (
+        0x54
+      ),
+      .value_secondary = (
+        32.2f
+      )
+    },
+    {
+      .index_order = (
+        0x01
+      ),
+      .value = (
+        0x53
+      ),
+      .value_secondary = (
+        32.2f
+      )
+    }
+  };
+
+  clic3_sort(
+    structures_clic3_sort_test,
+    0x04,
+    sizeof(
+      struct structure_clic3_sort_test
+    ),
+    clic3_sort_function_structure_test
+  );
+
+  for (
+    unsigned char index_structure_clic3_sort_test = (
+      0x00
+    );
+    (
+      index_structure_clic3_sort_test <
+      0x04
+    );
+    ++index_structure_clic3_sort_test
+  ) {
+    struct structure_clic3_sort_test* structure_clic3_sort_test = &(
+      structures_clic3_sort_test[
+        index_structure_clic3_sort_test
+      ]
+    );
+
+    if (
+      structure_clic3_sort_test->index_order !=
+      index_structure_clic3_sort_test
+    ) {
+      return (
+        0x00
+      );
+    }
+  }
+
+  return (
+    0x01
+  );
+}
+
 unsigned char unit_test_clic3_sort_sort_char_test_sort() {
   unsigned long int length_values = 10;
 
@@ -1035,6 +1149,11 @@ unsigned char unit_test_clic3_sort_sort_reverse_unsigned_long_int_test_sort() {
   return status_test;
 }
 
+struct unit_test unit_test_clic3_sort_sort = {
+  .name = "clic3_sort:sort",
+  .test = unit_test_clic3_sort_sort_test_sort
+};
+
 struct unit_test unit_test_clic3_sort_sort_char = {
   .name = "clic3_sort_char:sort",
   .test = unit_test_clic3_sort_sort_char_test_sort
@@ -1158,7 +1277,7 @@ struct unit_test_suite* get_unit_test_suite_clic3_sort() {
     unit_test_suite_clic3_sort->length_name
   );
 
-  unit_test_suite_clic3_sort->length_unit_tests = 20;
+  unit_test_suite_clic3_sort->length_unit_tests = 21;
 
   unit_test_suite_clic3_sort->unit_tests = (
     clic3_memory_allocate_raw(
@@ -1169,85 +1288,133 @@ struct unit_test_suite* get_unit_test_suite_clic3_sort() {
     )
   );
 
-  unit_test_suite_clic3_sort->unit_tests[0] = (
+  unit_test_suite_clic3_sort->unit_tests[
+    0x00
+  ] = (
+    &unit_test_clic3_sort_sort
+  );
+
+  unit_test_suite_clic3_sort->unit_tests[
+    0x01
+  ] = (
     &unit_test_clic3_sort_sort_char
   );
 
-  unit_test_suite_clic3_sort->unit_tests[1] = (
+  unit_test_suite_clic3_sort->unit_tests[
+    0x02
+  ] = (
     &unit_test_clic3_sort_sort_reverse_char
   );
 
-  unit_test_suite_clic3_sort->unit_tests[2] = (
+  unit_test_suite_clic3_sort->unit_tests[
+    0x03
+  ] = (
     &unit_test_clic3_sort_sort_unsigned_char
   );
 
-  unit_test_suite_clic3_sort->unit_tests[3] = (
+  unit_test_suite_clic3_sort->unit_tests[
+    0x04
+  ] = (
     &unit_test_clic3_sort_sort_reverse_unsigned_char
   );
 
-  unit_test_suite_clic3_sort->unit_tests[4] = (
+  unit_test_suite_clic3_sort->unit_tests[
+    0x05
+  ] = (
     &unit_test_clic3_sort_sort_double
   );
 
-  unit_test_suite_clic3_sort->unit_tests[5] = (
+  unit_test_suite_clic3_sort->unit_tests[
+    0x06
+  ] = (
     &unit_test_clic3_sort_sort_reverse_double
   );
 
-  unit_test_suite_clic3_sort->unit_tests[6] = (
+  unit_test_suite_clic3_sort->unit_tests[
+    0x07
+  ] = (
     &unit_test_clic3_sort_sort_float
   );
 
-  unit_test_suite_clic3_sort->unit_tests[7] = (
+  unit_test_suite_clic3_sort->unit_tests[
+    0x08
+  ] = (
     &unit_test_clic3_sort_sort_reverse_float
   );
 
-  unit_test_suite_clic3_sort->unit_tests[8] = (
+  unit_test_suite_clic3_sort->unit_tests[
+    0x09
+  ] = (
     &unit_test_clic3_sort_sort_int
   );
 
-  unit_test_suite_clic3_sort->unit_tests[9] = (
+  unit_test_suite_clic3_sort->unit_tests[
+    0x0a
+  ] = (
     &unit_test_clic3_sort_sort_reverse_int
   );
 
-  unit_test_suite_clic3_sort->unit_tests[10] = (
+  unit_test_suite_clic3_sort->unit_tests[
+    0x0b
+  ] = (
     &unit_test_clic3_sort_sort_unsigned_int
   );
 
-  unit_test_suite_clic3_sort->unit_tests[11] = (
+  unit_test_suite_clic3_sort->unit_tests[
+    0x0c
+  ] = (
     &unit_test_clic3_sort_sort_reverse_unsigned_int
   );
 
-  unit_test_suite_clic3_sort->unit_tests[12] = (
+  unit_test_suite_clic3_sort->unit_tests[
+    0x0d
+  ] = (
     &unit_test_clic3_sort_sort_short_int
   );
 
-  unit_test_suite_clic3_sort->unit_tests[13] = (
+  unit_test_suite_clic3_sort->unit_tests[
+    0x0e
+  ] = (
     &unit_test_clic3_sort_sort_reverse_short_int
   );
 
-  unit_test_suite_clic3_sort->unit_tests[14] = (
+  unit_test_suite_clic3_sort->unit_tests[
+    0x0f
+  ] = (
     &unit_test_clic3_sort_sort_unsigned_short_int
   );
 
-  unit_test_suite_clic3_sort->unit_tests[15] = (
+  unit_test_suite_clic3_sort->unit_tests[
+    0x10
+  ] = (
     &unit_test_clic3_sort_sort_reverse_unsigned_short_int
   );
 
-  unit_test_suite_clic3_sort->unit_tests[16] = (
+  unit_test_suite_clic3_sort->unit_tests[
+    0x11
+  ] = (
     &unit_test_clic3_sort_sort_long_int
   );
 
-  unit_test_suite_clic3_sort->unit_tests[17] = (
+  unit_test_suite_clic3_sort->unit_tests[
+    0x12
+  ] = (
     &unit_test_clic3_sort_sort_reverse_long_int
   );
 
-  unit_test_suite_clic3_sort->unit_tests[18] = (
+  unit_test_suite_clic3_sort->unit_tests[
+    0x13
+  ] = (
     &unit_test_clic3_sort_sort_unsigned_long_int
   );
 
-  unit_test_suite_clic3_sort->unit_tests[19] = (
+  unit_test_suite_clic3_sort->unit_tests[
+    0x14
+  ] = (
     &unit_test_clic3_sort_sort_reverse_unsigned_long_int
   );
 
-  return unit_test_suite_clic3_sort;
+  return (
+    unit_test_suite_clic3_sort
+  );
 }

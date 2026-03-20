@@ -1,5 +1,8 @@
 #include <clic3_sort.h>
 
+#include <clic3_bytes.h>
+#include <clic3_memory.h>
+
 #define clic3_sort_macro_function(type, name_type, comparator)\
   void clic3_sort_ ## name_type(\
     type* to_sort,\
@@ -40,6 +43,102 @@
 
 #define clic3_sort_macro_unnamed(type)\
   clic3_sort_macro(type, type)
+
+void clic3_sort(
+  void* to_sort,
+  unsigned long int length_to_sort,
+  unsigned int length_bytes_item,
+  clic3_sort_function clic3_sort_function
+) {
+  if (
+    length_to_sort ==
+    0x00
+  ) {
+    return;
+  }
+
+  unsigned char* hold = (
+    clic3_memory_allocate_raw(
+      length_bytes_item
+    )
+  );
+
+  for (
+    unsigned long int index_to_sort = (
+      0x00
+    );
+    (
+      index_to_sort <
+      (
+        length_to_sort -
+        0x01
+      )
+    );
+    ++index_to_sort
+  ) {
+    for (
+      unsigned long int index_secondary_to_sort = (
+        index_to_sort +
+        0x01
+      );
+      (
+        index_secondary_to_sort <
+        length_to_sort
+      );
+      ++index_secondary_to_sort
+    ) {
+      void* item_first = (
+        to_sort +
+        (
+          length_bytes_item *
+          index_to_sort
+        )
+      );
+
+      void* item_secondary = (
+        to_sort +
+        (
+          length_bytes_item *
+          index_secondary_to_sort
+        )
+      );
+
+      char result_sort_function = (
+        clic3_sort_function(
+          item_first,
+          item_secondary
+        )
+      );
+
+      if (
+        result_sort_function >
+        0x00
+      ) {
+        clic3_bytes_copy(
+          hold,
+          item_first,
+          length_bytes_item
+        );
+
+        clic3_bytes_copy(
+          item_first,
+          item_secondary,
+          length_bytes_item
+        );
+
+        clic3_bytes_copy(
+          item_secondary,
+          hold,
+          length_bytes_item
+        );
+      }
+    }
+  }
+
+  clic3_memory_free_raw(
+    hold
+  );
+}
 
 clic3_sort_macro_unnamed(char)
 clic3_sort_macro(unsigned char, unsigned_char)
