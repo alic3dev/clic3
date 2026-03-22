@@ -14,7 +14,7 @@
 #define clic3_sort_definition_macro_unnamed(type)\
   clic3_sort_definition_macro(type, type)
 
-typedef char (*clic3_sort_function)(
+typedef char (*clic3_sort_comparator_function)(
   void*,
   void*
 );
@@ -23,7 +23,7 @@ void clic3_sort(
   void*,
   unsigned long int,
   unsigned int,
-  clic3_sort_function
+  clic3_sort_comparator_function
 );
 
 clic3_sort_definition_macro_unnamed(char)
