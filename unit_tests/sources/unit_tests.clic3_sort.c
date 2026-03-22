@@ -1149,6 +1149,82 @@ unsigned char unit_test_clic3_sort_sort_reverse_unsigned_long_int_test_sort() {
   return status_test;
 }
 
+unsigned char unit_test_clic3_sort_sort_char_arrays_test_sort() {
+  char* char_arrays[
+    0x04
+  ] = {
+    "this",
+    "is",
+    "a",
+    "unit_test"
+  };
+
+  char* char_arrays_to_sort[
+    0x04
+  ] = {
+    char_arrays[
+      0x00
+    ],
+    char_arrays[
+      0x01
+    ],
+    char_arrays[
+      0x02
+    ],
+    char_arrays[
+      0x03
+    ]
+  };
+
+  clic3_sort_char_arrays(
+    char_arrays_to_sort,
+    0x04
+  );
+
+  if (
+    (
+      char_arrays_to_sort[
+        0x00
+      ] ==
+      char_arrays[
+        0x02
+      ]
+    ) &&
+    (
+      char_arrays_to_sort[
+        0x01
+      ] ==
+      char_arrays[
+        0x01
+      ]
+    ) &&
+    (
+      char_arrays_to_sort[
+        0x02
+      ] ==
+      char_arrays[
+        0x00
+      ]
+    ) &&
+    (
+      char_arrays_to_sort[
+        0x03
+      ] ==
+      char_arrays[
+        0x03
+      ]
+    )
+  ) {
+    return (
+      0x01
+    );
+  }
+
+  return (
+    0x00
+  );
+}
+
 struct unit_test unit_test_clic3_sort_sort = {
   .name = "clic3_sort:sort",
   .test = unit_test_clic3_sort_sort_test_sort
@@ -1254,6 +1330,11 @@ struct unit_test unit_test_clic3_sort_sort_reverse_unsigned_long_int = {
   .test = unit_test_clic3_sort_sort_reverse_unsigned_long_int_test_sort
 };
 
+struct unit_test unit_test_clic3_sort_sort_char_arrays = {
+  .name = "clic3_sort_char_arrays",
+  .test = unit_test_clic3_sort_sort_char_arrays_test_sort
+};
+
 struct unit_test_suite* get_unit_test_suite_clic3_sort() {
   struct unit_test_suite* unit_test_suite_clic3_sort = (
     clic3_memory_allocate_raw(
@@ -1277,7 +1358,9 @@ struct unit_test_suite* get_unit_test_suite_clic3_sort() {
     unit_test_suite_clic3_sort->length_name
   );
 
-  unit_test_suite_clic3_sort->length_unit_tests = 21;
+  unit_test_suite_clic3_sort->length_unit_tests = (
+    0x16
+  );
 
   unit_test_suite_clic3_sort->unit_tests = (
     clic3_memory_allocate_raw(
@@ -1412,6 +1495,12 @@ struct unit_test_suite* get_unit_test_suite_clic3_sort() {
     0x14
   ] = (
     &unit_test_clic3_sort_sort_reverse_unsigned_long_int
+  );
+
+  unit_test_suite_clic3_sort->unit_tests[
+    0x15
+  ] = (
+    &unit_test_clic3_sort_sort_char_arrays
   );
 
   return (
