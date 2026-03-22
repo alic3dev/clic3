@@ -39,6 +39,11 @@ clic3_sort_definition_macro(unsigned short int, unsigned_short_int)
 clic3_sort_definition_macro(long int, long_int)
 clic3_sort_definition_macro(unsigned long int, unsigned_long_int)
 
+char clic3_sort_comparator_char_arrays(
+  void*,
+  void*
+);
+
 void clic3_sort_char_arrays(
   char**,
   unsigned long int
