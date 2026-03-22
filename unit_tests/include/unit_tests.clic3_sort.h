@@ -42,6 +42,8 @@ clic3_sort_test_definition_macro(unsigned short int, unsigned_short_int)
 clic3_sort_test_definition_macro(long int, long_int)
 clic3_sort_test_definition_macro(unsigned long int, unsigned_long_int)
 
+clic3_sort_test_definition_macro(char*, char_arrays)
+
 struct unit_test_suite* get_unit_test_suite_clic3_sort();
 
 #endif
