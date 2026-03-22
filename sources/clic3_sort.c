@@ -48,7 +48,7 @@ void clic3_sort(
   void* to_sort,
   unsigned long int length_to_sort,
   unsigned int length_bytes_item,
-  clic3_sort_comparitor_function clic3_sort_function
+  clic3_sort_comparator_function clic3_sort_function
 ) {
   if (
     length_to_sort ==
