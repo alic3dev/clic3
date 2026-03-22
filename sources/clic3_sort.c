@@ -153,12 +153,75 @@ clic3_sort_macro(unsigned short int, unsigned_short_int)
 clic3_sort_macro(long int, long_int)
 clic3_sort_macro(unsigned long int, unsigned_long_int)
 
+char clic3_sort_comparator_char_arrays(
+  void* item_first,
+  void* item_secondary
+) {
+  char* char_array_first = (
+    item_first
+  );
+
+  char* char_array_secondary = (
+    item_secondary
+  );
+
+  for (
+    unsigned int index_char_array = (
+      0x00
+    );
+    (
+      (
+        char_array_first[
+          index_char_array
+        ] !=
+        '\0'
+      ) &&
+      (
+        char_array_secondary[
+          index_char_array
+        ] !=
+        '\0'
+      )
+    );
+    ++index_char_array
+  ) {
+    if (
+      char_array_first[
+        index_char_array
+      ] >
+      char_array_secondary[
+        index_char_array
+      ]
+    ) {
+      return (
+        0x01
+      );
+    } else if (
+      char_array_first[
+        index_char_array
+      ] !=
+      char_array_secondary[
+        index_char_array
+      ]
+    ) {
+      return (
+        0x00
+      );
+    }
+  }
+
+  return (
+    0x00
+  );
+}
+
 void clic3_sort_char_arrays(
   char** to_sort,
   unsigned long int length_to_sort
 ) {
   if (
-    length_to_sort == 0
+    length_to_sort ==
+    0x00
   ) {
     return;
   }
@@ -166,35 +229,63 @@ void clic3_sort_char_arrays(
   void* hold;
 
   for (
-    unsigned long int index_to_sort = 0;
-    index_to_sort < length_to_sort - 1;
+    unsigned long int index_to_sort = (
+      0x00
+    );
+    (
+      index_to_sort  <
+      (
+        length_to_sort -
+        0x01
+      )
+    );
     ++index_to_sort
   ) {
     for (
-      unsigned long int index_secondary_to_sort = index_to_sort + 1;
-      index_secondary_to_sort < length_to_sort;
+      unsigned long int index_secondary_to_sort = (
+        index_to_sort +
+        0x01
+      );
+      (
+        index_secondary_to_sort <
+        length_to_sort
+      );
       ++index_secondary_to_sort
     ) {
-      for (
-        unsigned int index_array = 0;
-        to_sort[index_to_sort][index_array] != '\0' &&
-        to_sort[index_secondary_to_sort][index_array] != '\0';
-        ++index_array
+      char status_comparison_char_arrays = (
+        clic3_sort_comparator_char_arrays(
+          to_sort[
+            index_to_sort
+          ],
+          to_sort[
+            index_secondary_to_sort
+          ]
+        )
+      );
+
+      if (
+        status_comparison_char_arrays >
+        0x00
       ) {
-        if (
-          to_sort[index_to_sort][index_array] >
-          to_sort[index_secondary_to_sort][index_array]
-        ) {
-          hold = to_sort[index_to_sort];
-          to_sort[index_to_sort] = to_sort[index_secondary_to_sort];
-          to_sort[index_secondary_to_sort] = hold;
-          break;
-        } else if (
-          to_sort[index_to_sort][index_array] !=
-          to_sort[index_secondary_to_sort][index_array]
-        ) {
-          break;
-        }
+        hold = (
+          to_sort[
+            index_to_sort
+          ]
+        );
+
+        to_sort[
+          index_to_sort
+        ] = (
+          to_sort[
+            index_secondary_to_sort
+          ]
+        );
+
+        to_sort[
+          index_secondary_to_sort
+        ] = (
+          hold
+        );
       }
     }
   }
