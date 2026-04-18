@@ -79,27 +79,27 @@ extern const char clic3_colours_postfix_char_array[
     value\
   )
 
-#define clic3_colour_style_definition_basic          0x00
-#define clic3_colour_style_definition_bold           0x01
-#define clic3_colour_style_definition_light          0x02
-#define clic3_colour_style_definition_italic         0x03
-#define clic3_colour_style_definition_underlined     0x04
-#define clic3_colour_style_definition_blinking       0x05
-#define clic3_colour_style_definition_inverse        0x07
-#define clic3_colour_style_definition_strike_through 0x09
+#define clic3_colour_style_definition_basic 0
+#define clic3_colour_style_definition_bold 1
+#define clic3_colour_style_definition_light 2
+#define clic3_colour_style_definition_italic 3
+#define clic3_colour_style_definition_underlined 4
+#define clic3_colour_style_definition_blinking 5
+#define clic3_colour_style_definition_inverse 7
+#define clic3_colour_style_definition_strike_through 9
 
-#define clic3_colour_modifier_definition_reset      0x00
-#define clic3_colour_modifier_definition_foreground 0x03
-#define clic3_colour_modifier_definition_background 0x04
+#define clic3_colour_modifier_definition_reset 0
+#define clic3_colour_modifier_definition_foreground 3
+#define clic3_colour_modifier_definition_background 4
 
-#define clic3_colour_integer_definition_foreground 0x0
-#define clic3_colour_integer_definition_red        0x01
-#define clic3_colour_integer_definition_green      0x02
-#define clic3_colour_integer_definition_yellow     0x03
-#define clic3_colour_integer_definition_blue       0x04
-#define clic3_colour_integer_definition_purple     0x05
-#define clic3_colour_integer_definition_cyan       0x06
-#define clic3_colour_integer_definition_background 0x07
+#define clic3_colour_integer_definition_foreground 0
+#define clic3_colour_integer_definition_red 1
+#define clic3_colour_integer_definition_green 2
+#define clic3_colour_integer_definition_yellow 3
+#define clic3_colour_integer_definition_blue 4
+#define clic3_colour_integer_definition_purple 5
+#define clic3_colour_integer_definition_cyan 6
+#define clic3_colour_integer_definition_background 7
 
 enum clic3_colour {
   clic3_colour_foreground_foreground = clic3_colours_hex(
