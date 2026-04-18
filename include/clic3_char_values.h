@@ -1,11 +1,7 @@
 #ifndef __clic3_char_values_h
 #define __clic3_char_values_h
 
-/********************************************************
- * values_of_characters: converted from `char` to `int` *
- ********************************************************/
-
-#define clic3_char_value_enter 10 // 13?
+#define clic3_char_value_enter 10
 #define clic3_char_value_ctrl 27
 #define clic3_char_value_space 32
 #define clic3_char_value_exclamation_mark 33
@@ -40,7 +36,6 @@
 #define clic3_char_value_angle_bracket_closing 62
 #define clic3_char_value_question_mark 63
 #define clic3_char_value_at 64
-// clic3_char_value_arrow_*: requires `ctrl` + `[` + `char`
 #define clic3_char_value_arrow_up 65
 #define clic3_char_value_arrow_down 66
 #define clic3_char_value_arrow_right 67

@@ -12,12 +12,12 @@
 #define clic3_colours_definition_seperator_char_array clic3_colours_definition_char_arrayize(clic3_colours_definition_seperator)
 #define clic3_colours_definition_postfix_char_array clic3_colours_definition_char_arrayize(clic3_colours_definition_postfix)
 
-#define clic3_colours_definition_prefix_length 2
-#define clic3_colours_definition_style_length 1
-#define clic3_colours_definition_seperator_length 1
-#define clic3_colours_definition_modifier_length 1
-#define clic3_colours_definition_value_length 1
-#define clic3_colours_definition_postfix_length 1
+#define clic3_colours_definition_prefix_length    0x02
+#define clic3_colours_definition_style_length     0x01
+#define clic3_colours_definition_seperator_length 0x01
+#define clic3_colours_definition_modifier_length  0x01
+#define clic3_colours_definition_value_length     0x01
+#define clic3_colours_definition_postfix_length   0x01
 
 extern const char clic3_colours_prefix_char_array[
   clic3_colours_definition_prefix_length
@@ -79,27 +79,27 @@ extern const char clic3_colours_postfix_char_array[
     value\
   )
 
-#define clic3_colour_style_definition_basic 0
-#define clic3_colour_style_definition_bold 1
-#define clic3_colour_style_definition_light 2
-#define clic3_colour_style_definition_italic 3
-#define clic3_colour_style_definition_underlined 4
-#define clic3_colour_style_definition_blinking 5
-#define clic3_colour_style_definition_inverse 7
-#define clic3_colour_style_definition_strike_through 9
+#define clic3_colour_style_definition_basic          0x00
+#define clic3_colour_style_definition_bold           0x01
+#define clic3_colour_style_definition_light          0x02
+#define clic3_colour_style_definition_italic         0x03
+#define clic3_colour_style_definition_underlined     0x04
+#define clic3_colour_style_definition_blinking       0x05
+#define clic3_colour_style_definition_inverse        0x07
+#define clic3_colour_style_definition_strike_through 0x09
 
-#define clic3_colour_modifier_definition_reset 0
-#define clic3_colour_modifier_definition_foreground 3
-#define clic3_colour_modifier_definition_background 4
+#define clic3_colour_modifier_definition_reset      0x00
+#define clic3_colour_modifier_definition_foreground 0x03
+#define clic3_colour_modifier_definition_background 0x04
 
-#define clic3_colour_integer_definition_foreground 0
-#define clic3_colour_integer_definition_red 1
-#define clic3_colour_integer_definition_green 2
-#define clic3_colour_integer_definition_yellow 3
-#define clic3_colour_integer_definition_blue 4
-#define clic3_colour_integer_definition_purple 5
-#define clic3_colour_integer_definition_cyan 6
-#define clic3_colour_integer_definition_background 7
+#define clic3_colour_integer_definition_foreground 0x0
+#define clic3_colour_integer_definition_red        0x01
+#define clic3_colour_integer_definition_green      0x02
+#define clic3_colour_integer_definition_yellow     0x03
+#define clic3_colour_integer_definition_blue       0x04
+#define clic3_colour_integer_definition_purple     0x05
+#define clic3_colour_integer_definition_cyan       0x06
+#define clic3_colour_integer_definition_background 0x07
 
 enum clic3_colour {
   clic3_colour_foreground_foreground = clic3_colours_hex(
@@ -278,97 +278,97 @@ char* clic3_colours_char_array_construct(
 
 extern const char clic3_colours_foreground[
   clic3_colours_length_colour +
-  1
+  0x01
 ];
 
 extern const char clic3_colours_red[
   clic3_colours_length_colour +
-  1
+  0x01
 ];
 
 extern const char clic3_colours_orange[
   clic3_colours_length_colour +
-  1
+  0x01
 ];
 
 extern const char clic3_colours_yellow[
   clic3_colours_length_colour +
-  1
+  0x01
 ];
 
 extern const char clic3_colours_green[
   clic3_colours_length_colour +
-  1
+  0x01
 ];
 
 extern const char clic3_colours_blue[
   clic3_colours_length_colour +
-  1
+  0x01
 ];
 
 extern const char clic3_colours_cyan[
   clic3_colours_length_colour +
-  1
+  0x01
 ];
 
 extern const char clic3_colours_purple[
   clic3_colours_length_colour +
-  1
+  0x01
 ];
 
 extern const char clic3_colours_background[
   clic3_colours_length_colour +
-  1
+  0x01
 ];
 
 extern const char clic3_colours_bold_foreground[
   clic3_colours_length_colour +
-  1
+  0x01
 ];
 
 extern const char clic3_colours_bold_red[
   clic3_colours_length_colour +
-  1
+  0x01
 ];
 
 extern const char clic3_colours_bold_orange[
   clic3_colours_length_colour +
-  1
+  0x01
 ];
 
 extern const char clic3_colours_bold_yellow[
   clic3_colours_length_colour +
-  1
+  0x01
 ];
 
 extern const char clic3_colours_bold_green[
   clic3_colours_length_colour +
-  1
+  0x01
 ];
 
 extern const char clic3_colours_bold_blue[
   clic3_colours_length_colour +
-  1
+  0x01
 ];
 
 extern const char clic3_colours_bold_cyan[
   clic3_colours_length_colour +
-  1
+  0x01
 ];
 
 extern const char clic3_colours_bold_purple[
   clic3_colours_length_colour +
-  1
+  0x01
 ];
 
 extern const char clic3_colours_bold_background[
   clic3_colours_length_colour +
-  1
+  0x01
 ];
 
 extern const char clic3_colours_reset[
   clic3_colours_length_colour +
-  1
+  0x01
 ];
 
 #endif

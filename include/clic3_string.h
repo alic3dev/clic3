@@ -2,9 +2,9 @@
 #define __clic3_string_h
 
 enum clic3_string_termination {
-  clic3_string_termination_unknown = 0,
-  clic3_string_termination_none = 1,
-  clic3_string_termination_null = 2
+  clic3_string_termination_unknown = 0x00,
+  clic3_string_termination_none    = 0x01,
+  clic3_string_termination_null    = 0x02
 };
 
 struct clic3_string {
