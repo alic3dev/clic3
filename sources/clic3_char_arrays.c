@@ -429,95 +429,133 @@ unsigned char clic3_char_array_to_float(
   return 0;
 }
 
-char* clic3_char_array_from_unsigned_long_int(
-  unsigned long int value
-) {
-  unsigned char length_char_array = 0;
-  unsigned char negative_is = (
-    value < 0
-  );
-
-  if (
-    negative_is
-  ) {
-    value = -value;
-  }
-
-  static char* char_array;
-
-  char_array = (
-    clic3_memory_allocate_raw(
-      255
-    )
-  );
-
-  while (
-    value >= 10
-  ) {
-    unsigned long int value_next = (
-      value / 10
-    );
-
-    char_array[
-      length_char_array++
-    ] = (
-      '0' + (
-        value - (
-          value_next *
-          10
-        )
-      )
-    );
-
-    value = value_next;
-  }
-
-  char_array[
-    length_char_array++
-  ] = (
-    '0' +
-    value
-  );
-
-  for (
-    unsigned char index_char = 0;
-    index_char < (
-      length_char_array /
-      2 + (
-        length_char_array %
-        2
-      )
-    );
-    ++index_char
-  ) {
-    char char_placeholder = char_array[
-      index_char
-    ];
-
-    char_array[
-      index_char
-    ] = char_array[
-      length_char_array -
-      index_char - 1
-    ];
-
-    char_array[
-      length_char_array -
-      index_char - 1
-    ] = char_placeholder;
-  }
-
-  char_array[
-    length_char_array++
-  ] = '\0';
-
-  clic3_memory_reallocate_raw(
-    &char_array,
-    length_char_array
-  );
-
-  return char_array;
+#define clic3_function_definition_char_array_from(type, name) char* clic3_char_array_from_ ## name(\
+  type value\
+) {\
+  unsigned char length_char_array = (\
+    0x00\
+  );\
+\
+  unsigned char negative_is = (\
+    value <\
+    0x00\
+  );\
+\
+  if (\
+    negative_is\
+  ) {\
+    value = -(\
+      value\
+    );\
+  }\
+\
+  static char* char_array;\
+\
+  char_array = (\
+    clic3_memory_allocate_raw(\
+      0xffff\
+    )\
+  );\
+\
+  while (\
+    value >=\
+    0x0a\
+  ) {\
+    unsigned long int value_next = (\
+      value /\
+      0x0a\
+    );\
+\
+    char_array[\
+      length_char_array++\
+    ] = (\
+      '0' +\
+      (\
+        value -\
+        (\
+          value_next *\
+          0x0a\
+        )\
+      )\
+    );\
+\
+    value = (\
+      value_next\
+    );\
+  }\
+\
+  char_array[\
+    length_char_array++\
+  ] = (\
+    '0' +\
+    value\
+  );\
+\
+  for (\
+    unsigned char index_char = (\
+      0x00\
+    );\
+    (\
+      index_char <\
+      (\
+        length_char_array /\
+        0x02 +\
+        (\
+          length_char_array %\
+          0x02\
+        )\
+      )\
+    );\
+    ++index_char\
+  ) {\
+    char char_placeholder = (\
+      char_array[\
+        index_char\
+      ]\
+    );\
+\
+    char_array[\
+      index_char\
+    ] = (\
+      char_array[\
+        length_char_array -\
+        index_char -\
+        0x01\
+      ]\
+    );\
+\
+    char_array[\
+      length_char_array -\
+      index_char -\
+      0x01\
+    ] = (\
+      char_placeholder\
+    );\
+  }\
+\
+  char_array[\
+    length_char_array++\
+  ] = (\
+    '\0'\
+  );\
+\
+  clic3_memory_reallocate_raw(\
+    &char_array,\
+    length_char_array\
+  );\
+\
+  return (\
+    char_array\
+  );\
 }
+
+clic3_function_definition_char_array_from(unsigned short int, unsigned_short_int);
+clic3_function_definition_char_array_from(short int, short_int);
+clic3_function_definition_char_array_from(unsigned long int, unsigned_long_int);clic3_function_definition_char_array_from(long int, long_int);
+clic3_function_definition_char_array_from(unsigned int, unsigned_int);
+clic3_function_definition_char_array_from(int, int);
+clic3_function_definition_char_array_from(unsigned char, unsigned_char);
+clic3_function_definition_char_array_from(char, char);
 
 char* clic3_char_array_from_float(
   float value

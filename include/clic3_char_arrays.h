@@ -14,9 +14,18 @@ unsigned char clic3_char_array_to_unsigned_short_int(char*, unsigned short int*)
 unsigned char clic3_char_array_to_unsigned_long_int(char*, unsigned long int*);
 unsigned char clic3_char_array_to_float(char*, float*);
 
-char* clic3_char_array_from_unsigned_long_int(
-  unsigned long int
+#define clic3_function_template_char_array_from(type, name) char* clic3_char_array_from_ ## name(\
+  type\
 );
+
+clic3_function_template_char_array_from(unsigned short int, unsigned_short_int);
+clic3_function_template_char_array_from(short int, short_int);
+clic3_function_template_char_array_from(unsigned long int, unsigned_long_int);
+clic3_function_template_char_array_from(long int, long_int);
+clic3_function_template_char_array_from(unsigned int, unsigned_int);
+clic3_function_template_char_array_from(int, int);
+clic3_function_template_char_array_from(unsigned char, unsigned_char);
+clic3_function_template_char_array_from(char, char);
 char* clic3_char_array_from_float(float);
 
 unsigned int clic3_char_array_length(char*);
