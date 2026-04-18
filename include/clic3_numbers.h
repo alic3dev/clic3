@@ -1,7 +1,7 @@
 #ifndef __clic3_numbers_h
 #define __clic3_numbers_h
 
-#define clic3_numbers_definition_length 10
+#define clic3_numbers_definition_length 0x0a
 
 #define clic3_numbers_definition \
   '0',\

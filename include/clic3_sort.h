@@ -29,7 +29,9 @@ void clic3_sort(
 clic3_sort_definition_macro_unnamed(char)
 clic3_sort_definition_macro(unsigned char, unsigned_char)
 
+#ifndef __METAL_VERSION__
 clic3_sort_definition_macro_unnamed(double)
+#endif
 clic3_sort_definition_macro_unnamed(float)
 
 clic3_sort_definition_macro_unnamed(int)
@@ -38,6 +40,10 @@ clic3_sort_definition_macro(short int, short_int)
 clic3_sort_definition_macro(unsigned short int, unsigned_short_int)
 clic3_sort_definition_macro(long int, long_int)
 clic3_sort_definition_macro(unsigned long int, unsigned_long_int)
+#ifndef __METAL_VERSION__
+clic3_sort_definition_macro(unsigned long long int, unsigned_long_long_int);
+clic3_sort_definition_macro(long long int, long_long_int);
+#endif
 
 char clic3_sort_comparator_char_arrays(
   void*,

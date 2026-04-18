@@ -549,9 +549,14 @@ unsigned char clic3_char_array_to_float(
   );\
 }
 
+#ifndef __METAL_VERSION
+clic3_function_definition_char_array_from(unsigned long long int, unsigned_long_long_int);
+clic3_function_definition_char_array_from(long long int, long_long_int);
+#endif
 clic3_function_definition_char_array_from(unsigned short int, unsigned_short_int);
 clic3_function_definition_char_array_from(short int, short_int);
-clic3_function_definition_char_array_from(unsigned long int, unsigned_long_int);clic3_function_definition_char_array_from(long int, long_int);
+clic3_function_definition_char_array_from(unsigned long int, unsigned_long_int);
+clic3_function_definition_char_array_from(long int, long_int);
 clic3_function_definition_char_array_from(unsigned int, unsigned_int);
 clic3_function_definition_char_array_from(int, int);
 clic3_function_definition_char_array_from(unsigned char, unsigned_char);
