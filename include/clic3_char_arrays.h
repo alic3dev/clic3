@@ -85,4 +85,10 @@ char** clic3_char_array_split_on_char(
   char
 );
 
+char* clic3_char_arrays_join(
+  char*,
+  unsigned int,
+  ...
+);
+
 #endif
