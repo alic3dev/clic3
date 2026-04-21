@@ -444,6 +444,76 @@ unsigned char unit_test_clic3_char_arrays_char_array_split_on_char_test() {
   return status_test;
 }
 
+#define unit_test_clic3_char_arrays_char_arrays_join_test_call(result, join)\
+  char_array_result = (\
+    join\
+  );\
+\
+  if (\
+    clic3_char_arrays_equal(\
+      char_array_result,\
+      result\
+    ) !=\
+    0x01\
+  ) {\
+    status_test = (\
+      0x00\
+    );\
+  }\
+\
+  clic3_memory_free_raw(\
+    char_array_result\
+  );
+unsigned char unit_test_clic3_char_arrays_char_arrays_join_test() {
+  unsigned char status_test = (
+    0x01
+  );
+
+  char* char_array_result;
+
+  unit_test_clic3_char_arrays_char_arrays_join_test_call(
+    "this is chained",
+    clic3_char_arrays_join(
+      " ",
+      0x03,
+      "this",
+      "is",
+      "chained"
+    )
+  );
+
+  unit_test_clic3_char_arrays_char_arrays_join_test_call(
+    "thisiswithoutaliminator",
+    clic3_char_arrays_join(
+      "",
+      0x04,
+      "thisis",
+      "without",
+      "a",
+      "liminator"
+    )
+  );
+  unit_test_clic3_char_arrays_char_arrays_join_test_call(
+    "",
+    clic3_char_arrays_join(
+      "this is without any joinables",
+      0x00
+    )
+  );
+  
+  unit_test_clic3_char_arrays_char_arrays_join_test_call(
+    "this is singular",
+    clic3_char_arrays_join(
+      "this liminator wont be used",
+      0x01,
+      "this is singular"    )
+  );
+
+  return (
+    status_test
+  );
+}
+
 struct unit_test unit_test_clic3_char_arrays_char_arrays_equal_equal = {
   .name = "clic3_char_arrays_equal:equal",
   .test = unit_test_clic3_char_arrays_char_arrays_equal_test_equal
@@ -514,6 +584,15 @@ struct unit_test unit_test_clic3_char_arrays_char_array_split_on_char = {
   .test = unit_test_clic3_char_arrays_char_array_split_on_char_test
 };
 
+struct unit_test unit_test_clic3_char_arrays_char_arrays_join = {
+  .name = (
+    "clic3_char_arrays_char_array_join"
+  ),
+  .test = (
+    unit_test_clic3_char_arrays_char_arrays_join_test
+  )
+}; 
+
 struct unit_test_suite* get_unit_test_suite_clic3_char_arrays() {
   struct unit_test_suite* unit_test_suite_clic3_char_arrays = (
     clic3_memory_allocate_raw(
@@ -537,7 +616,9 @@ struct unit_test_suite* get_unit_test_suite_clic3_char_arrays() {
     unit_test_suite_clic3_char_arrays->length_name
   );
 
-  unit_test_suite_clic3_char_arrays->length_unit_tests = 14;
+  unit_test_suite_clic3_char_arrays->length_unit_tests = (
+    0x0f
+  );
 
   unit_test_suite_clic3_char_arrays->unit_tests = (
     clic3_memory_allocate_raw(
@@ -602,6 +683,12 @@ struct unit_test_suite* get_unit_test_suite_clic3_char_arrays() {
 
   unit_test_suite_clic3_char_arrays->unit_tests[13] = (
     &unit_test_clic3_char_arrays_char_array_split_on_char
+  );
+
+  unit_test_suite_clic3_char_arrays->unit_tests[
+    0x0e
+  ] = (
+    &unit_test_clic3_char_arrays_char_arrays_join
   );
 
   return (
