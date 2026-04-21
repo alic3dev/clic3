@@ -944,7 +944,6 @@ char* clic3_char_arrays_join(
     );
   }
 
-
   unsigned int length_char_array_liminator = (
     clic3_char_array_length(
       char_array_liminator
@@ -978,8 +977,7 @@ char* clic3_char_arrays_join(
 
   char_array_joined = (
     clic3_memory_allocate_raw(
-      length_char_array_joiner +
-      0x01
+      length_char_array_joined
     )
   );
 
@@ -1013,7 +1011,8 @@ char* clic3_char_arrays_join(
     );
   
     unsigned int index_join = (
-      length_char_array_joined
+      length_char_array_joined -
+      0x01
     );
 
     length_char_array_joined = (
@@ -1044,14 +1043,16 @@ char* clic3_char_arrays_join(
       ),
       char_array_joiner,
       length_char_array_joiner
-    );      }
+    );
+  }
 
   va_end(
     char_arrays_joinable
   );
 
   char_array_joined[
-    length_char_array_joined
+    length_char_array_joined -
+    0x01
   ] = (
     '\0'
   );
