@@ -493,6 +493,7 @@ unsigned char unit_test_clic3_char_arrays_char_arrays_join_test() {
       "liminator"
     )
   );
+
   unit_test_clic3_char_arrays_char_arrays_join_test_call(
     "",
     clic3_char_arrays_join(
@@ -506,7 +507,8 @@ unsigned char unit_test_clic3_char_arrays_char_arrays_join_test() {
     clic3_char_arrays_join(
       "this liminator wont be used",
       0x01,
-      "this is singular"    )
+      "this is singular"
+    )
   );
 
   return (
