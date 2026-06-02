@@ -38,7 +38,9 @@ unsigned char clic3_char_arrays_equal(
     char_second != '\0'
   );
 
-  return 1;
+  return (
+    0x01
+  );
 }
 
 int clic3_char_arrays_within(
