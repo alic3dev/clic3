@@ -1011,7 +1011,7 @@ char* clic3_char_arrays_join(
         char_array_joiner
       )
     );
-  
+
     unsigned int index_join = (
       length_char_array_joined -
       0x01

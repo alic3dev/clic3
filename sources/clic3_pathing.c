@@ -13,14 +13,14 @@ char* clic3_pathing_combine(
   unsigned int length_pathing = (
     0x00
   );
-  
+
   va_list paths;
-  
+
   va_start(
     paths,
     length_paths
   );
-  
+
   char** path_components = (
     clic3_memory_allocate_raw(
       sizeof(
@@ -29,7 +29,7 @@ char* clic3_pathing_combine(
       length_paths
     )
   );
-  
+
   unsigned int* lengths_path_component = (
     clic3_memory_allocate_raw(
       sizeof(
@@ -38,7 +38,7 @@ char* clic3_pathing_combine(
       length_paths
     )
   );
-  
+
   for (
     unsigned int index_path = (
       0x00
@@ -55,7 +55,7 @@ char* clic3_pathing_combine(
         char*
       )
     );
-  
+
     lengths_path_component[
       index_path
     ] = (
@@ -63,7 +63,7 @@ char* clic3_pathing_combine(
         path
       )
     );
-    
+
     if (
       index_path !=
       (
@@ -93,17 +93,17 @@ char* clic3_pathing_combine(
             index_path
           ] +
           0x01
-        );  
+        );
       }
     }
-    
+
     length_pathing = (
       length_pathing +
       lengths_path_component[
         index_path
       ]
     );
-    
+
     if (
       (
         index_path !=
@@ -128,7 +128,7 @@ char* clic3_pathing_combine(
         path +
         0x01
       );
-      
+
       lengths_path_component[
         index_path
       ] = (
@@ -144,19 +144,19 @@ char* clic3_pathing_combine(
         path
       );
     }
-  }  
-  
+  }
+
   char* pathing = (
     clic3_memory_allocate_raw(
       length_pathing +
       0x01
     )
   );
-  
+
   unsigned int offset_index_path = (
     0x00
   );
-  
+
   for (
     unsigned int index_path = (
       0x00
@@ -175,7 +175,7 @@ char* clic3_pathing_combine(
     ) {
       continue;
     }
-  
+
     clic3_bytes_copy(
       (
         pathing +
@@ -188,14 +188,14 @@ char* clic3_pathing_combine(
         index_path
       ]
     );
-    
+
     offset_index_path = (
       offset_index_path +
       lengths_path_component[
         index_path
       ]
     );
-    
+
     if (
       index_path !=
       (
@@ -219,19 +219,18 @@ char* clic3_pathing_combine(
       }
     }
   }
-  
+
   pathing[
     length_pathing
   ] = (
     '\0'
   );
-  
+
   va_end(
     paths
   );
-  
+
   return (
     pathing
   );
 }
-

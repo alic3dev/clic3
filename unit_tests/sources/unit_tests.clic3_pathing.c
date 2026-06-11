@@ -15,10 +15,10 @@ unsigned char unit_test_clic3_pathing_combine_test() {
 
   char* path = (
     clic3_pathing_combine(
-      0x00  
+      0x00
     )
   );
-  
+
   if (
     clic3_char_arrays_equal(
       path,
@@ -30,18 +30,18 @@ unsigned char unit_test_clic3_pathing_combine_test() {
       0x00
     );
   }
-  
+
   clic3_memory_free_raw(
     path
   );
-  
+
   path = (
     clic3_pathing_combine(
       0x01,
-      "/path"  
+      "/path"
     )
   );
-  
+
   if (
     clic3_char_arrays_equal(
       path,
@@ -53,19 +53,19 @@ unsigned char unit_test_clic3_pathing_combine_test() {
       0x00
     );
   }
-  
+
   clic3_memory_free_raw(
     path
   );
-  
+
   path = (
     clic3_pathing_combine(
       0x02,
       "/path",
-      "file"  
+      "file"
     )
   );
-  
+
   if (
     clic3_char_arrays_equal(
       path,
@@ -77,19 +77,19 @@ unsigned char unit_test_clic3_pathing_combine_test() {
       0x00
     );
   }
-  
+
   clic3_memory_free_raw(
     path
   );
-  
+
   path = (
     clic3_pathing_combine(
       0x02,
       "/path/",
-      "file"  
+      "file"
     )
   );
-  
+
   if (
     clic3_char_arrays_equal(
       path,
@@ -101,19 +101,19 @@ unsigned char unit_test_clic3_pathing_combine_test() {
       0x00
     );
   }
-  
+
   clic3_memory_free_raw(
     path
   );
-  
+
   path = (
     clic3_pathing_combine(
       0x02,
       "/path/",
-      "/file"  
+      "/file"
     )
   );
-  
+
   if (
     clic3_char_arrays_equal(
       path,
@@ -125,11 +125,11 @@ unsigned char unit_test_clic3_pathing_combine_test() {
       0x00
     );
   }
-  
+
   clic3_memory_free_raw(
     path
   );
-  
+
   path = (
     clic3_pathing_combine(
       0x06,
@@ -138,10 +138,10 @@ unsigned char unit_test_clic3_pathing_combine_test() {
       "/another/",
       "and/",
       "/more",
-      "directory/"  
+      "directory/"
     )
   );
-  
+
   if (
     clic3_char_arrays_equal(
       path,
@@ -153,7 +153,7 @@ unsigned char unit_test_clic3_pathing_combine_test() {
       0x00
     );
   }
-  
+
   clic3_memory_free_raw(
     path
   );

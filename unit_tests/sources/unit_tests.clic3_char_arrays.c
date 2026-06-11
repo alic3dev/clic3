@@ -501,7 +501,7 @@ unsigned char unit_test_clic3_char_arrays_char_arrays_join_test() {
       0x00
     )
   );
-  
+
   unit_test_clic3_char_arrays_char_arrays_join_test_call(
     "this is singular",
     clic3_char_arrays_join(
@@ -593,7 +593,7 @@ struct unit_test unit_test_clic3_char_arrays_char_arrays_join = {
   .test = (
     unit_test_clic3_char_arrays_char_arrays_join_test
   )
-}; 
+};
 
 struct unit_test_suite* get_unit_test_suite_clic3_char_arrays() {
   struct unit_test_suite* unit_test_suite_clic3_char_arrays = (
