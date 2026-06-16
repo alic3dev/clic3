@@ -99,13 +99,17 @@ c_standard_library
 ### `make` targets
 
 ```zsh
-# build library
+# build library and metal library
 make clic3
+# build library
+make clic3_without_metal
+# build metal library
+make clic3_metal
 # build unit tests
 make unit_tests
 # rebuild unit tests
 make unit_tests_rebuild
-# build library, build unit tests, and run unit tests
+# build library, build metal library, build unit tests, and run unit tests
 make all
 # run unit tests
 make unit_tests_run
@@ -120,8 +124,18 @@ make clean_all
 ### `make` flags
 
 - `debug=1`:adds->{`debugging_symbols`}:disables->{`optimizations`};
+- `disable_metal_fast_options=1`:disables->{`metal`::`fast_modes `};
 - `target_device`:sets_the_target_device_platform->{values::[`mac`|`iphone`]}
 - `target_device_version`:sets_the_target_version.for->{`macos`|`ios`};
+- `target_metal_standard`:sets_the_target_metal_standard::(will_use->{`metal4.0`}_if_not_set)
+- `target_metal_version`:sets_the_target_metal_version::(will_use->{`target_device_version`}_if_not_set)
+
+### metal
+
+a metal version of this library can also be built (is included within the default build)
+
+- any functions requiring `unsigned long long int`, `long long int`, or `double` are removed
+- any functions requiring usage of non-supported libraries on the metal platform such as `stdarg` are removed
 
 ## copyright|copyleft
 
