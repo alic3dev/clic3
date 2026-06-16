@@ -19,16 +19,20 @@ version_patch=0
 version_major_minor=${version_major}.${version_minor}
 version=${version_major}.${version_minor}.${version_patch}
 
+directory_air_base=air
+directory_metalar_base=metalar
 directory_objects_base=objects
 directory_library_base=library
 
+directory_air=${directory_air_base}/${target_os}
 directory_library=${directory_library_base}/${target_os}/release
+directory_metalar=${directory_metalar_base}/${target_os}
 directory_objects=${directory_objects_base}/${target_os}/release
 
 ifeq (${debug}, 1)
-	name:=${name}_debug
-	directory_objects=${directory_objects_base}/${target_os}/debug
-	directory_library=${directory_library_base}/${target_os}/debug
+name:=${name}_debug
+directory_objects=${directory_objects_base}/${target_os}/debug
+directory_library=${directory_library_base}/${target_os}/debug
 endif
 
 directory_include=include
@@ -54,14 +58,25 @@ file_library_dynamic_major=${directory_library}/${name_library_dynamic_major}
 file_library_static=${directory_library}/${name}.a
 
 files_sources=${wildcard ${directory_sources}/*.c}
+files_air=${patsubst ${directory_sources}/%.c, ${directory_air}/%.air, ${files_sources}}
+files_metalar=${patsubst ${directory_air}/%.air, ${directory_metalar}/%.metalar, ${files_air}}
 files_objects=${patsubst ${directory_sources}/%.c,${directory_objects}/%.o,${files_sources}}
 
 ifndef target_device_version
-	target_device_version=26.1
+target_device_version=26.1
+endif
+
+ifndef target_metal_version
+target_metal_version=${target_device_version}
+endif
+
+ifndef target_metal_standard
+target_metal_standard=metal4.0
 endif
 
 ifeq (${target_os},macos)
 target_platform=arm64-apple-macos${target_device_version}
+target_platform_metal=air64-apple-macos${target_metal_version}
 
 directory_sdk=${shell xcrun --sdk macosx${target_device_version} --show-sdk-path}
 endif
@@ -70,6 +85,7 @@ ifeq (${target_os},ios)
 files_objects:=${patsubst ${directory_objects}/%.o,${directory_objects}/%_${target_os}.o,${files_objects}}
 
 target_platform=arm64-apple-ios${target_device_version}
+target_platform_metal=air64-apple-ios${target_metal_version}
 
 directory_sdk=${shell xcrun --sdk iphoneos${target_device_version} --show-sdk-path}
 endif
@@ -93,7 +109,24 @@ ld_flags=
 strip=strip
 strip_flags=-x
 
-${name}: ${file_library_dylib} ${file_library_dynamic} ${file_library_object} ${file_library_static}
+metal=xcrun -sdk macosx metal
+metal_ar=xcrun -sdk macosx metal-ar
+metallib=xcrun -sdk macosx metallib
+metal_flags_common=-target ${target_platform_metal} -std=${target_metal_standard}
+
+metal_flags=${metal_flags_common} -I${directory_include} -isysroot ${directory_sdk} -x metal
+
+ifneq (${disable_metal_fast_options}, 1)
+metal_flags:=${metal_flags} -fmetal-math-mode\=fast -fmetal-math-fp32-functions\=fast
+endif
+
+metal_flags_output=
+
+${name}: ${file_library_dylib} ${file_library_dynamic} ${file_library_object} ${file_library_static} ${files_air} ${files_metalar} ${file_library_metallib}
+
+${name}_air: ${files_air}
+${name}_metalar: ${files_metalar}
+${name}_metallib: ${file_library_metallib}
 
 ${name}_objects: ${files_objects}
 
@@ -145,6 +178,19 @@ ${directory_objects}/%.o: ${directory_sources}/%.c
 ${directory_objects}/%_ios.o: ${directory_sources}/%.c
 	mkdir -p ${directory_objects}
 	${cc} ${c_flags} -c $< -o $@
+
+${file_library_metallib}: ${files_metalar}
+	mkdir -p "${dir $@}"
+	${metallib} ${metal_flags_output} ${files_metalar} -o ${file_library_metallib}
+		
+${directory_metalar}/%.metalar: ${directory_air}/%.air
+	mkdir -p "${dir $@}"
+	if [[ -f $@ ]]; then rm $@; fi
+	${metal_ar} -rc $@ $<
+					
+${directory_air}/%.air: ${directory_sources}/%.c
+	mkdir -p "${dir $@}"
+	${metal} ${metal_flags} -c $< -o $@
 
 unit_tests: ${file_library_object} .always
 	cd ${directory_unit_tests} && make target_device_version=${target_device_version}
