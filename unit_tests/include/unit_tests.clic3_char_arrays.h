@@ -6,34 +6,66 @@
 
 unsigned char unit_test_clic3_char_arrays_char_arrays_equal_test_equal();
 unsigned char unit_test_clic3_char_arrays_char_arrays_equal_test_not_equal();
+
 unsigned char unit_test_clic3_char_arrays_within_test();
+
 unsigned char unit_test_clic3_char_arrays_char_array_to_lowercase_test();
 unsigned char unit_test_clic3_char_arrays_char_array_to_uppercase_test();
+
 unsigned char unit_test_clic3_char_arrays_char_array_to_int_test();
+unsigned char unit_test_clic3_char_arrays_char_array_to_short_int_test();
+unsigned char unit_test_clic3_char_arrays_char_array_to_long_int_test();
+unsigned char unit_test_clic3_char_arrays_char_array_to_long_long_int_test();
+
 unsigned char unit_test_clic3_char_arrays_char_array_to_unsigned_int_test();
 unsigned char unit_test_clic3_char_arrays_char_array_to_unsigned_short_int_test();
 unsigned char unit_test_clic3_char_arrays_char_array_to_unsigned_long_int_test();
+unsigned char unit_test_clic3_char_arrays_char_array_to_unsigned_long_long_int_test();
+
 unsigned char unit_test_clic3_char_arrays_char_array_to_float_test();
+unsigned char unit_test_clic3_char_arrays_char_array_to_double_test();
+
 unsigned char unit_test_clic3_char_arrays_char_array_from_float_test();
+unsigned char unit_test_clic3_char_arrays_char_array_from_double_test();
+
 unsigned char unit_test_clic3_char_arrays_char_array_length_test();
+
 unsigned char unit_test_clic3_char_arrays_char_arrays_concatenate_test();
+
 unsigned char unit_test_clic3_char_arrays_char_array_split_on_char_test();
+
 unsigned char unit_test_clic3_char_arrays_char_arrays_join_test();
 
 extern struct unit_test unit_test_clic3_char_arrays_char_arrays_equal_equal;
 extern struct unit_test unit_test_clic3_char_arrays_char_arrays_equal_not_equal;
+
 extern struct unit_test unit_test_clic3_char_arrays_within;
+
 extern struct unit_test unit_test_clic3_char_arrays_char_array_to_lowercase;
 extern struct unit_test unit_test_clic3_char_arrays_char_array_to_uppercase;
+
 extern struct unit_test unit_test_clic3_char_arrays_char_array_to_int;
+extern struct unit_test unit_test_clic3_char_arrays_char_array_to_short_int;
+extern struct unit_test unit_test_clic3_char_arrays_char_array_to_long_int;
+extern struct unit_test unit_test_clic3_char_arrays_char_array_to_long_long_int;
+
 extern struct unit_test unit_test_clic3_char_arrays_char_array_to_unsigned_int;
 extern struct unit_test unit_test_clic3_char_arrays_char_array_to_unsigned_short_int;
 extern struct unit_test unit_test_clic3_char_arrays_char_array_to_unsigned_long_int;
+extern struct unit_test unit_test_clic3_char_arrays_char_array_to_unsigned_long_long_int;
+
 extern struct unit_test unit_test_clic3_char_arrays_char_array_to_float;
+extern struct unit_test unit_test_clic3_char_arrays_char_array_to_double;
+
 extern struct unit_test unit_test_clic3_char_arrays_char_array_from_float;
+extern struct unit_test unit_test_clic3_char_arrays_char_array_from_double;
+
 extern struct unit_test unit_test_clic3_char_arrays_char_array_length;
+
 extern struct unit_test unit_test_clic3_char_arrays_char_arrays_concatenate;
+
 extern struct unit_test unit_test_clic3_char_arrays_char_array_split_on_char;
+
 extern struct unit_test unit_test_clic3_char_arrays_char_arrays_join;
 
 struct unit_test_suite* get_unit_test_suite_clic3_char_arrays();

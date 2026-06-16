@@ -131,68 +131,200 @@ unsigned char unit_test_clic3_char_arrays_char_array_to_uppercase_test() {
 unsigned char unit_test_clic3_char_arrays_char_array_to_int_test() {
   int value_int;
 
-  unsigned char status_test = clic3_char_array_to_int(
-    "123",
-    &value_int
+  unsigned char status_test = (
+    clic3_char_array_to_int(
+      "123",
+      &value_int
+    )
   );
 
-  if (value_int != 123) {
-    return 0;
+  if (
+    value_int !=
+    123
+  ) {
+    return (
+      0x00
+    );
   }
 
-  return status_test == 0;
+  return (
+    status_test ==
+    0x00
+  );
+}
+
+unsigned char unit_test_clic3_char_arrays_char_array_to_short_int_test() {
+  short int value_int;
+
+  unsigned char status_test = (
+    clic3_char_array_to_short_int(
+      "123",
+      &value_int
+    )
+  );
+
+  if (
+    value_int !=
+    123
+  ) {
+    return (
+      0x00
+    );
+  }
+
+  return (
+    status_test ==
+    0x00
+  );
+}
+
+unsigned char unit_test_clic3_char_arrays_char_array_to_long_int_test() {
+  long int value_int;
+
+  unsigned char status_test = (
+    clic3_char_array_to_long_int(
+      "123",
+      &value_int
+    )
+  );
+
+  if (
+    value_int !=
+    123
+  ) {
+    return (
+      0x00
+    );
+  }
+
+  return (
+    status_test ==
+    0x00
+  );
+}
+
+unsigned char unit_test_clic3_char_arrays_char_array_to_long_long_int_test() {
+  long long int value_int;
+
+  unsigned char status_test = (
+    clic3_char_array_to_long_long_int(
+      "1234567890",
+      &value_int
+    )
+  );
+
+  if (
+    value_int !=
+    1234567890
+  ) {
+    return (
+      0x00
+    );
+  }
+
+  return (
+    status_test ==
+    0x00
+  );
 }
 
 unsigned char unit_test_clic3_char_arrays_char_array_to_unsigned_int_test() {
   unsigned int value_int;
 
-  unsigned char status_test = clic3_char_array_to_unsigned_int(
-    "987",
-    &value_int
+  unsigned char status_test = (
+    clic3_char_array_to_unsigned_int(
+      "987",
+      &value_int
+    )
   );
 
-  if (value_int != 987) {
-    return 0;
+  if (
+    value_int !=
+    987
+  ) {
+    return (
+      0x00
+    );
   }
 
-  return status_test == 0;
+  return (
+    status_test ==
+    0x00
+  );
 }
 
 unsigned char unit_test_clic3_char_arrays_char_array_to_unsigned_short_int_test() {
   unsigned short int value_int;
 
-  unsigned char status_test = clic3_char_array_to_unsigned_short_int(
-    "34119",
-    &value_int
+  unsigned char status_test = (
+    clic3_char_array_to_unsigned_short_int(
+      "34119",
+      &value_int
+    )
   );
 
   if (
-    value_int != 34119
+    value_int !=
+    34119
   ) {
-    return 0;
+    return (
+      0x00
+    );
   }
 
   return (
-    status_test == 0
+    status_test ==
+    0x00
   );
 }
 
 unsigned char unit_test_clic3_char_arrays_char_array_to_unsigned_long_int_test() {
   unsigned long int value_int;
 
-  unsigned char status_test = clic3_char_array_to_unsigned_long_int(
-    "341234219",
-    &value_int
+  unsigned char status_test = (
+    clic3_char_array_to_unsigned_long_int(
+      "341234219",
+      &value_int
+    )
   );
 
   if (
-    value_int != 341234219
+    value_int !=
+    341234219
   ) {
-    return 0;
+    return (
+      0x00
+    );
   }
 
   return (
-    status_test == 0
+    status_test ==
+    0x00
+  );
+}
+
+unsigned char unit_test_clic3_char_arrays_char_array_to_unsigned_long_long_int_test() {
+  unsigned long long int value_int;
+
+  unsigned char status_test = (
+    clic3_char_array_to_unsigned_long_long_int(
+      "341234219",
+      &value_int
+    )
+  );
+
+  if (
+    value_int !=
+    341234219
+  ) {
+    return (
+      0x00
+    );
+  }
+
+  return (
+    status_test ==
+    0x00
   );
 }
 
@@ -242,6 +374,90 @@ unsigned char unit_test_clic3_char_arrays_char_array_to_float_test() {
   }
 
   return 1;
+}
+
+unsigned char unit_test_clic3_char_arrays_char_array_to_double_test() {
+  double value_double;
+
+  unsigned char status_test = (
+    clic3_char_array_to_double(
+      "3.3",
+      &value_double
+    )
+  );
+
+  if (
+    (
+      value_double !=
+      3.3
+    ) ||
+    (
+      status_test !=
+      0x00
+    )
+  ) {
+    return (
+      0x00
+    );
+  }
+
+  status_test = (
+    clic3_char_array_to_double(
+      "123.456f",
+      &value_double
+    )
+  );
+
+  if (
+    (
+      value_double !=
+      123.456
+    ) ||
+    (
+      status_test !=
+      0x00
+    )
+  ) {
+    return (
+      0x00
+    );
+  }
+
+  status_test = (
+    clic3_char_array_to_double(
+      "2.13f3",
+      &value_double
+    )
+  );
+
+  if (
+    status_test ==
+    0x00
+  ) {
+    return (
+      0x00
+    );
+  }
+
+  status_test = (
+    clic3_char_array_to_double(
+      "invalid_value",
+      &value_double
+    )
+  );
+
+  if (
+    status_test ==
+    0x00
+  ) {
+    return (
+      0x00
+    );
+  }
+
+  return (
+    0x01
+  );
 }
 
 unsigned char unit_test_clic3_char_arrays_char_array_from_float_test() {
@@ -320,6 +536,109 @@ unsigned char unit_test_clic3_char_arrays_char_array_from_float_test() {
   char_array = (
     clic3_char_array_from_float(
       12.5f
+    )
+  );
+
+  if (
+    char_array[0] != '1' ||
+    char_array[1] != '2' ||
+    char_array[2] != '.' ||
+    char_array[3] != '5' ||
+    char_array[4] != '\0'
+  ) {
+    status_test = 0;
+  }
+
+  clic3_memory_free_raw(
+    char_array
+  );
+
+  return status_test;
+}
+
+unsigned char unit_test_clic3_char_arrays_char_array_from_double_test() {
+  char* char_array = clic3_char_array_from_double(
+    1.9
+  );
+
+  unsigned char status_test = 1;
+
+  if (
+    char_array[0] != '1' ||
+    char_array[1] != '.' ||
+    char_array[2] != '9' ||
+    char_array[3] != '\0'
+  ) {
+    status_test = (
+      0x00
+    );
+  }
+
+  clic3_memory_free_raw(
+    char_array
+  );
+
+  if (
+    status_test !=
+    0x01
+  ) {
+    return (
+      status_test
+    );
+  }
+
+  char_array = (
+    clic3_char_array_from_double(
+      -1.9
+    )
+  );
+
+  if (
+    char_array[0] != '-' ||
+    char_array[1] != '1' ||
+    char_array[2] != '.' ||
+    char_array[3] != '9' ||
+    char_array[4] != '\0'
+  ) {
+    status_test = 0;
+  }
+
+  clic3_memory_free_raw(
+    char_array
+  );
+
+  if (status_test != 1) {
+    return status_test;
+  }
+
+  char_array = (
+    clic3_char_array_from_double(
+      -12.5
+    )
+  );
+
+  if (
+    char_array[0] != '-' ||
+    char_array[1] != '1' ||
+    char_array[2] != '2' ||
+    char_array[3] != '.' ||
+    char_array[4] != '5' ||
+    char_array[5] != '\0'
+  ) {
+    status_test = 0;
+  }
+
+  clic3_memory_free_raw(
+    char_array
+  );
+
+  if (status_test != 1) {
+    return status_test;
+  }
+
+  char_array = (
+    clic3_char_array_from_double(
+      12.5
     )
   );
 
@@ -464,6 +783,7 @@ unsigned char unit_test_clic3_char_arrays_char_array_split_on_char_test() {
   clic3_memory_free_raw(\
     char_array_result\
   );
+
 unsigned char unit_test_clic3_char_arrays_char_arrays_join_test() {
   unsigned char status_test = (
     0x01
@@ -542,33 +862,111 @@ struct unit_test unit_test_clic3_char_arrays_char_array_to_uppercase = {
 };
 
 struct unit_test unit_test_clic3_char_arrays_char_array_to_int = {
-  .name = "clic3_char_array_to_int",
-  .test = unit_test_clic3_char_arrays_char_array_to_int_test
+  .name = (
+    "clic3_char_array_to_int"
+  ),
+  .test = (
+    unit_test_clic3_char_arrays_char_array_to_int_test
+  )
+};
+
+struct unit_test unit_test_clic3_char_arrays_char_array_to_short_int = {
+  .name = (
+    "clic3_char_array_to_short_int"
+  ),
+  .test = (
+    unit_test_clic3_char_arrays_char_array_to_short_int_test
+  )
+};
+
+struct unit_test unit_test_clic3_char_arrays_char_array_to_long_int = {
+  .name = (
+    "clic3_char_array_to_long_int"
+  ),
+  .test = (
+    unit_test_clic3_char_arrays_char_array_to_long_int_test
+  )
+};
+
+struct unit_test unit_test_clic3_char_arrays_char_array_to_long_long_int = {
+  .name = (
+    "clic3_char_array_to_long_long_int"
+  ),
+  .test = (
+    unit_test_clic3_char_arrays_char_array_to_long_long_int_test
+  )
 };
 
 struct unit_test unit_test_clic3_char_arrays_char_array_to_unsigned_int = {
-  .name = "clic3_char_array_to_unsigned_int",
-  .test = unit_test_clic3_char_arrays_char_array_to_unsigned_int_test
+  .name = (
+    "clic3_char_array_to_unsigned_int"
+  ),
+  .test = (
+    unit_test_clic3_char_arrays_char_array_to_unsigned_int_test
+  )
 };
 
 struct unit_test unit_test_clic3_char_arrays_char_array_to_unsigned_short_int = {
-  .name = "clic3_char_array_to_unsigned_short_int",
-  .test = unit_test_clic3_char_arrays_char_array_to_unsigned_short_int_test
+  .name = (
+    "clic3_char_array_to_unsigned_short_int"
+  ),
+  .test = (
+    unit_test_clic3_char_arrays_char_array_to_unsigned_short_int_test
+  )
 };
 
 struct unit_test unit_test_clic3_char_arrays_char_array_to_unsigned_long_int = {
-  .name = "clic3_char_array_to_unsigned_long_int",
-  .test = unit_test_clic3_char_arrays_char_array_to_unsigned_long_int_test
+  .name = (
+    "clic3_char_array_to_unsigned_long_int"
+  ),
+  .test = (
+    unit_test_clic3_char_arrays_char_array_to_unsigned_long_int_test
+  )
+};
+
+struct unit_test unit_test_clic3_char_arrays_char_array_to_unsigned_long_long_int = {
+  .name = (
+    "clic3_char_array_to_unsigned_long_long_int"
+  ),
+  .test = (
+    unit_test_clic3_char_arrays_char_array_to_unsigned_long_long_int_test
+  )
 };
 
 struct unit_test unit_test_clic3_char_arrays_char_array_to_float = {
-  .name = "clic3_char_array_to_float",
-  .test = unit_test_clic3_char_arrays_char_array_to_float_test
+  .name = (
+    "clic3_char_array_to_float"
+  ),
+  .test = (
+    unit_test_clic3_char_arrays_char_array_to_float_test
+  )
+};
+
+struct unit_test unit_test_clic3_char_arrays_char_array_to_double = {
+  .name = (
+    "clic3_char_array_to_double"
+  ),
+  .test = (
+    unit_test_clic3_char_arrays_char_array_to_double_test
+  )
 };
 
 struct unit_test unit_test_clic3_char_arrays_char_array_from_float = {
-  .name = "clic3_char_array_from_float",
-  .test = unit_test_clic3_char_arrays_char_array_from_float_test
+  .name = (
+    "clic3_char_array_from_float"
+  ),
+  .test = (
+    unit_test_clic3_char_arrays_char_array_from_float_test
+  )
+};
+
+struct unit_test unit_test_clic3_char_arrays_char_array_from_double = {
+  .name = (
+    "clic3_char_array_from_double"
+  ),
+  .test = (
+    unit_test_clic3_char_arrays_char_array_from_double_test
+  )
 };
 
 struct unit_test unit_test_clic3_char_arrays_char_array_length = {
@@ -604,7 +1002,9 @@ struct unit_test_suite* get_unit_test_suite_clic3_char_arrays() {
     )
   );
 
-  unit_test_suite_clic3_char_arrays->length_name = 18;
+  unit_test_suite_clic3_char_arrays->length_name = (
+    0x12
+  );
 
   unit_test_suite_clic3_char_arrays->name = (
     clic3_memory_allocate_raw(
@@ -619,7 +1019,7 @@ struct unit_test_suite* get_unit_test_suite_clic3_char_arrays() {
   );
 
   unit_test_suite_clic3_char_arrays->length_unit_tests = (
-    0x0f
+    0x15
   );
 
   unit_test_suite_clic3_char_arrays->unit_tests = (
@@ -631,64 +1031,128 @@ struct unit_test_suite* get_unit_test_suite_clic3_char_arrays() {
     )
   );
 
-  unit_test_suite_clic3_char_arrays->unit_tests[0] = (
+  unit_test_suite_clic3_char_arrays->unit_tests[
+    0x00
+  ] = (
     &unit_test_clic3_char_arrays_char_array_to_int
   );
 
-  unit_test_suite_clic3_char_arrays->unit_tests[1] = (
+  unit_test_suite_clic3_char_arrays->unit_tests[
+    0x01
+  ] = (
+    &unit_test_clic3_char_arrays_char_array_to_short_int
+  );
+
+  unit_test_suite_clic3_char_arrays->unit_tests[
+    0x02
+  ] = (
+    &unit_test_clic3_char_arrays_char_array_to_long_int
+  );
+
+  unit_test_suite_clic3_char_arrays->unit_tests[
+    0x03
+  ] = (
+    &unit_test_clic3_char_arrays_char_array_to_long_long_int
+  );
+
+  unit_test_suite_clic3_char_arrays->unit_tests[
+    0x04
+  ] = (
     &unit_test_clic3_char_arrays_char_array_to_unsigned_int
   );
 
-  unit_test_suite_clic3_char_arrays->unit_tests[2] = (
+  unit_test_suite_clic3_char_arrays->unit_tests[
+    0x05
+  ] = (
     &unit_test_clic3_char_arrays_char_array_to_unsigned_short_int
   );
 
-  unit_test_suite_clic3_char_arrays->unit_tests[3] = (
+  unit_test_suite_clic3_char_arrays->unit_tests[
+    0x06
+  ] = (
     &unit_test_clic3_char_arrays_char_array_to_unsigned_long_int
   );
 
-  unit_test_suite_clic3_char_arrays->unit_tests[4] = (
+  unit_test_suite_clic3_char_arrays->unit_tests[
+    0x07
+  ] = (
+    &unit_test_clic3_char_arrays_char_array_to_unsigned_long_long_int
+  );
+
+  unit_test_suite_clic3_char_arrays->unit_tests[
+    0x08
+  ] = (
     &unit_test_clic3_char_arrays_within
   );
 
-  unit_test_suite_clic3_char_arrays->unit_tests[5] = (
+  unit_test_suite_clic3_char_arrays->unit_tests[
+    0x09
+  ] = (
     &unit_test_clic3_char_arrays_char_array_to_lowercase
   );
 
-  unit_test_suite_clic3_char_arrays->unit_tests[6] = (
+  unit_test_suite_clic3_char_arrays->unit_tests[
+    0x0a
+  ] = (
     &unit_test_clic3_char_arrays_char_array_to_uppercase
   );
 
-  unit_test_suite_clic3_char_arrays->unit_tests[7] = (
+  unit_test_suite_clic3_char_arrays->unit_tests[
+    0x0b
+  ] = (
     &unit_test_clic3_char_arrays_char_array_to_float
   );
 
-  unit_test_suite_clic3_char_arrays->unit_tests[8] = (
-    &unit_test_clic3_char_arrays_char_arrays_equal_equal
+  unit_test_suite_clic3_char_arrays->unit_tests[
+    0x0c
+  ] = (
+    &unit_test_clic3_char_arrays_char_array_to_double
   );
 
-  unit_test_suite_clic3_char_arrays->unit_tests[9] = (
-    &unit_test_clic3_char_arrays_char_arrays_equal_not_equal
-  );
-
-  unit_test_suite_clic3_char_arrays->unit_tests[10] = (
+  unit_test_suite_clic3_char_arrays->unit_tests[
+    0x0d
+  ] = (
     &unit_test_clic3_char_arrays_char_array_from_float
-  );
-
-  unit_test_suite_clic3_char_arrays->unit_tests[11] = (
-    &unit_test_clic3_char_arrays_char_array_length
-  );
-
-  unit_test_suite_clic3_char_arrays->unit_tests[12] = (
-    &unit_test_clic3_char_arrays_char_arrays_concatenate
-  );
-
-  unit_test_suite_clic3_char_arrays->unit_tests[13] = (
-    &unit_test_clic3_char_arrays_char_array_split_on_char
   );
 
   unit_test_suite_clic3_char_arrays->unit_tests[
     0x0e
+  ] = (
+    &unit_test_clic3_char_arrays_char_array_from_double
+  );
+
+  unit_test_suite_clic3_char_arrays->unit_tests[
+    0x0f
+  ] = (
+    &unit_test_clic3_char_arrays_char_arrays_equal_equal
+  );
+
+  unit_test_suite_clic3_char_arrays->unit_tests[
+    0x10
+  ] = (
+    &unit_test_clic3_char_arrays_char_arrays_equal_not_equal
+  );
+
+  unit_test_suite_clic3_char_arrays->unit_tests[
+    0x11
+  ] = (
+    &unit_test_clic3_char_arrays_char_array_length
+  );
+
+  unit_test_suite_clic3_char_arrays->unit_tests[
+    0x12
+  ] = (
+    &unit_test_clic3_char_arrays_char_arrays_concatenate
+  );
+
+  unit_test_suite_clic3_char_arrays->unit_tests[
+    0x13
+  ] = (
+    &unit_test_clic3_char_arrays_char_array_split_on_char
+  );
+
+  unit_test_suite_clic3_char_arrays->unit_tests[
+    0x14
   ] = (
     &unit_test_clic3_char_arrays_char_arrays_join
   );
