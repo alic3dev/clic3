@@ -44,6 +44,8 @@ c_standard_library
 - - `clic3_memory_reallocate_raw`: always reallocates memory
 - `clic3_numbers`: numbers
 - - `clic3_numbers_definition`: numbers as characters
+- `clic3_pathing`: pathing
+- - `clic3_pathing_combine`: combines path char arrays into a singular path char array
 - `clic3_sort`: sorting functions
 - - `clic3_sort`
 - - `clic3_sort_char`
