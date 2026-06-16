@@ -40,7 +40,7 @@ c_flags=-I${directory_include} -I${directory_clic3_include} ${c_flags_platform}
 
 ifeq (${debug}, 1)
 	file_object_clic3=${directory_clic3_library}/macos/debug/${name_clic3}.o
-	c_flags:=${c_flags} -O0 -g -v -da -Q
+	c_flags:=${c_flags} -O0 -g -v
 else
 	file_object_clic3=${directory_clic3_library}/macos/release/${name_clic3}.o
 	c_flags:=${c_flags} -O3
