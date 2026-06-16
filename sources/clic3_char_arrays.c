@@ -1,5 +1,7 @@
 #include <clic3_char_arrays.h>
 
+#ifndef __METAL_VERSION__
+
 #include <clic3_bytes.h>
 #include <clic3_char.h>
 
@@ -1365,3 +1367,5 @@ char* clic3_char_arrays_join(
     char_array_joined
   );
 }
+
+#endif

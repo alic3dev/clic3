@@ -1,6 +1,7 @@
 #ifndef __clic3_string_h
 #define __clic3_string_h
 
+#ifndef __METAL_VERSION__
 enum clic3_string_termination {
   clic3_string_termination_unknown = 0x00,
   clic3_string_termination_none    = 0x01,
@@ -54,5 +55,5 @@ void clic3_string_initialize_from_char_array_length_termination(
 void clic3_string_destroy(
   struct clic3_string*
 );
-
+#endif
 #endif

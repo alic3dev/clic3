@@ -2,12 +2,17 @@
 #define __clic3_base_hexadecimal_h
 
 #define clic3_base_hexdecimal_from_unsigned_char_value_maximum 0x100
-#define clic3_base_hexdecimal_from_unsigned_char_length_char_array 2
+#define clic3_base_hexdecimal_from_unsigned_char_length_char_array 0x02
+#define clic3_base_hexdecimal_from_unsigned_char_length_char_array_with_null_byte 0x03
 
+#ifdef __METAL_VERSION__
+extern constant const char clic3_base_hexadecimal_unsigned_char_mapping[
+#else
 extern const char clic3_base_hexadecimal_unsigned_char_mapping[
+#endif
   clic3_base_hexdecimal_from_unsigned_char_value_maximum
 ][
-  clic3_base_hexdecimal_from_unsigned_char_length_char_array
+  clic3_base_hexdecimal_from_unsigned_char_length_char_array_with_null_byte
 ];
 
 #endif

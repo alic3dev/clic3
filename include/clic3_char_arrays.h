@@ -1,6 +1,8 @@
 #ifndef __clic3_char_arrays_h
 #define __clic3_char_arrays_h
 
+#ifndef __METAL_VERSION__
+
 unsigned char clic3_char_arrays_equal(
   char*,
   char*
@@ -122,5 +124,7 @@ char* clic3_char_arrays_join(
   unsigned int,
   ...
 );
+
+#endif
 
 #endif

@@ -1,9 +1,13 @@
 #include <clic3_base_hexadecimal.h>
 
+#ifdef __METAL_VERSION__
+constant const char clic3_base_hexadecimal_unsigned_char_mapping[
+#else
 const char clic3_base_hexadecimal_unsigned_char_mapping[
+#endif
   clic3_base_hexdecimal_from_unsigned_char_value_maximum
 ][
-  clic3_base_hexdecimal_from_unsigned_char_length_char_array
+  clic3_base_hexdecimal_from_unsigned_char_length_char_array_with_null_byte
 ] = {
   "00",
   "01",

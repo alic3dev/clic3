@@ -1,5 +1,6 @@
 #include <clic3_sort.h>
 
+#ifndef __METAL_VERSION__
 #include <clic3_bytes.h>
 #include <clic3_memory.h>
 
@@ -385,3 +386,4 @@ void clic3_sort_char_arrays(
     }
   }
 }
+#endif

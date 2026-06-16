@@ -1,5 +1,6 @@
 #include <clic3_memory.h>
 
+#ifndef __METAL_VERSION__
 #include <stdlib.h>
 
 void clic3_memory_allocate(
@@ -89,3 +90,4 @@ void clic3_memory_free_raw(
     address_memory
   );
 }
+#endif

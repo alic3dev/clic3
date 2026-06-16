@@ -1,6 +1,8 @@
 #ifndef __clic3_colours_h
 #define __clic3_colours_h
 
+#include <clic3_metal.h>
+
 #define clic3_colours_definition_prefix \033[
 #define clic3_colours_definition_seperator ;
 #define clic3_colours_definition_postfix m
@@ -19,16 +21,19 @@
 #define clic3_colours_definition_value_length     0x01
 #define clic3_colours_definition_postfix_length   0x01
 
-extern const char clic3_colours_prefix_char_array[
-  clic3_colours_definition_prefix_length
+extern clic3_metal_constant_pointer_prefix char clic3_colours_prefix_char_array[
+  clic3_colours_definition_prefix_length +
+  0x01
 ];
 
-extern const char clic3_colours_seperator_char_array[
-  clic3_colours_definition_seperator_length
+extern clic3_metal_constant_pointer_prefix char clic3_colours_seperator_char_array[
+  clic3_colours_definition_seperator_length +
+  0x01
 ];
 
-extern const char clic3_colours_postfix_char_array[
-  clic3_colours_definition_postfix_length
+extern clic3_metal_constant_pointer_prefix char clic3_colours_postfix_char_array[
+  clic3_colours_definition_postfix_length +
+  0x01
 ];
 
 #define clic3_colours_length_colour (\
@@ -270,103 +275,105 @@ enum clic3_colour {
   clic3_colour_integer_definition_foreground\
 )
 
+#ifndef __METAL_VERSION__
 char* clic3_colours_char_array_construct(
   unsigned char,
   unsigned char,
   unsigned char
 );
+#endif
 
-extern const char clic3_colours_foreground[
+extern clic3_metal_constant_pointer_prefix char clic3_colours_foreground[
   clic3_colours_length_colour +
   0x01
 ];
 
-extern const char clic3_colours_red[
+extern clic3_metal_constant_pointer_prefix char clic3_colours_red[
   clic3_colours_length_colour +
   0x01
 ];
 
-extern const char clic3_colours_orange[
+extern clic3_metal_constant_pointer_prefix char clic3_colours_orange[
   clic3_colours_length_colour +
   0x01
 ];
 
-extern const char clic3_colours_yellow[
+extern clic3_metal_constant_pointer_prefix char clic3_colours_yellow[
   clic3_colours_length_colour +
   0x01
 ];
 
-extern const char clic3_colours_green[
+extern clic3_metal_constant_pointer_prefix char clic3_colours_green[
   clic3_colours_length_colour +
   0x01
 ];
 
-extern const char clic3_colours_blue[
+extern clic3_metal_constant_pointer_prefix char clic3_colours_blue[
   clic3_colours_length_colour +
   0x01
 ];
 
-extern const char clic3_colours_cyan[
+extern clic3_metal_constant_pointer_prefix char clic3_colours_cyan[
   clic3_colours_length_colour +
   0x01
 ];
 
-extern const char clic3_colours_purple[
+extern clic3_metal_constant_pointer_prefix char clic3_colours_purple[
   clic3_colours_length_colour +
   0x01
 ];
 
-extern const char clic3_colours_background[
+extern clic3_metal_constant_pointer_prefix char clic3_colours_background[
   clic3_colours_length_colour +
   0x01
 ];
 
-extern const char clic3_colours_bold_foreground[
+extern clic3_metal_constant_pointer_prefix char clic3_colours_bold_foreground[
   clic3_colours_length_colour +
   0x01
 ];
 
-extern const char clic3_colours_bold_red[
+extern clic3_metal_constant_pointer_prefix char clic3_colours_bold_red[
   clic3_colours_length_colour +
   0x01
 ];
 
-extern const char clic3_colours_bold_orange[
+extern clic3_metal_constant_pointer_prefix char clic3_colours_bold_orange[
   clic3_colours_length_colour +
   0x01
 ];
 
-extern const char clic3_colours_bold_yellow[
+extern clic3_metal_constant_pointer_prefix char clic3_colours_bold_yellow[
   clic3_colours_length_colour +
   0x01
 ];
 
-extern const char clic3_colours_bold_green[
+extern clic3_metal_constant_pointer_prefix char clic3_colours_bold_green[
   clic3_colours_length_colour +
   0x01
 ];
 
-extern const char clic3_colours_bold_blue[
+extern clic3_metal_constant_pointer_prefix char clic3_colours_bold_blue[
   clic3_colours_length_colour +
   0x01
 ];
 
-extern const char clic3_colours_bold_cyan[
+extern clic3_metal_constant_pointer_prefix char clic3_colours_bold_cyan[
   clic3_colours_length_colour +
   0x01
 ];
 
-extern const char clic3_colours_bold_purple[
+extern clic3_metal_constant_pointer_prefix char clic3_colours_bold_purple[
   clic3_colours_length_colour +
   0x01
 ];
 
-extern const char clic3_colours_bold_background[
+extern clic3_metal_constant_pointer_prefix char clic3_colours_bold_background[
   clic3_colours_length_colour +
   0x01
 ];
 
-extern const char clic3_colours_reset[
+extern clic3_metal_constant_pointer_prefix char clic3_colours_reset[
   clic3_colours_length_colour +
   0x01
 ];

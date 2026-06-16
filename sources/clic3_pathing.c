@@ -1,5 +1,6 @@
 #include <clic3_pathing.h>
 
+#ifndef __METAL_VERSION__
 #include <clic3_bytes.h>
 #include <clic3_char_arrays.h>
 #include <clic3_memory.h>
@@ -234,3 +235,5 @@ char* clic3_pathing_combine(
     pathing
   );
 }
+
+#endif

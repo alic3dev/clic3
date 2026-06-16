@@ -2,24 +2,28 @@
 
 #include <clic3_memory.h>
 
-const char clic3_colours_prefix_char_array[
-  clic3_colours_definition_prefix_length
+clic3_metal_constant_pointer_prefix char clic3_colours_prefix_char_array[
+  clic3_colours_definition_prefix_length +
+  0x01
 ] = (
   clic3_colours_definition_prefix_char_array
 );
 
-const char clic3_colours_seperator_char_array[
-  clic3_colours_definition_seperator_length
+clic3_metal_constant_pointer_prefix char clic3_colours_seperator_char_array[
+  clic3_colours_definition_seperator_length +
+  0x01
 ] = (
   clic3_colours_definition_seperator_char_array
 );
 
-const char clic3_colours_postfix_char_array[
-  clic3_colours_definition_postfix_length
+clic3_metal_constant_pointer_prefix char clic3_colours_postfix_char_array[
+  clic3_colours_definition_postfix_length +
+  0x01
 ] = (
   clic3_colours_definition_postfix_char_array
 );
 
+#ifndef __METAL_VERSION__
 char* clic3_colours_char_array_construct(
   unsigned char clic3_colours_char_array_style,
   unsigned char clic3_colours_char_array_modifier,
@@ -156,139 +160,123 @@ char* clic3_colours_char_array_construct(
     clic3_colour_char_array_constructed
   );
 }
+#endif
 
-const char clic3_colours_foreground[
+clic3_metal_constant_pointer_prefix char clic3_colours_foreground[
   clic3_colours_length_colour +
   0x01
 ] = (
   clic3_colours_definition_foreground
-  "\0"
 );
 
-const char clic3_colours_red[
+clic3_metal_constant_pointer_prefix char clic3_colours_red[
   clic3_colours_length_colour +
   0x01
 ] = (
   clic3_colours_definition_red
-  "\0"
 );
 
-const char clic3_colours_yellow[
+clic3_metal_constant_pointer_prefix char clic3_colours_yellow[
   clic3_colours_length_colour +
   0x01
 ] = (
   clic3_colours_definition_yellow
-  "\0"
 );
 
-const char clic3_colours_green[
+clic3_metal_constant_pointer_prefix char clic3_colours_green[
   clic3_colours_length_colour +
   0x01
 ] = (
   clic3_colours_definition_green
-  "\0"
 );
 
-const char clic3_colours_blue[
+clic3_metal_constant_pointer_prefix char clic3_colours_blue[
   clic3_colours_length_colour +
   0x01
 ] = (
   clic3_colours_definition_blue
-  "\0"
 );
 
-const char clic3_colours_cyan[
+clic3_metal_constant_pointer_prefix char clic3_colours_cyan[
   clic3_colours_length_colour +
   0x01
 ] = (
   clic3_colours_definition_cyan
-  "\0"
 );
 
-const char clic3_colours_purple[
+clic3_metal_constant_pointer_prefix char clic3_colours_purple[
   clic3_colours_length_colour +
   0x01
 ] = (
   clic3_colours_definition_purple
-  "\0"
 );
 
-const char clic3_colours_background[
+clic3_metal_constant_pointer_prefix char clic3_colours_background[
   clic3_colours_length_colour +
   0x01
 ] = (
   clic3_colours_definition_background
-  "\0"
 );
 
-const char clic3_colours_bold_foreground[
+clic3_metal_constant_pointer_prefix char clic3_colours_bold_foreground[
   clic3_colours_length_colour +
   0x01
 ] = (
   clic3_colours_definition_bold_foreground
-  "\0"
 );
 
-const char clic3_colours_bold_red[
+clic3_metal_constant_pointer_prefix char clic3_colours_bold_red[
   clic3_colours_length_colour +
   0x01
 ] = (
   clic3_colours_definition_red
-  "\0"
 );
 
-const char clic3_colours_bold_yellow[
+clic3_metal_constant_pointer_prefix char clic3_colours_bold_yellow[
   clic3_colours_length_colour +
   0x01
 ] = (
   clic3_colours_definition_yellow
-  "\0"
 );
 
-const char clic3_colours_bold_green[
+clic3_metal_constant_pointer_prefix char clic3_colours_bold_green[
   clic3_colours_length_colour +
   0x01
 ] = (
   clic3_colours_definition_green
-  "\0"
 );
 
-const char clic3_colours_bold_blue[
+clic3_metal_constant_pointer_prefix char clic3_colours_bold_blue[
   clic3_colours_length_colour +
   0x01
 ] = (
   clic3_colours_definition_blue
-  "\0"
 );
 
-const char clic3_colours_bold_cyan[
+clic3_metal_constant_pointer_prefix char clic3_colours_bold_cyan[
   clic3_colours_length_colour +
   0x01
 ] = (
   clic3_colours_definition_cyan
-  "\0"
 );
 
-const char clic3_colours_bold_purple[
+clic3_metal_constant_pointer_prefix char clic3_colours_bold_purple[
   clic3_colours_length_colour +
   0x01
 ] = (
   clic3_colours_definition_purple
-  "\0"
 );
 
-const char clic3_colours_bold_background[
+clic3_metal_constant_pointer_prefix char clic3_colours_bold_background[
   clic3_colours_length_colour +
   0x01
 ] = (
   clic3_colours_definition_bold_background
-  "\0"
 );
 
-const char clic3_colours_reset[
+clic3_metal_constant_pointer_prefix char clic3_colours_reset[
   clic3_colours_length_colour +
   0x01
 ] = (
   clic3_colours_definition_reset
-  "\0"
 );

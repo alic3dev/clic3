@@ -1,6 +1,8 @@
 #ifndef __clic3_sort_h
 #define __clic3_sort_h
 
+#ifndef __METAL_VERSION__
+
 #define clic3_sort_definition_macro_statement(type, name_type)\
   void clic3_sort_ ## name_type(\
     type*,\
@@ -54,5 +56,5 @@ void clic3_sort_char_arrays(
   char**,
   unsigned long int
 );
-
+#endif
 #endif

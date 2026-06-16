@@ -1,5 +1,7 @@
 #include <clic3_string.h>
 
+#ifndef __METAL_VERSION__
+
 #include <clic3_bytes.h>
 #include <clic3_char_arrays.h>
 #include <clic3_memory.h>
@@ -145,3 +147,5 @@ void clic3_string_destroy(
     clic3_string_termination_none
   );
 }
+
+#endif

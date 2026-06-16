@@ -10,7 +10,19 @@
     clic3_alphabet_english_definition_length\
   )
 
-extern const char clic3_base_char_array_mapping[
+#ifdef __METAL_VERSION__
+extern constant const char clic3_base_char_array_mapping_lowercase[
+#else
+extern const char clic3_base_char_array_mapping_lowercase[
+#endif
+  clic3_base_char_array_mapping_length
+];
+
+#ifdef __METAL_VERSION__
+extern constant const char clic3_base_char_array_mapping_uppercase[
+#else
+extern const char clic3_base_char_array_mapping_uppercase[
+#endif
   clic3_base_char_array_mapping_length
 ];
 
