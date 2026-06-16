@@ -62,6 +62,8 @@ files_air=${patsubst ${directory_sources}/%.c, ${directory_air}/%.air, ${files_s
 files_metalar=${patsubst ${directory_air}/%.air, ${directory_metalar}/%.metalar, ${files_air}}
 files_objects=${patsubst ${directory_sources}/%.c,${directory_objects}/%.o,${files_sources}}
 
+file_library_metallib=${directory_library}/${name}.metallib
+
 ifndef target_device_version
 target_device_version=26.1
 endif
@@ -203,13 +205,19 @@ unit_tests_run:
 
 clean_all: clean clean_unit_tests
 
-clean: clean_library clean_objects
+clean: clean_air clean_metalar clean_library clean_objects
+
+clean_air:
+	if [[ -d ${directory_air_base} ]]; then rm -r ${directory_air_base}; fi
+
+clean_metalar:
+	if [[ -d ${directory_metalar_base} ]]; then rm -r ${directory_metalar_base}; fi
 
 clean_library:
-	-rm -r ${directory_library_base} 2> /dev/null
+	if [[ -d ${directory_library_base} ]]; then rm -r ${directory_library_base}; fi
 
 clean_objects:
-	-rm -r ${directory_objects_base} 2> /dev/null
+	if [[ -d ${directory_objects_base} ]]; then rm -r ${directory_objects_base}; fi
 
 clean_unit_tests:
 	cd ${directory_unit_tests} && make clean target_device_version=${target_device_version}
