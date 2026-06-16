@@ -5,9 +5,7 @@ on:
   pull_request:
     branches: ["*"]
 env:
-  target_device_version_ios: 18.5
-  target_device_version_macos: 15.5
-  target_metal_standard: metal3.2
+  target_device_version: 15.5
 jobs:
   continuous_integration_build:
     runs-on: macos-latest
@@ -16,10 +14,8 @@ jobs:
         run: git config --global init.defaultBranch core
       - uses: actions/checkout@v5
       - name: make:clic3
-        run: make target_device_version=${{ env.target_device_version_macos }} disable_metal_fast_options=1 target_metal_standard=${{ env.target_metal_standard }}
-      - name: make:clic3_ios
-        run: make target_device_version=${{ env.target_device_version_ios }} target_device=iphone disable_metal_fast_options=1 target_metal_standard=${{ env.target_metal_standard }}
+        run: make clic3_without_metal target_device_version=${{ env.target_device_version }}
       - name: make:unit_tests
-        run: make unit_tests target_device_version=${{ env.target_device_version_macos }}
+        run: make unit_tests target_device_version=${{ env.target_device_version }}
       - name: run:unit_tests
-        run: make unit_tests_run target_device_version=${{ env.target_device_version_macos }}
+        run: make unit_tests_run target_device_version=${{ env.target_device_version }}
