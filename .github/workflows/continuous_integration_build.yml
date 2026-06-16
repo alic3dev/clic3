@@ -15,26 +15,10 @@ jobs:
       - name: git_initialization
         run: git config --global init.defaultBranch core
       - uses: actions/checkout@v4
-      - name: make:clic3_objects
-        run: make clic3_objects target_device_version=${{ env.target_device_version_macos }} disable_metal_fast_options=1 target_metal_standard=${{ env.target_metal_standard }}
-      - name: make:clic3_dylib
-        run: make clic3_dylib target_device_version=${{ env.target_device_version_macos }} disable_metal_fast_options=1 target_metal_standard=${{ env.target_metal_standard }}
-      - name: make:clic3_dynamic
-        run: make clic3_dynamic target_device_version=${{ env.target_device_version_macos }} disable_metal_fast_options=1 target_metal_standard=${{ env.target_metal_standard }}
-      - name: make:clic3_object
-        run: make clic3_object target_device_version=${{ env.target_device_version_macos }} disable_metal_fast_options=1 target_metal_standard=${{ env.target_metal_standard }}
-      - name: make:clic3_static
-        run: make clic3_static target_device_version=${{ env.target_device_version_macos }} disable_metal_fast_options=1 target_metal_standard=${{ env.target_metal_standard }}
-      - name: make:clic3_ios_objects
-        run: make clic3_ios_objects target_device_version=${{ env.target_device_version_ios }} target_device=iphone disable_metal_fast_options=1 target_metal_standard=${{ env.target_metal_standard }}
-      - name: make:clic3_ios_dylib
-        run: make clic3_ios_dylib target_device_version=${{ env.target_device_version_ios }} target_device=iphone disable_metal_fast_options=1 target_metal_standard=${{ env.target_metal_standard }}
-      - name: make:clic3_ios_dynamic
-        run: make clic3_ios_dynamic target_device_version=${{ env.target_device_version_ios }} target_device=iphone disable_metal_fast_options=1 target_metal_standard=${{ env.target_metal_standard }}
-      - name: make:clic3_ios_object
-        run: make clic3_ios_object target_device_version=${{ env.target_device_version_ios }} target_device=iphone disable_metal_fast_options=1 target_metal_standard=${{ env.target_metal_standard }}
-      - name: make:clic3_ios_static
-        run: make clic3_ios_static target_device_version=${{ env.target_device_version_ios }} target_device=iphone disable_metal_fast_options=1 target_metal_standard=${{ env.target_metal_standard }}
+      - name: make:clic3
+        run: make target_device_version=${{ env.target_device_version_macos }} disable_metal_fast_options=1 target_metal_standard=${{ env.target_metal_standard }}
+      - name: make:clic3_ios
+        run: make target_device_version=${{ env.target_device_version_ios }} target_device=iphone disable_metal_fast_options=1 target_metal_standard=${{ env.target_metal_standard }}
       - name: make:unit_tests
         run: make unit_tests target_device_version=${{ env.target_device_version_macos }}
       - name: run:unit_tests
