@@ -377,7 +377,7 @@ clic3_char_array_to_unsigned_integer_type_function(
 );
 #endif
 
-#define clic3_char_array_to_floating_point_type(\
+#define clic3_char_array_to_floating_point_type_function(\
   type\
 )\
   unsigned char clic3_char_array_to_ ## type(\
@@ -536,12 +536,12 @@ clic3_char_array_to_unsigned_integer_type_function(
     );\
   }
 
-clic3_char_array_to_floating_point_type(
+clic3_char_array_to_floating_point_type_function(
   float
 );
 
 #ifndef __METAL_VERSION__
-clic3_char_array_to_floating_point_type(
+clic3_char_array_to_floating_point_type_function(
   double
 );
 #endif
@@ -679,397 +679,255 @@ clic3_function_definition_char_array_from(int, int);
 clic3_function_definition_char_array_from(unsigned char, unsigned_char);
 clic3_function_definition_char_array_from(char, char);
 
-char* clic3_char_array_from_float(
-  float value
-) {
-  unsigned char length_char_array = (
-    0x01
-  );
-
-  static char* char_array;
-
-  char_array = (
-    clic3_memory_allocate_raw(
-      0xff
-    )
-  );
-
-  unsigned char negative_is = (
-    0x00
-  );
-
-  if (
-    value <
-    0x00
-  ) {
-    negative_is = (
-      0x01
-    );
-
-    value = -(
-      value
-    );
+#define clic3_char_array_from_floating_point_type_function(\
+  type\
+)\
+  char* clic3_char_array_from_ ## type(\
+    type value\
+  ) {\
+    unsigned char length_char_array = (\
+      0x01\
+    );\
+    \
+    static char* char_array;\
+    \
+    char_array = (\
+      clic3_memory_allocate_raw(\
+        0xff\
+      )\
+    );\
+    \
+    unsigned char negative_is = (\
+      0x00\
+    );\
+    \
+    if (\
+      value <\
+      0x00\
+    ) {\
+      negative_is = (\
+        0x01\
+      );\
+      \
+      value = -(\
+        value\
+      );\
+    }\
+    \
+    type value_original = (\
+      value\
+    );\
+    \
+    while (\
+      (\
+        (unsigned int)\
+        value\
+      ) !=\
+      0x00\
+    ) {\
+      type value_next = (\
+        value /\
+        0x0a\
+      );\
+      \
+      length_char_array = (\
+        length_char_array +\
+        0x01\
+      );\
+      \
+      char_array[\
+        length_char_array -\
+        0x02\
+      ] = (\
+        '0' +\
+        (\
+          (unsigned int)\
+          value -\
+          (unsigned int)\
+          value_next *\
+          0x0a\
+        )\
+      );\
+      \
+      value = (\
+        value_next\
+      );\
+    }\
+    \
+    for (\
+      unsigned char index_char = (\
+        0x00\
+      );\
+      (\
+        index_char <\
+        (\
+          (\
+            length_char_array -\
+            0x02\
+          ) /\
+          0x02 +\
+          (\
+            length_char_array %\
+            0x02\
+          )\
+        )\
+      );\
+      ++index_char\
+    ) {\
+      char char_placeholder = (\
+        char_array[\
+          index_char\
+        ]\
+      );\
+      \
+      char_array[\
+        index_char\
+      ] = (\
+        char_array[\
+          length_char_array -\
+          index_char -\
+          0x02\
+        ]\
+      );\
+      \
+      char_array[\
+        length_char_array -\
+        index_char -\
+        0x02\
+      ] = (\
+        char_placeholder\
+      );\
+    }\
+    \
+    if (\
+      negative_is !=\
+      0x00\
+    ) {\
+      length_char_array = (\
+        length_char_array +\
+        0x01\
+      );\
+      \
+      for (\
+        unsigned char index_char = (\
+          length_char_array -\
+          0x02\
+        );\
+        (\
+          index_char >\
+          0x00\
+        );\
+        --index_char\
+      ) {\
+        char_array[\
+          index_char\
+        ] = (\
+          char_array[\
+            index_char -\
+            0x01\
+          ]\
+        );\
+      }\
+      \
+      char_array[\
+        0x00\
+      ] = (\
+        '-'\
+      );\
+    }\
+    \
+    value = (\
+      value_original -\
+      (unsigned int)\
+      value_original\
+    );\
+    \
+    if (\
+      (\
+        value !=\
+        0x00\
+      ) &&\
+      (\
+        length_char_array <\
+        0xfe\
+      )\
+    ) {\
+      length_char_array = (\
+        length_char_array +\
+        0x01\
+      );\
+      \
+      char_array[\
+        length_char_array -\
+        0x02\
+      ] = (\
+        '.'\
+      );\
+      \
+      while (\
+        (\
+          value !=\
+          0x00\
+        ) &&\
+        (\
+          length_char_array !=\
+          0xff\
+        )\
+      ) {\
+        length_char_array = (\
+          length_char_array +\
+          0x01\
+        );\
+        \
+        value = (\
+          value *\
+          0x0a\
+        );\
+        \
+        unsigned char value_integer = (\
+          value\
+        );\
+        \
+        char_array[\
+          length_char_array -\
+          0x02\
+        ] = (\
+          '0' +\
+          value_integer\
+        );\
+        \
+        value = (\
+          value -\
+          value_integer\
+        );\
+      }\
+    }\
+    \
+    char_array[\
+      length_char_array -\
+      0x01\
+    ] = (\
+      '\0'\
+    );\
+    \
+    clic3_memory_reallocate_raw(\
+      &char_array,\
+      length_char_array\
+    );\
+    \
+    return (\
+      char_array\
+    );\
   }
 
-  float value_original = (
-    value
-  );
-
-  while (
-    (
-      (unsigned int)
-      value
-    ) !=
-    0x00
-  ) {
-    float value_next = (
-      value /
-      0x0a
-    );
-
-    length_char_array = (
-      length_char_array +
-      0x01
-    );
-
-    char_array[
-      length_char_array -
-      0x02
-    ] = (
-      '0' +
-      (
-        (unsigned int)
-        value -
-        (unsigned int)
-        value_next *
-        0x0a
-      )
-    );
-
-    value = (
-      value_next
-    );
-  }
-
-  for (
-    unsigned char index_char = (
-      0x00
-    );
-    (
-      index_char <
-      (
-        (
-          length_char_array -
-          0x02
-        ) /
-        0x02 +
-        (
-          length_char_array %
-          0x02
-        )
-      )
-    );
-    ++index_char
-  ) {
-    char char_placeholder = (
-      char_array[
-        index_char
-      ]
-    );
-
-    char_array[
-      index_char
-    ] = (
-      char_array[
-        length_char_array -
-        index_char -
-        0x02
-      ]
-    );
-
-    char_array[
-      length_char_array -
-      index_char -
-      0x02
-    ] = (
-      char_placeholder
-    );
-  }
-
-  if (
-    negative_is !=
-    0x00
-  ) {
-    length_char_array = (
-      length_char_array +
-      0x01
-    );
-
-    for (
-      unsigned char index_char = (
-        length_char_array -
-        0x02
-      );
-      (
-        index_char >
-        0x00
-      );
-      --index_char
-    ) {
-      char_array[
-        index_char
-      ] = (
-        char_array[
-          index_char -
-          0x01
-        ]
-      );
-    }
-
-    char_array[
-      0x00
-    ] = (
-      '-'
-    );
-  }
-
-  value = (
-    value_original -
-    (unsigned int)
-    value_original
-  );
-
-  if (
-    (
-      value !=
-      0x00
-    ) &&
-    (
-      length_char_array <
-      0xfe
-    )
-  ) {
-    length_char_array = (
-      length_char_array +
-      0x01
-    );
-
-    char_array[
-      length_char_array -
-      0x02
-    ] = (
-      '.'
-    );
-
-    while (
-      (
-        value !=
-        0x00
-      ) &&
-      (
-        length_char_array !=
-        0xff
-      )
-    ) {
-      length_char_array = (
-        length_char_array +
-        0x01
-      );
-
-      value = (
-        value *
-        0x0a
-      );
-
-      unsigned char value_integer = (
-        value
-      );
-
-      char_array[
-        length_char_array -
-        0x02
-      ] = (
-        '0' +
-        value_integer
-      );
-
-      value = (
-        value -
-        value_integer
-      );
-    }
-  }
-
-  char_array[
-    length_char_array -
-    0x01
-  ] = (
-    '\0'
-  );
-
-  clic3_memory_reallocate_raw(
-    &char_array,
-    length_char_array
-  );
-
-  return (
-    char_array
-  );
-}
+clic3_char_array_from_floating_point_type_function(
+  float
+);
 
 #ifndef __METAL_VERSION__
-char* clic3_char_array_from_double(
-  double value
-) {
-  unsigned char length_char_array = 1;
-
-  static char* char_array;
-
-  char_array = (
-    clic3_memory_allocate_raw(
-      255
-    )
-  );
-
-  unsigned char negative_is = 0;
-
-  if (
-    value < 0.0f
-  ) {
-    negative_is = 1;
-
-    value = -value;
-  }
-
-  double value_original = (
-    value
-  );
-
-  while (
-    (
-      (unsigned int)
-      value
-    ) !=
-    0x00
-  ) {
-    double value_next = (
-      value /
-      10.0f
-    );
-
-    length_char_array = (
-      length_char_array +
-      0x01
-    );
-
-    char_array[
-      length_char_array -
-      0x02
-    ] = (
-      '0' +
-      (
-        (unsigned int)
-        value -
-        (unsigned int)
-        value_next *
-        0x0a
-      )
-    );
-
-    value = (
-      value_next
-    );
-  }
-
-  for (
-    unsigned char index_char = 0;
-    index_char < (length_char_array - 2) / 2 + (length_char_array % 2);
-    ++index_char
-  ) {
-    char char_placeholder = char_array[index_char];
-
-    char_array[
-      index_char
-    ] = char_array[
-      length_char_array -
-      index_char -
-      2
-    ];
-
-    char_array[
-      length_char_array -
-      index_char -
-      2
-    ] = char_placeholder;
-  }
-
-  if (negative_is) {
-    length_char_array = (
-      length_char_array + 1
-    );
-
-    for (
-      unsigned char index_char = length_char_array - 2;
-      index_char > 0;
-      --index_char
-    ) {
-      char_array[index_char] = char_array[index_char - 1];
-    }
-
-    char_array[0] = '-';
-  }
-
-  value = value_original - (unsigned int) value_original;
-
-  if (
-    value != 0.0f &&
-    length_char_array < 254
-  ) {
-    length_char_array = (
-      length_char_array + 1
-    );
-
-    char_array[
-      length_char_array - 2
-    ] = '.';
-
-    while (
-      value != 0.0f &&
-      length_char_array != 255
-    ) {
-      length_char_array = (
-        length_char_array + 1
-      );
-
-      value = value * 10.0f;
-
-      unsigned char value_integer = (unsigned char) value;
-
-      char_array[
-        length_char_array - 2
-      ] = (
-        '0' +
-        value_integer
-      );
-
-      value = value - value_integer;
-    }
-  }
-
-  char_array[
-    length_char_array -
-    0x01
-  ] = (
-    '\0'
-  );
-
-  clic3_memory_reallocate_raw(
-    &char_array,
-    length_char_array
-  );
-
-  return char_array;
-}
+clic3_char_array_from_floating_point_type_function(
+  double
+);
 #endif
 
 unsigned int clic3_char_array_length(
