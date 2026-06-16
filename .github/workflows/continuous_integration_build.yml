@@ -14,7 +14,7 @@ jobs:
     steps:
       - name: git_initialization
         run: git config --global init.defaultBranch core
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
       - name: make:clic3
         run: make target_device_version=${{ env.target_device_version_macos }} disable_metal_fast_options=1 target_metal_standard=${{ env.target_metal_standard }}
       - name: make:clic3_ios
