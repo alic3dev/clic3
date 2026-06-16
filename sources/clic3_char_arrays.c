@@ -251,6 +251,73 @@ unsigned char clic3_char_array_to_long_int(
   return 0;
 }
 
+#ifndef __METAL_VERSION__
+unsigned char clic3_char_array_to_long_long_int(
+  char* char_array,
+  long long int* pointer_int
+) {
+  long long int long_int_return = 0;
+
+  unsigned int index_char_array = 0;
+  char char_current = char_array[index_char_array];
+  unsigned char is_negative = 0;
+
+  if (char_current == '-') {
+    is_negative = 1;
+
+    index_char_array = (
+      index_char_array + 1
+    );
+    char_current = char_array[
+      index_char_array
+    ];
+  }
+
+  while (
+    char_current != '\0'
+  ) {
+    if (
+      clic3_char_is_digit(char_current) == 1
+    ) {
+      return 1;
+    } else {
+      long_int_return = (
+        (
+          long_int_return *
+          0x0a
+        ) +
+        (
+          char_current -
+          '0'
+        )
+      );
+    }
+
+    index_char_array = (
+      index_char_array +
+      0x01
+    );
+
+    char_current = char_array[
+      index_char_array
+    ];
+  }
+
+  *pointer_int = (
+    (
+      is_negative ==
+      0x01
+    )
+    ? -long_int_return
+    : long_int_return
+  );
+
+  return (
+    0x00
+  );
+}
+#endif
+
 unsigned char clic3_char_array_to_unsigned_int(
   char* char_array,
   unsigned int* pointer_unsigned_int
@@ -365,15 +432,56 @@ unsigned char clic3_char_array_to_unsigned_long_int(
   return 0;
 }
 
+#ifndef __METAL_VERSION__
+unsigned char clic3_char_array_to_unsigned_long_long_int(
+  char* char_array,
+  unsigned long long int* pointer_unsigned_long_long_int
+) {
+  unsigned long long int unsigned_long_long_int_return = 0;
+
+  unsigned int index_char_array = 0;
+  char char_current = char_array[index_char_array];
+
+  while (
+    char_current != '\0'
+  ) {
+    if (
+      clic3_char_is_digit(char_current) == 1
+    ) {
+      unsigned_long_long_int_return = (
+        (unsigned_long_long_int_return * 10)
+        + (char_current - '0')
+      );
+    } else {
+      return 1;
+    }
+
+    index_char_array = (
+      index_char_array + 1
+    );
+
+    char_current = char_array[
+      index_char_array
+    ];
+  }
+
+  *pointer_unsigned_long_long_int = (
+    unsigned_long_long_int_return
+  );
+
+  return 0;
+}
+#endif
+
 unsigned char clic3_char_array_to_float(
   char* char_array,
   float* pointer_float
 ) {
   float float_return = 0.0f;
 
-  unsigned short int index_char_array = 0;
+  unsigned int index_char_array = 0;
   char char_current = char_array[index_char_array];
-  unsigned short int decimal = 0;
+  unsigned int decimal = 0;
 
   unsigned char is_negative = 0;
   unsigned char has_f = 0;
@@ -437,6 +545,120 @@ unsigned char clic3_char_array_to_float(
 
   return 0;
 }
+
+#ifndef __METAL_VERSION__
+unsigned char clic3_char_array_to_double(
+  char* char_array,
+  double* pointer_double
+) {
+  double double_return = 0.0f;
+
+  unsigned int index_char_array = 0;
+  char char_current = char_array[index_char_array];
+  unsigned short int decimal = 0;
+
+  unsigned char is_negative = 0;
+  unsigned char has_f = 0;
+
+  if (char_current == '-') {
+    is_negative = 1;
+
+    index_char_array = (
+      index_char_array + 1
+    );
+    char_current = (
+      char_array[
+        index_char_array
+      ]
+    );
+  }
+
+  while (char_current != '\0') {
+    if (
+      char_current ==
+      '.'
+    ) {
+      if (decimal > 0) {
+        return 1;
+      }
+
+      decimal = 10;
+    } else if (
+      char_current == 'f' &&
+      decimal > 10 &&
+      has_f == 0
+    ) {
+      has_f = 1;
+    } else if (
+      (
+        clic3_char_is_digit(
+          char_current
+        ) !=
+        0x01
+      ) ||
+      (
+        has_f ==
+        0x01
+      )
+    ) {
+      return (
+        0x01
+      );
+    } else if (
+      decimal >
+      0x00
+    ) {
+      double_return = (
+        double_return + (
+          (float)
+          (
+            char_current -
+            '0'
+          ) /
+          (float)
+          decimal
+        )
+      );
+
+      decimal = (
+        decimal * 10
+      );
+    } else {
+      double_return = (
+        (
+          double_return *
+          0x0a
+        ) +
+        (
+          char_current -
+          '0'
+        )
+      );
+    }
+
+    index_char_array = (
+      index_char_array +
+      0x01
+    );
+
+    char_current = (
+      char_array[
+        index_char_array
+      ]
+    );
+  }
+
+  *pointer_double = (
+    is_negative == 1
+    ? -double_return
+    : double_return
+   );
+
+  return (
+    0x00
+  );
+}
+#endif
 
 #define clic3_function_definition_char_array_from(type, name) char* clic3_char_array_from_ ## name(\
   type value\
@@ -701,6 +923,161 @@ char* clic3_char_array_from_float(
 
   return char_array;
 }
+
+#ifndef __METAL_VERSION__
+char* clic3_char_array_from_double(
+  double value
+) {
+  unsigned char length_char_array = 1;
+
+  static char* char_array;
+
+  char_array = (
+    clic3_memory_allocate_raw(
+      255
+    )
+  );
+
+  unsigned char negative_is = 0;
+
+  if (
+    value < 0.0f
+  ) {
+    negative_is = 1;
+
+    value = -value;
+  }
+
+  double value_original = (
+    value
+  );
+
+  while (
+    (
+      (unsigned int)
+      value
+    ) !=
+    0x00
+  ) {
+    double value_next = (
+      value /
+      10.0f
+    );
+
+    length_char_array = (
+      length_char_array + 
+      0x01
+    );
+
+    char_array[
+      length_char_array -
+      0x02
+    ] = (
+      '0' +
+      (
+        (unsigned int)
+        value -
+        (unsigned int)
+        value_next *
+        0x0a
+      )
+    );
+
+    value = (
+      value_next
+    );
+  }
+
+  for (
+    unsigned char index_char = 0;
+    index_char < (length_char_array - 2) / 2 + (length_char_array % 2);
+    ++index_char
+  ) {
+    char char_placeholder = char_array[index_char];
+
+    char_array[
+      index_char
+    ] = char_array[
+      length_char_array -
+      index_char -
+      2
+    ];
+
+    char_array[
+      length_char_array -
+      index_char -
+      2
+    ] = char_placeholder;
+  }
+
+  if (negative_is) {
+    length_char_array = (
+      length_char_array + 1
+    );
+
+    for (
+      unsigned char index_char = length_char_array - 2;
+      index_char > 0;
+      --index_char
+    ) {
+      char_array[index_char] = char_array[index_char - 1];
+    }
+
+    char_array[0] = '-';
+  }
+
+  value = value_original - (unsigned int) value_original;
+
+  if (
+    value != 0.0f &&
+    length_char_array < 254
+  ) {
+    length_char_array = (
+      length_char_array + 1
+    );
+
+    char_array[
+      length_char_array - 2
+    ] = '.';
+
+    while (
+      value != 0.0f &&
+      length_char_array != 255
+    ) {
+      length_char_array = (
+        length_char_array + 1
+      );
+
+      value = value * 10.0f;
+
+      unsigned char value_integer = (unsigned char) value;
+
+      char_array[
+        length_char_array - 2
+      ] = (
+        '0' +
+        value_integer
+      );
+
+      value = value - value_integer;
+    }
+  }
+
+  char_array[
+    length_char_array -
+    0x01
+  ] = (
+    '\0'
+  );
+
+  clic3_memory_reallocate_raw(
+    &char_array,
+    length_char_array
+  );
+
+  return char_array;
+}
+#endif
 
 unsigned int clic3_char_array_length(
   char* char_array

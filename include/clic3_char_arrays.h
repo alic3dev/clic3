@@ -30,6 +30,13 @@ unsigned char clic3_char_array_to_long_int(
   long int*
 );
 
+#ifndef __METAL_VERSION__
+unsigned char clic3_char_array_to_long_long_int(
+  char*,
+  long long int*
+);
+#endif
+
 unsigned char clic3_char_array_to_unsigned_int(
   char*,
   unsigned int*
@@ -45,10 +52,24 @@ unsigned char clic3_char_array_to_unsigned_long_int(
   unsigned long int*
 );
 
+#ifndef __METAL_VERSION__
+unsigned char clic3_char_array_to_unsigned_long_long_int(
+  char*,
+  unsigned long long int*
+);
+#endif
+
 unsigned char clic3_char_array_to_float(
   char*,
   float*
 );
+
+#ifndef __METAL_VERSION__
+unsigned char clic3_char_array_to_double(
+  char*,
+  double*
+);
+#endif
 
 #define clic3_function_template_char_array_from(type, name) char* clic3_char_array_from_ ## name(\
   type\
@@ -70,6 +91,12 @@ clic3_function_template_char_array_from(char, char);
 char* clic3_char_array_from_float(
   float
 );
+
+#ifndef __METAL_VERSION__
+char* clic3_char_array_from_double(
+  double
+);
+#endif
 
 unsigned int clic3_char_array_length(
   char*
