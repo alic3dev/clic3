@@ -198,328 +198,183 @@ void clic3_char_array_to_uppercase(
   }
 }
 
-unsigned char clic3_char_array_to_int(
-  char* char_array,
-  int* pointer_int
-) {
-  int int_return = 0;
+#define clic3_char_array_to_integer_type_function(\
+  type,\
+  name,\
+  clic3_char_array_to_integer_type_function_prefix,\
+  clic3_char_array_to_integer_type_function_suffix\
+)\
+  unsigned char clic3_char_array_to_ ## name(\
+    char* char_array,\
+    type* pointer_value\
+  ) {\
+    int int_return = (\
+      0x00\
+    );\
+    \
+    unsigned int index_char_array = (\
+      0x00\
+    );\
+    \
+    char char_current = (\
+      char_array[\
+        index_char_array\
+      ]\
+    );\
+    \
+    clic3_char_array_to_integer_type_function_prefix;\
+    \
+    while (\
+      char_current !=\
+      '\0'\
+    ) {\
+      if (\
+        clic3_char_is_digit(\
+          char_current\
+        ) ==\
+        0x01\
+      ) {\
+        int_return = (\
+          (\
+            int_return *\
+            0x0a\
+          ) +\
+          (\
+            char_current -\
+            '0'\
+          )\
+        );\
+      } else {\
+        return (\
+          0x01\
+        );\
+      }\
+      \
+      index_char_array = (\
+        index_char_array +\
+        0x01\
+      );\
+      \
+      char_current = (\
+        char_array[\
+          index_char_array\
+        ]\
+      );\
+    }\
+    \
+    clic3_char_array_to_integer_type_function_suffix;\
+    \
+    return (\
+      0x00\
+    );\
+  }  
 
-  unsigned int index_char_array = 0;
-  char char_current = char_array[index_char_array];
-  unsigned char is_negative = 0;
+#define clic3_char_array_to_signed_integer_type_function_prefix\
+  unsigned char is_negative = (\
+    0x00\
+  );\
+  \
+  if (\
+    char_current ==\
+    '-'\
+  ) {\
+    is_negative = (\
+      0x01\
+    );\
+    \
+    index_char_array = (\
+      index_char_array +\
+      0x01\
+    );\
+    \
+    char_current = (\
+      char_array[\
+        index_char_array\
+      ]\
+    );\
+  }\
 
-  if (char_current == '-') {
-    is_negative = 1;
-
-    index_char_array = (
-      index_char_array + 1
-    );
-    char_current = char_array[
-      index_char_array
-    ];
-  }
-
-  while (char_current != '\0') {
-    if (
-      clic3_char_is_digit(char_current) == 1
-    ) {
-      int_return = (
-        (int_return * 10)
-        + (char_current - '0')
-      );
-    } else {
-      return 1;
-    }
-
-    index_char_array = (
-      index_char_array + 1
-    );
-
-    char_current = char_array[
-      index_char_array
-    ];
-  }
-
-  *pointer_int = (
-    is_negative == 1
-    ? -int_return
-    : int_return
+#define clic3_char_array_to_signed_integer_type_function_suffix\
+  *pointer_value = (\
+    (\
+      is_negative ==\
+      0x01\
+    )\
+    ? -int_return\
+    : int_return\
   );
 
-  return 0;
-}
-
-unsigned char clic3_char_array_to_long_int(
-  char* char_array,
-  long int* pointer_int
-) {
-  long int long_int_return = 0;
-
-  unsigned int index_char_array = 0;
-  char char_current = char_array[index_char_array];
-  unsigned char is_negative = 0;
-
-  if (char_current == '-') {
-    is_negative = 1;
-
-    index_char_array = (
-      index_char_array + 1
-    );
-    char_current = char_array[
-      index_char_array
-    ];
-  }
-
-  while (char_current != '\0') {
-    if (
-      clic3_char_is_digit(char_current) == 1
-    ) {
-      return 1;
-    } else {
-      long_int_return = (
-        (long_int_return * 10)
-        + (char_current - '0')
-      );
-    }
-
-    index_char_array = (
-      index_char_array + 1
-    );
-
-    char_current = char_array[
-      index_char_array
-    ];
-  }
-
-  *pointer_int = (
-    is_negative == 1
-    ? -long_int_return
-    : long_int_return
+#define clic3_char_array_to_unsigned_integer_type_function_prefix  
+      
+#define clic3_char_array_to_unsigned_integer_type_function_suffix\
+  *pointer_value = (\
+    int_return\
   );
 
-  return 0;
-}
+#define clic3_char_array_to_signed_integer_type_function(\
+  type,\
+  name\
+)\
+  clic3_char_array_to_integer_type_function(\
+    type,\
+    name,\
+    clic3_char_array_to_signed_integer_type_function_prefix,\
+    clic3_char_array_to_signed_integer_type_function_suffix\
+  );
+
+#define clic3_char_array_to_unsigned_integer_type_function(\
+  type,\
+  name\
+)\
+  clic3_char_array_to_integer_type_function(\
+    type,\
+    name,\
+    clic3_char_array_to_unsigned_integer_type_function_prefix,\
+    clic3_char_array_to_unsigned_integer_type_function_suffix\
+  );
+
+clic3_char_array_to_signed_integer_type_function(
+  int,
+  int
+);
+
+clic3_char_array_to_signed_integer_type_function(
+  short int,
+  short_int
+);
+
+clic3_char_array_to_signed_integer_type_function(
+  long int,
+  long_int
+);
 
 #ifndef __METAL_VERSION__
-unsigned char clic3_char_array_to_long_long_int(
-  char* char_array,
-  long long int* pointer_int
-) {
-  long long int long_int_return = 0;
-
-  unsigned int index_char_array = 0;
-  char char_current = char_array[index_char_array];
-  unsigned char is_negative = 0;
-
-  if (char_current == '-') {
-    is_negative = 1;
-
-    index_char_array = (
-      index_char_array + 1
-    );
-    char_current = char_array[
-      index_char_array
-    ];
-  }
-
-  while (
-    char_current != '\0'
-  ) {
-    if (
-      clic3_char_is_digit(char_current) == 1
-    ) {
-      return 1;
-    } else {
-      long_int_return = (
-        (
-          long_int_return *
-          0x0a
-        ) +
-        (
-          char_current -
-          '0'
-        )
-      );
-    }
-
-    index_char_array = (
-      index_char_array +
-      0x01
-    );
-
-    char_current = char_array[
-      index_char_array
-    ];
-  }
-
-  *pointer_int = (
-    (
-      is_negative ==
-      0x01
-    )
-    ? -long_int_return
-    : long_int_return
-  );
-
-  return (
-    0x00
-  );
-}
+clic3_char_array_to_signed_integer_type_function(
+  long long int,
+  long_long_int
+);
 #endif
 
-unsigned char clic3_char_array_to_unsigned_int(
-  char* char_array,
-  unsigned int* pointer_unsigned_int
-) {
-  unsigned int unsigned_int_return = 0;
+clic3_char_array_to_unsigned_integer_type_function(
+  unsigned int,
+  unsigned_int
+);
 
-  unsigned int index_char_array = 0;
-  char char_current = char_array[index_char_array];
+clic3_char_array_to_unsigned_integer_type_function(
+  unsigned short int,
+  unsigned_short_int
+);
 
-  while (char_current != '\0') {
-    if (
-      clic3_char_is_digit(char_current) == 1
-    ) {
-      unsigned_int_return = (
-        (unsigned_int_return * 10)
-        + (char_current - '0')
-      );
-    } else {
-      return 1;
-    }
-
-    index_char_array = (
-      index_char_array + 1
-    );
-
-    char_current = char_array[
-      index_char_array
-    ];
-  }
-
-  *pointer_unsigned_int = unsigned_int_return;
-
-  return 0;
-}
-
-unsigned char clic3_char_array_to_unsigned_short_int(
-  char* char_array,
-  unsigned short int* pointer_unsigned_short_int
-) {
-  unsigned int unsigned_short_int_return = 0;
-
-  unsigned int index_char_array = 0;
-
-  char char_current = (
-    char_array[
-      index_char_array
-    ]
-  );
-
-  while (char_current != '\0') {
-    if (
-      clic3_char_is_digit(
-        char_current
-      ) == 1
-    ) {
-      unsigned_short_int_return = (
-        (unsigned_short_int_return * 10)
-        + (char_current - '0')
-      );
-    } else {
-      return 1;
-    }
-
-    index_char_array = (
-      index_char_array + 1
-    );
-
-    char_current = char_array[
-      index_char_array
-    ];
-  }
-
-  *pointer_unsigned_short_int = (
-    unsigned_short_int_return
-  );
-
-  return 0;
-}
-
-unsigned char clic3_char_array_to_unsigned_long_int(
-  char* char_array,
-  unsigned long int* pointer_unsigned_long_int
-) {
-  unsigned long int unsigned_long_int_return = 0;
-
-  unsigned int index_char_array = 0;
-  char char_current = char_array[index_char_array];
-
-  while (char_current != '\0') {
-    if (
-      clic3_char_is_digit(char_current) == 1
-    ) {
-      unsigned_long_int_return = (
-        (unsigned_long_int_return * 10)
-        + (char_current - '0')
-      );
-    } else {
-      return 1;
-    }
-
-    index_char_array = (
-      index_char_array + 1
-    );
-
-    char_current = char_array[
-      index_char_array
-    ];
-  }
-
-  *pointer_unsigned_long_int = unsigned_long_int_return;
-
-  return 0;
-}
+clic3_char_array_to_unsigned_integer_type_function(
+  unsigned long int,
+  unsigned_long_int
+);
 
 #ifndef __METAL_VERSION__
-unsigned char clic3_char_array_to_unsigned_long_long_int(
-  char* char_array,
-  unsigned long long int* pointer_unsigned_long_long_int
-) {
-  unsigned long long int unsigned_long_long_int_return = 0;
-
-  unsigned int index_char_array = 0;
-  char char_current = char_array[index_char_array];
-
-  while (
-    char_current != '\0'
-  ) {
-    if (
-      clic3_char_is_digit(char_current) == 1
-    ) {
-      unsigned_long_long_int_return = (
-        (unsigned_long_long_int_return * 10)
-        + (char_current - '0')
-      );
-    } else {
-      return 1;
-    }
-
-    index_char_array = (
-      index_char_array + 1
-    );
-
-    char_current = char_array[
-      index_char_array
-    ];
-  }
-
-  *pointer_unsigned_long_long_int = (
-    unsigned_long_long_int_return
-  );
-
-  return 0;
-}
+clic3_char_array_to_unsigned_integer_type_function(
+  unsigned long long int,
+  unsigned_long_long_int
+);
 #endif
 
 unsigned char clic3_char_array_to_float(

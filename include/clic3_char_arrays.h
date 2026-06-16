@@ -25,6 +25,11 @@ unsigned char clic3_char_array_to_int(
   int*
 );
 
+unsigned char clic3_char_array_to_short_int(
+  char*,
+  short int*
+);
+
 unsigned char clic3_char_array_to_long_int(
   char*,
   long int*
