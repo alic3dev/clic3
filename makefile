@@ -124,10 +124,10 @@ endif
 
 metal_flags_output=
 
-${name}: ${file_library_dylib} ${file_library_dynamic} ${file_library_object} ${file_library_static} ${files_air} ${files_metalar} ${file_library_metallib}
+${name}: ${name}_without_metal ${name}_metal
 
-${name}_metal: ${files_air} ${files_metalar} ${file_library_metallib}
-${name}_without_metal: ${file_library_dylib} ${file_library_dynamic} ${file_library_object} ${file_library_static}
+${name}_metal: ${name}_air ${name}_metalar ${name}_metallib
+${name}_without_metal: ${name}_dylib ${name}_dynamic ${name}_object ${name}_static
 
 ${name}_air: ${files_air}
 ${name}_metalar: ${files_metalar}
