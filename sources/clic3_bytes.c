@@ -6,12 +6,27 @@ void clic3_bytes_copy(
   unsigned int length_bytes
 ) {
   for (
-    unsigned int index_byte = 0;
-    index_byte < length_bytes;
+    unsigned int index_byte = (
+      0x00
+    );
+    (
+      index_byte <
+      length_bytes
+    );
     ++index_byte
   ) {
-    ((char*) bytes_to)[index_byte] = (
-      ((char*) bytes_from)[index_byte]
+    (
+      (char*)
+      bytes_to
+    )[
+      index_byte
+    ] = (
+      (
+        (char*)
+        bytes_from
+      )[
+        index_byte
+      ]
     );
   }
 }

@@ -9,7 +9,7 @@ void clic3_string_initialize(
 ) {
   clic3_string_initialize_length_termination(
     clic3_string,
-    0,
+    0x00,
     clic3_string_termination_none
   );
 }
@@ -33,7 +33,7 @@ void clic3_string_initialize_null_terminated_length(
     clic3_string,
     (
       length_clic3_string +
-      1
+      0x01
     ),
     clic3_string_termination_null
   );
@@ -84,7 +84,7 @@ void clic3_string_initialize_from_char_array(
     char_array,
     (
       length_char_array +
-      1
+      0x01
     ),
     clic3_string_termination_null
   );
@@ -133,8 +133,14 @@ void clic3_string_destroy(
     clic3_string->characters
   );
 
-  clic3_string->characters = 0;
-  clic3_string->length = 0;
+  clic3_string->characters = (
+    0x00
+  );
+
+  clic3_string->length = (
+    0x00
+  );
+
   clic3_string->termination = (
     clic3_string_termination_none
   );

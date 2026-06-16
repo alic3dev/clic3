@@ -9,7 +9,8 @@
     unsigned long int length_to_sort\
   ) {\
     if (\
-      length_to_sort == 0\
+      length_to_sort ==\
+      0x00\
     ) {\
       return;\
     }\
@@ -17,32 +18,79 @@
     type hold;\
     \
     for (\
-      unsigned long int index_to_sort = 0;\
-      index_to_sort < length_to_sort - 1;\
+      unsigned long int index_to_sort = (\
+        0x00\
+      );\
+      (\
+        index_to_sort <\
+        (\
+          length_to_sort -\
+          0x01\
+        )\
+      );\
       ++index_to_sort\
     ) {\
       for (\
-        unsigned long int index_secondary_to_sort = index_to_sort + 1;\
-        index_secondary_to_sort < length_to_sort;\
+        unsigned long int index_secondary_to_sort = (\
+          index_to_sort +\
+          0x01\
+        );\
+        (\
+          index_secondary_to_sort <\
+          length_to_sort\
+        );\
         ++index_secondary_to_sort\
       ) {\
         if (\
-          to_sort[index_to_sort] comparator to_sort[index_secondary_to_sort]\
+          to_sort[\
+            index_to_sort\
+          ] comparator\
+          to_sort[\
+            index_secondary_to_sort\
+          ]\
         ) {\
-          hold = to_sort[index_to_sort];\
-          to_sort[index_to_sort] = to_sort[index_secondary_to_sort];\
-          to_sort[index_secondary_to_sort] = hold;\
+          hold = (\
+            to_sort[\
+              index_to_sort\
+            ]\
+          );\
+          \
+          to_sort[\
+            index_to_sort\
+          ] = (\
+            to_sort[\
+              index_secondary_to_sort\
+            ]\
+          );\
+          \
+          to_sort[\
+            index_secondary_to_sort\
+          ] = (\
+            hold\
+          );\
         }\
       }\
     }\
   }
 
 #define clic3_sort_macro(type, name_type)\
-  clic3_sort_macro_function(type, name_type, >)\
-  clic3_sort_macro_function(type, reverse_ ## name_type, <)\
+  clic3_sort_macro_function(\
+    type,\
+    name_type,\
+    >\
+  );\
+  \
+  clic3_sort_macro_function(\
+    type,\
+    reverse_ ## name_type,\
+    <\
+  );
 
 #define clic3_sort_macro_unnamed(type)\
-  clic3_sort_macro(type, type)
+  clic3_sort_macro(\
+    type,\
+    type\
+  );
 
 void clic3_sort(
   void* to_sort,
@@ -140,23 +188,64 @@ void clic3_sort(
   );
 }
 
-clic3_sort_macro_unnamed(char)
-clic3_sort_macro(unsigned char, unsigned_char)
+clic3_sort_macro_unnamed(
+  char
+);
+
+clic3_sort_macro(
+  unsigned char,
+  unsigned_char
+);
 
 #ifndef __METAL_VERSION__
-clic3_sort_macro_unnamed(double)
+clic3_sort_macro_unnamed(
+  double
+);
 #endif
-clic3_sort_macro_unnamed(float)
 
-clic3_sort_macro_unnamed(int)
-clic3_sort_macro(unsigned int, unsigned_int)
-clic3_sort_macro(short int, short_int)
-clic3_sort_macro(unsigned short int, unsigned_short_int)
-clic3_sort_macro(long int, long_int)
-clic3_sort_macro(unsigned long int, unsigned_long_int)
+clic3_sort_macro_unnamed(
+  float
+);
+
+clic3_sort_macro_unnamed(
+  int
+);
+
+clic3_sort_macro(
+  unsigned int,
+  unsigned_int
+);
+
+clic3_sort_macro(
+  short int,
+  short_int
+);
+
+clic3_sort_macro(
+  unsigned short int,
+  unsigned_short_int
+);
+
+clic3_sort_macro(
+  long int,
+  long_int
+);
+
+clic3_sort_macro(
+  unsigned long int,
+  unsigned_long_int
+);
+
 #ifndef __METAL_VERSION__
-clic3_sort_macro(unsigned long long int, unsigned_long_long_int);
-clic3_sort_macro(long long int, long_long_int);
+clic3_sort_macro(
+  unsigned long long int,
+  unsigned_long_long_int
+);
+
+clic3_sort_macro(
+  long long int,
+  long_long_int
+);
 #endif
 
 char clic3_sort_comparator_char_arrays(

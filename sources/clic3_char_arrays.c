@@ -12,30 +12,48 @@ unsigned char clic3_char_arrays_equal(
   char* char_array_first,
   char* char_array_second
 ) {
-  unsigned int char_array_index = 0;
+  unsigned int char_array_index = (
+    0x00
+  );
 
   char char_first;
   char char_second;
 
   do {
-    char_first = char_array_first[
-      char_array_index
-    ];
+    char_first = (
+      char_array_first[
+        char_array_index
+      ]
+    );
 
-    char_second = char_array_second[
-      char_array_index
-    ];
+    char_second = (
+      char_array_second[
+        char_array_index
+      ]
+    );
 
-    if (char_first != char_second) {
-      return 0;
+    if (
+      char_first !=
+      char_second
+    ) {
+      return (
+        0x00
+      );
     }
 
     char_array_index = (
-      char_array_index + 1
+      char_array_index +
+      0x01
     );
   } while (
-    char_first != '\0' &&
-    char_second != '\0'
+    (
+      char_first !=
+      '\0'
+    ) &&
+    (
+      char_second !=
+      '\0'
+    )
   );
 
   return (
@@ -56,8 +74,13 @@ int clic3_char_arrays_within(
   );
 
   for (
-    int char_arrays_within_index = 0;
-    char_arrays_within_index < char_arrays_within_length;
+    int char_arrays_within_index = (
+      0x00
+    );
+    (
+      char_arrays_within_index <
+      char_arrays_within_length
+    );
     ++char_arrays_within_index
   ) {
     if (
@@ -88,31 +111,44 @@ int clic3_char_arrays_within(
 void clic3_char_array_to_lowercase(
   char* char_array
 ) {
-  unsigned int index_character = 0;
+  unsigned int index_character = (
+    0x00
+  );
 
   while (
     char_array[
       index_character
-    ] != '\0'
+    ] !=
+    '\0'
   ) {
     if (
-      char_array[
-        index_character
-      ] >= 'A' &&
-      char_array[
-        index_character
-      ] <= 'Z'
+      (
+        char_array[
+          index_character
+        ] >=
+        'A'
+      ) &&
+      (
+        char_array[
+          index_character
+        ] <=
+        'Z'
+      )
     ) {
       char_array[
         index_character
-      ] = char_array[
-        index_character
-      ] - 'A' + 'a';
+      ] = (
+        char_array[
+          index_character
+        ] -
+        'A' +
+        'a'
+      );
     }
 
     index_character = (
       index_character +
-      1
+      0x01
     );
   }
 }
@@ -120,31 +156,44 @@ void clic3_char_array_to_lowercase(
 void clic3_char_array_to_uppercase(
   char* char_array
 ) {
-  unsigned int index_character = 0;
+  unsigned int index_character = (
+    0
+  );
 
   while (
     char_array[
       index_character
-    ] != '\0'
+    ] !=
+    '\0'
   ) {
     if (
-      char_array[
-        index_character
-      ] >= 'a' &&
-      char_array[
-        index_character
-      ] <= 'z'
+      (
+        char_array[
+          index_character
+        ] >=
+        'a'
+      ) &&
+      (
+        char_array[
+          index_character
+        ] <=
+        'z'
+      )
     ) {
       char_array[
         index_character
-      ] = char_array[
-        index_character
-      ] - 'a' + 'A';
+      ] = (
+        char_array[
+          index_character
+        ] -
+        'a' +
+        'A'
+      );
     }
 
     index_character = (
       index_character +
-      1
+      0x01
     );
   }
 }
@@ -477,73 +526,156 @@ unsigned char clic3_char_array_to_float(
   char* char_array,
   float* pointer_float
 ) {
-  float float_return = 0.0f;
+  float float_return = (
+    0x00
+  );
 
-  unsigned int index_char_array = 0;
-  char char_current = char_array[index_char_array];
-  unsigned int decimal = 0;
+  unsigned int index_char_array = (
+    0x00
+  );
 
-  unsigned char is_negative = 0;
-  unsigned char has_f = 0;
+  char char_current = (
+    char_array[
+      index_char_array
+    ]
+  );
 
-  if (char_current == '-') {
-    is_negative = 1;
+  unsigned int decimal = (
+    0x00
+  );
+
+  unsigned char is_negative = (
+    0x00
+  );
+
+  unsigned char has_f = (
+    0x00
+  );
+
+  if (
+    char_current ==
+    '-'
+  ) {
+    is_negative = (
+      0x01
+    );
 
     index_char_array = (
-      index_char_array + 1
+      index_char_array +
+      0x01
     );
-    char_current = char_array[index_char_array];
+
+    char_current = (
+      char_array[
+        index_char_array
+      ]
+    );
   }
 
-  while (char_current != '\0') {
-    if (char_current == '.') {
-      if (decimal > 0) {
-        return 1;
+  while (
+    char_current !=
+    '\0'
+  ) {
+    if (
+      char_current ==
+      '.'
+    ) {
+      if (
+        decimal >
+        0x00
+      ) {
+        return (
+          0x01
+        );
       }
 
-      decimal = 10;
+      decimal = (
+        0x0a
+      );
     } else if (
-      char_current == 'f' &&
-      decimal > 10 &&
-      has_f == 0
+      (
+        char_current ==
+        'f'
+      ) &&
+      (
+        decimal >
+        0x0a
+      ) &&
+      (
+        has_f ==
+        0x00
+      )
     ) {
-      has_f = 1;
+      has_f = (
+        0x01
+      );
     } else if (
-      clic3_char_is_digit(char_current) != 1 ||
-      has_f == 1
+      (
+        clic3_char_is_digit(
+          char_current
+        ) !=
+        0x01
+      ) ||
+      (
+        has_f ==
+        0x01
+      )
     ) {
-      return 1;
-    } else if (decimal > 0) {
+      return (
+        0x01
+      );
+    } else if (
+      decimal >
+      0x00
+    ) {
       float_return = (
-        float_return + (
-          (float)(char_current - '0') / (float)decimal
-        )
+        float_return +
+        (float)
+        (
+          char_current -
+          '0'
+        ) /
+        (float)
+        decimal
       );
 
       decimal = (
-        decimal * 10
+        decimal *
+        0x0a
       );
     } else {
       float_return = (
-        (float_return * 10)
-        + (char_current - '0')
+        float_return *
+        0x0a +
+        char_current -
+        '0'
       );
     }
 
     index_char_array = (
-      index_char_array + 1
+      index_char_array +
+      0x01
     );
 
-    char_current = char_array[index_char_array];
+    char_current = (
+      char_array[
+        index_char_array
+      ]
+    );
   }
 
   *pointer_float = (
-    is_negative == 1
+    (
+      is_negative ==
+      0x01
+    )
     ? -float_return
     : float_return
    );
 
-  return 0;
+  return (
+    0x00
+  );
 }
 
 #ifndef __METAL_VERSION__
@@ -796,132 +928,239 @@ clic3_function_definition_char_array_from(char, char);
 char* clic3_char_array_from_float(
   float value
 ) {
-  unsigned char length_char_array = 1;
+  unsigned char length_char_array = (
+    0x01
+  );
 
   static char* char_array;
 
   char_array = (
     clic3_memory_allocate_raw(
-      255
+      0xff
     )
   );
 
-  unsigned char negative_is = 0;
+  unsigned char negative_is = (
+    0x00
+  );
 
   if (
-    value < 0.0f
+    value <
+    0x00
   ) {
-    negative_is = 1;
-
-    value = -value;
-  }
-
-  float value_original = value;
-
-  while (
-    (unsigned int) value != 0
-  ) {
-    float value_next = value / 10.0f;
-
-    length_char_array = (
-      length_char_array + 1
+    negative_is = (
+      0x01
     );
 
-    char_array[length_char_array - 2] = (
-      '0' + (
-        (unsigned int) value -
-        ((unsigned int) value_next * 10)
+    value = -(
+      value
+    );
+  }
+
+  float value_original = (
+    value
+  );
+
+  while (
+    (
+      (unsigned int)
+      value
+    ) !=
+    0x00
+  ) {
+    float value_next = (
+      value /
+      0x0a
+    );
+
+    length_char_array = (
+      length_char_array +
+      0x01
+    );
+
+    char_array[
+      length_char_array -
+      0x02
+    ] = (
+      '0' +
+      (
+        (unsigned int)
+        value -
+        (unsigned int)
+        value_next *
+        0x0a
       )
     );
 
-    value = value_next;
+    value = (
+      value_next
+    );
   }
 
   for (
-    unsigned char index_char = 0;
-    index_char < (length_char_array - 2) / 2 + (length_char_array % 2);
+    unsigned char index_char = (
+      0x00
+    );
+    (
+      index_char <
+      (
+        (
+          length_char_array -
+          0x02
+        ) /
+        0x02 +
+        (
+          length_char_array %
+          0x02
+        )
+      )
+    );
     ++index_char
   ) {
-    char char_placeholder = char_array[index_char];
+    char char_placeholder = (
+      char_array[
+        index_char
+      ]
+    );
 
     char_array[
       index_char
-    ] = char_array[
-      length_char_array -
-      index_char -
-      2
-    ];
+    ] = (
+      char_array[
+        length_char_array -
+        index_char -
+        0x02
+      ]
+    );
 
     char_array[
       length_char_array -
       index_char -
-      2
-    ] = char_placeholder;
+      0x02
+    ] = (
+      char_placeholder
+    );
   }
 
-  if (negative_is) {
+  if (
+    negative_is !=
+    0x00
+  ) {
     length_char_array = (
-      length_char_array + 1
+      length_char_array +
+      0x01
     );
 
     for (
-      unsigned char index_char = length_char_array - 2;
-      index_char > 0;
+      unsigned char index_char = (
+        length_char_array -
+        0x02
+      );
+      (
+        index_char >
+        0x00
+      );
       --index_char
     ) {
-      char_array[index_char] = char_array[index_char - 1];
+      char_array[
+        index_char
+      ] = (
+        char_array[
+          index_char -
+          0x01
+        ]
+      );
     }
 
-    char_array[0] = '-';
+    char_array[
+      0x00
+    ] = (
+      '-'
+    );
   }
 
-  value = value_original - (unsigned int) value_original;
+  value = (
+    value_original -
+    (unsigned int)
+    value_original
+  );
 
   if (
-    value != 0.0f &&
-    length_char_array < 254
+    (
+      value !=
+      0x00
+    ) &&
+    (
+      length_char_array <
+      0xfe
+    )
   ) {
     length_char_array = (
-      length_char_array + 1
+      length_char_array +
+      0x01
     );
 
     char_array[
-      length_char_array - 2
-    ] = '.';
+      length_char_array -
+      0x02
+    ] = (
+      '.'
+    );
 
     while (
-      value != 0.0f &&
-      length_char_array != 255
+      (
+        value !=
+        0x00
+      ) &&
+      (
+        length_char_array !=
+        0xff
+      )
     ) {
       length_char_array = (
-        length_char_array + 1
+        length_char_array +
+        0x01
       );
 
-      value = value * 10.0f;
+      value = (
+        value *
+        0x0a
+      );
 
-      unsigned char value_integer = (unsigned char) value;
+      unsigned char value_integer = (
+        value
+      );
 
       char_array[
-        length_char_array - 2
+        length_char_array -
+        0x02
       ] = (
         '0' +
         value_integer
       );
 
-      value = value - value_integer;
+      value = (
+        value -
+        value_integer
+      );
     }
   }
 
   char_array[
-    length_char_array - 1
-  ] = '\0';
+    length_char_array -
+    0x01
+  ] = (
+    '\0'
+  );
 
   clic3_memory_reallocate_raw(
     &char_array,
     length_char_array
   );
 
-  return char_array;
+  return (
+    char_array
+  );
 }
 
 #ifndef __METAL_VERSION__
@@ -965,7 +1204,7 @@ char* clic3_char_array_from_double(
     );
 
     length_char_array = (
-      length_char_array + 
+      length_char_array +
       0x01
     );
 
@@ -1082,21 +1321,31 @@ char* clic3_char_array_from_double(
 unsigned int clic3_char_array_length(
   char* char_array
 ) {
-  unsigned int length_char_array = 0;
+  unsigned int length_char_array = (
+    0x00
+  );
 
   while(
-    char_array[
-      length_char_array
-    ] != '\0' &&
-    length_char_array < UINT_MAX
+    (
+      char_array[
+        length_char_array
+      ] !=
+      '\0'
+    ) &&
+    (
+      length_char_array <
+      UINT_MAX
+    )
   ){
     length_char_array = (
       length_char_array +
-      1
+      0x01
     );
   }
 
-  return length_char_array;
+  return (
+    length_char_array
+  );
 }
 
 char* clic3_char_arrays_concatenate(
@@ -1125,7 +1374,7 @@ char* clic3_char_arrays_concatenate(
   char_array_destination = (
     clic3_memory_allocate_raw(
       length_char_array_destination +
-      1
+      0x01
     )
   );
 
@@ -1158,34 +1407,56 @@ char** clic3_char_array_split_on_char(
 ) {
   static char** split_char_arrays;
 
-  split_char_arrays = clic3_memory_allocate_raw(
-    sizeof(
-      void*
+  split_char_arrays = (
+    clic3_memory_allocate_raw(
+      sizeof(
+        void*
+      )
     )
   );
 
-  split_char_arrays[0] = 0;
+  split_char_arrays[
+    0x00
+  ] = (
+    0x00
+  );
 
-  unsigned long int index_previous_split_char_buffer = 0;
-  unsigned long int index_char_array = 0;
+  unsigned long int index_previous_split_char_buffer = (
+    0x00
+  );
+
+  unsigned long int index_char_array = (
+    0x00
+  );
 
   while (
     char_array[
       index_char_array
-    ] != '\0'
+    ] !=
+    '\0'
   ) {
     if (
-      char_array[
-        index_char_array
-      ] == deliminator ||
-      char_array[
-        index_char_array +
-        1
-      ] == '\0'
+      (
+        char_array[
+          index_char_array
+        ] ==
+        deliminator
+      ) ||
+      (
+        char_array[
+          index_char_array +
+          0x01
+        ] ==
+        '\0'
+      )
     ) {
-      split_char_arrays[0] = (
-        split_char_arrays[0] +
-        1
+      split_char_arrays[
+        0x00
+      ] = (
+        split_char_arrays[
+          0x00
+        ] +
+        0x01
       );
 
       clic3_memory_reallocate_raw(
@@ -1195,41 +1466,58 @@ char** clic3_char_array_split_on_char(
             void*
           ) * (
             (unsigned long int)
-            split_char_arrays[0] +
-            1
+            split_char_arrays[
+              0x00
+            ] +
+            0x01
           )
         )
       );
 
       unsigned long int length_split_char_array = (
         index_char_array -
-        index_previous_split_char_buffer + (
-          char_array[
-            index_char_array +
-            1
-          ] == '\0' &&
-          char_array[
-            index_char_array
-          ] != deliminator
-          ? 1
-          : 0
+        index_previous_split_char_buffer +
+        (
+          (
+            (
+              char_array[
+                index_char_array +
+                0x01
+              ] ==
+              '\0'
+            ) &&
+            (
+              char_array[
+                index_char_array
+              ] !=
+              deliminator
+            )
+          )
+          ? 0x01
+          : 0x00
         )
       );
 
       split_char_arrays[
         (unsigned long int)
-        split_char_arrays[0]
+        split_char_arrays[
+          0x00
+        ]
       ] = (
         clic3_memory_allocate_raw(
           length_split_char_array +
-          1
+          0x01
         )
       );
 
       clic3_bytes_copy(
         split_char_arrays[
-          (unsigned long int) split_char_arrays[0]
-        ], (
+          (unsigned long int)
+          split_char_arrays[
+            0x00
+          ]
+        ],
+        (
           char_array +
           index_previous_split_char_buffer
         ),
@@ -1238,56 +1526,81 @@ char** clic3_char_array_split_on_char(
 
       split_char_arrays[
         (unsigned long int)
-        split_char_arrays[0]
+        split_char_arrays[
+          0x00
+        ]
       ][
         length_split_char_array
-      ] = '\0';
+      ] = (
+        '\0'
+      );
 
       index_previous_split_char_buffer = (
         index_char_array +
-        1
+        0x01
       );
     }
 
     index_char_array = (
       index_char_array +
-      1
+      0x01
     );
   }
 
   if (
-    index_char_array > 0 &&
-    char_array[
-      index_char_array - 1
-    ] == deliminator
+    (
+      index_char_array >
+      0x00
+    ) &&
+    (
+      char_array[
+        index_char_array -
+        0x01
+      ] ==
+      deliminator
+    )
   ) {
-    split_char_arrays[0] = (
-      split_char_arrays[0] +
-      1
+    split_char_arrays[
+      0x00
+    ] = (
+      split_char_arrays[
+        0x00
+      ] +
+      0x01
     );
 
     clic3_memory_reallocate_raw(
       &split_char_arrays,
       (
         (unsigned long int)
-        split_char_arrays[0] +
-        1
+        split_char_arrays[
+          0x00
+        ] +
+        0x01
       )
     );
 
     split_char_arrays[
       (unsigned long int)
-      split_char_arrays[0]
+      split_char_arrays[
+        0x00
+      ]
     ] = (
       clic3_memory_allocate_raw(
-        1
+        0x01
       )
     );
 
     split_char_arrays[
       (unsigned long int)
-      split_char_arrays[0]
-    ][0] = '\0';
+      split_char_arrays[
+        0x00
+      ]
+    ][
+      0x00
+    ] = (
+      '\0'
+    );
   }
 
   return (
