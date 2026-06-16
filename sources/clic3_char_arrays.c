@@ -267,7 +267,7 @@ void clic3_char_array_to_uppercase(
     return (\
       0x00\
     );\
-  }  
+  }
 
 #define clic3_char_array_to_signed_integer_type_function_prefix\
   unsigned char is_negative = (\
@@ -304,8 +304,8 @@ void clic3_char_array_to_uppercase(
     : int_return\
   );
 
-#define clic3_char_array_to_unsigned_integer_type_function_prefix  
-      
+#define clic3_char_array_to_unsigned_integer_type_function_prefix
+
 #define clic3_char_array_to_unsigned_integer_type_function_suffix\
   *pointer_value = (\
     int_return\
@@ -377,274 +377,173 @@ clic3_char_array_to_unsigned_integer_type_function(
 );
 #endif
 
-unsigned char clic3_char_array_to_float(
-  char* char_array,
-  float* pointer_float
-) {
-  float float_return = (
-    0x00
-  );
-
-  unsigned int index_char_array = (
-    0x00
-  );
-
-  char char_current = (
-    char_array[
-      index_char_array
-    ]
-  );
-
-  unsigned int decimal = (
-    0x00
-  );
-
-  unsigned char is_negative = (
-    0x00
-  );
-
-  unsigned char has_f = (
-    0x00
-  );
-
-  if (
-    char_current ==
-    '-'
-  ) {
-    is_negative = (
-      0x01
-    );
-
-    index_char_array = (
-      index_char_array +
-      0x01
-    );
-
-    char_current = (
-      char_array[
-        index_char_array
-      ]
-    );
+#define clic3_char_array_to_floating_point_type(\
+  type\
+)\
+  unsigned char clic3_char_array_to_ ## type(\
+    char* char_array,\
+    type* pointer_value\
+  ) {\
+    type floating_return = (\
+      0x00\
+    );\
+    \
+    unsigned int index_char_array = (\
+      0x00\
+    );\
+    \
+    char char_current = (\
+      char_array[\
+        index_char_array\
+      ]\
+    );\
+    \
+    unsigned int decimal = (\
+      0x00\
+    );\
+    \
+    unsigned char is_negative = (\
+      0x00\
+    );\
+    \
+    unsigned char has_f = (\
+      0x00\
+    );\
+    \
+    if (\
+      char_current ==\
+      '-'\
+    ) {\
+      is_negative = (\
+        0x01\
+      );\
+      \
+      index_char_array = (\
+        index_char_array +\
+        0x01\
+      );\
+      \
+      char_current = (\
+        char_array[\
+          index_char_array\
+        ]\
+      );\
+    }\
+    \
+    while (\
+      char_current !=\
+      '\0'\
+    ) {\
+      if (\
+        char_current ==\
+        '.'\
+      ) {\
+        if (\
+          decimal >\
+          0x00\
+        ) {\
+          return (\
+            0x01\
+          );\
+        }\
+        \
+        decimal = (\
+          0x0a\
+        );\
+      } else if (\
+        (\
+          char_current ==\
+          'f'\
+        ) &&\
+        (\
+          decimal >\
+          0x0a\
+        ) &&\
+        (\
+          has_f ==\
+          0x00\
+        )\
+      ) {\
+        has_f = (\
+          0x01\
+        );\
+      } else if (\
+        (\
+          clic3_char_is_digit(\
+            char_current\
+          ) !=\
+          0x01\
+        ) ||\
+        (\
+          has_f ==\
+          0x01\
+        )\
+      ) {\
+        return (\
+          0x01\
+        );\
+      } else if (\
+        decimal >\
+        0x00\
+      ) {\
+        floating_return = (\
+          floating_return +\
+          (type)\
+          (\
+            char_current -\
+            '0'\
+          ) /\
+          (type)\
+          decimal\
+        );\
+        \
+        decimal = (\
+          decimal *\
+          0x0a\
+        );\
+      } else {\
+        floating_return = (\
+          floating_return *\
+          0x0a +\
+          char_current -\
+          '0'\
+        );\
+      }\
+      \
+      index_char_array = (\
+        index_char_array +\
+        0x01\
+      );\
+      \
+      char_current = (\
+        char_array[\
+          index_char_array\
+        ]\
+      );\
+    }\
+    \
+    *pointer_value = (\
+      (\
+        is_negative ==\
+        0x01\
+      )\
+      ? -floating_return\
+      : floating_return\
+    );\
+    \
+    return (\
+      0x00\
+    );\
   }
 
-  while (
-    char_current !=
-    '\0'
-  ) {
-    if (
-      char_current ==
-      '.'
-    ) {
-      if (
-        decimal >
-        0x00
-      ) {
-        return (
-          0x01
-        );
-      }
-
-      decimal = (
-        0x0a
-      );
-    } else if (
-      (
-        char_current ==
-        'f'
-      ) &&
-      (
-        decimal >
-        0x0a
-      ) &&
-      (
-        has_f ==
-        0x00
-      )
-    ) {
-      has_f = (
-        0x01
-      );
-    } else if (
-      (
-        clic3_char_is_digit(
-          char_current
-        ) !=
-        0x01
-      ) ||
-      (
-        has_f ==
-        0x01
-      )
-    ) {
-      return (
-        0x01
-      );
-    } else if (
-      decimal >
-      0x00
-    ) {
-      float_return = (
-        float_return +
-        (float)
-        (
-          char_current -
-          '0'
-        ) /
-        (float)
-        decimal
-      );
-
-      decimal = (
-        decimal *
-        0x0a
-      );
-    } else {
-      float_return = (
-        float_return *
-        0x0a +
-        char_current -
-        '0'
-      );
-    }
-
-    index_char_array = (
-      index_char_array +
-      0x01
-    );
-
-    char_current = (
-      char_array[
-        index_char_array
-      ]
-    );
-  }
-
-  *pointer_float = (
-    (
-      is_negative ==
-      0x01
-    )
-    ? -float_return
-    : float_return
-   );
-
-  return (
-    0x00
-  );
-}
+clic3_char_array_to_floating_point_type(
+  float
+);
 
 #ifndef __METAL_VERSION__
-unsigned char clic3_char_array_to_double(
-  char* char_array,
-  double* pointer_double
-) {
-  double double_return = 0.0f;
-
-  unsigned int index_char_array = 0;
-  char char_current = char_array[index_char_array];
-  unsigned short int decimal = 0;
-
-  unsigned char is_negative = 0;
-  unsigned char has_f = 0;
-
-  if (char_current == '-') {
-    is_negative = 1;
-
-    index_char_array = (
-      index_char_array + 1
-    );
-    char_current = (
-      char_array[
-        index_char_array
-      ]
-    );
-  }
-
-  while (char_current != '\0') {
-    if (
-      char_current ==
-      '.'
-    ) {
-      if (decimal > 0) {
-        return 1;
-      }
-
-      decimal = 10;
-    } else if (
-      char_current == 'f' &&
-      decimal > 10 &&
-      has_f == 0
-    ) {
-      has_f = 1;
-    } else if (
-      (
-        clic3_char_is_digit(
-          char_current
-        ) !=
-        0x01
-      ) ||
-      (
-        has_f ==
-        0x01
-      )
-    ) {
-      return (
-        0x01
-      );
-    } else if (
-      decimal >
-      0x00
-    ) {
-      double_return = (
-        double_return + (
-          (float)
-          (
-            char_current -
-            '0'
-          ) /
-          (float)
-          decimal
-        )
-      );
-
-      decimal = (
-        decimal * 10
-      );
-    } else {
-      double_return = (
-        (
-          double_return *
-          0x0a
-        ) +
-        (
-          char_current -
-          '0'
-        )
-      );
-    }
-
-    index_char_array = (
-      index_char_array +
-      0x01
-    );
-
-    char_current = (
-      char_array[
-        index_char_array
-      ]
-    );
-  }
-
-  *pointer_double = (
-    is_negative == 1
-    ? -double_return
-    : double_return
-   );
-
-  return (
-    0x00
-  );
-}
+clic3_char_array_to_floating_point_type(
+  double
+);
 #endif
 
 #define clic3_function_definition_char_array_from(type, name) char* clic3_char_array_from_ ## name(\
