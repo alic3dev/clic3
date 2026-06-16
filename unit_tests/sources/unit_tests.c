@@ -1,5 +1,7 @@
 #include <unit_tests.h>
 
+#include <clic3_colours.h>
+
 #include <stdio.h>
 
 #include <unit_tests.clic3_bytes.h>
@@ -21,12 +23,20 @@ const get_unit_test_suite get_unit_test_suites[
 };
 
 int main() {
-  unsigned char code_exit = (
-    0x00
-  );
-
   printf(
     "unit_tests->{clic3}\n-------------------\n"
+  );
+  
+  unsigned short int length_tests = (
+    0x00
+  );
+  
+  unsigned short int length_tests_passing = (
+    0x00
+  );
+  
+  unsigned short int length_tests_failing = (
+    0x00
   );
 
   for (
@@ -82,12 +92,19 @@ int main() {
       );
       ++index_unit_tests
     ) {
-      const struct unit_test* unit_test = unit_test_suite->unit_tests[
-        index_unit_tests
-      ];
+      const struct unit_test* unit_test = (
+        unit_test_suite->unit_tests[
+          index_unit_tests
+        ]
+      );
 
       const unsigned char status_test = (
         unit_test->test()
+      );
+      
+      length_tests = (
+        length_tests +
+        0x01
       );
 
       if (
@@ -96,26 +113,31 @@ int main() {
       ) {
         printf(
           "%s->{%s}:"
-          "[pass]\n",
+          "[%spass%s]\n",
           unit_test_suite->name,
-          unit_test->name
+          unit_test->name,
+          clic3_colours_bold_cyan,
+          clic3_colours_reset
+        );
+        
+        length_tests_passing = (
+          length_tests_passing +
+          0x01
         );
       } else {
         fprintf(
           stderr,
           "%s->{%s}:"
-          "[fail]\n",
+          "[%sfail%s]\n",
           unit_test_suite->name,
-          unit_test->name
+          unit_test->name,
+          clic3_colours_bold_red,
+          clic3_colours_reset
         );
-
-        code_exit = (
-          (
-            status_test ==
-            0x00
-          )
-          ? 0x01
-          : 0x00
+        
+        length_tests_failing = (
+          length_tests_failing +
+          0x01
         );
       }
     }
@@ -124,8 +146,54 @@ int main() {
       unit_test_suite
     );
   }
+  
+  printf(
+    "\n"
+  );
+  
+  if (
+    length_tests ==
+    length_tests_passing
+  ) {
+    printf(
+      "all_tests->{%spassing%s};\n",
+      clic3_colours_bold_cyan,
+      clic3_colours_reset
+    );
+  } else if (
+    length_tests ==
+    length_tests_failing
+  ) {
+    fprintf(
+      stderr,
+      "all_tests->{%sfailing%s};\n",
+      clic3_colours_bold_red,
+      clic3_colours_reset
+    );
+  } else {
+    fprintf(
+      stderr,
+      "total_tests->{%s%i%s};\n"
+      "tests_passing->{%s%i%s};\n"
+      "tests_failing->{%s%i%s};\n",
+      clic3_colours_bold_foreground,
+      length_tests,
+      clic3_colours_reset,
+      clic3_colours_bold_cyan,
+      length_tests_passing,
+      clic3_colours_reset,
+      clic3_colours_bold_red,
+      length_tests_failing,
+      clic3_colours_reset
+    );
+  }
 
   return (
-    code_exit
+    (
+      length_tests_failing ==
+      0x00
+    )
+    ? 0x00
+    : 0x01
   );
 }
