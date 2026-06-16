@@ -126,6 +126,9 @@ metal_flags_output=
 
 ${name}: ${file_library_dylib} ${file_library_dynamic} ${file_library_object} ${file_library_static} ${files_air} ${files_metalar} ${file_library_metallib}
 
+${name}_metal: ${files_air} ${files_metalar} ${file_library_metallib}
+${name}_without_metal: ${file_library_dylib} ${file_library_dynamic} ${file_library_object} ${file_library_static}
+
 ${name}_air: ${files_air}
 ${name}_metalar: ${files_metalar}
 ${name}_metallib: ${file_library_metallib}
