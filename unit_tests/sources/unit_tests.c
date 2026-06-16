@@ -26,15 +26,15 @@ int main() {
   printf(
     "unit_tests->{clic3}\n-------------------\n"
   );
-  
+
   unsigned short int length_tests = (
     0x00
   );
-  
+
   unsigned short int length_tests_passing = (
     0x00
   );
-  
+
   unsigned short int length_tests_failing = (
     0x00
   );
@@ -101,7 +101,7 @@ int main() {
       const unsigned char status_test = (
         unit_test->test()
       );
-      
+
       length_tests = (
         length_tests +
         0x01
@@ -119,7 +119,7 @@ int main() {
           clic3_colours_bold_cyan,
           clic3_colours_reset
         );
-        
+
         length_tests_passing = (
           length_tests_passing +
           0x01
@@ -134,7 +134,7 @@ int main() {
           clic3_colours_bold_red,
           clic3_colours_reset
         );
-        
+
         length_tests_failing = (
           length_tests_failing +
           0x01
@@ -146,11 +146,11 @@ int main() {
       unit_test_suite
     );
   }
-  
+
   printf(
     "\n"
   );
-  
+
   if (
     length_tests ==
     length_tests_passing
