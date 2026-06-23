@@ -48,6 +48,9 @@ c_standard_library
 - - `clic3_char_array_split_on_char`
 - `clic3_char_values`: values_of_characters : converted from `char` to `int`
 - `clic3_colours`: terminal/command-line colour definitions
+- `clic3_directories`: directory functions
+- - `clic3_directory_listing`: list contents of a single directory
+- - `clic3_directory_listing_recursive`: list contents of a directory and subdiretories
 - `clic3_memory`: memory functions
 - - `clic3_memory_allocate`: allocates memory if the address is `0` or reallocates if the address is not `0`
 - - `clic3_memory_free`: frees memory if the address is not `0`
