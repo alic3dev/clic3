@@ -9,7 +9,7 @@ env:
   target_metal_standard: metal3.2
 jobs:
   continuous_integration_build_ios_metal:
-    runs-on: macos-latest
+    runs-on: macos-15
     steps:
       - name: git_initialization
         run: git config --global init.defaultBranch core
