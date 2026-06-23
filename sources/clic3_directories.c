@@ -15,7 +15,7 @@ unsigned char clic3_directory_listing(
       path_directory
     )
   );
-
+  
   if (
     directory ==
     0x00
@@ -24,13 +24,13 @@ unsigned char clic3_directory_listing(
       0x01
     );
   }
-
+  
   struct dirent* directory_entry = (
     readdir(
       directory
     )
   );
-
+  
   while (
     directory_entry !=
     0x00
@@ -39,13 +39,17 @@ unsigned char clic3_directory_listing(
       directory_entry,
       data_directory_listing_function
     );
-
+  
     directory_entry = (
       readdir(
         directory
       )
     );
   }
+  
+  closedir(
+    directory
+  );
 
   return (
     0x00
@@ -59,11 +63,11 @@ void clic3_internal_directory_listing_recursive_function(
   struct clic3_directory_listing_recursive_data* clic3_directory_listing_recursive_data_casted = (
     clic3_directory_listing_recursive_data
   );
-
+  
   unsigned char status_directory_open = (
     0x00
   );
-
+  
   if (
     (
       directory_entry->d_type ==
@@ -91,7 +95,7 @@ void clic3_internal_directory_listing_recursive_function(
         directory_entry->d_name
       )
     );
-
+  
     status_directory_open = (
       clic3_directory_listing_recursive(
         path_directory,
@@ -99,19 +103,19 @@ void clic3_internal_directory_listing_recursive_function(
         clic3_directory_listing_recursive_data_casted->data_directory_listing_recursive_function
       )
     );
-
+    
     clic3_memory_free_raw(
       path_directory
     );
   }
-
+  
   clic3_directory_listing_recursive_data_casted->clic3_directory_listing_recursive_function(
     directory_entry,
     clic3_directory_listing_recursive_data_casted->path,
     clic3_directory_listing_recursive_data_casted->data_directory_listing_recursive_function,
     status_directory_open
-  );
-}
+  );    
+}  
 
 unsigned char clic3_directory_listing_recursive(
   char* path_directory,
@@ -129,13 +133,13 @@ unsigned char clic3_directory_listing_recursive(
       path_directory
     )
   };
-
+  
    return (
      clic3_directory_listing(
        path_directory,
        clic3_internal_directory_listing_recursive_function,
        &clic3_directory_listing_recursive_data
      )
-   );
+   ); 
 }
 #endif
