@@ -1,5 +1,7 @@
 #include <clic3_bytes.h>
 
+#include <clic3_metal.h>
+
 #define clic3_bytes_copy_function(\
   space_memory_addressing_to,\
   space_memory_addressing_from,\
@@ -38,38 +40,38 @@
 
 #ifdef __METAL_VERSION__
 clic3_bytes_copy_function(
-  device,
-  device,
+  clic3_metal_device_pointer_prefix,
+  clic3_metal_device_pointer_prefix,
   _device
 );
 
 clic3_bytes_copy_function(
-  device,
-  constant,
+  clic3_metal_device_pointer_prefix,
+  clic3_metal_constant_pointer_prefix,
   _device_constant
 );
 
 clic3_bytes_copy_function(
-  device,
-  thread,
+  clic3_metal_device_pointer_prefix,
+  clic3_metal_thread_pointer_prefix,
   _device_thread
 );
 
 clic3_bytes_copy_function(
-  thread,
-  thread,
+  clic3_metal_thread_pointer_prefix,
+  clic3_metal_thread_pointer_prefix,
   _thread
 );
 
 clic3_bytes_copy_function(
-  thread,
-  constant,
+  clic3_metal_thread_pointer_prefix,
+  clic3_metal_constant_pointer_prefix,
   _thread_constant
 );
 
 clic3_bytes_copy_function(
-  thread,
-  device,
+  clic3_metal_thread_pointer_prefix,
+  clic3_metal_device_pointer_prefix,
   _thread_device
 );
 #else
