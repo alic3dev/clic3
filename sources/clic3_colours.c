@@ -204,11 +204,11 @@ clic3_metal_constant_pointer_prefix char clic3_colours_cyan[
   clic3_colours_definition_cyan
 );
 
-clic3_metal_constant_pointer_prefix char clic3_colours_purple[
+clic3_metal_constant_pointer_prefix char clic3_colours_grape[
   clic3_colours_length_colour +
   0x01
 ] = (
-  clic3_colours_definition_purple
+  clic3_colours_definition_grape
 );
 
 clic3_metal_constant_pointer_prefix char clic3_colours_background[
@@ -260,11 +260,11 @@ clic3_metal_constant_pointer_prefix char clic3_colours_bold_cyan[
   clic3_colours_definition_cyan
 );
 
-clic3_metal_constant_pointer_prefix char clic3_colours_bold_purple[
+clic3_metal_constant_pointer_prefix char clic3_colours_bold_grape[
   clic3_colours_length_colour +
   0x01
 ] = (
-  clic3_colours_definition_purple
+  clic3_colours_definition_grape
 );
 
 clic3_metal_constant_pointer_prefix char clic3_colours_bold_background[

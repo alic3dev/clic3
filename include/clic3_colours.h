@@ -102,7 +102,7 @@ extern clic3_metal_constant_pointer_prefix char clic3_colours_postfix_char_array
 #define clic3_colour_integer_definition_green 2
 #define clic3_colour_integer_definition_yellow 3
 #define clic3_colour_integer_definition_blue 4
-#define clic3_colour_integer_definition_purple 5
+#define clic3_colour_integer_definition_grape 5
 #define clic3_colour_integer_definition_cyan 6
 #define clic3_colour_integer_definition_background 7
 
@@ -127,9 +127,9 @@ enum clic3_colour {
     clic3_colour_modifier_definition_foreground,
     clic3_colour_integer_definition_blue
   ),
-  clic3_colour_foreground_purple = clic3_colours_hex(
+  clic3_colour_foreground_grape = clic3_colours_hex(
     clic3_colour_modifier_definition_foreground,
-    clic3_colour_integer_definition_purple
+    clic3_colour_integer_definition_grape
   ),
   clic3_colour_foreground_cyan = clic3_colours_hex(
     clic3_colour_modifier_definition_foreground,
@@ -159,9 +159,9 @@ enum clic3_colour {
     clic3_colour_modifier_definition_background,
     clic3_colour_integer_definition_blue
   ),
-  clic3_colour_background_purple = clic3_colours_hex(
+  clic3_colour_background_grape = clic3_colours_hex(
     clic3_colour_modifier_definition_background,
-    clic3_colour_integer_definition_purple
+    clic3_colour_integer_definition_grape
   ),
   clic3_colour_background_cyan = clic3_colours_hex(
     clic3_colour_modifier_definition_background,
@@ -203,10 +203,10 @@ enum clic3_colour {
   clic3_colour_integer_definition_blue\
 )
 
-#define clic3_colours_definition_purple clic3_colours_char_array(\
+#define clic3_colours_definition_grape clic3_colours_char_array(\
   clic3_colour_style_definition_basic,\
   clic3_colour_modifier_definition_foreground,\
-  clic3_colour_integer_definition_purple\
+  clic3_colour_integer_definition_grape\
 )
 
 #define clic3_colours_definition_cyan clic3_colours_char_array(\
@@ -251,10 +251,10 @@ enum clic3_colour {
   clic3_colour_integer_definition_blue\
 )
 
-#define clic3_colours_definition_bold_purple clic3_colours_char_array(\
+#define clic3_colours_definition_bold_grape clic3_colours_char_array(\
   clic3_colour_style_definition_bold,\
   clic3_colour_modifier_definition_foreground,\
-  clic3_colour_integer_definition_purple\
+  clic3_colour_integer_definition_grape\
 )
 
 #define clic3_colours_definition_bold_cyan clic3_colours_char_array(\
@@ -318,7 +318,7 @@ extern clic3_metal_constant_pointer_prefix char clic3_colours_cyan[
   0x01
 ];
 
-extern clic3_metal_constant_pointer_prefix char clic3_colours_purple[
+extern clic3_metal_constant_pointer_prefix char clic3_colours_grape[
   clic3_colours_length_colour +
   0x01
 ];
@@ -363,7 +363,7 @@ extern clic3_metal_constant_pointer_prefix char clic3_colours_bold_cyan[
   0x01
 ];
 
-extern clic3_metal_constant_pointer_prefix char clic3_colours_bold_purple[
+extern clic3_metal_constant_pointer_prefix char clic3_colours_bold_grape[
   clic3_colours_length_colour +
   0x01
 ];
