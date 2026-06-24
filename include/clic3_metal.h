@@ -3,9 +3,11 @@
 
 #ifdef __METAL_VERSION__
 #define clic3_metal_constant_pointer_prefix constant const
+#define clic3_metal_device_pointer_prefix device
 #define clic3_metal_thread_pointer_prefix thread
 #else
 #define clic3_metal_constant_pointer_prefix
+#define clic3_metal_device_pointer_prefix
 #define clic3_metal_thread_pointer_prefix
 #endif
 
