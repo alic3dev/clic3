@@ -1,5 +1,5 @@
-#ifndef __clic3_char_values_h
-#define __clic3_char_values_h
+#ifndef __clic3_clic3_char_values_h
+#define __clic3_clic3_char_values_h
 
 #define clic3_char_value_enter 10
 #define clic3_char_value_ctrl 27

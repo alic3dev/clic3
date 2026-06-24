@@ -1,5 +1,5 @@
-#ifndef __clic3_base_h
-#define __clic3_base_h
+#ifndef __clic3_clic3_base_h
+#define __clic3_clic3_base_h
 
 #include <clic3_alphabet.h>
 #include <clic3_numbers.h>

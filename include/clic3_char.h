@@ -1,5 +1,5 @@
-#ifndef __clic3_char_h
-#define __clic3_char_h
+#ifndef __clic3_clic3_char_h
+#define __clic3_clic3_char_h
 
 #define clic3_function_template_char_from(type, name) char clic3_char_from_ ## name ## _digit(\
   type\

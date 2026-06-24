@@ -1,5 +1,5 @@
-#ifndef __clic3_base_hexadecimal_h
-#define __clic3_base_hexadecimal_h
+#ifndef __clic3_clic3_base_hexadecimal_h
+#define __clic3_clic3_base_hexadecimal_h
 
 #define clic3_base_hexdecimal_from_unsigned_char_value_maximum 0x100
 #define clic3_base_hexdecimal_from_unsigned_char_length_char_array 0x02

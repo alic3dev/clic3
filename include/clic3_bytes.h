@@ -1,5 +1,5 @@
-#ifndef __clic3_bytes_h
-#define __clic3_bytes_h
+#ifndef __clic3_clic3_bytes_h
+#define __clic3_clic3_bytes_h
 
 #ifndef __METAL_VERSION__
 void clic3_bytes_copy(

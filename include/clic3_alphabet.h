@@ -1,5 +1,5 @@
-#ifndef __clic3_alphabet_h
-#define __clic3_alphabet_h
+#ifndef __clic3_clic3_alphabet_h
+#define __clic3_clic3_alphabet_h
 
 #define clic3_alphabet_english_definition_length 26
 

@@ -1,5 +1,5 @@
-#ifndef __clic3_colours_h
-#define __clic3_colours_h
+#ifndef __clic3_clic3_colours_h
+#define __clic3_clic3_colours_h
 
 #include <clic3_metal.h>
 

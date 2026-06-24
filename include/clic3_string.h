@@ -1,5 +1,5 @@
-#ifndef __clic3_string_h
-#define __clic3_string_h
+#ifndef __clic3_clic3_string_h
+#define __clic3_clic3_string_h
 
 #ifndef __METAL_VERSION__
 enum clic3_string_termination {

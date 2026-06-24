@@ -1,5 +1,5 @@
-#ifndef __clic3_sort_h
-#define __clic3_sort_h
+#ifndef __clic3_clic3_sort_h
+#define __clic3_clic3_sort_h
 
 #ifndef __METAL_VERSION__
 

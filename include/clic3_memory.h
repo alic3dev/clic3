@@ -1,5 +1,5 @@
-#ifndef __clic3_memory_h
-#define __clic3_memory_h
+#ifndef __clic3_clic3_memory_h
+#define __clic3_clic3_memory_h
 
 #ifndef __METAL_VERSION__
 void clic3_memory_allocate(

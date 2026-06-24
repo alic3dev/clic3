@@ -1,5 +1,5 @@
-#ifndef __clic3_numbers_h
-#define __clic3_numbers_h
+#ifndef __clic3_clic3_numbers_h
+#define __clic3_clic3_numbers_h
 
 #define clic3_numbers_definition_length 0x0a
 
