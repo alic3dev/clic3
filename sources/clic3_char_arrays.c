@@ -1078,7 +1078,8 @@ char** clic3_char_array_split_on_char(
         (
           sizeof(
             void*
-          ) * (
+          ) *
+          (
             (unsigned long int)
             split_char_arrays[
               0x00
@@ -1186,11 +1187,16 @@ char** clic3_char_array_split_on_char(
     clic3_memory_reallocate_raw(
       &split_char_arrays,
       (
-        (unsigned long int)
-        split_char_arrays[
-          0x00
-        ] +
-        0x01
+        (
+          (unsigned long int)
+          split_char_arrays[
+            0x00
+          ] +
+          0x01
+        ) *
+        sizeof(
+          void*
+        )
       )
     );
 
