@@ -4,6 +4,10 @@
 #ifndef __METAL_VERSION__
 #include <stdarg.h>
 
+char* clic3_pathing_base(
+  char*
+);
+
 char* clic3_pathing_combine(
   unsigned int,
   ...

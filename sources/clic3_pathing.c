@@ -7,6 +7,151 @@
 
 #include <stdarg.h>
 
+char* clic3_pathing_base(
+  char* path
+) {
+  unsigned int length_path = (
+    clic3_char_array_length(
+      path
+    )
+  );
+
+  char* path_base;
+
+  if (
+    length_path ==
+    0x00
+  ) {
+    path_base = (
+      clic3_memory_allocate_raw(
+        0x01
+      )
+    );
+
+    path_base[
+      0x00
+    ] = (
+      '\0'
+    );
+
+    return (
+      path_base
+    );
+  } else if (
+    (
+      length_path ==
+      0x01
+    ) &&
+    (
+      path[
+        0x00
+      ] ==
+      '/'
+    )
+  ) {
+    path_base = (
+      clic3_memory_allocate_raw(
+        0x02
+      )
+    );
+
+    path_base[
+      0x00
+    ] = (
+      '/'
+    );
+
+    path_base[
+      0x01
+    ] = (
+      '\0'
+    );
+
+    return (
+      path_base
+    );
+  }
+
+  length_path = (
+    length_path +
+    0x01
+  );
+
+  for (
+    ;
+    (
+      (
+        length_path >
+        0x00
+      ) &&
+      (
+        path[
+          length_path -
+          0x01
+        ] !=
+        '/'
+      )
+    );
+    --length_path
+  ) {}
+
+  if (
+    length_path ==
+    0x00
+  ) {
+    path_base = (
+      clic3_memory_allocate_raw(
+        0x03
+      )
+    );
+
+    path_base[
+      0x00
+    ] = (
+      '.'
+    );
+
+    path_base[
+      0x01
+    ] = (
+      '/'
+    );
+
+    path_base[
+      0x02
+    ] = (
+      '\0'
+    );
+
+    return (
+      path_base
+    );
+  }
+
+  path_base = (
+    clic3_memory_allocate_raw(
+      length_path +
+      0x01
+    )
+  );
+
+  clic3_bytes_copy(
+    path_base,
+    path,
+    length_path
+  );
+
+  path_base[
+    length_path
+  ] = (
+    '\0'
+  );
+
+  return (
+    path_base
+  );
+}
+
 char* clic3_pathing_combine(
   unsigned int length_paths,
   ...
