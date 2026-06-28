@@ -11,6 +11,17 @@ unsigned long int clic3_file_length(
 unsigned long int clic3_file_length_remaining(
   FILE*
 );
+
+unsigned long int clic3_file_load(
+  FILE*,
+  char**
+);
+
+unsigned long int clic3_file_load_with_padding(
+  FILE*,
+  char**,
+  unsigned int
+);
 #endif
 
 #endif
