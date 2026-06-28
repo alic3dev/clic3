@@ -17,11 +17,11 @@ unsigned long int clic3_file_length(
       clic3_file
     )
   );
-
+  
   rewind(
     clic3_file
   );
-
+  
   return (
     length_file
   );
@@ -35,28 +35,28 @@ unsigned long int clic3_file_length_remaining(
       clic3_file
     )
   );
-
+  
   fseek(
     clic3_file,
     0x00,
     SEEK_END
   );
-
-  unsigned long int length_remaining_file = (
+  
+  unsigned long int length_file = (
     ftell(
       clic3_file
     )
   );
-
+  
   fseek(
     clic3_file,
     position_file,
     SEEK_SET
   );
-
+  
   return (
     length_file -
     position_file
-  );
+  );  
 }
 #endif
