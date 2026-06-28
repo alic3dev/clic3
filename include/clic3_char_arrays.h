@@ -3,6 +3,10 @@
 
 #ifndef __METAL_VERSION__
 
+char* clic3_char_array_clone(
+  char*
+);
+
 unsigned char clic3_char_arrays_equal(
   char*,
   char*

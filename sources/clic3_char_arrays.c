@@ -10,6 +10,36 @@
 #include <limits.h>
 #include <stdarg.h>
 
+char* clic3_char_array_clone(
+  char* char_array
+) {
+  unsigned int length_char_array = (
+    clic3_char_array_length(
+      char_array
+    )
+  );
+
+  char* char_array_cloned = (
+    clic3_memory_allocate_raw(
+      length_char_array +
+      0x01
+    )
+  );
+
+  clic3_bytes_copy(
+    char_array_cloned,
+    char_array,
+    (
+      length_char_array +
+      0x01
+    )
+  );
+
+  return (
+    char_array_cloned
+  );
+}
+
 unsigned char clic3_char_arrays_equal(
   char* char_array_first,
   char* char_array_second
