@@ -133,7 +133,7 @@ unsigned char clic3_char_array_begins_with(
   char*
 );
 
-unsigned char clic3_char_array_lengthed_ends(
+unsigned char clic3_char_array_ends_with(
   char*,
   char*
 );
