@@ -5,6 +5,84 @@
 #include <clic3_pathing.h>
 
 #ifndef __METAL_VERSION__
+void clic3_internal_directory_find_listing_recursive_function(
+  struct dirent* entry_directory,
+  char* path_base,
+  void* data,
+  unsigned char status
+) {
+  struct clic3_directory_find_data* clic3_directory_find_data = (
+    data
+  );
+
+  if (
+    clic3_char_arrays_equal(
+      entry_directory->d_name,
+      clic3_directory_find_data->search
+    )
+  ) {
+    clic3_directory_find_data->length = (
+      clic3_directory_find_data->length +
+      0x01
+    );
+
+    clic3_memory_reallocate_raw(
+      clic3_directory_find_data->paths,
+      (
+        sizeof(
+          void*
+        ) *
+        clic3_directory_find_data->length
+      )
+    );
+
+    (*clic3_directory_find_data->paths)[
+      clic3_directory_find_data->length -
+      0x01
+    ] = (
+      clic3_pathing_combine(
+        0x02,
+        path_base,
+        entry_directory->d_name
+      )
+    );
+  }
+}
+
+unsigned int clic3_directory_find(
+  char* path_directory,
+  char*** paths,
+  char* search
+) {
+  struct clic3_directory_find_data clic3_directory_find_data = {
+    .paths = (
+      paths
+    ),
+    .length = (
+      0x00
+    ),
+    .search = (
+      search
+    )
+  };
+
+  *paths = (
+    clic3_memory_allocate_raw(
+      0x00
+    )
+  );
+
+  clic3_directory_listing_recursive(
+    path_directory,
+    clic3_internal_directory_find_listing_recursive_function,
+    &clic3_directory_find_data
+  );
+
+  return (
+    clic3_directory_find_data.length
+  );
+}
+
 unsigned char clic3_directory_listing(
   char* path_directory,
   clic3_directory_listing_function directory_listing_function,

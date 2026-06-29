@@ -4,6 +4,26 @@
 #ifndef __METAL_VERSION__
 #include <dirent.h>
 
+struct clic3_directory_find_data {
+  char*** paths;
+  unsigned int length;
+
+  char* search;
+};
+
+void clic3_internal_directory_find_listing_recursive_function(
+  struct dirent*,
+  char*,
+  void*,
+  unsigned char
+);
+
+unsigned int clic3_directory_find(
+  char*,
+  char***,
+  char*
+);
+
 typedef void (*clic3_directory_listing_function)(
   struct dirent*,
   void*
