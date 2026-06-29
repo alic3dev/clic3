@@ -1257,7 +1257,7 @@ char** clic3_char_array_split_on_char(
     split_char_arrays
   );
 }
-#include <stdio.h>
+
 unsigned int clic3_char_array_find(
   char* char_array,
   char* char_array_contains
