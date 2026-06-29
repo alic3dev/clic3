@@ -12,40 +12,40 @@ c_standard_library
 - `clic3_base_hexadecimal`: hexadecimal number base
 - - `clic3_base_hexadecimal_unsigned_char_mapping`: quick mapping of values from `0x00` to `0xff` to char arrays
 - `clic3_bytes`: functions dealing with raw bytes
-- - `clic3_bytes_copy`
+- - `clic3_bytes_copy`: copies bytes into a memory address from a memory address with the provided length parameter
 - `clic3_char`: char functions
-- - `clic3_char_from_char_digit`
-- - `clic3_char_from_unsigned_char_digit`
-- - `clic3_char_from_int_digit`
-- - `clic3_char_is_digit`
+- - `clic3_char_from_char_digit`: converts a char to it's numerical character representation
+- - `clic3_char_from_unsigned_char_digit`: converts an unsigned char to it's numerical character representation
+- - `clic3_char_from_int_digit`: converts an integer to a char
+- - `clic3_char_is_digit`: returns `0x01` if the character is >= `'0'` && <= `'9'`
 - `clic3_char_arrays`: char array functions
-- - `clic3_char_arrays_equal`
-- - `clic3_char_arrays_within`
-- - `clic3_char_array_to_lowercase`
-- - `clic3_char_array_to_uppercase`
-- - `clic3_char_array_to_int`
-- - `clic3_char_array_to_short_int`
-- - `clic3_char_array_to_long_int`
-- - `clic3_char_array_to_long_long_int`
-- - `clic3_char_array_to_unsigned_int`
-- - `clic3_char_array_to_unsigned_short_int`
-- - `clic3_char_array_to_unsigned_long_int`
-- - `clic3_char_array_to_unsigned_long_long_int`
-- - `clic3_char_array_to_float`
-- - `clic3_char_array_to_double`
-- - `clic3_char_array_from_int`
-- - `clic3_char_array_from_short_int`
-- - `clic3_char_array_from_long_int`
-- - `clic3_char_array_from_long_long_int`
-- - `clic3_char_array_from_unsigned_int`
-- - `clic3_char_array_from_unsigned_short_int`
-- - `clic3_char_array_from_unsigned_long_int`
-- - `clic3_char_array_from_unsigned_long_long_int`
-- - `clic3_char_array_from_float`
-- - `clic3_char_array_from_double`
-- - `clic3_char_array_length`
-- - `clic3_char_arrays_concatenate`
-- - `clic3_char_array_split_on_char`
+- - `clic3_char_arrays_equal`: returns `0x01` when char arrays are equal
+- - `clic3_char_arrays_within`: returns the index of the first matching char array otherwise returns `-0x01`
+- - `clic3_char_array_to_lowercase`: converts a char array to lowercasing
+- - `clic3_char_array_to_uppercase`: converts a char array to uppercasing
+- - `clic3_char_array_to_int`: converts a char array to an integer
+- - `clic3_char_array_to_short_int`: converts a char array to a short integer
+- - `clic3_char_array_to_long_int`: converts a char array to a long integer
+- - `clic3_char_array_to_long_long_int`: converts a char array to a long long integer
+- - `clic3_char_array_to_unsigned_int`: converts a char array to an unsigned integer
+- - `clic3_char_array_to_unsigned_short_int`: converts a char array to an unsigned short integer
+- - `clic3_char_array_to_unsigned_long_int`: converts a char array to an unsigned long integer
+- - `clic3_char_array_to_unsigned_long_long_int`: converts a char array to an unsigned long long integer
+- - `clic3_char_array_to_float`: converts a char array to a float
+- - `clic3_char_array_to_double`: converts a char array to a double
+- - `clic3_char_array_from_int`: creates a char array from an integer
+- - `clic3_char_array_from_short_int`: creates a char array from a short integer
+- - `clic3_char_array_from_long_int`: creates a char array from a long integer
+- - `clic3_char_array_from_long_long_int`: creates a char array from a long long integer
+- - `clic3_char_array_from_unsigned_int`: creates a char array from an unsigned integer
+- - `clic3_char_array_from_unsigned_short_int`: creates a char array from an unsigned short integer
+- - `clic3_char_array_from_unsigned_long_int`: creates a char array from an unsigned long integer
+- - `clic3_char_array_from_unsigned_long_long_int`: creates a char array from an unsigned long long integer
+- - `clic3_char_array_from_float`: creates a char array from a float
+- - `clic3_char_array_from_double`: creates a char array from a double
+- - `clic3_char_array_length`: returns the length of a null terminated char array
+- - `clic3_char_arrays_concatenate`: returns a char array that is the concatenated form of both parameters
+- - `clic3_char_array_split_on_char`: splits a char array into multiple char arrays by the character parameter, the first index at `0x00` is an `unsigned long int` containing the length of splits
 - `clic3_char_values`: values_of_characters : converted from `char` to `int`
 - `clic3_colours`: terminal/command-line colour definitions
 - `clic3_directories`: directory functions
