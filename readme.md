@@ -51,7 +51,7 @@ c_standard_library
 - - `clic3_char_array_ends_with`: returns `0x01` if the char array ends with the second char array
 - - `clic3_char_array_lengthed_ends_with`: same as `clic3_char_array_ends_with` but with the provided length of the first char array to save a call to `clic3_char_array_length`
 - - `clic3_char_array_ends_with_lengthed`: same as `clic3_char_array_ends_with` but with the provided length of the second char array to save a call to `clic3_char_array_length`
-- - `clic3_char_array_lengthed_ends_with_lengthed: same as `clic3_char_array_ends_with` but with provided lengths for both char arrays to save two calls to `clic3_char_array_length`
+- - `clic3_char_array_lengthed_ends_with_lengthed`: same as `clic3_char_array_ends_with` but with provided lengths for both char arrays to save two calls to `clic3_char_array_length`
 - - `clic3_char_array_matches`: returns `0x01` if the provided char array matches the second char array with wildcard (`*`) support
 - - `clic3_char_arrays_join`: joins multiple char arrays together by the provided deliminator char array
 - `clic3_char_values`: values_of_characters : converted from `char` to `int`
