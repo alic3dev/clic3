@@ -71,7 +71,7 @@ char* clic3_pathing_base(
       path_base
     );
   }
-  
+
   length_path = (
     length_path -
     0x01

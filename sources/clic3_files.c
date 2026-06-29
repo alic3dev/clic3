@@ -19,11 +19,11 @@ unsigned long int clic3_file_length(
       clic3_file
     )
   );
-  
+
   rewind(
     clic3_file
   );
-  
+
   return (
     length_file
   );
@@ -37,29 +37,29 @@ unsigned long int clic3_file_length_remaining(
       clic3_file
     )
   );
-  
+
   fseek(
     clic3_file,
     0x00,
     SEEK_END
   );
-  
+
   unsigned long int length_file = (
     ftell(
       clic3_file
     )
   );
-  
+
   fseek(
     clic3_file,
     position_file,
     SEEK_SET
   );
-  
+
   return (
     length_file -
     position_file
-  );  
+  );
 }
 
 unsigned long int clic3_file_load(
@@ -85,21 +85,21 @@ unsigned long int clic3_file_load_with_padding(
       clic3_file
     )
   );
-  
+
   *clic3_buffer = (
     clic3_memory_allocate_raw(
       clic3_length_buffer +
       clic3_padding_buffer
     )
   );
-  
+
   fread(
     *clic3_buffer,
     clic3_length_buffer,
     0x01,
     clic3_file
   );
-  
+
   return (
     clic3_length_buffer
   );
