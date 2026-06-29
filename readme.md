@@ -57,6 +57,7 @@ c_standard_library
 - `clic3_char_values`: values_of_characters : converted from `char` to `int`
 - `clic3_colours`: terminal/command-line colour definitions
 - `clic3_directories`: directory functions
+- - `clic3_directory_find`: finds files|directories with the provided match string using `clic3_char_array_matches` against the `d_name` of the path
 - - `clic3_directory_listing`: list contents of a single directory
 - - `clic3_directory_listing_recursive`: list contents of a directory and subdiretories
 - `clic3_memory`: memory functions
