@@ -46,6 +46,14 @@ c_standard_library
 - - `clic3_char_array_length`: returns the length of a null terminated char array
 - - `clic3_char_arrays_concatenate`: returns a char array that is the concatenated form of both parameters
 - - `clic3_char_array_split_on_char`: splits a char array into multiple char arrays by the character parameter, the first index at `0x00` is an `unsigned long int` containing the length of splits
+- - `clic3_char_array_find`: returns the index + `0x01` of the second parameter within the first parameter otherwise returns `0x00`
+- - `clic3_char_array_begins_with`: returns `0x01` if the char array begins with the second char array
+- - `clic3_char_array_ends_with`: returns `0x01` if the char array ends with the second char array
+- - `clic3_char_array_lengthed_ends_with`: same as `clic3_char_array_ends_with` but with the provided length of the first char array to save a call to `clic3_char_array_length`
+- - `clic3_char_array_ends_with_lengthed`: same as `clic3_char_array_ends_with` but with the provided length of the second char array to save a call to `clic3_char_array_length`
+- - `clic3_char_array_lengthed_ends_with_lengthed: same as `clic3_char_array_ends_with` but with provided lengths for both char arrays to save two calls to `clic3_char_array_length`
+- - `clic3_char_array_matches`: returns `0x01` if the provided char array matches the second char array with wildcard (`*`) support
+- - `clic3_char_arrays_join`: joins multiple char arrays together by the provided deliminator char array
 - `clic3_char_values`: values_of_characters : converted from `char` to `int`
 - `clic3_colours`: terminal/command-line colour definitions
 - `clic3_directories`: directory functions
