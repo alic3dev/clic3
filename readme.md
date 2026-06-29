@@ -75,6 +75,7 @@ c_standard_library
 - `clic3_numbers`: numbers
 - - `clic3_numbers_definition`: numbers as characters
 - `clic3_pathing`: pathing
+- - `clic3_pathing_base`: returns a path without the ending path part, also known as the base of a file path, or, if the path is at it's final part then return itself if has `/` or `./` if not
 - - `clic3_pathing_combine`: combines path char arrays into a singular path char array
 - `clic3_sort`: sorting functions
 - - `clic3_sort`
