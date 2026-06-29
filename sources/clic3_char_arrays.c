@@ -1265,7 +1265,7 @@ unsigned int clic3_char_array_find(
   unsigned int index_char_array = (
     0x00
   );
-  
+
   while (
     char_array[
       index_char_array
@@ -1287,13 +1287,13 @@ unsigned int clic3_char_array_find(
         0x01
       );
     }
-  
+
     index_char_array = (
       index_char_array +
       0x01
-    );       
+    );
   }
-  
+
   return (
     0x00
   );
@@ -1306,7 +1306,7 @@ unsigned char clic3_char_array_begins_with(
   unsigned int index_char_array = (
     0x00
   );
-  
+
   while (
     char_array[
       index_char_array
@@ -1325,13 +1325,13 @@ unsigned char clic3_char_array_begins_with(
         0x01
       );
     }
-    
+
     index_char_array = (
       index_char_array +
       0x01
     );
   }
-  
+
   return (
     (
       char_array_begins_with[
@@ -1353,13 +1353,13 @@ unsigned char clic3_char_array_ends_with(
       char_array
     )
   );
-  
+
   unsigned int length_char_array_ends_with = (
     clic3_char_array_length(
       char_array_ends_with
     )
   );
-  
+
   return (
     clic3_char_array_lengthed_ends_with_lengthed(
       char_array,
@@ -1433,11 +1433,11 @@ unsigned char clic3_char_array_lengthed_ends_with_lengthed(
       0x01
     );
   }
-  
+
   unsigned int index_char_array = (
     0x00
   );
-  
+
   while (
     char_array[
       length_char_array -
@@ -1454,13 +1454,13 @@ unsigned char clic3_char_array_lengthed_ends_with_lengthed(
     ) {
       return (
         0x01
-      ); 
+      );
     }
-  
+
     index_char_array = (
       index_char_array +
       0x01
-    ); 
+    );
   }
 
   return (
@@ -1478,18 +1478,18 @@ unsigned char clic3_char_array_matches(
       '*'
     )
   );
-  
+
   unsigned long int length_splits = (
     (unsigned long int)
     char_array_matches_splits[
       0x00
     ]
   );
-  
+
   unsigned char status_matches = (
     0x00
   );
-  
+
   if (
     length_splits ==
     0x01
@@ -1525,23 +1525,23 @@ unsigned char clic3_char_array_matches(
         0x00
       ] ==
       '\0'
-    ) 
+    )
   ) {
     status_matches = (
       0x01
     );
   }
-  
+
   unsigned int index_from = (
     0x00
   );
-  
+
   unsigned int length_char_array = (
     clic3_char_array_length(
       char_array
     )
   );
-  
+
   for (
     unsigned long int index_split = (
       0x00
@@ -1558,7 +1558,7 @@ unsigned char clic3_char_array_matches(
         0x01
       ]
     );
-    
+
     if (
       index_split >
       0x00
@@ -1568,7 +1568,7 @@ unsigned char clic3_char_array_matches(
         0x01
       );
     }
-    
+
     if (
       (
         status_matches ==
@@ -1591,7 +1591,7 @@ unsigned char clic3_char_array_matches(
             char_array_match
           )
         );
-        
+
         if (
           status_begins_with ==
           0x00
@@ -1627,7 +1627,7 @@ unsigned char clic3_char_array_matches(
             )
           )
         );
-        
+
         if (
           status_ends_with ==
           0x00
@@ -1646,7 +1646,7 @@ unsigned char clic3_char_array_matches(
             char_array_match
           )
         );
-        
+
         if (
           index_find ==
           0x00
@@ -1661,7 +1661,7 @@ unsigned char clic3_char_array_matches(
           );
         }
       }
-    
+
       if (
         index_from >=
         length_char_array
@@ -1686,16 +1686,16 @@ unsigned char clic3_char_array_matches(
         );
       }
     }
-    
+
     clic3_memory_free_raw(
       char_array_match
     );
   }
-  
+
   clic3_memory_free_raw(
     char_array_matches_splits
   );
-  
+
   return (
     (
       status_matches !=
