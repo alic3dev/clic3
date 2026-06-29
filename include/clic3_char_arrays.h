@@ -123,6 +123,45 @@ char** clic3_char_array_split_on_char(
   char
 );
 
+unsigned int clic3_char_array_find(
+  char*,
+  char*
+);
+
+unsigned char clic3_char_array_begins_with(
+  char*,
+  char*
+);
+
+unsigned char clic3_char_array_lengthed_ends(
+  char*,
+  char*
+);
+
+unsigned char clic3_char_array_lengthed_ends_with(
+  char*,
+  char*,
+  unsigned int
+);
+
+unsigned char clic3_char_array_ends_with_lengthed(
+  char*,
+  char*,
+  unsigned int
+);
+
+unsigned char clic3_char_array_lengthed_ends_with_lengthed(
+  char*,
+  char*,
+  unsigned int,
+  unsigned int
+);
+
+unsigned char clic3_char_array_matches(
+  char*,
+  char*
+);
+
 char* clic3_char_arrays_join(
   char*,
   unsigned int,

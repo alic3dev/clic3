@@ -1257,6 +1257,454 @@ char** clic3_char_array_split_on_char(
     split_char_arrays
   );
 }
+#include <stdio.h>
+unsigned int clic3_char_array_find(
+  char* char_array,
+  char* char_array_contains
+) {
+  unsigned int index_char_array = (
+    0x00
+  );
+  
+  while (
+    char_array[
+      index_char_array
+    ] !=
+    '\0'
+  ) {
+    if (
+      clic3_char_array_begins_with(
+        (
+          char_array +
+          index_char_array
+        ),
+        char_array_contains
+      ) ==
+      0x01
+    ) {
+      return (
+        index_char_array +
+        0x01
+      );
+    }
+  
+    index_char_array = (
+      index_char_array +
+      0x01
+    );       
+  }
+  
+  return (
+    0x00
+  );
+}
+
+unsigned char clic3_char_array_begins_with(
+  char* char_array,
+  char* char_array_begins_with
+) {
+  unsigned int index_char_array = (
+    0x00
+  );
+  
+  while (
+    char_array[
+      index_char_array
+    ] ==
+    char_array_begins_with[
+      index_char_array
+    ]
+  ) {
+    if (
+      char_array[
+        index_char_array
+      ] ==
+      '\0'
+    ) {
+      return (
+        0x01
+      );
+    }
+    
+    index_char_array = (
+      index_char_array +
+      0x01
+    );
+  }
+  
+  return (
+    (
+      char_array_begins_with[
+        index_char_array
+      ] ==
+      '\0'
+    )
+    ? 0x01
+    : 0x00
+  );
+}
+
+unsigned char clic3_char_array_ends_with(
+  char* char_array,
+  char* char_array_ends_with
+) {
+  unsigned int length_char_array = (
+    clic3_char_array_length(
+      char_array
+    )
+  );
+  
+  unsigned int length_char_array_ends_with = (
+    clic3_char_array_length(
+      char_array_ends_with
+    )
+  );
+  
+  return (
+    clic3_char_array_lengthed_ends_with_lengthed(
+      char_array,
+      char_array_ends_with,
+      length_char_array,
+      length_char_array_ends_with
+    )
+  );
+}
+
+unsigned char clic3_char_array_lengthed_ends_with(
+  char* char_array,
+  char* char_array_ends_with,
+  unsigned int length_char_array
+) {
+  unsigned int length_char_array_ends_with = (
+    clic3_char_array_length(
+      char_array_ends_with
+    )
+  );
+
+  return (
+    clic3_char_array_lengthed_ends_with_lengthed(
+      char_array,
+      char_array_ends_with,
+      length_char_array,
+      length_char_array_ends_with
+    )
+  );
+}
+
+unsigned char clic3_char_array_ends_with_lengthed(
+  char* char_array,
+  char* char_array_ends_with,
+  unsigned int length_char_array_ends_with
+) {
+  unsigned int length_char_array = (
+    clic3_char_array_length(
+      char_array
+    )
+  );
+
+  return (
+    clic3_char_array_lengthed_ends_with_lengthed(
+      char_array,
+      char_array_ends_with,
+      length_char_array,
+      length_char_array_ends_with
+    )
+  );
+}
+
+unsigned char clic3_char_array_lengthed_ends_with_lengthed(
+  char* char_array,
+  char* char_array_ends_with,
+  unsigned int length_char_array,
+  unsigned int length_char_array_ends_with
+) {
+  if (
+    length_char_array_ends_with >
+    length_char_array
+  ) {
+    return (
+      0x00
+    );
+  } else if (
+    length_char_array_ends_with ==
+    0x00
+  ) {
+    return (
+      0x01
+    );
+  }
+  
+  unsigned int index_char_array = (
+    0x00
+  );
+  
+  while (
+    char_array[
+      length_char_array -
+      index_char_array
+    ] ==
+    char_array_ends_with[
+      length_char_array_ends_with -
+      index_char_array
+    ]
+  ) {
+    if (
+      index_char_array ==
+      length_char_array_ends_with
+    ) {
+      return (
+        0x01
+      ); 
+    }
+  
+    index_char_array = (
+      index_char_array +
+      0x01
+    ); 
+  }
+
+  return (
+    0x00
+  );
+}
+
+unsigned char clic3_char_array_matches(
+  char* char_array,
+  char* char_array_matches
+) {
+  char** char_array_matches_splits = (
+    clic3_char_array_split_on_char(
+      char_array_matches,
+      '*'
+    )
+  );
+  
+  unsigned long int length_splits = (
+    (unsigned long int)
+    char_array_matches_splits[
+      0x00
+    ]
+  );
+  
+  unsigned char status_matches = (
+    0x00
+  );
+  
+  if (
+    length_splits ==
+    0x01
+  ) {
+    status_matches = (
+      (
+        clic3_char_arrays_equal(
+          char_array,
+          char_array_matches
+        ) ==
+        0x00
+      )
+      ? 0x02
+      : 0x01
+    );
+  } else if (
+    (
+      length_splits ==
+      0x02
+    ) &&
+    (
+      char_array_matches_splits[
+        0x01
+      ][
+        0x00
+      ] ==
+      '\0'
+    ) &&
+    (
+      char_array_matches_splits[
+        0x02
+      ][
+        0x00
+      ] ==
+      '\0'
+    ) 
+  ) {
+    status_matches = (
+      0x01
+    );
+  }
+  
+  unsigned int index_from = (
+    0x00
+  );
+  
+  unsigned int length_char_array = (
+    clic3_char_array_length(
+      char_array
+    )
+  );
+  
+  for (
+    unsigned long int index_split = (
+      0x00
+    );
+    (
+      index_split <
+      length_splits
+    );
+    ++index_split
+  ) {
+    char* char_array_match = (
+      char_array_matches_splits[
+        index_split +
+        0x01
+      ]
+    );
+    
+    if (
+      index_split >
+      0x00
+    ) {
+      index_from = (
+        index_from +
+        0x01
+      );
+    }
+    
+    if (
+      (
+        status_matches ==
+        0x00
+      ) &&
+      (
+        char_array_match[
+          0x00
+        ] !=
+        '\0'
+      )
+    ) {
+      if (
+        index_split ==
+        0x00
+      ) {
+        unsigned char status_begins_with = (
+          clic3_char_array_begins_with(
+            char_array,
+            char_array_match
+          )
+        );
+        
+        if (
+          status_begins_with ==
+          0x00
+        ) {
+          status_matches = (
+            0x02
+          );
+        } else {
+          index_from = (
+            index_from +
+            clic3_char_array_length(
+              char_array_match
+            )
+          );
+        }
+      } else if (
+        index_split ==
+        (
+          length_splits -
+          0x01
+        )
+      ) {
+        unsigned char status_ends_with = (
+          clic3_char_array_lengthed_ends_with(
+            (
+              char_array +
+              index_from
+            ),
+            char_array_match,
+            (
+              length_char_array -
+              index_from
+            )
+          )
+        );
+        
+        if (
+          status_ends_with ==
+          0x00
+        ) {
+          status_matches = (
+            0x02
+          );
+        }
+      } else {
+        unsigned int index_find = (
+          clic3_char_array_find(
+            (
+              char_array +
+              index_from
+            ),
+            char_array_match
+          )
+        );
+        
+        if (
+          index_find ==
+          0x00
+        ) {
+          status_matches = (
+            0x02
+          );
+        } else {
+          index_from = (
+            index_from +
+            index_find
+          );
+        }
+      }
+    
+      if (
+        index_from >=
+        length_char_array
+      ) {
+        status_matches = (
+          0x02
+        );
+      }
+    } else if (
+      status_matches ==
+      0x00
+    ) {
+      if (
+        index_from >=
+        (
+          length_char_array -
+          0x01
+        )
+      ) {
+        status_matches = (
+          0x02
+        );
+      }
+    }
+    
+    clic3_memory_free_raw(
+      char_array_match
+    );
+  }
+  
+  clic3_memory_free_raw(
+    char_array_matches_splits
+  );
+  
+  return (
+    (
+      status_matches !=
+      0x02
+    )
+    ? 0x01
+    : 0x00
+  );
+}
 
 char* clic3_char_arrays_join(
   char* char_array_liminator,
