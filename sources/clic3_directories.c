@@ -16,7 +16,7 @@ void clic3_internal_directory_find_listing_recursive_function(
   );
 
   if (
-    clic3_char_arrays_equal(
+    clic3_char_array_matches(
       entry_directory->d_name,
       clic3_directory_find_data->search
     )
