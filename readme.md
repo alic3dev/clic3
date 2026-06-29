@@ -60,6 +60,11 @@ c_standard_library
 - - `clic3_directory_find`: finds files|directories with the provided match string using `clic3_char_array_matches` against the `d_name` of the path
 - - `clic3_directory_listing`: list contents of a single directory
 - - `clic3_directory_listing_recursive`: list contents of a directory and subdiretories
+- `clic3_files`
+- - `clic3_file_length`: returns the length of a file (note: will rewind the file)
+- - `clic3_file_length_remaining`: returns the remaining length of a file relative to it's current position
+- - `clic3_file_load`: loads the entire contents of a file into memory (provided char array buffer, assumes buffer is unallocated, buffer is dereferenced to set allocated memory)
+- - `clic3_file_load_with_padding`: same as `clic3_file_load` but pads the memory allocation with the provided length of bytes to allow additional data
 - `clic3_memory`: memory functions
 - - `clic3_memory_allocate`: allocates memory if the address is `0` or reallocates if the address is not `0`
 - - `clic3_memory_free`: frees memory if the address is not `0`
